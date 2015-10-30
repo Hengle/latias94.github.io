@@ -1,5 +1,11 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -34,7 +40,7 @@
 
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
 
@@ -54,7 +60,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.0" />
 
 
 
@@ -78,8 +84,9 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post',
+    scheme: 'Pisces',
+    sidebar: '[object Object]',
+    fancybox: true,
     motion: true
   };
 </script>
@@ -105,7 +112,12 @@
 
 
 
-  <div class="container one-column page-post-detail">
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -147,16 +159,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -179,17 +181,25 @@
 
       
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
   
     <div class="site-search">
       
-  
   <form class="site-search-form">
-    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-  </form>
-
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -211,8 +221,9 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
@@ -240,7 +251,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T00:20:11+08:00" content="2015-10-30">
+            <time itemprop="dateCreated" datetime="2015-10-30T00:39:52+08:00" content="2015-10-30">
               2015-10-30
             </time>
           </span>
@@ -249,22 +260,10 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/30/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
-
-          
-          <span id="/2015/10/30/hello-world/"class="leancloud_visitors"  data-flag-title="欢迎来到萤火之森">
-            &nbsp; | &nbsp; 阅读次数
-            </span>
-      
+		  
         </div>
       </header>
     
@@ -330,7 +329,7 @@
 <h2 id="链接">链接</h2><p>Markdown 语法：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">email <span class="xml"><span class="tag">&lt;<span class="title">example@example.com</span>&gt;</span></span></span><br><span class="line">[<span class="link_label">GitHub</span>](<span class="link_url">http://github.com</span>)</span><br><span class="line">自动生成连接  <span class="xml"><span class="tag">&lt;<span class="title">http:</span>//<span class="attribute">www.github.com</span>/&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p><code>Control + Shift + L</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，拖放或<code>CMD + Option + I</code> 导入非图片时，会生成连接。<br>效果如下：</p>
-<p>Email 连接： <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
+<p>Email 连接： <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
 <h2 id="区块引用">区块引用</h2><p>Markdown 语法：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">某某说:</span><br><span class="line"><span class="blockquote">&gt; 第一行引用</span></span><br><span class="line"><span class="blockquote">&gt; 第二行费用文字</span></span><br></pre></td></tr></table></figure>
 <p><code>Control + B</code> 可插入Markdown语法。<br>效果如下：</p>
@@ -417,17 +416,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/29/博客模板更新/" rel="next" title="博客模板更新">
-                <i class="fa fa-chevron-left"></i> 博客模板更新
+              <a href="/2015/10/30/Android中ContentProvider组件/" rel="next" title="安卓攻略">
+                <i class="fa fa-chevron-left"></i> 安卓攻略
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/30/Android中ContentProvider组件/" rel="prev" title="安卓攻略">
-                安卓攻略 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -442,48 +437,23 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/30/hello-world/"
-     data-title="欢迎来到萤火之森"
-     data-content=""
-     data-url="http://yoursite.com/2015/10/30/hello-world/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
     </div>
   </div>
-</div>
-      
-    </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
   </div>
 
 
         </div>
-
         
-
-
-        
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/10/30/hello-world/"
-           data-title="欢迎来到萤火之森" data-url="http://yoursite.com/2015/10/30/hello-world/">
-      </div>
-    
-  </div>
-
-
-      </div>
-
-      
-        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -511,10 +481,12 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/uploads/avatar.png" alt="鸣真大师" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="鸣真大师" />
           <p class="site-author-name" itemprop="name">鸣真大师</p>
+          <p class="site-description motion-element" itemprop="description">庄鸣真的各种知识火种~</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">庄鸣真的各种知识火种~</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -524,10 +496,10 @@
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            
               <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
-              </a>
+              
           </div>
 
           <div class="site-state-item site-state-tags">
@@ -584,8 +556,6 @@
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
-              
-            
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown_语法和_MWeb_写作使用说明"><span class="nav-number">1.</span> <span class="nav-text">Markdown 语法和 MWeb 写作使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown_的设计哲学"><span class="nav-number">1.1.</span> <span class="nav-text">Markdown 的设计哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文约定"><span class="nav-number">1.2.</span> <span class="nav-text">本文约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.3.</span> <span class="nav-text">标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一级标题_<h1>"><span class="nav-number">2.</span> <span class="nav-text">第一级标题 <h1></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二级标题_<h2>"><span class="nav-number">2.1.</span> <span class="nav-text">第二级标题 <h2></span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第六级标题_<h6>"><span class="nav-number">2.1.0.0.0.1.</span> <span class="nav-text">第六级标题 <h6></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强调"><span class="nav-number">2.2.</span> <span class="nav-text">强调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换行"><span class="nav-number">2.3.</span> <span class="nav-text">换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">2.4.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">2.4.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">2.4.2.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务列表（Task_lists）"><span class="nav-number">2.4.3.</span> <span class="nav-text">任务列表（Task lists）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">2.5.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">2.6.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块引用"><span class="nav-number">2.7.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内代码"><span class="nav-number">2.8.</span> <span class="nav-text">行内代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行或者一段代码"><span class="nav-number">2.9.</span> <span class="nav-text">多行或者一段代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序图或流程图"><span class="nav-number">2.10.</span> <span class="nav-text">顺序图或流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">2.11.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除线"><span class="nav-number">2.12.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔线"><span class="nav-number">2.13.</span> <span class="nav-text">分隔线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MathJax"><span class="nav-number">2.14.</span> <span class="nav-text">MathJax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚注（Footnote）"><span class="nav-number">2.15.</span> <span class="nav-text">脚注（Footnote）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释和阅读更多"><span class="nav-number">2.16.</span> <span class="nav-text">注释和阅读更多</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TOC"><span class="nav-number">2.17.</span> <span class="nav-text">TOC</span></a></li></ol></li></ol></div>
             
@@ -598,7 +568,8 @@
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
@@ -613,7 +584,16 @@
   <span class="author" itemprop="copyrightHolder">鸣真大师</span>
 </div>
 
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
 
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
 
 
 
@@ -623,54 +603,66 @@
     <div class="back-to-top"></div>
   </div>
 
+  
+
+
+  
+
+
+
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  
-  
-
-  
-    
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"latias94"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-
-    
-  
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
-
-
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
 
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/helpers.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var $sidebar = $('#sidebar');
+    var headerHeight = $('.header-inner').height();
+    var footerOffset = parseInt($('.main').css('padding-bottom'), 10);
+    var sidebarTop = headerHeight + 10;
+
+    $sidebar
+      .css({ 'margin-top': sidebarTop })
+      .show();
+
+    $('.page-post-detail .sidebar-inner').affix({
+      offset: {
+        top: sidebarTop,
+        bottom: footerOffset
+      }
+    });
+  });
+</script>
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -830,7 +822,20 @@
 
 
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+
+
+  
+
+
 
   
   
@@ -838,89 +843,6 @@
   
   
 
-     <!-- custom analytics part create by xiamo -->
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("uC5i9ynKxjsyY2FnBFMefMpY", "U7Qts9JRVhjp6TLkcElXWAqk");</script>
-<script>
-function showTime(Counter) {
-  var query = new AV.Query(Counter);
-  $(".leancloud_visitors").each(function() {
-    var url = $(this).attr("id").trim();
-    query.equalTo("url", url);
-    query.find({
-      success: function(results) {
-        if (results.length == 0) {
-          var content = $(document.getElementById(url)).text() + ': 0';
-          $(document.getElementById(url)).text(content);
-          return;
-        }
-        for (var i = 0; i < results.length; i++) {
-          var object = results[i];
-          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
-          $(document.getElementById(url)).text(content);
-        }
-      },
-      error: function(object, error) {
-        console.log("Error: " + error.code + " " + error.message);
-      }
-    });
 
-  });
-}
-
-function addCount(Counter) {
-  var Counter = AV.Object.extend("Counter");
-  url = $(".leancloud_visitors").attr('id').trim();
-  title = $(".leancloud_visitors").attr('data-flag-title').trim();
-  var query = new AV.Query(Counter);
-  query.equalTo("url", url);
-  query.find({
-    success: function(results) {
-      if (results.length > 0) {
-        var counter = results[0];
-        counter.fetchWhenSave(true);
-        counter.increment("time");
-        counter.save(null, {
-          success: function(counter) {
-            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
-            $(document.getElementById(url)).text(content);
-          },
-          error: function(counter, error) {
-            console.log('Failed to save Visitor num, with error message: ' + error.message);
-          }
-        });
-      } else {
-        var newcounter = new Counter();
-        newcounter.set("title", title);
-        newcounter.set("url", url);
-        newcounter.set("time", 1);
-        newcounter.save(null, {
-          success: function(newcounter) {
-              console.log("newcounter.get('time')="+newcounter.get('time'));
-            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
-            $(document.getElementById(url)).text(content);
-          },
-          error: function(newcounter, error) {
-            console.log('Failed to create');
-          }
-        });
-      }
-    },
-    error: function(error) {
-      console.log('Error:' + error.code + " " + error.message);
-    }
-  });
-}
-$(function() {
-  var Counter = AV.Object.extend("Counter");
-  if ($('.leancloud_visitors').length == 1) {
-    addCount(Counter);
-  } else if ($('.post-title-link').length > 1) {
-    showTime(Counter);
-  }
-}); 
-</script>
-  
-  
-  <div class="comments" id="comments">
-    
+</body>
+</html>

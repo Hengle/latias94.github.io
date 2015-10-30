@@ -32,3 +32,7 @@ function displaySidebar () {
 function isMist () {
   return CONFIG.scheme === 'Mist';
 }
+
+function isPisces () {
+  return CONFIG.scheme === 'Pisces';
+}
