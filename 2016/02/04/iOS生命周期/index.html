@@ -1,0 +1,968 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="生命周期," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.0" />
+
+
+
+
+
+
+<meta name="description" content="应用生命周期作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。 
+五种状态iOS的应用程序一共有5种状态:
+
+Not Running(非运行状态)。应用没有运行或被系统终止。
+Inactive(前台非活动状态)。应用正在进入前台状态，但是还不能接受事件处理。
+Active(前台活动状态)。应用进入前台状态，能接受事件处理。
+Background(后台状态)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 应用程序生命周期">
+<meta property="og:url" content="http://yoursite.com/2016/02/04/iOS生命周期/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="应用生命周期作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。 
+五种状态iOS的应用程序一共有5种状态:
+
+Not Running(非运行状态)。应用没有运行或被系统终止。
+Inactive(前台非活动状态)。应用正在进入前台状态，但是还不能接受事件处理。
+Active(前台活动状态)。应用进入前台状态，能接受事件处理。
+Background(后台状态)。">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/43142813.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/99425277.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/2698049.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/47546762.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/56359555.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/50479283.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/66755376.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/82115324.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/63771906.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/19935734.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/66233917.jpg">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/22509784.jpg">
+<meta property="og:updated_time" content="2015-11-03T16:03:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 应用程序生命周期">
+<meta name="twitter:description" content="应用生命周期作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。 
+五种状态iOS的应用程序一共有5种状态:
+
+Not Running(非运行状态)。应用没有运行或被系统终止。
+Inactive(前台非活动状态)。应用正在进入前台状态，但是还不能接受事件处理。
+Active(前台活动状态)。应用进入前台状态，能接受事件处理。
+Background(后台状态)。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: '[object Object]',
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> iOS 应用程序生命周期 | 萤火之森 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">萤火之森</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">庄鸣真的知识传承</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'FJbmukgtNJAqeKvqS75N','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 应用程序生命周期
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-04T12:55:03+08:00" content="2016-02-04">
+              2016-02-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/04/iOS生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/iOS生命周期/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/04/iOS生命周期/" class="leancloud_visitors" data-flag-title="iOS 应用程序生命周期">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="u5E94_u7528_u751F_u547D_u5468_u671F"><a href="#u5E94_u7528_u751F_u547D_u5468_u671F" class="headerlink" title="应用生命周期"></a>应用生命周期</h1><p>作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。 </p>
+<h2 id="u4E94_u79CD_u72B6_u6001"><a href="#u4E94_u79CD_u72B6_u6001" class="headerlink" title="五种状态"></a>五种状态</h2><p>iOS的应用程序一共有5种状态:</p>
+<ul>
+<li>Not Running(非运行状态)。应用没有运行或被系统终止。</li>
+<li>Inactive(前台非活动状态)。应用正在进入前台状态，但是还不能接受事件处理。</li>
+<li>Active(前台活动状态)。应用进入前台状态，能接受事件处理。</li>
+<li>Background(后台状态)。应用进入后台后，依然能够执行代码。如果有可执行的代码，就会执行代码，如果没有可执行的代码或者将可执行的代码执行完毕，应用会马上进入挂起状态。有的程序经过特殊的请求后可以长期处于Backgroud状态。</li>
+<li><p>Suspended(挂起状态)。处于挂起的应用进入一种“冷冻”状态,不能执行代码。如果系统内存不够,系统就把挂起的程序清除掉，为前台程序提供更多的内存，应用会被终止。</p>
+<a id="more"></a>
+</li>
+</ul>
+<h2 id="iOS_u5E94_u7528_u72B6_u6001_u56FE"><a href="#iOS_u5E94_u7528_u72B6_u6001_u56FE" class="headerlink" title="iOS应用状态图"></a>iOS应用状态图</h2><p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/43142813.jpg" alt=""></p>
+<h2 id="u5E94_u7528_u56DE_u8C03_u7684_u65B9_u6CD5_u548C_u672C_u5730_u901A_u77E5"><a href="#u5E94_u7528_u56DE_u8C03_u7684_u65B9_u6CD5_u548C_u672C_u5730_u901A_u77E5" class="headerlink" title="应用回调的方法和本地通知"></a>应用回调的方法和本地通知</h2><p>以下是状态跃迁过程中六个应用回调的方法和本地通知：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/99425277.jpg" alt=""></p>
+<h2 id="u5E94_u7528_u7A0B_u5E8F_u7684_u8FD0_u884C_u72B6_u6001"><a href="#u5E94_u7528_u7A0B_u5E8F_u7684_u8FD0_u884C_u72B6_u6001" class="headerlink" title="应用程序的运行状态"></a>应用程序的运行状态</h2><p>我们可以在“AppDelegate.m”文件中查看应用程序运行状态的方法，并为其添加日志输出，其中注释为官方注释，注意理解( ͒•ㅈ• ͒)</p>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"AppDelegate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AppDelegate</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:</span><br><span class="line">(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"application:didFinishLaunchingWithOptions:"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillResignActive:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Sent when the application is about to move from active to inactive </span><br><span class="line">    state. This can occur for certain types of temporary interruptions </span><br><span class="line">    (such as an incoming phone call or SMS message) or when the user quits </span><br><span class="line">    the application and it begins the transition to the background state.*/</span></span><br><span class="line">    <span class="comment">/* Use this method to pause ongoing tasks, disable timers, </span><br><span class="line">    and throttle down OpenGL ES frame rates. Games should use this method </span><br><span class="line">    to pause the game. */</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillResignActive:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Use this method to release shared resources, save user data, </span><br><span class="line">    invalidate timers, and store enough application state information to </span><br><span class="line">    restore your application to its current state in case it </span><br><span class="line">    is terminated later.*/</span></span><br><span class="line">    <span class="comment">/* If your application supports background execution, </span><br><span class="line">    this method is called instead of applicationWillTerminate: </span><br><span class="line">    when the user quits.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidEnterBackground:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillEnterForeground:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Called as part of the transition from the background to the </span><br><span class="line">    inactive state; here you can undo many of the changes made on </span><br><span class="line">    entering the background.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillEnterForeground:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Restart any tasks that were paused (or not yet started) while </span><br><span class="line">    the application was inactive. If the application was previously in </span><br><span class="line">    the background, optionally refresh the user interface.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidBecomeActive:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillTerminate:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Called when the application is about to terminate. </span><br><span class="line">    Save data if appropriate. See also </span><br><span class="line">    applicationDidEnterBackground:.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillTerminate:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>打开程序：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/2698049.jpg" alt=""><br>按下Home键：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/47546762.jpg" alt=""><br>从界面重点图标打开程序：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/56359555.jpg" alt=""></p>
+<h1 id="u975E_u8FD0_u884C_u72B6_u6001_u2014_u2014_u5E94_u7528_u542F_u52A8_u573A_u666F"><a href="#u975E_u8FD0_u884C_u72B6_u6001_u2014_u2014_u5E94_u7528_u542F_u52A8_u573A_u666F" class="headerlink" title="非运行状态——应用启动场景"></a>非运行状态——应用启动场景</h1><p>场景描述：用户点击应用图标的时候，可能是第一次启动这个应用，也可能是应用终止后再次启动。该场景的状态跃迁过程见下图，共经历两个阶段3个状态：Not running→Inactive→Active。</p>
+<ul>
+<li>在Not running→Inactive阶段。调用application:didFinishLaunchingWithOptions:方法，发出 UIApplicationDidFinishLaunchingNotification通知。</li>
+<li>在Inactive→Active阶段。调用applicationDidBecomeActive:方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/50479283.jpg" alt=""></p>
+<h2 id="Active_u548CInactive_u7684_u5207_u6362"><a href="#Active_u548CInactive_u7684_u5207_u6362" class="headerlink" title="Active和Inactive的切换"></a>Active和Inactive的切换</h2><p>应用程序在前台时有2种状态：Active和Inactive。大多数情况下，Inactive状态只是其他两个状态切换时出现的短暂状态（不是任意两个状态之间的切换都会进入Inactive），如打开应用，它会从Not Running先进入Inactive再进入Active；如前后台应用切换时，Inactive会在Active和Background之间短暂出现。</p>
+<p>但是也有其他情况，Active和Inactive可以在前台运行时进行切换，比如系统弹出Alert，此时应用会从Active切换到Inactive，直到用户确认再返回Active；再如用户拉下通知页，也会发生Active和Inactive的切换；还有来电但拒接、双击Home键但返回原应用等都不进入Background，而只是在Active和Inactive切换，这个在下面会讲到~</p>
+<p>在应用状态跃迁的过程中，iOS系统会回调AppDelegate中的一些方法，并且发送一些通知。实际上，在应用的生命周期中用到的方法和通知很多。</p>
+<h1 id="u70B9_u51FBHome_u952E_u2014_u2014_u5E94_u7528_u9000_u51FA_u573A_u666F"><a href="#u70B9_u51FBHome_u952E_u2014_u2014_u5E94_u7528_u9000_u51FA_u573A_u666F" class="headerlink" title="点击Home键——应用退出场景"></a>点击Home键——应用退出场景</h1><p>场景描述：应用处于运行状态(即Active状态)时，点击Home键或者有其他的应用导致当前应用中断。该场景的状态跃迁过程可以分成两种情况：可以在后台运行或者挂起，不可以在后台运行或者挂起。根据产品属性文件(Info.plist)中的相关属性 Application does not run in background 是与否可以控制这两种状态。如果采用文本编辑器打开Info.plist文件该设置项对应的键是UIApplicationExitsOnSuspend。</p>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/66755376.jpg" alt=""></p>
+<p>程序只要符合以下情况之一，只要进入后台或挂起状态就会终止：</p>
+<ul>
+<li>iOS4.0以前的系统</li>
+<li>app是基于iOS4.0之前系统开发的。</li>
+<li>设备不支持多任务</li>
+<li>在Info.plist文件中，程序包含了UIApplicationExitsOnSuspend 键。</li>
+</ul>
+<p>app如果终止了，系统会调用app的代理的方法 <code>applicationWillTerminate:</code> 这样可以让你可以做一些清理工作，你可以保存一些数据或app的状态。这个方法也有5秒钟的限制，超时后方法会返回程序从内存中清除。<br>注意：用户可以手工关闭应用程序。</p>
+<p>添加了UIApplicationExitsOnSuspend键，并设置Yes。打开应用后再按Home键退出：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/82115324.jpg" alt=""></p>
+<h2 id="u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E00_u79CD_u60C5_u51B5"><a href="#u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E00_u79CD_u60C5_u51B5" class="headerlink" title="状态跃迁的第一种情况"></a>状态跃迁的第一种情况</h2><p>应用可以在后台运行或者挂起，共经历3个阶段4个状态:Active → Inactive → Background → Suspended。</p>
+<ul>
+<li>在Active→Inactive阶段。调用applicationWillResignActive:方法,发出UIApplicationWillResignActiveNotification通知。</li>
+<li>在Inactive→Background阶段。应用从非活动状态进入到后台(不涉及我们要重点说明的方法和通知)。</li>
+<li>在Background→Suspended阶段。调用applicationDidEnterBackground:方法，发出UIApplicationDidEnterBackgroundNotification通知。</li>
+</ul>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/63771906.jpg" alt=""></p>
+<h3 id="u5F53_u5E94_u7528_u7A0B_u5E8F_u8FDB_u5165_u540E_u53F0_u65F6_uFF0C_u6211_u4EEC_u5E94_u8BE5_u505A_u4E9B_u4EC0_u4E48_u5462_uFF1F"><a href="#u5F53_u5E94_u7528_u7A0B_u5E8F_u8FDB_u5165_u540E_u53F0_u65F6_uFF0C_u6211_u4EEC_u5E94_u8BE5_u505A_u4E9B_u4EC0_u4E48_u5462_uFF1F" class="headerlink" title="当应用程序进入后台时，我们应该做些什么呢？"></a>当应用程序进入后台时，我们应该做些什么呢？</h3><p>保存用户数据或状态信息，所有没写到磁盘的文件或信息，在进入后台时，最后都写到磁盘去，因为程序可能在后台被杀死，释放尽可能释放的内存。<br><code>applicationDidEnterBackgound:</code>方法有大概5秒的时间让你完成这些任务。如果超过时间还有未完成的任务，你的程序就会被终止而且从内存中清除。如果还需要长时间的运行任务，可以调用  <code>beginBackgroundTaskWithExpirationHandler</code>方法去请求后台运行时间和启动线程来运行长时间运行的任务。</p>
+<h3 id="u5E94_u7528_u7A0B_u5E8F_u5728_u540E_u53F0_u65F6_u7684_u5185_u5B58_u4F7F_u7528"><a href="#u5E94_u7528_u7A0B_u5E8F_u5728_u540E_u53F0_u65F6_u7684_u5185_u5B58_u4F7F_u7528" class="headerlink" title="应用程序在后台时的内存使用"></a>应用程序在后台时的内存使用</h3><p>在后台时，每个应用程序都应该释放最大的内存。系统努力的保持更多的应用程序在后台同时运行。不过当内存不足时，会终止一些挂起的程序来回收内存，那些内存最大的程序首先被终止。<br>事实上，应用程序应该的对象如果不再使用了，那就应该尽快的去掉强引用，这样编译器可以回收这些内存。如果你想缓存一些对象提升程序的性能，你可以在进入后台时，把这些对象去掉强引用。<br>下面这样的对象应该尽快的去掉强引用：</p>
+<ul>
+<li>图片对象</li>
+<li>你可以重新加载的 大的视频或数据文件</li>
+<li>任何没用而且可以轻易创建的对象</li>
+</ul>
+<p>在后台时，为了减少程序占用的内存，系统会自动在回收一些系统帮助你开辟的内存。比如：</p>
+<ul>
+<li>系统回收Core Animation的后备存储。</li>
+<li>去掉任何系统引用的缓存图片</li>
+<li>去掉系统管理数据缓存强引用</li>
+</ul>
+<h2 id="u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E8C_u79CD_u60C5_u51B5"><a href="#u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E8C_u79CD_u60C5_u51B5" class="headerlink" title="状态跃迁的第二种情况"></a>状态跃迁的第二种情况</h2><p>应用不可以在后台运行或者挂起，共经历4个阶段5个状态:Active → Inactive → Background → Suspended→ Not running 。</p>
+<ul>
+<li>在Active→Inactivd阶段。应用由活动状态转为非活动状态(不涉及我们要重点说明的方法和通知)。</li>
+<li>在Inactive→Background阶段。应用从非活动状态进入到后台(不涉及我们要重点说明的方法和通知)。</li>
+<li>在Background→Suspended阶段。调用applicationDidEnterBackground:方法，发出UIApplicationDidEnterBackgroundNotification通知。</li>
+<li>在Suspended→Not running阶段。调用applicationWillTerminate:方法，发出UIApplicationWillTerminateNotification通知。</li>
+</ul>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/19935734.jpg" alt=""></p>
+<p>iOS在iOS 4之前不支持多任务，点击Home键时，应用会退出并中断；而在iOS 4之后(包括iOS 4)，操作系统能够支持多任务处理，点击Home键应用会进入后台但不会中断(内存不够的情况除外)。<br>应用在后台也可以进行部分处理工作，处理完成则进入挂起状态。</p>
+<h1 id="u6302_u8D77_u91CD_u65B0_u8FD0_u884C_u573A_u666F"><a href="#u6302_u8D77_u91CD_u65B0_u8FD0_u884C_u573A_u666F" class="headerlink" title="挂起重新运行场景"></a>挂起重新运行场景</h1><p>挂起状态的应用重新运行。该场景的状态跃迁过程如图2-26所示,共经历3个阶段4个状态:<br>Suspended → Background → Inactive → Active。</p>
+<ul>
+<li>Suspended→Background阶段。应用从挂起状态进入后台(不涉及我们讲述的这几个方法和通知)。</li>
+<li>Background→Inactive阶段。调用applicationWillEnterForeground:方法，发出UIApplicationWillEnterForegroundNotification通知。</li>
+<li>Inactive→Active阶段。调用applicationDidBecomeActive:方法,发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/66233917.jpg" alt=""></p>
+<h1 id="u5185_u5B58_u6E05_u9664_u2014_u2014_u5E94_u7528_u7EC8_u6B62_u573A_u666F"><a href="#u5185_u5B58_u6E05_u9664_u2014_u2014_u5E94_u7528_u7EC8_u6B62_u573A_u666F" class="headerlink" title="内存清除——应用终止场景"></a>内存清除——应用终止场景</h1><p>场景描述：应用在后台处理完成时进入挂起状态（这是一种休眠状态），如果这时发出低内存警告，为了满足其他应用对内存的需要，该应用就会被清除内存从而终止运行。</p>
+<p><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-11-3/22509784.jpg" alt=""></p>
+<p>内存清除的时候应用终止运行。内存清除有两种情况，可能是系统强制清除内存，也可能是由使用者从任务栏中手动清除（即删掉应用）。内存清除后如果应用再次运行，上一次的运行状态不会被保存，相当于应用第一次运行。<br>在内存清除场景下，应用不会调用任何方法，也不会发出任何通知。</p>
+<h1 id="u53C2_u8003_u6587_u7AE0"><a href="#u53C2_u8003_u6587_u7AE0" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="http://blog.csdn.net/totogo2010/article/details/8048652" target="_blank" rel="external">iOS应用程序生命周期(前后台切换,应用的各种状态)详解</a><br>《iOS开发指南：从零基础到App Store上架（第2版 ）》</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生命周期/" rel="tag">#生命周期</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/13/Java 反射笔记/" rel="next" title="Java 反射笔记">
+                <i class="fa fa-chevron-left"></i> Java 反射笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/04/Android中ContentProvider组件/" rel="prev" title="Android ContentProvider组件总结">
+                Android ContentProvider组件总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/04/iOS生命周期/"
+           data-title="iOS 应用程序生命周期" data-url="http://yoursite.com/2016/02/04/iOS生命周期/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="鸣真大师" />
+          <p class="site-author-name" itemprop="name">鸣真大师</p>
+          <p class="site-description motion-element" itemprop="description">庄鸣真的各种知识火种~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1825527674" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zarxlly.com" target="_blank">zarxlly</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5E94_u7528_u751F_u547D_u5468_u671F"><span class="nav-number">1.</span> <span class="nav-text">应用生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E94_u79CD_u72B6_u6001"><span class="nav-number">1.1.</span> <span class="nav-text">五种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS_u5E94_u7528_u72B6_u6001_u56FE"><span class="nav-number">1.2.</span> <span class="nav-text">iOS应用状态图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5E94_u7528_u56DE_u8C03_u7684_u65B9_u6CD5_u548C_u672C_u5730_u901A_u77E5"><span class="nav-number">1.3.</span> <span class="nav-text">应用回调的方法和本地通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5E94_u7528_u7A0B_u5E8F_u7684_u8FD0_u884C_u72B6_u6001"><span class="nav-number">1.4.</span> <span class="nav-text">应用程序的运行状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u975E_u8FD0_u884C_u72B6_u6001_u2014_u2014_u5E94_u7528_u542F_u52A8_u573A_u666F"><span class="nav-number">2.</span> <span class="nav-text">非运行状态——应用启动场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Active_u548CInactive_u7684_u5207_u6362"><span class="nav-number">2.1.</span> <span class="nav-text">Active和Inactive的切换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u70B9_u51FBHome_u952E_u2014_u2014_u5E94_u7528_u9000_u51FA_u573A_u666F"><span class="nav-number">3.</span> <span class="nav-text">点击Home键——应用退出场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E00_u79CD_u60C5_u51B5"><span class="nav-number">3.1.</span> <span class="nav-text">状态跃迁的第一种情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5F53_u5E94_u7528_u7A0B_u5E8F_u8FDB_u5165_u540E_u53F0_u65F6_uFF0C_u6211_u4EEC_u5E94_u8BE5_u505A_u4E9B_u4EC0_u4E48_u5462_uFF1F"><span class="nav-number">3.1.1.</span> <span class="nav-text">当应用程序进入后台时，我们应该做些什么呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E94_u7528_u7A0B_u5E8F_u5728_u540E_u53F0_u65F6_u7684_u5185_u5B58_u4F7F_u7528"><span class="nav-number">3.1.2.</span> <span class="nav-text">应用程序在后台时的内存使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u72B6_u6001_u8DC3_u8FC1_u7684_u7B2C_u4E8C_u79CD_u60C5_u51B5"><span class="nav-number">3.2.</span> <span class="nav-text">状态跃迁的第二种情况</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u6302_u8D77_u91CD_u65B0_u8FD0_u884C_u573A_u666F"><span class="nav-number">4.</span> <span class="nav-text">挂起重新运行场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5185_u5B58_u6E05_u9664_u2014_u2014_u5E94_u7528_u7EC8_u6B62_u573A_u666F"><span class="nav-number">5.</span> <span class="nav-text">内存清除——应用终止场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u53C2_u8003_u6587_u7AE0"><span class="nav-number">6.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鸣真大师</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"latias94"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uC5i9ynKxjsyY2FnBFMefMpY", "U7Qts9JRVhjp6TLkcElXWAqk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

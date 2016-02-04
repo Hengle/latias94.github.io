@@ -1,0 +1,898 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="反射," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.0" />
+
+
+
+
+
+
+<meta name="description" content="首先理解什么是反射？反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。
+为什么需要反射反射能够让我们：
+
+在运行时检测对象的类型动态构造某个类的对象检测类的属性和方法任意调用对象的方法修改构造函数、方法、属性的可见性等
+
+1）在面向对象的世界里，万事万物皆对象。（java语言中，静态的成员、普通数据类型等）   类是不是对象？类是谁的对象？   //类是对象，类是jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 反射笔记">
+<meta property="og:url" content="http://yoursite.com/2015/12/13/Java 反射笔记/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="首先理解什么是反射？反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。
+为什么需要反射反射能够让我们：
+
+在运行时检测对象的类型动态构造某个类的对象检测类的属性和方法任意调用对象的方法修改构造函数、方法、属性的可见性等
+
+1）在面向对象的世界里，万事万物皆对象。（java语言中，静态的成员、普通数据类型等）   类是不是对象？类是谁的对象？   //类是对象，类是jav">
+<meta property="og:updated_time" content="2016-02-04T05:18:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 反射笔记">
+<meta name="twitter:description" content="首先理解什么是反射？反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。
+为什么需要反射反射能够让我们：
+
+在运行时检测对象的类型动态构造某个类的对象检测类的属性和方法任意调用对象的方法修改构造函数、方法、属性的可见性等
+
+1）在面向对象的世界里，万事万物皆对象。（java语言中，静态的成员、普通数据类型等）   类是不是对象？类是谁的对象？   //类是对象，类是jav">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: '[object Object]',
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Java 反射笔记 | 萤火之森 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">萤火之森</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">庄鸣真的知识传承</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'FJbmukgtNJAqeKvqS75N','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java 反射笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-13T15:48:28+08:00" content="2015-12-13">
+              2015-12-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/13/Java 反射笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/13/Java 反射笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/12/13/Java 反射笔记/" class="leancloud_visitors" data-flag-title="Java 反射笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="u9996_u5148_u7406_u89E3_u4EC0_u4E48_u662F_u53CD_u5C04_uFF1F"><a href="#u9996_u5148_u7406_u89E3_u4EC0_u4E48_u662F_u53CD_u5C04_uFF1F" class="headerlink" title="首先理解什么是反射？"></a>首先理解什么是反射？</h2><p>反射（Reflection）能够让运行于JVM中的程序检测和修改运行时的行为。</p>
+<h2 id="u4E3A_u4EC0_u4E48_u9700_u8981_u53CD_u5C04"><a href="#u4E3A_u4EC0_u4E48_u9700_u8981_u53CD_u5C04" class="headerlink" title="为什么需要反射"></a>为什么需要反射</h2><p>反射能够让我们：</p>
+<blockquote>
+<p>在运行时检测对象的类型<br>动态构造某个类的对象<br>检测类的属性和方法<br>任意调用对象的方法<br>修改构造函数、方法、属性的可见性等</p>
+</blockquote>
+<p>1）在面向对象的世界里，万事万物皆对象。（java语言中，静态的成员、普通数据类型等）<br>   类是不是对象？类是谁的对象？<br>   //类是对象，类是java.lang.Class类的实例对象<br>2）这个对象到底如何表示？<br>3）Class.forName(“类的全称”), 不仅表示了类的类类型，还表示了动态加载类(编译时加载类是静态加载类、运行时加载类是动态加载类)<br><a id="more"></a></p>
+<h2 id="Class_u7C7B_u5B9E_u4F8B_u5BF9_u8C61_u7684_u65B9_u6CD5"><a href="#Class_u7C7B_u5B9E_u4F8B_u5BF9_u8C61_u7684_u65B9_u6CD5" class="headerlink" title="Class类实例对象的方法"></a>Class类实例对象的方法</h2><p>Class实例对象的三种方法：<br>a.通过类的隐含的静态成员class;<br>b.通过该类的getClass()方法；<br>c.通过类的全称，用Class.forName(“类名”)获取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassDemo0</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        Foo foo1=<span class="keyword">new</span> Foo(); </span><br><span class="line">        <span class="comment">//1,任何一个类都有一个隐含的静态成员class </span></span><br><span class="line">        Class c1=Foo.class; </span><br><span class="line">        <span class="comment">//2,已知该类，通过getClass方法 </span></span><br><span class="line">        Class c2=foo1.getClass(); </span><br><span class="line">   </span><br><span class="line">        <span class="comment">//注c1,c2表示Foo类的类类型（class type） </span></span><br><span class="line">        System.out.println(c1==c2);  </span><br><span class="line">        <span class="comment">//true, 一个类只可能是Class类的一个实例对象 </span></span><br><span class="line">   </span><br><span class="line">        <span class="comment">//3,通过类的全称获取 </span></span><br><span class="line">        Class c3=<span class="keyword">null</span>; </span><br><span class="line">        <span class="keyword">try</span>&#123; </span><br><span class="line">            c3=Class.forName(<span class="string">"Foo"</span>); </span><br><span class="line">        &#125;<span class="keyword">catch</span>(ClassNotFoundException e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125; </span><br><span class="line">        System.out.println(c2==c3);<span class="comment">//true </span></span><br><span class="line">   </span><br><span class="line">        <span class="comment">//通过类的类类型创建该类的对象实例，通过c1,c2,c3创建Foo的对象实例 </span></span><br><span class="line">        <span class="keyword">try</span>&#123; </span><br><span class="line">            Foo foo=(Foo)c1.newInstance();<span class="comment">//前提：该类要有无参构造函数 </span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(InstantiationException e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125;<span class="keyword">catch</span>(IllegalAccessException e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"Foo"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u52A8_u6001_u52A0_u8F7D_u7C7B_u7684_u5B9E_u7528_u4F8B_u5B50"><a href="#u52A8_u6001_u52A0_u8F7D_u7C7B_u7684_u5B9E_u7528_u4F8B_u5B50" class="headerlink" title="动态加载类的实用例子"></a>动态加载类的实用例子</h2><p>假如想要写一个类调用类word或Excel，如下程序，如果没有Word和Excel类编译时肯定会出错，若希望有其中一个类存在也可以编译通过，则需要用到动态加载类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Office</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">   </span><br><span class="line">         <span class="comment">/*new创建对象 是静态加载类，在编译时刻就需要加载所</span><br><span class="line">         有的可能使用到的类，(若没有建Word类)，编译不通过*/</span></span><br><span class="line">        <span class="comment">//若有建Word类，但Excel类没建，但编译还是不能通过 </span></span><br><span class="line">        <span class="comment">//希望用到时再加载，可以通过动态加载类实现 </span></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"Word"</span>.equals(args[<span class="number">0</span>]))&#123; </span><br><span class="line">            Word w=<span class="keyword">new</span> Word();     </span><br><span class="line">            w.start(); </span><br><span class="line">        &#125; </span><br><span class="line">   </span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"Excel"</span>.equals(args[<span class="number">0</span>]))&#123; </span><br><span class="line">            Excel e=<span class="keyword">new</span> Excel(); </span><br><span class="line">            e.start(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运用动态加载类，使程序在运行时再加载，顺利通过编译，这也有利于后期增加功能，实现在线升级，增强扩展性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OfficeBetter</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">try</span>&#123; </span><br><span class="line">            <span class="comment">//动态加载类，在运行时加载 </span></span><br><span class="line">            Class c=Class.forName(args[<span class="number">0</span>]); </span><br><span class="line">            <span class="comment">//通过类类型，创建该类对象 </span></span><br><span class="line">            <span class="comment">//Word w=(Word)c.newInstance();    </span></span><br><span class="line">            <span class="comment">//如果加载的是Excel呢？ </span></span><br><span class="line">            <span class="comment">//Excel e=(Excel)c.newInstance();  </span></span><br><span class="line">            <span class="comment">//如果加载的是Excel呢？ </span></span><br><span class="line">   </span><br><span class="line">            <span class="comment">//后期增加功能就不用改动OfficeBetter，实现在线升级，扩展性更强 </span></span><br><span class="line">            OfficeAble oa=(OfficeAble)c.newInstance();  <span class="comment">//所以做一个标准————功能型的类尽量使用动态加载 </span></span><br><span class="line">            oa.start(); </span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">OfficeAble</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>; </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Word</span> <span class="keyword">implements</span> <span class="title">OfficeAble</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"word...start..."</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Excel</span> <span class="keyword">implements</span> <span class="title">OfficeAble</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"Excel...start..."</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：功能性的类尽量使用动态加载的方法。</p>
+<h2 id="u83B7_u53D6_u7C7B_u7684_u4FE1_u606F"><a href="#u83B7_u53D6_u7C7B_u7684_u4FE1_u606F" class="headerlink" title="获取类的信息"></a>获取类的信息</h2><p>a.基本数据类型的类类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Class c1=<span class="keyword">int</span>.class; </span><br><span class="line">Class c2=String.class;</span><br><span class="line">Class c3=<span class="keyword">double</span>.class; </span><br><span class="line">Class c4=Double.class; </span><br><span class="line">Class c5=<span class="keyword">void</span>.class; </span><br><span class="line">   </span><br><span class="line">System.out.println(c1.getName()); </span><br><span class="line">System.out.println(c2.getName()); </span><br><span class="line">System.out.println(c2.getSimpleName());  <span class="comment">//只获取类名 </span></span><br><span class="line">System.out.println(c3.getName()); </span><br><span class="line">System.out.println(c4.getName()); </span><br><span class="line">System.out.println(c5.getName()); </span><br><span class="line">   </span><br><span class="line"><span class="comment">/*output: </span><br><span class="line">int </span><br><span class="line">java.lang.String </span><br><span class="line">String </span><br><span class="line">double </span><br><span class="line">java.lang.String </span><br><span class="line">void </span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<p>b.类的成员函数（使用Methods），成员变量（使用Field），构造函数的获取（Constructor）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassUtils</span></span>&#123; </span><br><span class="line">   </span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     *打印类的信息，包括类的成员函数</span><br><span class="line">    */</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printClassMessage</span><span class="params">(Object obj)</span></span>&#123; </span><br><span class="line">        <span class="comment">//要获取类的信息 首先要获取类的类类型 </span></span><br><span class="line">        Class c=obj.getClass();<span class="comment">//传递的是哪个子类的对象 c就是该子类的类类型 </span></span><br><span class="line">        <span class="comment">//获取类的名称 </span></span><br><span class="line">        System.out.println(<span class="string">"类的名称是："</span>+c.getName()); </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        Method类，方法对象</span><br><span class="line">        一个成员方法就是一个Method对象</span><br><span class="line">        getMethods()方法获取的是所有的public的函数，</span><br><span class="line">        包括父类继承而来的getDeclaredMethods()</span><br><span class="line">        获取的是所有该类自己声明的方法，不问访问父类继承的</span><br><span class="line">        */</span> </span><br><span class="line">        Methods[] ms=c.getMethods(); </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ms.length;i++)&#123; </span><br><span class="line">            <span class="comment">//得到方法的返回值类型的类类型 </span></span><br><span class="line">            Class returnType=ms[i].getReturnType(); </span><br><span class="line">            System.out.print(returnType.getName()+<span class="string">" "</span>); </span><br><span class="line">            <span class="comment">//得到方法的名称 </span></span><br><span class="line">            System.out.print(ms[i].getName()+<span class="string">"("</span>); </span><br><span class="line">            <span class="comment">//获取参数类型--&gt;得到的是参数列表的类型的类类型 </span></span><br><span class="line">            Class[] paramTypes=ms[i].getParameterTypes(); </span><br><span class="line">            <span class="keyword">for</span>(Class class1:paramTypes)&#123; </span><br><span class="line">                System.out.print(class1.getName()+<span class="string">","</span>); </span><br><span class="line">            &#125; </span><br><span class="line">            System.out.println(<span class="string">")"</span>); </span><br><span class="line">               </span><br><span class="line">        &#125; </span><br><span class="line">   </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">/*</span><br><span class="line">    *打印类的信息，包括类的成员变量</span><br><span class="line">    */</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printFieldMessage</span><span class="params">(Object obj)</span></span>&#123; </span><br><span class="line">        Class c=obj.getClass(); </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        成员变量也是对象</span><br><span class="line">        java.lang.reflect.Field</span><br><span class="line">        Field类封装了关于成员变量的操作</span><br><span class="line">        getFields()方法获取的是所有的public的成员变量的信息</span><br><span class="line">        getDeclareFields获取的是该类自己声明的成员变量的信息</span><br><span class="line">        */</span> </span><br><span class="line">        <span class="comment">//Filed[] fs=c.getFileds(); </span></span><br><span class="line">        Field[] fs=c.getDeclareFields(); </span><br><span class="line">        <span class="keyword">for</span>(Filed field:fs)&#123; </span><br><span class="line">            <span class="comment">//得到成员变量的类型的类类型 </span></span><br><span class="line">            Class fieldType=field.getType(); </span><br><span class="line">            String typeName=fieldType.getName(); </span><br><span class="line">            <span class="comment">//得到成员变量的名称 </span></span><br><span class="line">            String fieldName=field.getName(); </span><br><span class="line">            System.out.println(typeName+<span class="string">" "</span>+fieldName); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">   </span><br><span class="line">    <span class="comment">/*</span><br><span class="line">    打印对象的构造函数的信息</span><br><span class="line">    */</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printConMessage</span><span class="params">(Object obj)</span></span>&#123; </span><br><span class="line">        Class c=obj.getClass(); </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        构造函数也是对象</span><br><span class="line">        java.lang.Constructor中封装了构造函数的信息</span><br><span class="line">        getConstructors获取所有的public的构造函数</span><br><span class="line">        getDeclaredConstructors所得的构造函数</span><br><span class="line">        */</span> </span><br><span class="line">        <span class="comment">//Constructor[] cs=c.getContructors(); </span></span><br><span class="line">        Constructor[] cs=c.getDeclaredConstructors(); </span><br><span class="line">        <span class="keyword">for</span>(Constructor constructor:cs)&#123; </span><br><span class="line">            System.out.print(constructor.getName()+<span class="string">"("</span>); </span><br><span class="line">            <span class="comment">//获取构造函数的参数列表--&gt;得到的是参数列表的类类型 </span></span><br><span class="line">            Class[] paramTypes=constructor.getParameterTypes(); </span><br><span class="line">            <span class="keyword">for</span>(Class class1:paramTypes)&#123; </span><br><span class="line">                System.out.print(class1.getName+<span class="string">","</span>); </span><br><span class="line">            &#125; </span><br><span class="line">            System.out.println(<span class="string">")"</span>); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u65B9_u6CD5_u7684_u53CD_u5C04"><a href="#u65B9_u6CD5_u7684_u53CD_u5C04" class="headerlink" title="方法的反射"></a>方法的反射</h2><p>1）如何获取某个方法？<br>   方法的名称和方法的参数列表才能唯一决定某个方法</p>
+<p>2）方法的反射的操作？<br>   method.invoke(对象，参数列表);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MethodDemo</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        <span class="comment">//要获取print(int,int)方法  </span></span><br><span class="line">        <span class="comment">//1.要获取一个方法就是获取类的信息，获取类的信息首先要获取类的类类型 </span></span><br><span class="line">        A a1=<span class="keyword">new</span> A(); </span><br><span class="line">        Class c=a1.getClass(); </span><br><span class="line">        <span class="comment">//2.获取方法名称和参数列表来决定 </span></span><br><span class="line">        <span class="keyword">try</span>&#123; </span><br><span class="line">            Method m=c.getMethod(<span class="string">"print"</span>,<span class="keyword">new</span> Class[]&#123;<span class="keyword">int</span>.class,<span class="keyword">int</span>.class&#125;); </span><br><span class="line">            <span class="comment">//或写成 c.getMethod("print",int.class,int.class); </span></span><br><span class="line">   </span><br><span class="line">            <span class="comment">//方法的反射操作   如何达到和a1.print(10,20)的效果？ </span></span><br><span class="line">            <span class="comment">//方法如果没有返回值返回null,有返回值返回具体的返回值 </span></span><br><span class="line">            Object o=m.invoke(a1,<span class="keyword">new</span> Object[]&#123;<span class="number">10</span>,<span class="number">20</span>&#125;);  <span class="comment">//m.invoke(a1,10,20); </span></span><br><span class="line">   </span><br><span class="line">            <span class="comment">//获取方法print(String,String); </span></span><br><span class="line">            Method m1=c.getMethod(<span class="string">"print"</span>,String.class,String.class); </span><br><span class="line">            m.invoke(a1,<span class="string">"hello"</span>,<span class="string">"world"</span>); </span><br><span class="line">   </span><br><span class="line">            <span class="comment">//获取无参方法 </span></span><br><span class="line">            Method m2=c.getMethod(<span class="string">"print"</span>);</span><br><span class="line">            <span class="comment">// or c.getMethod("print",Object[]&#123;&#125;); </span></span><br><span class="line">            </span><br><span class="line">            m.invoke(a1);   </span><br><span class="line">            <span class="comment">//m.invoke(a1,new Object[]&#123;&#125;); </span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123; </span><br><span class="line">        System.out.println(a+b); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String a,String b)</span></span>&#123; </span><br><span class="line">        System.out.println(a.toUpperCase()+<span class="string">","</span>+b.toLowerCase()); </span><br><span class="line">    &#125; </span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"helloworld"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后通过一个栗子来理解集合泛型的本质：集合的泛型是去泛型化，java中集合的泛型，是防止错误输入的，只在编译阶段有效，绕过编译就无效了，所以可以通过方法的反射来操作，绕过编译。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MethodDemo</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        ArrayList list=<span class="keyword">new</span> ArrayList(); </span><br><span class="line">   </span><br><span class="line">        ArrayList&lt;String&gt; list1=<span class="keyword">new</span> ArrayList&lt;String&gt;(); </span><br><span class="line">        list1.add(<span class="string">"hello"</span>); </span><br><span class="line">        <span class="comment">//list1.add(20); //error </span></span><br><span class="line">        Class c1=list.getClass(); </span><br><span class="line">        Class c2=list2.getClass(); </span><br><span class="line">        System.out.println(c1==c2);  <span class="comment">//true; </span></span><br><span class="line">   </span><br><span class="line">        <span class="comment">//反射的操作都是编译之后的操作 </span></span><br><span class="line">   </span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        c1==c2结果返回true说明编译之后集合的泛型是去泛型化</span><br><span class="line">        java中集合的泛型，是防止错误输入的，只在编译阶段有效</span><br><span class="line">        绕过编译就无效了</span><br><span class="line">        验证：可以通过方法的反射来操作，绕过编译</span><br><span class="line">        */</span> </span><br><span class="line">        <span class="keyword">try</span>&#123; </span><br><span class="line">            Method m=c2.getMethod(<span class="string">"add"</span>,Object.class); </span><br><span class="line">            m.invoke(list1,<span class="number">20</span>);<span class="comment">//绕过编译的操作，就绕过了泛型 </span></span><br><span class="line">            System.out.println(list1.size()); </span><br><span class="line">            System.out.println(list1); </span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123; </span><br><span class="line">            e.printStackTrace(); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/反射/" rel="tag">#反射</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/30/博客模板更新/" rel="next" title="博客模板更新">
+                <i class="fa fa-chevron-left"></i> 博客模板更新
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/04/iOS生命周期/" rel="prev" title="iOS 应用程序生命周期">
+                iOS 应用程序生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/13/Java 反射笔记/"
+           data-title="Java 反射笔记" data-url="http://yoursite.com/2015/12/13/Java 反射笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="鸣真大师" />
+          <p class="site-author-name" itemprop="name">鸣真大师</p>
+          <p class="site-description motion-element" itemprop="description">庄鸣真的各种知识火种~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1825527674" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zarxlly.com" target="_blank">zarxlly</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9996_u5148_u7406_u89E3_u4EC0_u4E48_u662F_u53CD_u5C04_uFF1F"><span class="nav-number">1.</span> <span class="nav-text">首先理解什么是反射？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E3A_u4EC0_u4E48_u9700_u8981_u53CD_u5C04"><span class="nav-number">2.</span> <span class="nav-text">为什么需要反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class_u7C7B_u5B9E_u4F8B_u5BF9_u8C61_u7684_u65B9_u6CD5"><span class="nav-number">3.</span> <span class="nav-text">Class类实例对象的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u52A8_u6001_u52A0_u8F7D_u7C7B_u7684_u5B9E_u7528_u4F8B_u5B50"><span class="nav-number">4.</span> <span class="nav-text">动态加载类的实用例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u83B7_u53D6_u7C7B_u7684_u4FE1_u606F"><span class="nav-number">5.</span> <span class="nav-text">获取类的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u65B9_u6CD5_u7684_u53CD_u5C04"><span class="nav-number">6.</span> <span class="nav-text">方法的反射</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鸣真大师</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"latias94"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uC5i9ynKxjsyY2FnBFMefMpY", "U7Qts9JRVhjp6TLkcElXWAqk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

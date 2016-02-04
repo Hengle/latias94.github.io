@@ -1,0 +1,937 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ContentProvider," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.0" />
+
+
+
+
+
+
+<meta name="description" content="ContentProvider共享数据在Android中，每个应用程序的数据都是私有的，不管是文件数据、数据库数据还是其它类型的数据都不能被其它程序访问。为了解决这个问题，Android提供了一个ContentProvider类用于实现多应用程序间数据的共享，ContentProvider以类似数据库中表的方式将数据暴露，外部程序采用URI来访问该“数据库”，Content Provider定义了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ContentProvider组件总结">
+<meta property="og:url" content="http://yoursite.com/2016/02/04/Android中ContentProvider组件/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="ContentProvider共享数据在Android中，每个应用程序的数据都是私有的，不管是文件数据、数据库数据还是其它类型的数据都不能被其它程序访问。为了解决这个问题，Android提供了一个ContentProvider类用于实现多应用程序间数据的共享，ContentProvider以类似数据库中表的方式将数据暴露，外部程序采用URI来访问该“数据库”，Content Provider定义了">
+<meta property="og:image" content="http://7xnwg5.com1.z0.glb.clouddn.com/15-10-30/94565194.jpg">
+<meta property="og:updated_time" content="2015-10-31T08:17:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ContentProvider组件总结">
+<meta name="twitter:description" content="ContentProvider共享数据在Android中，每个应用程序的数据都是私有的，不管是文件数据、数据库数据还是其它类型的数据都不能被其它程序访问。为了解决这个问题，Android提供了一个ContentProvider类用于实现多应用程序间数据的共享，ContentProvider以类似数据库中表的方式将数据暴露，外部程序采用URI来访问该“数据库”，Content Provider定义了">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: '[object Object]',
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android ContentProvider组件总结 | 萤火之森 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">萤火之森</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">庄鸣真的知识传承</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'FJbmukgtNJAqeKvqS75N','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android ContentProvider组件总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-04T12:55:03+08:00" content="2016-02-04">
+              2016-02-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/04/Android中ContentProvider组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/Android中ContentProvider组件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/04/Android中ContentProvider组件/" class="leancloud_visitors" data-flag-title="Android ContentProvider组件总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ContentProvider_u5171_u4EAB_u6570_u636E"><a href="#ContentProvider_u5171_u4EAB_u6570_u636E" class="headerlink" title="ContentProvider共享数据"></a>ContentProvider共享数据</h1><p>在Android中，每个应用程序的数据都是私有的，不管是文件数据、数据库数据还是其它类型的数据都不能被其它程序访问。为了解决这个问题，Android提供了一个ContentProvider类用于实现多应用程序间数据的共享，ContentProvider以类似数据库中表的方式将数据暴露，外部程序采用URI来访问该“数据库”，Content Provider定义了一组用于提供其他应用程序存取数据的标准方法。 应用程序可以在Content Provider中执行 查询、修改、添加、删除数据的操作。</p>
+<p>Android提供了一些已经在系统中实现的标准Content Provider，比如联系人信息，图片库等等，你可以用这些Content Provider来访问设备上存储的联系人信息，图片等。<br> <a id="more"></a><br>我们可在android.provider包下面找到一些Android提供的ContentProvider。通过获得这些ContentProvider可以查询它们包含的数据，当然前提是已获得适当的读取权限。</p>
+<p><code>public boolean onCreate()</code><br>ContentProvider创建后被调用，Android开机后，ContentProvider在其它应用第一次访问它时才会被创建。</p>
+<p><code>public Uri insert(Uri uri, ContentValues values)</code><br>该方法用于往 ContentProvider 添加数据。</p>
+<p><code>public int delete(Uri uri, String selection, String[] selectionArgs)</code><br>该方法用于从 ContentProvider 删除数据。</p>
+<p><code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code><br>该方法用于更新 ContentProvider 中的数据。</p>
+<p><code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code><br>该方法用于从 ContentProvider 中获取数据。</p>
+<p><code>public String getType(Uri uri)：</code>返回当前Url所代表数据的MIME类型<br>数据属于集合类型，MIME类型字符串以<code>vnd.android.cursor.dir/</code>开头，<br>数据属于非集合类型数据，MIME类型字符串以<code>vnd.android.cursor.item/</code>开头</p>
+<h2 id="ContentValues_u7684_u7B80_u5355_u4ECB_u7ECD"><a href="#ContentValues_u7684_u7B80_u5355_u4ECB_u7ECD" class="headerlink" title="ContentValues的简单介绍"></a>ContentValues的简单介绍</h2><p>ContentValues 和 HashTable 类似都是一种存储的机制，但是两者最大的区别就在于：ContentValues 只能存储基本类型的数据，像string、int之类的，不能存储对象这种东西，而HashTable却可以存储对象。</p>
+<p>在SDK中，ContentValues的介绍为：</p>
+<blockquote>
+<p>This class is used to store a set of values that the ContentResolver can process.<br>就是用于保存一些数据（string boolean byte double float int long short …）信息，这些信息可以被数据库操作时使用。</p>
+</blockquote>
+<ul>
+<li>ContentValues() Creates an empty set of values using the default initial size</li>
+<li>ContentValues(int size) Creates an empty set of values using the given initial size</li>
+<li>ContentValues(ContentValues from) Creates a set of values copied from the given set</li>
+</ul>
+<p>比如向 SQLite 数据库中插入数据的时候，首先应该有一个ContentValues的对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ContentValues cv = <span class="keyword">new</span> ContentValues();</span><br><span class="line">cv.put(key,values);</span><br><span class="line">SQLiteDataBase sdb ;</span><br><span class="line">sdb.insert(database_name,<span class="keyword">null</span>,initialValues);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SQLiteDatabase db;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateAge</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">	ContentValues cv = <span class="keyword">new</span> ContentValues();</span><br><span class="line">	cv.put(<span class="string">"age"</span>, user.age);</span><br><span class="line">	db.update(<span class="string">"user"</span>, cv, <span class="string">"name = ?"</span>, <span class="keyword">new</span> String[]&#123;user.name&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插入成功就返回记录的id否则返回 -1。</p>
+<h2 id="ContentResolver"><a href="#ContentResolver" class="headerlink" title="ContentResolver"></a>ContentResolver</h2><h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h3><p>当外部应用需要对 ContentProvider 中的数据进行添加、删除、修改和查询操作时，可以使用ContentResolver 类来完成，要获取 ContentResolver 对象，可以使用 Activity 提供的<code>getContentResolver()</code> 方法。 </p>
+<h3 id="u65B9_u6CD5"><a href="#u65B9_u6CD5" class="headerlink" title="方法"></a>方法</h3><p>ContentResolver 类提供了与 ContentProvider 类相同名字的四个方法：<br><code>public Uri insert(Uri uri, ContentValues values)</code><br>该方法用于往 ContentProvider 添加数据。</p>
+<p><code>public int delete(Uri uri, String selection, String[] selectionArgs)</code><br>该方法用于从 ContentProvider 删除数据。</p>
+<p><code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code><br>该方法用于更新 ContentProvider 中的数据。</p>
+<p><code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code><br>该方法用于从 ContentProvider 中获取数据。</p>
+<ul>
+<li>projection表示要查询哪些列，比如查询媒体库，可能要关注音乐的艺术家，长度，文件位置等。</li>
+<li>selection表示查询条件，就是查询里面的where语句，selectionArgs是查询条件的值。</li>
+<li>sortOrder是排序方式。</li>
+</ul>
+<p>这些方法的第一个参数为Uri，代表要操作的是哪个 ContentProvider 和对其中的什么数据进行操作，假设给定的是： <code>Uri.parse(“content:/latias.github.io/person/10”)</code>，那么将会对主机名为<code>latias.github.io</code>的 ContentProvider 进行操作，操作的数据为person表中id为10的记录。</p>
+<h3 id="u64CD_u4F5C"><a href="#u64CD_u4F5C" class="headerlink" title="操作"></a>操作</h3><p>使用ContentResolver对ContentProvider中的数据进行添加、删除、修改和查询操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ContentResolver resolver = getContentResolver();</span><br><span class="line">Uri uri = Uri.parse(<span class="string">"content://cn.itcast.provider.personprovider/person"</span>);</span><br><span class="line"><span class="comment">//添加一条记录</span></span><br><span class="line">ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">values.put(<span class="string">"name"</span>, <span class="string">"itcast"</span>);</span><br><span class="line">values.put(<span class="string">"age"</span>, <span class="number">25</span>);</span><br><span class="line">resolver.insert(uri, values);</span><br><span class="line"><span class="comment">//获取person表中所有记录</span></span><br><span class="line">Cursor cursor = resolver.query(uri, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="string">"personid desc"</span>);</span><br><span class="line"><span class="keyword">while</span>(cursor.moveToNext())&#123;</span><br><span class="line">	Log.i(<span class="string">"ContentTest"</span>, <span class="string">"personid="</span>+ cursor.getInt(<span class="number">0</span>)+ <span class="string">",name="</span>+ 	cursor.getString(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//把id为1的记录的name字段值更改新为liming</span></span><br><span class="line">ContentValues updateValues = <span class="keyword">new</span> ContentValues();</span><br><span class="line">updateValues.put(<span class="string">"name"</span>, <span class="string">"liming"</span>);</span><br><span class="line">Uri updateIdUri = ContentUris.withAppendedId(uri, <span class="number">2</span>);</span><br><span class="line">resolver.update(updateIdUri, updateValues, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//删除id为2的记录</span></span><br><span class="line">Uri deleteIdUri = ContentUris.withAppendedId(uri, <span class="number">2</span>);</span><br><span class="line">resolver.delete(deleteIdUri, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="ContentUris"><a href="#ContentUris" class="headerlink" title="ContentUris"></a>ContentUris</h2><p>ContentUris是content URI的一个辅助类，用于获取Uri路径后面的ID部分。它有两个方法很有用，具体如下所示:</p>
+<p><code>public static Uri withAppendedId(Uri contentUri, long id)</code>，这个方法负责把id和contentUri连接成一个新的Uri。比如在我们这个例子当中是这么使用 的：<code>ContentUris.withAppendedId(Diary. DiaryColumns.CONTENT_URI, rowId)</code>。如果rowId为100的话，那么现在的这个Uri的内容就是：<br><code>content://com.ex09_2_contentprovider.diarycontentprovider/diaries/100</code>。</p>
+<p><code>public static long parseId(Uri contentUri)</code>，这个方法负责把 content URI 后边的id解析出来，比如现在这个content URI 是<code>content://com.ex09_2_contentprovider.diarycontentprovider/diaries/100</code>，那么这个函数的返回值就是100。</p>
+<h2 id="u76D1_u542CContentProvider_u4E2D_u6570_u636E_u7684_u53D8_u5316"><a href="#u76D1_u542CContentProvider_u4E2D_u6570_u636E_u7684_u53D8_u5316" class="headerlink" title="监听ContentProvider中数据的变化"></a>监听ContentProvider中数据的变化</h2><p>如果ContentProvider的访问者需要知道ContentProvider中的数据发生变化，可以在ContentProvider发生数据变 化时调用<code>getContentResolver().notifyChange(uri, null)</code>来通知注册在此URI上的访问者</p>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonContentProvider</span> <span class="keyword">extends</span> <span class="title">ContentProvider</span> </span>{
+    <span class="function"><span class="keyword">public</span> Uri <span class="title">insert</span><span class="params">(Uri uri, ContentValues values)</span> </span>{
+        db.insert(<span class="string">"person"</span>, <span class="string">"personid"</span>, values);
+        getContext().getContentResolver().notifyChange(uri, <span class="keyword">null</span>);
+    }
+}
+</code></pre>
+<p>如果ContentProvider的访问者需要得到数据变化通知，必须使用ContentObserver对数据（数据采用uri描述）进行监听，当监听到数据变化通知时，系统就会调用ContentObserver的<code>onChange()</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getContentResolver().registerContentObserver</span><br><span class="line">(Uri.parse(<span class="string">"content://com.oracle.personprovider/person"</span>), <span class="keyword">true</span>, </span><br><span class="line"><span class="keyword">new</span> PersonObserver(<span class="keyword">new</span> Handler()));</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonObserver</span> <span class="keyword">extends</span> <span class="title">ContentObserver</span></span>&#123;	<span class="function"><span class="keyword">public</span> <span class="title">PersonObserver</span><span class="params">(Handler handler)</span> </span>&#123;		<span class="keyword">super</span>(handler);	&#125;	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onChange</span><span class="params">(<span class="keyword">boolean</span> selfChange)</span> </span>&#123;	<span class="comment">//此处可以进行相应的业务处理</span>	&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5B9E_u73B0ContentProvider"><a href="#u5B9E_u73B0ContentProvider" class="headerlink" title="实现ContentProvider"></a>实现ContentProvider</h2><p>实现ContentProvider主要包括一下几个步骤：</p>
+<ul>
+<li>数据库设计</li>
+<li>继承ContentProvider并重写相关方法</li>
+<li>访问ContentProvider中的数据(ContentResolver)</li>
+</ul>
+<h2 id="u8BBF_u95EE_u8054_u7CFB_u4EBAContentProvider"><a href="#u8BBF_u95EE_u8054_u7CFB_u4EBAContentProvider" class="headerlink" title="访问联系人ContentProvider"></a>访问联系人ContentProvider</h2><p>在Android中，可以使用ContentResolver对通信录中的数据进行添加、删除、修改和查询操作<br> 在对联系人进行操作时需加入以下两个权限<br><code>&lt;uses-permission android:name=&quot;android.permission.READ_CONTACTS&quot; /&gt;</code><br><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_CONTACTS&quot; /&gt;</code><br> 联系人相关的uri<br>ContactsContract.Contacts.CONTENT_URI<br><code>content://com.android.contacts/contacts</code> 操作的数据是联系人信息Uri<br>ContactsContract.CommonDataKinds.Phone.CONTENT_URI<br><code>content://com.android.contacts/data/phones</code> 联系人电话Uri<br><code>content://com.android.contacts/data/emails</code> 联系人Email Uri</p>
+<h1 id="Uri"><a href="#Uri" class="headerlink" title="Uri"></a>Uri</h1><p>URI（统一资源标志符）表示要操作的数据，比如：查询日程表，查询联系人，查询媒体库等，一个Uri由以下几部分组成：<br><img src="http://7xnwg5.com1.z0.glb.clouddn.com/15-10-30/94565194.jpg" alt=""><br>A：ContentProvider（内容提供者）的scheme已经由Android所规定， scheme为：content://</p>
+<p>B：主机名（或叫Authority）用于唯一标识ContentProvider，外部程序根据该标识来找到它，与AndroidMainfest.xml中注册的provider的android:authorities属性对应，一般采用程序“包.类”全小写来表示。<br>C&amp;D：路径（path）可以用来表示我们要操作的数据，路径的构建应根据业务而定，如下:</p>
+<ul>
+<li>操作person表中id为10的记录，可以构建这样的路径: /person/10</li>
+<li>操作person表中id为10的记录的name字段，person/10/name</li>
+<li>操作person表中的所有记录，可以构建这样的路径: /person</li>
+<li>操作的数据也可以是文件、xml或网络等其他存储方式，把字符串转换成Uri，可以使用Uri类中的parse()方法，如下：</li>
+</ul>
+<p><code>Uri uri = Uri.parse(&quot;content://com.ljq.provider.personprovider/person&quot;)</code></p>
+<h2 id="UriMatcher"><a href="#UriMatcher" class="headerlink" title="UriMatcher"></a>UriMatcher</h2><p>因为Uri表示要操作的数据，所以我们经常需要解析Uri，并从Uri中获取数据。Android系统提供了两个用于操作Uri的工具类，分别为UriMatcher和ContentUris ，UriMatcher类用于匹配Uri，用法如下：<br>首先第一步把你需要匹配Uri路径全部给注册上，如下：</p>
+<p>//常量UriMatcher.NO_MATCH表示不匹配任何路径的返回码<br><code>UriMatcher sMatcher = new UriMatcher(UriMatcher.NO_MATCH);</code><br>//如果match()方法匹配<code>content://com.oracle.personprovider/person</code>路径，返回匹配码为1<br><code>sMatcher.addURI(&quot;com.oracle.personprovider&quot;, &quot;person&quot;, 1);</code>//添加需要匹配uri，如果匹配就会返回匹配码<br>//如果<code>match()</code>方法匹配<code>content://com.oracle.personprovider/person/230</code>路径，返回匹配码为2<br><code>sMatcher.addURI(&quot;com.oracle.personprovider&quot;, &quot;person/#&quot;, 2);</code>//#号为通配符</p>
+<p>注册完需要匹配的Uri后，就可以使用<code>sMatcher.match(uri)</code>方法对输入的Uri进行匹配，如果匹配就返回匹配码，匹配码是调用 <code>addURI()</code>方法传入的第三个参数，假设匹配。代码如下：</p>
+<pre><code class="java"><span class="keyword">switch</span> (sMatcher.match(Uri.parse(<span class="string">"content://com.oracle.personprovider/person/10"</span>))) { 
+   <span class="keyword">case</span> <span class="number">1</span>
+     <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="number">2</span>
+     <span class="keyword">break</span>;
+   <span class="keyword">default</span>:<span class="comment">//不匹配</span>
+     <span class="keyword">break</span>;
+}
+</code></pre>
+<h2 id="ContentUris-1"><a href="#ContentUris-1" class="headerlink" title="ContentUris"></a>ContentUris</h2><p>ContentUris类用于操作Uri路径中的ID部分，常用方法如下：<br>withAppendedId(uri, id)用于为路径加上ID部分：<br><code>Uri uri = Uri.parse(&quot;content://com.oracle.personprovider/person&quot;);</code><br><code>Uri resultUri = ContentUris.withAppendedId(uri, 10);</code><br>//生成后的Uri为：content://com.oracle.personprovider/person/10</p>
+<p>parseId(uri)方法用于从路径中获取ID部分：<br><code>Uri uri = Uri.parse(&quot;content://com.oracle.personprovider/person/10&quot;);</code><br><code>long personid = ContentUris.parseId(uri);</code>//获取的结果为:10</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ContentProvider/" rel="tag">#ContentProvider</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/04/iOS生命周期/" rel="next" title="iOS 应用程序生命周期">
+                <i class="fa fa-chevron-left"></i> iOS 应用程序生命周期
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/04/Android中ContentProvider组件/"
+           data-title="Android ContentProvider组件总结" data-url="http://yoursite.com/2016/02/04/Android中ContentProvider组件/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="鸣真大师" />
+          <p class="site-author-name" itemprop="name">鸣真大师</p>
+          <p class="site-description motion-element" itemprop="description">庄鸣真的各种知识火种~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1825527674" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zarxlly.com" target="_blank">zarxlly</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ContentProvider_u5171_u4EAB_u6570_u636E"><span class="nav-number">1.</span> <span class="nav-text">ContentProvider共享数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentValues_u7684_u7B80_u5355_u4ECB_u7ECD"><span class="nav-number">1.1.</span> <span class="nav-text">ContentValues的简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentResolver"><span class="nav-number">1.2.</span> <span class="nav-text">ContentResolver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u4ECB"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u65B9_u6CD5"><span class="nav-number">1.2.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u64CD_u4F5C"><span class="nav-number">1.2.3.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentUris"><span class="nav-number">1.3.</span> <span class="nav-text">ContentUris</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u76D1_u542CContentProvider_u4E2D_u6570_u636E_u7684_u53D8_u5316"><span class="nav-number">1.4.</span> <span class="nav-text">监听ContentProvider中数据的变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B9E_u73B0ContentProvider"><span class="nav-number">1.5.</span> <span class="nav-text">实现ContentProvider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u8BBF_u95EE_u8054_u7CFB_u4EBAContentProvider"><span class="nav-number">1.6.</span> <span class="nav-text">访问联系人ContentProvider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Uri"><span class="nav-number">2.</span> <span class="nav-text">Uri</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UriMatcher"><span class="nav-number">2.1.</span> <span class="nav-text">UriMatcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ContentUris-1"><span class="nav-number">2.2.</span> <span class="nav-text">ContentUris</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">鸣真大师</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"latias94"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("uC5i9ynKxjsyY2FnBFMefMpY", "U7Qts9JRVhjp6TLkcElXWAqk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
