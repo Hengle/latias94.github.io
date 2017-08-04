@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1.2</title>
+
+    <meta charset="UTF-8"/>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <meta name="HandheldFriendly" content="true"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href="../asset/farbox/basic.css" type="text/css" rel="stylesheet"/>
+    <link href="../asset/farbox/main.css" type="text/css" rel="stylesheet"/>
+
+    <style type="text/css">
+        
+            span.md_line{margin-bottom:0.5em; display:block; line-height:1.89}
+            .md_line br{ display: none;}
+            
+    </style>
+
+    <script>
+        var flowchat_options = {
+            'x': 0, 'y': 0, 'line-width': 1, 'line-length': 50, 'text-margin': 10, 'font-size': 13,
+            'font-color': '#3c3c3c', 'line-color': '#666666', 'element-color': '#666666', 'fill': 'transparent',
+            'yes-text': 'yes', 'no-text': 'no', 'arrow-end': 'block', 'class': 'flowchart', 'scale': 1,
+            'symbols': { 'start': {}, 'end': {}, 'condition': {}, 'inputoutput': {}, 'operation': {}, 'subroutine': {}}
+        }
+    </script>
+    <script type="text/javascript" src="../asset/other/raphael-min.js"></script>
+    <script type="text/javascript" src="../asset/other/flowchart.js"></script>
+    <script type="text/javascript" src="../asset/other/echarts.min.js"></script>
+
+
+</head>
+
+<body>
+    
+        <a href="../index.html" id="go_to_home"> &lt; home </a>
+    
+    <div id="sidebar">
+        <ul id="sidebar_body">
+        
+            
+            
+            
+            
+
+            
+                
+                <li class="level_1 directory not_valid_directory">
+                    <a href="#" class="">chapter1</a>
+                </li>
+            
+
+            
+            <ul>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../chapter1/1.1.html" class="">1.1</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../chapter1/1.2.html" class="selected">1.2</a>
+                </li>
+                
+                
+                
+                
+                 <li class="level_2">
+                    <a href="../chapter1/1.3.html" class="">1.3</a>
+                </li>
+                
+            </ul>
+            
+        
+        </ul>
+    </div>
+
+    <div id="main">
+        <div class="content_body">
+            <h1 class="title"> 1.2 </h1>
+            <div class="doc_post"> <p class="md_block">
+    <span class="md_line md_line_dom_embed"><a class="md_compiled" href="http://algs4.cs.princeton.edu/12oop/">Data Abstraction</a></span>
+</p>
+
+
+<h2 id="toc_1">1.2.1</h2>
+
+<p class="md_block">
+    <span class="md_line">编写一个 Point2D 的用例，从命令行接受一个整数 N。在单位正方形内生成 N 个随机点，然后计算两点之间的最近距离。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShortDistance</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">min</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="n">Point2D</span><span class="o">[]</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+            <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+            <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+            <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">draw</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">distanceTo</span><span class="o">(</span><span class="n">p</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">&lt;</span> <span class="n">min</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">min</span> <span class="o">=</span> <span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">distanceTo</span><span class="o">(</span><span class="n">p</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;The min distance is &quot;</span> <span class="o">+</span> <span class="n">min</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="o">%</span> <span class="n">java</span> <span class="n">ShortDistance</span> <span class="mi">1000</span>
+<span class="n">The</span> <span class="n">min</span> <span class="n">distance</span> <span class="n">is</span> <span class="mf">2.2532024348914854E-4</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_2">1.2.2</h2>
+
+<p class="md_block">
+    <span class="md_line">编写一个 Interval1D 的用例，从命令行接受一个整数 N。从标准输入中读取 N 个间隔（每个间隔由一对 double 值定义）并打印出所有相交的间隔对。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Interval2DPractice</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="n">Interval1D</span><span class="o">[]</span> <span class="n">interval</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+        <span class="kt">double</span><span class="o">[]</span> <span class="n">d</span> <span class="o">=</span> <span class="n">StdIn</span><span class="o">.</span><span class="na">readAllDoubles</span><span class="o">();</span>
+
+            <span class="c1">// 读取 N 个间隔</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">interval</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">(</span><span class="n">d</span><span class="o">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="o">],</span> <span class="n">d</span><span class="o">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]);</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">interval</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">intersects</span><span class="o">(</span><span class="n">interval</span><span class="o">[</span><span class="n">j</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">interval</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot; and &quot;</span> <span class="o">+</span> <span class="n">interval</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="o">%</span> <span class="n">java</span> <span class="n">Interval2DPractice</span> <span class="mi">4</span>
+<span class="mf">1.0</span> <span class="mf">3.0</span>
+<span class="mf">4.0</span> <span class="mf">6.0</span>
+<span class="mf">2.0</span> <span class="mf">2.8</span>
+<span class="mf">2.7</span> <span class="mf">6.0</span>
+<span class="o">[</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">]</span> <span class="n">and</span> <span class="o">[</span><span class="mf">2.0</span><span class="o">,</span> <span class="mf">2.8</span><span class="o">]</span>
+<span class="o">[</span><span class="mf">1.0</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">]</span> <span class="n">and</span> <span class="o">[</span><span class="mf">2.7</span><span class="o">,</span> <span class="mf">6.0</span><span class="o">]</span>
+<span class="o">[</span><span class="mf">4.0</span><span class="o">,</span> <span class="mf">6.0</span><span class="o">]</span> <span class="n">and</span> <span class="o">[</span><span class="mf">2.7</span><span class="o">,</span> <span class="mf">6.0</span><span class="o">]</span>
+<span class="o">[</span><span class="mf">2.0</span><span class="o">,</span> <span class="mf">2.8</span><span class="o">]</span> <span class="n">and</span> <span class="o">[</span><span class="mf">2.7</span><span class="o">,</span> <span class="mf">6.0</span><span class="o">]</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_3">1.2.3</h2>
+
+<p class="md_block">
+    <span class="md_line">编写一个 Interval2D 的用例,从命令行接受参数 N、min 和 max。生成 N 个随机的 2D 间隔,其宽和高均匀的分布在单位正方形中的 min 和 max 之间.用 StdDraw 画出他们并打印出相交的间隔对的数量以及包含关系的间隔对数量。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Interval2DPractice</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="kt">double</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="kt">double</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+
+        <span class="n">Interval2D</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval2D</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+        <span class="n">Interval1D</span><span class="o">[]</span> <span class="n">arrx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+        <span class="n">Interval1D</span><span class="o">[]</span> <span class="n">arry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">StdRandom</span><span class="o">.</span><span class="na">uniform</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">max</span><span class="o">);</span>
+            <span class="n">arrx</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">StdRandom</span><span class="o">.</span><span class="na">uniform</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="n">max</span><span class="o">));</span>
+            <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">StdRandom</span><span class="o">.</span><span class="na">uniform</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">max</span><span class="o">);</span>
+            <span class="n">arry</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval1D</span><span class="o">(</span><span class="n">y</span><span class="o">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">StdRandom</span><span class="o">.</span><span class="na">uniform</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="n">max</span><span class="o">));</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Interval2D</span><span class="o">(</span><span class="n">arrx</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">arry</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">StdDraw</span><span class="o">.</span><span class="na">setPenColor</span><span class="o">(</span><span class="n">StdDraw</span><span class="o">.</span><span class="na">BOOK_BLUE</span><span class="o">);</span>
+                <span class="c1">// arr[i].draw();</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">intersects</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">draw</span><span class="o">();</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">draw</span><span class="o">();</span>
+                    <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n相交关系间隔对：&quot;</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;\nand &quot;</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="o">%</span> <span class="n">java</span> <span class="n">Interval2DPractice</span> <span class="mi">10</span> <span class="mf">0.05</span> <span class="mf">0.1</span>
+ <span class="n">相交关系间隔对</span><span class="err">：</span><span class="o">[</span><span class="mf">0.10809822581471637</span><span class="o">,</span> <span class="mf">0.1750243027088329</span><span class="o">]</span> <span class="n">x</span> <span class="o">[</span><span class="mf">0.14195361703741108</span><span class="o">,</span> <span class="mf">0.2409185107431588</span><span class="o">]</span>
+<span class="n">and</span> <span class="o">[</span><span class="mf">0.09015044782862275</span><span class="o">,</span> <span class="mf">0.14419119418157172</span><span class="o">]</span> <span class="n">x</span> <span class="o">[</span><span class="mf">0.16762518719373046</span><span class="o">,</span> <span class="mf">0.24645990505215565</span><span class="o">]</span>
+
+ <span class="n">相交关系间隔对</span><span class="err">：</span><span class="o">[</span><span class="mf">0.3726714958426901</span><span class="o">,</span> <span class="mf">0.4303900548090475</span><span class="o">]</span> <span class="n">x</span> <span class="o">[</span><span class="mf">0.4635986680171203</span><span class="o">,</span> <span class="mf">0.5198412112309466</span><span class="o">]</span>
+<span class="n">and</span> <span class="o">[</span><span class="mf">0.41041472351751884</span><span class="o">,</span> <span class="mf">0.490223782841647</span><span class="o">]</span> <span class="n">x</span> <span class="o">[</span><span class="mf">0.5050021024812358</span><span class="o">,</span> <span class="mf">0.5981202543428846</span><span class="o">]</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ww2.sinaimg.cn/large/006tKfTcgw1fbc4lhnjltj30rk0hwq37.jpg" alt="" title="" >
+<p class="md_block">
+    <span class="md_line">总结：包含关系找不到 API 可用..</span>
+</p>
+
+
+<h2 id="toc_4">1.2.6</h2>
+
+<p class="md_block">
+    <span class="md_line">如果字符串 s 中的字符循环移动任意位置之后能够得到另一字符串 t，那么 s 就被称为 t 的回环变位。例如，ACTGACG 就是 TGACGAC 的一个回环变位，反之亦然。判定这个条件在基因组序列中的研究是十分重要的。编写一个算法检查两个给定的字符串s和t是否互为回环变位。提示：答案只需要一行用到 <code>indexOf()</code>、<code>length()</code>和字符串连接的代码。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CircularRotation</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="n">String</span> <span class="n">t</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+        <span class="k">if</span> <span class="o">((</span><span class="n">s</span> <span class="o">+</span> <span class="n">s</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="n">t</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span> <span class="o">+</span> <span class="s">&quot; 和 &quot;</span> <span class="o">+</span> <span class="n">t</span> <span class="o">+</span> <span class="s">&quot; 互为回环变量&quot;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span> <span class="o">+</span> <span class="s">&quot; 和 &quot;</span> <span class="o">+</span> <span class="n">t</span> <span class="o">+</span> <span class="s">&quot; 不是回环变量&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="o">%</span> <span class="n">java</span> <span class="n">CircularRotation</span> <span class="s">&quot;ACTGACG&quot;</span> <span class="s">&quot;TGACGAC&quot;</span>
+<span class="n">ACTGACG</span> <span class="n">和</span> <span class="n">TGACGAC</span> <span class="n">互为回环变量</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_5">1.2.9</h2>
+
+<p class="md_block">
+    <span class="md_line">修改 BinarySearch，使用 Counter 统计在有查找中被检查的键的总数并在查找全部结束后打印该值。提示：在<code>main()</code>中创建一个 Counter 对象并将它作为参数从换地给<code>rank()</code>。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchPlus</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">rank</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">,</span> <span class="n">Counter</span> <span class="n">c</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">lo</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">lo</span> <span class="o">&lt;=</span> <span class="n">hi</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">c</span><span class="o">.</span><span class="na">increment</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="o">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+                <span class="n">hi</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">mid</span><span class="o">])</span>
+                <span class="n">lo</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span>
+                <span class="k">return</span> <span class="n">mid</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">whitelist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">In</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]).</span><span class="na">readAllInts</span><span class="o">();</span>
+
+        <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">whitelist</span><span class="o">);</span>
+        <span class="n">Counter</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Counter</span><span class="o">(</span><span class="s">&quot;次&quot;</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">StdIn</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// 读取键值，不存在于白名单中则将其打印</span>
+            <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">StdIn</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">rank</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">whitelist</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+                <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="o">%</span> <span class="n">java</span> <span class="n">BinarySearchPlus</span> <span class="n">tinyW</span><span class="o">.</span><span class="na">txt</span> <span class="o">&lt;</span> <span class="n">tinyT</span><span class="o">.</span><span class="na">txt</span>
+<span class="mi">50</span>
+<span class="mi">99</span>
+<span class="mi">13</span>
+<span class="mi">68</span> <span class="n">次</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_6">1.2.10</h2>
+
+<p class="md_block">
+    <span class="md_line">编写一个类 VisualCounter，支持加一和减一操作。它的构造函数接受两个参数 N 和 max，其中 N 指定了操作的最大次数，max 指定了计数器的最大绝对值。作为副作用，用图像显示每次计数器变化后的值。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VisualCounter</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">value</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">N</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">max</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">VisualCounter</span><span class="o">(</span><span class="kt">int</span> <span class="n">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">max</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">N</span> <span class="o">=</span> <span class="n">N</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">max</span> <span class="o">=</span> <span class="n">max</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">StdDraw</span><span class="o">.</span><span class="na">setXscale</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">N</span><span class="o">);</span>
+        <span class="n">StdDraw</span><span class="o">.</span><span class="na">setYscale</span><span class="o">(-</span><span class="n">max</span><span class="o">,</span> <span class="n">max</span><span class="o">);</span>
+        <span class="n">StdDraw</span><span class="o">.</span><span class="na">setPenRadius</span><span class="o">(</span><span class="mf">.005</span><span class="o">);</span>
+        <span class="n">StdDraw</span><span class="o">.</span><span class="na">setPenColor</span><span class="o">(</span><span class="n">StdDraw</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">increase</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">max</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">count</span><span class="o">++;</span>
+            <span class="n">value</span><span class="o">++;</span>
+            <span class="n">StdDraw</span><span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="n">count</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">decrease</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">max</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">count</span><span class="o">++;</span>
+            <span class="n">value</span><span class="o">--;</span>
+            <span class="n">StdDraw</span><span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="n">count</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+        <span class="n">VisualCounter</span> <span class="n">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VisualCounter</span><span class="o">(</span><span class="n">count</span><span class="o">,</span> <span class="n">max</span><span class="o">);</span>
+        <span class="n">StdDraw</span><span class="o">.</span><span class="na">line</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">StdRandom</span><span class="o">.</span><span class="na">bernoulli</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">counter</span><span class="o">.</span><span class="na">increase</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">counter</span><span class="o">.</span><span class="na">decrease</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><img class="" src="https://ww1.sinaimg.cn/large/006tKfTcgw1fbbkrtkdrvj30sa0cet8x.jpg" alt="" title="" >
+<h2 id="toc_7">1.2.11</h2>
+
+<p class="md_block">
+    <span class="md_line">根据 Date 的 API 实现一个 SmartDate 类型，在日期非法时抛出一个异常。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmartDate</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">month</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">day</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">year</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">months</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">29</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">days</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">59</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">151</span><span class="o">,</span> <span class="mi">181</span><span class="o">,</span> <span class="mi">212</span><span class="o">,</span> <span class="mi">243</span><span class="o">,</span> <span class="mi">273</span><span class="o">,</span> <span class="mi">304</span><span class="o">,</span> <span class="mi">334</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">daysLeap</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">91</span><span class="o">,</span> <span class="mi">121</span><span class="o">,</span> <span class="mi">152</span><span class="o">,</span> <span class="mi">182</span><span class="o">,</span> <span class="mi">213</span><span class="o">,</span> <span class="mi">244</span><span class="o">,</span> <span class="mi">274</span><span class="o">,</span> <span class="mi">305</span><span class="o">,</span> <span class="mi">335</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">weekdays</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Sunday&quot;</span><span class="o">,</span> <span class="s">&quot;Monday&quot;</span><span class="o">,</span> <span class="s">&quot;Tuesday&quot;</span><span class="o">,</span> <span class="s">&quot;Wednesday&quot;</span><span class="o">,</span>
+            <span class="s">&quot;Thursday&quot;</span><span class="o">,</span> <span class="s">&quot;Friday&quot;</span><span class="o">,</span> <span class="s">&quot;Saturday&quot;</span><span class="o">};</span>
+
+    <span class="kd">public</span> <span class="nf">SmartDate</span><span class="o">(</span><span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">d</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">month</span> <span class="o">=</span> <span class="n">m</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">day</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">illegal</span><span class="o">())</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Argument illegal &quot;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">d</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">illegal</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">month</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">)</span>
+           <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">months</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">29</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">};</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">day</span> <span class="o">&gt;</span> <span class="n">months</span><span class="o">[</span><span class="n">month</span><span class="o">]</span> <span class="o">||</span> <span class="n">day</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="c1">// 中华上下五千年hhh</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">year</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5000</span> <span class="o">||</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)))</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">day</span><span class="o">&gt;</span><span class="mi">28</span><span class="o">)</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="n">SmartDate</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">29</span><span class="o">,</span><span class="mi">2009</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="n">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="s">&quot;main&quot;</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">IllegalArgumentException</span><span class="o">:</span> <span class="n">Argument</span> <span class="n">illegal</span> <span class="mi">2</span><span class="o">/</span><span class="mi">29</span><span class="o">/</span><span class="mi">2009</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_8">1.2.12</h2>
+
+<p class="md_block">
+    <span class="md_line">为 SmartDate 添加一个方法<code>dayOfTheWeek()</code>，为日期中每周的日返回 Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday中的适当值。你可以假定时间是21世纪。</span>
+</p>
+
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmartDate</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">month</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">day</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">year</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">months</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">29</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">days</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">59</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="mi">151</span><span class="o">,</span> <span class="mi">181</span><span class="o">,</span> <span class="mi">212</span><span class="o">,</span> <span class="mi">243</span><span class="o">,</span> <span class="mi">273</span><span class="o">,</span> <span class="mi">304</span><span class="o">,</span> <span class="mi">334</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">daysLeap</span> <span class="o">=</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">91</span><span class="o">,</span> <span class="mi">121</span><span class="o">,</span> <span class="mi">152</span><span class="o">,</span> <span class="mi">182</span><span class="o">,</span> <span class="mi">213</span><span class="o">,</span> <span class="mi">244</span><span class="o">,</span> <span class="mi">274</span><span class="o">,</span> <span class="mi">305</span><span class="o">,</span> <span class="mi">335</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">weekdays</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Sunday&quot;</span><span class="o">,</span> <span class="s">&quot;Monday&quot;</span><span class="o">,</span> <span class="s">&quot;Tuesday&quot;</span><span class="o">,</span> <span class="s">&quot;Wednesday&quot;</span><span class="o">,</span>
+            <span class="s">&quot;Thursday&quot;</span><span class="o">,</span> <span class="s">&quot;Friday&quot;</span><span class="o">,</span> <span class="s">&quot;Saturday&quot;</span><span class="o">};</span>
+
+    <span class="kd">public</span> <span class="nf">SmartDate</span><span class="o">(</span><span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">d</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">month</span> <span class="o">=</span> <span class="n">m</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">day</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">illegal</span><span class="o">())</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Argument illegal &quot;</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">d</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">illegal</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">month</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">)</span>
+           <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">months</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">29</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">31</span><span class="o">};</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">day</span> <span class="o">&gt;</span> <span class="n">months</span><span class="o">[</span><span class="n">month</span><span class="o">]</span> <span class="o">||</span> <span class="n">day</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="c1">// 中华上下五千年hhh</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">year</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5000</span> <span class="o">||</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)))</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">day</span><span class="o">&gt;</span><span class="mi">28</span><span class="o">)</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * 1.2.12 为 SmartDate 添加一个方法`dayOfTheWeek()`，为日期中每周的日返回 Monday, Tuesday, Wednesday,</span>
+<span class="cm">     * Thursday, Friday, Saturday, Sunday中的适当值。你可以假定时间是21世纪。</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">dayOfTheWeek</span><span class="o">(){</span>
+        <span class="c1">// based on 1/1/2000</span>
+        <span class="kt">int</span> <span class="n">totalDays</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">totalDays</span> <span class="o">=</span> <span class="n">daysLeap</span><span class="o">[</span><span class="n">month</span><span class="o">]</span> <span class="o">+</span> <span class="n">day</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">totalDays</span> <span class="o">=</span> <span class="n">days</span><span class="o">[</span><span class="n">month</span><span class="o">]</span> <span class="o">+</span> <span class="n">day</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2000</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">year</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">))</span>
+                <span class="n">totalDays</span> <span class="o">+=</span> <span class="mi">366</span><span class="o">;</span>
+            <span class="k">else</span>
+                <span class="n">totalDays</span> <span class="o">+=</span> <span class="mi">365</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="c1">// 1/1/2000 is Saturday</span>
+        <span class="k">return</span> <span class="n">weekdays</span><span class="o">[((</span><span class="n">totalDays</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">6</span><span class="o">)</span> <span class="o">%</span> <span class="mi">7</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">SmartDate</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SmartDate</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">28</span><span class="o">,</span><span class="mi">2009</span><span class="o">);</span>
+        <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">dayOfTheWeek</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="n">Saturday</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line">更多可参考<a class="md_compiled" href="https://zh.wikipedia.org/wiki/星期的計算">星期的计算</a>。</span>
+</p>
+
+
+<h2 id="toc_9">1.2.13 &amp;&amp; 1.2.14</h2>
+
+<p class="md_block">
+    <span class="md_line">用我们对 Date 的实现作为模板实现 Transaction 类型。</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line">用我们对 Date 中的 <code>equals()</code> 方法的实现作为模板，实现 Transaction 中的 equals() 方法。</span>
+</p>
+
+
+<table>
+<thead>
+<tr>
+<th>public class</th>
+<th>Transaction</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td>Transaction(String who, Date when, double amount)</td>
+<td>创建一笔交易</td>
+</tr>
+<tr>
+<td></td>
+<td>Transaction(String transaction)</td>
+<td>创建一笔交易（解析字符串的构造函数）</td>
+</tr>
+<tr>
+<td>String</td>
+<td>who()</td>
+<td>客户名</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>when()</td>
+<td>交易日期</td>
+</tr>
+<tr>
+<td>double</td>
+<td>amount()</td>
+<td>交易金额</td>
+</tr>
+<tr>
+<td>String</td>
+<td>toString()</td>
+<td>对象的字符串表示</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals(Object that)</td>
+<td>该笔交易和 that 是否相同</td>
+</tr>
+<tr>
+<td>int</td>
+<td>compareTo(Transaction that)</td>
+<td>将该笔交易和 that 比较</td>
+</tr>
+<tr>
+<td>int</td>
+<td>hashCode()</td>
+<td>散列值</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite code_lang_java  highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Transaction</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">who</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">when</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">amount</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Transaction</span><span class="o">(</span><span class="n">String</span> <span class="n">who</span><span class="o">,</span> <span class="n">Date</span> <span class="n">when</span><span class="o">,</span> <span class="kt">double</span> <span class="n">amount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">amount</span><span class="o">)</span> <span class="o">||</span> <span class="n">Double</span><span class="o">.</span><span class="na">isInfinite</span><span class="o">(</span><span class="n">amount</span><span class="o">))</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Amount cannot be NaN or infinite&quot;</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">who</span> <span class="o">=</span> <span class="n">who</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">when</span> <span class="o">=</span> <span class="n">when</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">amount</span> <span class="o">=</span> <span class="n">amount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Transaction</span><span class="o">(</span><span class="n">String</span> <span class="n">transaction</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="n">transaction</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;\\s+&quot;</span><span class="o">);</span>
+        <span class="n">who</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="n">when</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="n">amount</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">amount</span><span class="o">)</span> <span class="o">||</span> <span class="n">Double</span><span class="o">.</span><span class="na">isInfinite</span><span class="o">(</span><span class="n">amount</span><span class="o">))</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Amount cannot be NaN or infinite&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">who</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">who</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">when</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">when</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">amount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">amount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;who: &quot;</span> <span class="o">+</span> <span class="n">who</span> <span class="o">+</span> <span class="s">&quot;, when: &quot;</span> <span class="o">+</span> <span class="n">when</span> <span class="o">+</span> <span class="s">&quot;, amount: &quot;</span> <span class="o">+</span> <span class="n">amount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">hash</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">hash</span> <span class="o">+</span> <span class="n">who</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+        <span class="n">hash</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">hash</span> <span class="o">+</span> <span class="n">when</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+        <span class="n">hash</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">hash</span> <span class="o">+</span> <span class="o">((</span><span class="n">Double</span><span class="o">)</span> <span class="n">amount</span><span class="o">).</span><span class="na">hashCode</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">hash</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">that</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">that</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">that</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">that</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="n">Transaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="o">(</span><span class="n">Transaction</span><span class="o">)</span> <span class="n">that</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">Objects</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">who</span><span class="o">,</span> <span class="n">transaction</span><span class="o">.</span><span class="na">who</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">when</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">transaction</span><span class="o">.</span><span class="na">when</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">amount</span> <span class="o">!=</span> <span class="n">transaction</span><span class="o">.</span><span class="na">amount</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Transaction</span> <span class="n">transaction</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Transaction</span><span class="o">(</span><span class="s">&quot;Turing   6/17/1990  644.08&quot;</span><span class="o">);</span>
+        <span class="n">StdOut</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">transaction</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><div class="codehilite code_lang_java  highlight"><pre><span></span><span class="nl">who:</span> <span class="n">Turing</span><span class="o">,</span> <span class="n">when</span><span class="o">:</span> <span class="mi">6</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">1990</span><span class="o">,</span> <span class="n">amount</span><span class="o">:</span> <span class="mf">644.08</span>
+</pre></div>
+
+<!--block_code_end-->
+<h2 id="toc_10">1.2.16</h2>
+
+<p class="md_block">
+    <span class="md_line">有理数。为有理数实现一个不可变数据类型Rational，支持加减乘除操作。</span>
+</p>
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public class Rational</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td>Rational(int numerator, int denominator)</td>
+<td></td>
+</tr>
+<tr>
+<td>Rational</td>
+<td>plus(Rational b)</td>
+<td>该数与 b 之和</td>
+</tr>
+<tr>
+<td>Rational</td>
+<td>minus(Rational b)</td>
+<td>该数与 b 之差</td>
+</tr>
+<tr>
+<td>Rational</td>
+<td>times(Rational b)</td>
+<td>该数与 b 之积</td>
+</tr>
+<tr>
+<td>Ratioanl</td>
+<td>divides(Rational b)</td>
+<td>该数与 b 之商</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>equals(Rational that)</td>
+<td>该数与 that 相等吗</td>
+</tr>
+<tr>
+<td>String</td>
+<td>toString()</td>
+<td>对象的字符串表示</td>
+</tr>
+</tbody>
+</table>
+
+<p class="md_block">
+    <span class="md_line">挖个坑</span>
+</p> </div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+    // auto focus for menu
+    window.onload = function(){
+        var sidebar = document.getElementById('sidebar');
+        var current = document.getElementsByClassName('selected')[0];
+        if (current && sidebar){
+            sidebar.scrollTop = current.offsetTop - sidebar.clientHeight/2 + 100
+        }
+    };
+</script>
+
+
+
+
+</body>
+
+</html>
