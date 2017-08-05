@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2017-08-04T01:09:37.712Z</updated>
+  <updated>2017-08-05T07:08:33.533Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows 效率软件推荐</title>
+    <link href="http://frankorz.com/2017/08/05/recommandation-of-some-efficient-software/"/>
+    <id>http://frankorz.com/2017/08/05/recommandation-of-some-efficient-software/</id>
+    <published>2017-08-05T07:08:08.000Z</published>
+    <updated>2017-08-05T07:08:33.533Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>用了几年苹果电脑之后，最近开始用回 Windows 系统，找到一些十分好用的效率向的工具，同时受 <a href="http://www.ituring.com.cn/article/469111" target="_blank" rel="external">效率必备，软件推荐</a> 启发，写篇文章推荐一下。</p>
+<a id="more"></a>
+<h2 id="ShareX"><a href="#ShareX" class="headerlink" title="ShareX"></a>ShareX</h2><p><a href="https://getsharex.com/" target="_blank" rel="external">ShareX</a> 是一款主打捕获屏幕、文件分享、和生产力的开源工具。下面是我用 ShareX 来录制软件界面的 GIF 动图，可以看看其丰富的功能。</p>
+<p><img src="https://i.loli.net/2017/08/05/59855a1a27551.gif" alt=""></p>
+<p>和 QQ 自带的截图功能和国人开发的 Snipaste 不同，ShareX 的截图不仅仅止于截图后进行批注。ShareX 除了支持和 Snipaste 相似的捕捉窗格（活动的窗口、窗口内的元素等）截图功能外，还支持各种后续的动作，形成一个动作链以节省时间。</p>
+<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p>例如截完图后可以打开编辑窗口编辑，同时保存图片到自定的目录和剪贴板等等，自己可以自定义其动作链。建议勾选复制到剪贴板，文后会完成一个利用快捷键完成截图上传的动作链（你也可以直接配置截图完进行上传，看个人习惯）。</p>
+<p><img src="https://i.loli.net/2017/08/05/59855c41b3c13.png" alt=""></p>
+<h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p><img src="https://i.loli.net/2017/08/05/59855f6348f83.png" alt=""></p>
+<p>ShareX 的上传分为图片上传、文字上传和 URL 短链分享。图片可以上传到不同的图床：Imgur、Google Photos、TinyPic 等等，同样的，文件也可以上传到不同的文件共享网站：Dropbox、OneDrive 等，不过软件内置的多是国外的服务。开放性十足的 ShareX 还允许开发者共享自定义上传插件，这些上传插件可以在 <a href="https://github.com/ShareX/CustomUploaders" target="_blank" rel="external">CustomUploaders</a> 里找到。</p>
+<h4 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h4><p>由于不同上传的设置类似，这里只写图片上传的一些个人配置。</p>
+<p>我自己使用的图床是开放了 API 的 <a href="https://sm.ms/" target="_blank" rel="external">SM.MS</a> 图床，这图床背后的大佬就是卖 t.tt 域名给罗永浩的那位，据他说自己的流量多的用不完就拿来做点公益项目….SM.MS 图床的上传插件可以在 <a href="https://github.com/ShareX/CustomUploaders/blob/master/sm.ms.sxcu" target="_blank" rel="external">这里</a> 下载，下载后双击即可导入。导入后可以在软件界面的 [上传至…] -&gt; [上传至…设置] -&gt; 左列表最底端的自定义上传者，在目标类型选上 Image uploader 再点更新就能完成上传插件的配置。</p>
+<p><img src="https://ooo.0o0.ooo/2017/08/05/598562961f2ff.png" alt=""></p>
+<p>接着在 [上传至…] 选项里勾选好对应的上传插件就完成配置了。</p>
+<p><img src="https://ooo.0o0.ooo/2017/08/05/598563005b31f.png" alt=""></p>
+<h4 id="上传后的动作"><a href="#上传后的动作" class="headerlink" title="上传后的动作"></a>上传后的动作</h4><p><img src="https://i.loli.net/2017/08/05/598563e94e64e.png" alt=""></p>
+<p>与截图后的动作类似，上传后的动作也十分实用，这里我只选了 URL 复制到剪贴板。</p>
+<h3 id="动作链"><a href="#动作链" class="headerlink" title="动作链"></a>动作链</h3><p>目前截图、上传这两动作都已经配置好，可以开始配置快捷键了。</p>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><p><img src="https://i.loli.net/2017/08/05/5985658c61a01.png" alt=""></p>
+<p>这里我增加了一个从剪贴板上传的快捷键，这样的话 [快捷键截图] -&gt; 截图保存到剪贴板 -&gt; [快捷键上传] -&gt; 剪贴板内的截图上传到相应图床 -&gt; 返回图片 URL 到剪贴板的动作链就完成了。这对于经常在电脑写东西的我来说很实用，在写这篇文章时也利用这软件节省了不少时间。</p>
+<p>你可以在 <a href="https://getsharex.com/" target="_blank" rel="external">ShareX 官网</a> 进行下载，其文件托管在 github。</p>
+<h2 id="QuickLook"><a href="#QuickLook" class="headerlink" title="QuickLook"></a>QuickLook</h2><p>macOS 系统内置了一个好用的功能，就是空格查看文件内容，现在 QuickLook 也为 Windows 提供类似的体验。</p>
+<h3 id="空格查看-markdown-文件"><a href="#空格查看-markdown-文件" class="headerlink" title="空格查看 markdown 文件"></a>空格查看 markdown 文件</h3><p><img src="https://i.loli.net/2017/08/05/5985685e65c3e.png" alt=""></p>
+<h3 id="空格查看代码文件"><a href="#空格查看代码文件" class="headerlink" title="空格查看代码文件"></a>空格查看代码文件</h3><p><img src="https://i.loli.net/2017/08/05/598568e01542e.png" alt=""></p>
+<h3 id="空格查看压缩包"><a href="#空格查看压缩包" class="headerlink" title="空格查看压缩包"></a>空格查看压缩包</h3><p><img src="https://i.loli.net/2017/08/05/598569121426e.png" alt=""></p>
+<p>你可以在 <a href="http://pooi.moe/QuickLook/" target="_blank" rel="external">QuickLook 官网</a> 下载安装包，QuickLook 也能在 <a href="https://www.microsoft.com/store/apps/9nv4bs3l1h4s?ocid=badge" target="_blank" rel="external">Windows 应用商店</a> 下载。</p>
+<h2 id="Zeal"><a href="#Zeal" class="headerlink" title="Zeal"></a>Zeal</h2><p>受 macOS 平台上 Dash 代码 API 文档查询软件的启发，Zeal 是一款免费开源的支持 Windows 和 Linux 系统的代码 API 文档查询软件。</p>
+<h3 id="丰富的文档"><a href="#丰富的文档" class="headerlink" title="丰富的文档"></a>丰富的文档</h3><p><img src="https://ooo.0o0.ooo/2017/08/05/59856b2f6673b.png" alt=""></p>
+<h3 id="查询关键词"><a href="#查询关键词" class="headerlink" title="查询关键词"></a>查询关键词</h3><p><img src="https://i.loli.net/2017/08/05/59856a27b4431.png" alt=""></p>
+<h3 id="与编辑器联动"><a href="#与编辑器联动" class="headerlink" title="与编辑器联动"></a>与编辑器联动</h3><p>开发者为 Atom、VSCode、Jetbrain 全家桶 IDE 等提供了相关的插件，例如 Atom 的 <a href="https://github.com/blakeembrey/atom-dash" target="_blank" rel="external">atom-dash</a>，VSCode 的 <a href="https://marketplace.visualstudio.com/items?itemName=deerawan.vscode-dash" target="_blank" rel="external">Dash</a>，Jetbrain 全家桶的 <a href="https://plugins.jetbrains.com/plugin/7351-dash" target="_blank" rel="external">Dash</a>。</p>
+<p>有了这些插件，你可以做到在写 Python 代码的时候，调用快捷键查询 Zeal 中 Python 文档对应的 API。</p>
+<p>你可以在 <a href="https://zealdocs.org/" target="_blank" rel="external">Zeal 官网</a> 获得 Zeal。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>上面提到的三款效率软件都是开源并能免费下载使用，现在越发钦佩开源者了~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用了几年苹果电脑之后，最近开始用回 Windows 系统，找到一些十分好用的效率向的工具，同时受 &lt;a href=&quot;http://www.ituring.com.cn/article/469111&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;效率必备，软件推荐&lt;/a&gt; 启发，写篇文章推荐一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="效率" scheme="http://frankorz.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>自己的阅读兴趣</title>
@@ -2771,125 +2823,6 @@
       <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
       <category term="Objective-C" scheme="http://frankorz.com/tags/Objective-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阳历转阴历算法</title>
-    <link href="http://frankorz.com/2016/02/04/%E9%98%B4%E5%8E%86%E7%AE%97%E6%B3%95/"/>
-    <id>http://frankorz.com/2016/02/04/阴历算法/</id>
-    <published>2016-02-04T02:54:09.000Z</published>
-    <updated>2017-08-04T01:11:38.400Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>毕设要做万年历，但是对阴阳历了解不多，在此总结。</p>
-<h3 id="阳历"><a href="#阳历" class="headerlink" title="阳历"></a>阳历</h3><p>阳历，就是“太阳历”，是依据太阳的变化（严格来说，应该是地球围绕太阳运动时，人在地球上所观测到的太阳的变化）来修订的历法，以地球绕太阳一圈的时间为一年。</p>
-<a id="more"></a>
-<p>小时候老师教过：“一三五七八十腊，三十一天永不差”。</p>
-<p>阳历有很强的规律性，每年12个月，1、3、5、7、8、10、12月都为31天，2月份平年28天，闰年29天，其余月份为30天。是否闰年也好算，能被100整除的年份中能被400整除的是闰年，不能被100整除的年份中能被4整除的是闰年。</p>
-<h3 id="阴历"><a href="#阴历" class="headerlink" title="阴历"></a>阴历</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>阴历，也就是“月亮历”，是依据月亮的变化来修订的历法。月亮每经历一次从圆到缺的循环，就是一个月。我国古人常把月亮叫做“太阴”，所以也叫“阴历”。</p>
-<p>阴历全年12个月的总天数是354.3672天，它同季节变化的周期——阳历1年365.2422天)相差约11天。阴历分大小月：大月30天、小月29天。由于这样算与阳历有差别，会不能正确反映季节，我国就创造了一种带有一定阳历成分的阴历———“阴阳合历”，也就是农历，又叫夏历（夏朝开始的）。</p>
-<p>阴历同阳历一年相差11天。因此，农历每3年需要闰（增加）1个月，5年闰2个月，7年闰3个月，19年闰7个月，周而复始，有闰月的那一年就被称为闰年。这种设置闰月的方法叫“19年7闰法”。</p>
-<p>因此，阴历平年12个月，闰年13个月。</p>
-<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>这根本就没规律嘛！！</p>
-<p>所以我们要从观测阴历的天文台处得到阴历数据，网上大多是1900年到2100年的数据(根本不是万年历啊摔(/ﾟДﾟ)/)。那么我们先从数据入手。</p>
-<h5 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h5><p>网上搜集：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="number">0x04bd8</span>,<span class="number">0x04ae0</span>,<span class="number">0x0a570</span>,<span class="number">0x054d5</span>,<span class="number">0x0d260</span>,<span class="number">0x0d950</span>,<span class="number">0x16554</span>,<span class="number">0x056a0</span>,<span class="number">0x09ad0</span>,<span class="number">0x055d2</span>,<span class="comment">//1900-1909</span></div><div class="line"> <span class="number">0x04ae0</span>,<span class="number">0x0a5b6</span>,<span class="number">0x0a4d0</span>,<span class="number">0x0d250</span>,<span class="number">0x1d255</span>,<span class="number">0x0b540</span>,<span class="number">0x0d6a0</span>,<span class="number">0x0ada2</span>,<span class="number">0x095b0</span>,<span class="number">0x14977</span>,<span class="comment">//1910-1919</span></div><div class="line"> <span class="number">0x04970</span>,<span class="number">0x0a4b0</span>,<span class="number">0x0b4b5</span>,<span class="number">0x06a50</span>,<span class="number">0x06d40</span>,<span class="number">0x1ab54</span>,<span class="number">0x02b60</span>,<span class="number">0x09570</span>,<span class="number">0x052f2</span>,<span class="number">0x04970</span>,<span class="comment">//1920-1929</span></div><div class="line"> <span class="number">0x06566</span>,<span class="number">0x0d4a0</span>,<span class="number">0x0ea50</span>,<span class="number">0x06e95</span>,<span class="number">0x05ad0</span>,<span class="number">0x02b60</span>,<span class="number">0x186e3</span>,<span class="number">0x092e0</span>,<span class="number">0x1c8d7</span>,<span class="number">0x0c950</span>,<span class="comment">//1930-1939</span></div><div class="line"> <span class="number">0x0d4a0</span>,<span class="number">0x1d8a6</span>,<span class="number">0x0b550</span>,<span class="number">0x056a0</span>,<span class="number">0x1a5b4</span>,<span class="number">0x025d0</span>,<span class="number">0x092d0</span>,<span class="number">0x0d2b2</span>,<span class="number">0x0a950</span>,<span class="number">0x0b557</span>,<span class="comment">//1940-1949</span></div><div class="line"> <span class="number">0x06ca0</span>,<span class="number">0x0b550</span>,<span class="number">0x15355</span>,<span class="number">0x04da0</span>,<span class="number">0x0a5b0</span>,<span class="number">0x14573</span>,<span class="number">0x052b0</span>,<span class="number">0x0a9a8</span>,<span class="number">0x0e950</span>,<span class="number">0x06aa0</span>,<span class="comment">//1950-1959</span></div><div class="line"> <span class="number">0x0aea6</span>,<span class="number">0x0ab50</span>,<span class="number">0x04b60</span>,<span class="number">0x0aae4</span>,<span class="number">0x0a570</span>,<span class="number">0x05260</span>,<span class="number">0x0f263</span>,<span class="number">0x0d950</span>,<span class="number">0x05b57</span>,<span class="number">0x056a0</span>,<span class="comment">//1960-1969</span></div><div class="line"> <span class="number">0x096d0</span>,<span class="number">0x04dd5</span>,<span class="number">0x04ad0</span>,<span class="number">0x0a4d0</span>,<span class="number">0x0d4d4</span>,<span class="number">0x0d250</span>,<span class="number">0x0d558</span>,<span class="number">0x0b540</span>,<span class="number">0x0b6a0</span>,<span class="number">0x195a6</span>,<span class="comment">//1970-1979</span></div><div class="line"></div><div class="line"><span class="number">0x095b0</span>,<span class="number">0x049b0</span>,<span class="number">0x0a974</span>,<span class="number">0x0a4b0</span>,<span class="number">0x0b27a</span>,<span class="number">0x06a50</span>,<span class="number">0x06d40</span>,<span class="number">0x0af46</span>,<span class="number">0x0ab60</span>,<span class="number">0x09570</span>,<span class="comment">//1980-1989</span></div><div class="line"> <span class="number">0x04af5</span>,<span class="number">0x04970</span>,<span class="number">0x064b0</span>,<span class="number">0x074a3</span>,<span class="number">0x0ea50</span>,<span class="number">0x06b58</span>,<span class="number">0x055c0</span>,<span class="number">0x0ab60</span>,<span class="number">0x096d5</span>,<span class="number">0x092e0</span>,<span class="comment">//1990-1999</span></div><div class="line"> <span class="number">0x0c960</span>,<span class="number">0x0d954</span>,<span class="number">0x0d4a0</span>,<span class="number">0x0da50</span>,<span class="number">0x07552</span>,<span class="number">0x056a0</span>,<span class="number">0x0abb7</span>,<span class="number">0x025d0</span>,<span class="number">0x092d0</span>,<span class="number">0x0cab5</span>,<span class="comment">//2000-2009</span></div><div class="line"> <span class="number">0x0a950</span>,<span class="number">0x0b4a0</span>,<span class="number">0x0baa4</span>,<span class="number">0x0ad50</span>,<span class="number">0x055d9</span>,<span class="number">0x04ba0</span>,<span class="number">0x0a5b0</span>,<span class="number">0x15176</span>,<span class="number">0x052b0</span>,<span class="number">0x0a930</span>,<span class="comment">//2010-2019</span></div><div class="line"> <span class="number">0x07954</span>,<span class="number">0x06aa0</span>,<span class="number">0x0ad50</span>,<span class="number">0x05b52</span>,<span class="number">0x04b60</span>,<span class="number">0x0a6e6</span>,<span class="number">0x0a4e0</span>,<span class="number">0x0d260</span>,<span class="number">0x0ea65</span>,<span class="number">0x0d530</span>,<span class="comment">//2020-2029</span></div><div class="line"> <span class="number">0x05aa0</span>,<span class="number">0x076a3</span>,<span class="number">0x096d0</span>,<span class="number">0x04bd7</span>,<span class="number">0x04ad0</span>,<span class="number">0x0a4d0</span>,<span class="number">0x1d0b6</span>,<span class="number">0x0d250</span>,<span class="number">0x0d520</span>,<span class="number">0x0dd45</span>,<span class="comment">//2030-2039</span></div><div class="line"> <span class="number">0x0b5a0</span>,<span class="number">0x056d0</span>,<span class="number">0x055b2</span>,<span class="number">0x049b0</span>,<span class="number">0x0a577</span>,<span class="number">0x0a4b0</span>,<span class="number">0x0aa50</span>,<span class="number">0x1b255</span>,<span class="number">0x06d20</span>,<span class="number">0x0ada0</span>,<span class="comment">//2040-2049</span></div><div class="line"></div><div class="line"><span class="number">0x14b63</span>,<span class="number">0x09370</span>,<span class="number">0x049f8</span>,<span class="number">0x04970</span>,<span class="number">0x064b0</span>,<span class="number">0x168a6</span>,<span class="number">0x0ea50</span>, <span class="number">0x06b20</span>,<span class="number">0x1a6c4</span>,<span class="number">0x0aae0</span>,<span class="comment">//2050-2059</span></div><div class="line"> <span class="number">0x0a2e0</span>,<span class="number">0x0d2e3</span>,<span class="number">0x0c960</span>,<span class="number">0x0d557</span>,<span class="number">0x0d4a0</span>,<span class="number">0x0da50</span>,<span class="number">0x05d55</span>,<span class="number">0x056a0</span>,<span class="number">0x0a6d0</span>,<span class="number">0x055d4</span>,<span class="comment">//2060-2069</span></div><div class="line"> <span class="number">0x052d0</span>,<span class="number">0x0a9b8</span>,<span class="number">0x0a950</span>,<span class="number">0x0b4a0</span>,<span class="number">0x0b6a6</span>,<span class="number">0x0ad50</span>,<span class="number">0x055a0</span>,<span class="number">0x0aba4</span>,<span class="number">0x0a5b0</span>,<span class="number">0x052b0</span>,<span class="comment">//2070-2079</span></div><div class="line"> <span class="number">0x0b273</span>,<span class="number">0x06930</span>,<span class="number">0x07337</span>,<span class="number">0x06aa0</span>,<span class="number">0x0ad50</span>,<span class="number">0x14b55</span>,<span class="number">0x04b60</span>,<span class="number">0x0a570</span>,<span class="number">0x054e4</span>,<span class="number">0x0d160</span>,<span class="comment">//2080-2089</span></div><div class="line"> <span class="number">0x0e968</span>,<span class="number">0x0d520</span>,<span class="number">0x0daa0</span>,<span class="number">0x16aa6</span>,<span class="number">0x056d0</span>,<span class="number">0x04ae0</span>,<span class="number">0x0a9d4</span>,<span class="number">0x0a2d0</span>,<span class="number">0x0d150</span>,<span class="number">0x0f252</span>,<span class="comment">//2090-2099</span></div><div class="line"></div><div class="line"><span class="number">0x0d520</span> <span class="comment">//2100</span></div></pre></td></tr></table></figure>
-<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><p>十六进制的数据要转成二进制解析</p>
-<p>二进制形式</p>
-<table>
-<thead>
-<tr>
-<th>xxxx</th>
-<th style="text-align:center">xxxx</th>
-<th style="text-align:center">xxxx</th>
-<th style="text-align:center">xxxx</th>
-<th style="text-align:right">xxxx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>20-17</td>
-<td style="text-align:center">16-13</td>
-<td style="text-align:center">12-9</td>
-<td style="text-align:center">8-5</td>
-<td style="text-align:right">4-1</td>
-</tr>
-</tbody>
-</table>
-<p>1-4: 表示当年有无闰年，有的话，为闰月的月份，没有的话，为0。<br>5-16：为除了闰月外的正常月份是大月还是小月，1为30天，0为29天。<br>            注意：从1月到12月对应的是第16位到第5位。<br>17-20： 表示闰月是大月还是小月，仅当存在闰月的情况下有意义。</p>
-<h5 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h5><p>1980年的数据是（十六进制）：0x095b0<br>二进制：0000 1001 0101 1011 0000</p>
-<table>
-<thead>
-<tr>
-<th>0000</th>
-<th style="text-align:center">1001</th>
-<th style="text-align:center">0101</th>
-<th style="text-align:center">1011</th>
-<th style="text-align:right">0000</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>20-17</td>
-<td style="text-align:center">16-13</td>
-<td style="text-align:center">12-9</td>
-<td style="text-align:center">8-5</td>
-<td style="text-align:right">4-1</td>
-</tr>
-<tr>
-<td>无意义</td>
-<td style="text-align:center">1-4月</td>
-<td style="text-align:center">5-8月</td>
-<td style="text-align:center">9-12月</td>
-<td style="text-align:right">非闰年</td>
-</tr>
-</tbody>
-</table>
-<p>最右边的0000表示1980年没有闰月，所以最左边的0000也没有意义。从1月到12月的天数依次为：30、29、29、30、29、30、29、30、30、29、30、30，共12个月。分别对应16-5位的二进制数，1对30，0对29。</p>
-<h5 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h5><p>2017年的数据是：0x15176<br>二进制：0001 0101 0001 0111 0110</p>
-<table>
-<thead>
-<tr>
-<th>0001</th>
-<th style="text-align:center">0101</th>
-<th style="text-align:center">0001</th>
-<th style="text-align:center">0111</th>
-<th style="text-align:right">0110</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>20-17</td>
-<td style="text-align:center">16-13</td>
-<td style="text-align:center">12-9</td>
-<td style="text-align:center">8-5</td>
-<td style="text-align:right">4-1</td>
-</tr>
-<tr>
-<td>闰大月</td>
-<td style="text-align:center">1-4月</td>
-<td style="text-align:center">5-8月</td>
-<td style="text-align:center">9-12月</td>
-<td style="text-align:right">闰六月</td>
-</tr>
-</tbody>
-</table>
-<p>从1月到12月的天数依次为：29、30、29、30、29、29(六月)、30(闰六月)、29、30、29、30、30、30，共13个月。</p>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传回农历 y年的总天数</span></div><div class="line"><span class="comment">//例如2015年农历有354天</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">yearDays</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">	<span class="comment">//348为12个月都为平月29日的年总天数</span></div><div class="line">   <span class="keyword">int</span> i, sum = <span class="number">348</span>;</div><div class="line">   <span class="keyword">for</span> (i = <span class="number">0x8000</span>; i &gt; <span class="number">0x8</span>; i &gt;&gt;= <span class="number">1</span>) &#123;</div><div class="line">       <span class="comment">// i &gt;&gt;= 1 化为二进制向右移一位并赋给原值</span></div><div class="line">       <span class="comment">// 循环内从16-5位内找 有1则为大月 总天数+1</span></div><div class="line">       <span class="keyword">if</span> ((lunarInfo[y - <span class="number">1900</span>] &amp; i) != <span class="number">0</span>)</div><div class="line">           sum += <span class="number">1</span>;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> (sum + leapDays(y));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//传回农历 y年闰月的天数</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leapDays</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">   <span class="keyword">if</span> (leapMonth(y) != <span class="number">0</span>) &#123;</div><div class="line">       <span class="keyword">if</span> ((lunarInfo[y - <span class="number">1900</span>] &amp; <span class="number">0x10000</span>) != <span class="number">0</span>)</div><div class="line">           <span class="comment">//闰大月</span></div><div class="line">           <span class="keyword">return</span> <span class="number">30</span>;</div><div class="line">       <span class="keyword">else</span></div><div class="line">       		<span class="comment">//闰小月</span></div><div class="line">           <span class="keyword">return</span> <span class="number">29</span>;</div><div class="line">   &#125; <span class="keyword">else</span></div><div class="line">       <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//传回农历 y年闰哪个月 1-12 , 没闰传回 0</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leapMonth</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">   <span class="comment">//用4-1位与“1111”进行与运算</span></div><div class="line">   <span class="keyword">return</span> (<span class="keyword">int</span>) (lunarInfo[y - <span class="number">1900</span>] &amp; <span class="number">0xf</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//传回农历 y年m月的总天数</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">monthDays</span><span class="params">(<span class="keyword">int</span> y, <span class="keyword">int</span> m)</span> </span>&#123;</div><div class="line">   <span class="keyword">if</span> ((lunarInfo[y - <span class="number">1900</span>] &amp; (<span class="number">0x10000</span> &gt;&gt; m)) == <span class="number">0</span>)</div><div class="line">       <span class="keyword">return</span> <span class="number">29</span>;</div><div class="line">   <span class="keyword">else</span></div><div class="line">       <span class="keyword">return</span> <span class="number">30</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//传回农历 y年的生肖</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">animalsYear</span><span class="params">(<span class="keyword">int</span> year)</span> </span>&#123;</div><div class="line">   <span class="keyword">final</span> String[] Animals = <span class="keyword">new</span> String[]&#123;<span class="string">"鼠"</span>, <span class="string">"牛"</span>, <span class="string">"虎"</span>,</div><div class="line">   <span class="string">"兔"</span>, <span class="string">"龙"</span>, <span class="string">"蛇"</span>,<span class="string">"马"</span>, <span class="string">"羊"</span>, <span class="string">"猴"</span>, <span class="string">"鸡"</span>, <span class="string">"狗"</span>, <span class="string">"猪"</span>&#125;;</div><div class="line">   <span class="keyword">return</span> Animals[(year - <span class="number">4</span>) % <span class="number">12</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>日历重点是公历和阴历的转换，明后弄懂了再撰文。</p>
-<p>转换弄懂了的话到时候结婚算八字都不用翻风水书了呢(￣▽￣)</p>
-<p>课外扩展：<br><a href="http://blog.csdn.net/luozhuang/article/details/8654765" target="_blank" rel="external">八字神煞合婚算法，看看自己中了几枪</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;毕设要做万年历，但是对阴阳历了解不多，在此总结。&lt;/p&gt;
-&lt;h3 id=&quot;阳历&quot;&gt;&lt;a href=&quot;#阳历&quot; class=&quot;headerlink&quot; title=&quot;阳历&quot;&gt;&lt;/a&gt;阳历&lt;/h3&gt;&lt;p&gt;阳历，就是“太阳历”，是依据太阳的变化（严格来说，应该是地球围绕太阳运动时，人在地球上所观测到的太阳的变化）来修订的历法，以地球绕太阳一圈的时间为一年。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://frankorz.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
