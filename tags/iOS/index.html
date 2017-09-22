@@ -10,9 +10,20 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
 
 
   <meta name="description" content="鸣真的各种知识火种~"/>
+
+
+
+
+
+
 
 
 
@@ -25,26 +36,14 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.3.x" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
 
 
 
 <link rel="canonical" href="http://frankorz.com/tags/iOS/"/>
 
 
-<meta name="description" content="鸣真的各种知识火种~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="萤火之森">
-<meta property="og:url" content="http://frankorz.com/tags/iOS/index.html">
-<meta property="og:site_name" content="萤火之森">
-<meta property="og:description" content="鸣真的各种知识火种~">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="萤火之森">
-<meta name="twitter:description" content="鸣真的各种知识火种~">
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.3.x" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
 
 
 
@@ -53,21 +52,8 @@
 
 
 
-
-<script>
-  var CONFIG = {
-    search: true,
-    searchPath: "/search.xml",
-    fancybox: true,
-    toc: true,
-  }
-</script>
-
-
-
-
   
-  <script type="text/javascript">
+  <script id="baidu_analytics">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -78,7 +64,8 @@
   </script>
 
 
-  <script type="text/javascript">
+
+  <script id="google_analytics">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -87,6 +74,28 @@
         ga('create', 'UA-69634396-1', 'auto');
         ga('send', 'pageview');
   </script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
 
 
 
@@ -115,7 +124,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -124,7 +133,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -133,7 +142,7 @@
         <li class="mobile-menu-item">
           
           
-            Tags
+            标签
           
         </li>
       </a>
@@ -142,7 +151,7 @@
         <li class="mobile-menu-item">
           
           
-            Categories
+            分类
           
         </li>
       </a>
@@ -163,7 +172,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -172,7 +181,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -181,7 +190,7 @@
           <a class="menu-item-link" href="/tags">
             
             
-              Tags
+              标签
             
           </a>
         </li>
@@ -190,18 +199,9 @@
           <a class="menu-item-link" href="/categories">
             
             
-              Categories
+              分类
             
           </a>
-        </li>
-      
-      
-        <li class="menu-search">
-          <form>
-            <i class="iconfont icon-search" id="open-search"></i>
-            <input type="text" class="search-input" id="search-input" />
-            <i class="iconfont icon-close" id="close-search"></i>
-          </form>
         </li>
       
     </ul>
@@ -226,7 +226,7 @@
 
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -241,7 +241,7 @@
       </div>
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -256,7 +256,7 @@
       </div>
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -271,7 +271,7 @@
       </div>
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -286,7 +286,7 @@
       </div>
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -313,7 +313,7 @@
           </div>
           
 
-        </div>  
+        </div>
       </main>
 
       <footer id="footer" class="footer">
@@ -361,11 +361,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
-  
+  <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -383,6 +383,7 @@
     <span class="author">猫冬</span>
   </span>
 </div>
+
       </footer>
 
       <div class="back-to-top" id="back-to-top">
@@ -391,8 +392,6 @@
     </div>
 
     
-  
-
   
   <script type="text/javascript">
     var disqus_config = function () {
@@ -409,8 +408,6 @@
     (d.head || d.body).appendChild(s);
     })();  
   </script>
-
-  
 
 
 
@@ -435,35 +432,8 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.3.x"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.3.x"></script>
-
-    
-  <script type="text/html" id="search-result">
-    <article class="post">
-      <header class="post-header">
-        <h1 class="post-title">
-          <a href="$url$" class="post-link">
-            $title$
-          </a>
-        </h1>
-      </header>
-      <div class="post-content">
-        $content$
-        <div class="read-more">
-          <a href="$url$" class="read-more-link">
-            Read more..
-          </a>
-        </div>
-      </div>
-    </article>
-  </script>
-  <script type="text/html" id="no-search-result">
-    <div class="no-result">
-      <h2>No result found!</h2>
-    </div>
-  </script>
-  <script type="text/javascript" src="/js/src/search.js?v=2.3.x"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
 
   </body>
 </html>

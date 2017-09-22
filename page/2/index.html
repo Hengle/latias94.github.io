@@ -10,9 +10,20 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
 
 
   <meta name="description" content="鸣真的各种知识火种~"/>
+
+
+
+
+
+
 
 
 
@@ -25,26 +36,14 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.3.x" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
 
 
 
 <link rel="canonical" href="http://frankorz.com/page/2/"/>
 
 
-<meta name="description" content="鸣真的各种知识火种~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="萤火之森">
-<meta property="og:url" content="http://frankorz.com/page/2/index.html">
-<meta property="og:site_name" content="萤火之森">
-<meta property="og:description" content="鸣真的各种知识火种~">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="萤火之森">
-<meta name="twitter:description" content="鸣真的各种知识火种~">
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.3.x" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
 
 
 
@@ -53,21 +52,8 @@
 
 
 
-
-<script>
-  var CONFIG = {
-    search: true,
-    searchPath: "/search.xml",
-    fancybox: true,
-    toc: true,
-  }
-</script>
-
-
-
-
   
-  <script type="text/javascript">
+  <script id="baidu_analytics">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -78,7 +64,8 @@
   </script>
 
 
-  <script type="text/javascript">
+
+  <script id="google_analytics">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -87,6 +74,28 @@
         ga('create', 'UA-69634396-1', 'auto');
         ga('send', 'pageview');
   </script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
 
 
 
@@ -111,7 +120,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -120,7 +129,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -129,7 +138,7 @@
         <li class="mobile-menu-item">
           
           
-            Tags
+            标签
           
         </li>
       </a>
@@ -138,7 +147,7 @@
         <li class="mobile-menu-item">
           
           
-            Categories
+            分类
           
         </li>
       </a>
@@ -159,7 +168,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -168,7 +177,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -177,7 +186,7 @@
           <a class="menu-item-link" href="/tags">
             
             
-              Tags
+              标签
             
           </a>
         </li>
@@ -186,18 +195,9 @@
           <a class="menu-item-link" href="/categories">
             
             
-              Categories
+              分类
             
           </a>
-        </li>
-      
-      
-        <li class="menu-search">
-          <form>
-            <i class="iconfont icon-search" id="open-search"></i>
-            <input type="text" class="search-input" id="search-input" />
-            <i class="iconfont icon-close" id="close-search"></i>
-          </form>
         </li>
       
     </ul>
@@ -223,8 +223,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Jan 16, 2017
+          2017-01-16
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/iOS基础/">iOS基础</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -244,7 +252,7 @@
 <p>本文为《Core Data by Tutorials》笔记上篇，代码用 swift 3 编写。等这系列写完会根据 ObjC 的《Core Data》 补充笔记，另外也推荐斯坦福课程 <a href="https://itunes.apple.com/us/course/developing-ios-9-apps-swift/id1104579961" target="_blank" rel="external">Developing iOS 9 Apps with Swift</a> 中的第十课《Core Data》，用来大致地学习下 Core Data 重要的知识点，本文也有部分笔记参考了这课程。</p>
 <p>下面的代码只给其中关键部分，请指教。由于笔记是给自己看的，部分地方可能会跳跃性比较大。</p>
           <div class="read-more">
-            <a href="/2017/01/16/core-data-note-1/" class="read-more-link">Read more..</a>
+            <a href="/2017/01/16/core-data-note-1/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -268,8 +276,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Nov 5, 2016
+          2016-11-05
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/工具癖/">工具癖</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -286,7 +302,7 @@
         
           <p>随着 Instapaper 宣布免费，我开始尝试使用这款应用。这款应用很适合我，唯独抓取的时候对知乎支持不太好，有强迫症的我尝试解决它，其中比较有效的方法是：右上角菜单「Safari 打开」-打开阅读器视图-发邮件至 Instapaper 邮箱。但是这依旧有点麻烦了，我后来找到 <a href="https://mercury.postlight.com" target="_blank" rel="external">Mercury</a> 这个服务，并用 Workflow 解决了这问题。<br>
           <div class="read-more">
-            <a href="/2016/11/05/workflow-of-zhihu-to-instapaper/" class="read-more-link">Read more..</a>
+            <a href="/2016/11/05/workflow-of-zhihu-to-instapaper/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -310,8 +326,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 24, 2016
+          2016-10-24
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/工具癖/">工具癖</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -330,7 +354,7 @@
 <p>在生活中，我时不时会买一些书，包括电子书和实体书。随着书籍的增多，我作为一个工具控也有着自己一套管理书籍的方式，在这里与大家分享。</p>
 <p>本文不会涉及电子书解密与分享，仅作经验分享。<br>
           <div class="read-more">
-            <a href="/2016/10/24/manage-books-on-macOS/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/24/manage-books-on-macOS/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -354,8 +378,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 21, 2016
+          2016-10-21
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/工具癖/">工具癖</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -375,7 +407,7 @@
 <footer><strong>《奇特的一生》</strong><cite>格拉宁</cite></footer></blockquote>
 <p>今天在 Next 上发现又一款时间追踪软件横空出世了，所以对几个 macOS 上的时间追踪软件做个总结。近年以来，可以看到很多时间方面的应用遍地开花：Todo 类、番茄钟、备忘事项、日历等等，可以看出来人们对自己的时间越来越看重，如何掌握和使用好碎片时间，是当今一个热门的主题。而时间追踪类软件是其中一个较低调的类别，我目前遇到的大多是帮助你知道时间是如何花掉的，所以这类软件还需要一个会分析时间的使用者。<br>
           <div class="read-more">
-            <a href="/2016/10/21/new-time-tracking-app-on-macOS/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/21/new-time-tracking-app-on-macOS/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -399,8 +431,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 17, 2016
+          2016-10-17
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/iOS基础/">iOS基础</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -419,7 +459,7 @@
 <p>JSONExport 是一个运行在 macOS 上通过 JSON 字符串转为 model 的开源工具，支持 Java、Objective-C 和 Swift。我发现了这工具之后忍不住用 Charles 到处抓 API 测试，这是后话~</p>
 <p>每次学完了都觉得很基础..还是记下来吧..<br>
           <div class="read-more">
-            <a href="/2016/10/17/powerful-jsonexport/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/17/powerful-jsonexport/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -443,8 +483,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 12, 2016
+          2016-10-12
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Swift-算法/">Swift 算法</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -467,7 +515,7 @@
 <p>所有的代码可以直接在Xcode的Playground中运行，前面的算法较简单，主要说说算法的基础、思路和一些Swift语言的特性，我十分推荐你把这里的算法独自实现一遍。</p>
 <p>另外这里可以下载 Swift Algorithms Club 算法教程的Epub文件！ <a href="https://github.com/aquarchitect/swift-algorithm-club/releases/download/1.0.0/SwiftAlgo.epub" target="_blank" rel="external">点我下载</a><br>
           <div class="read-more">
-            <a href="/2016/10/12/Swift-Algorithms-1/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/12/Swift-Algorithms-1/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -491,8 +539,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 6, 2016
+          2016-10-06
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/工具癖/">工具癖</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -509,7 +565,7 @@
         
           <p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c594c1a.png" alt=""><br>
           <div class="read-more">
-            <a href="/2016/10/06/proxy-methods/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/06/proxy-methods/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -533,8 +589,16 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 1, 2016
+          2016-10-01
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/工具癖/">工具癖</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
@@ -552,7 +616,7 @@
           <p>阅读是一个主动寻求知识的过程，在如今碎片信息充斥着我们生活中的时代，我们需要清楚自己想要获取什么，把有限的时间放在消化信息上，而不是放在获取信息的途径上。如今我们可以通过各种 APP、公众号、聚合信息网站获取相对大众并符合自己的信息，但也有缺点：我需要下载这么多个 APP 去看新闻和文章吗？这些网站就拥有所有我想知道的吗？当然，像「即刻」、「Flipboard」这种阅读聚合类应用适当地缓解了这样的矛盾，但是这些信息源真的已经足够适合自己了吗？当初我找到了解决方法，也一直使用到现在，这个方法就是订阅 RSS 源。</p>
 <p>本篇文章将简介 RSS，初步订阅适合自己的 RSS 源，并对于一部分不提供 RSS 订阅的网站，我们为其创建 RSS 源并订阅。<br>
           <div class="read-more">
-            <a href="/2016/10/01/rss-tutor/" class="read-more-link">Read more..</a>
+            <a href="/2016/10/01/rss-tutor/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -576,8 +640,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Sep 30, 2016
+          2016-09-30
         </span>
+        
+        
       </div>
     </header>
 
@@ -595,7 +661,7 @@
           <p>本博客部分修改内容</p>
 <p>注：原文的主题为 Next，现在在使用 Even，所以配置可能有些地方不一样。<br>
           <div class="read-more">
-            <a href="/2016/09/30/Hexo-patch/" class="read-more-link">Read more..</a>
+            <a href="/2016/09/30/Hexo-patch/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -619,8 +685,10 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Sep 29, 2016
+          2016-09-29
         </span>
+        
+        
       </div>
     </header>
 
@@ -638,7 +706,7 @@
           <p><img src="http://ooo.0o0.ooo/2016/09/30/57ee011831539.jpg" alt=""></p>
 <p>前几天趁着Apple教育优惠买了9.7inch的iPad Pro 附送耳机，还买了个smart cover。昨天在香港剁手了Apple pencil，对深挖iPad Pro潜能做了些探索，在这里总结下。<br>
           <div class="read-more">
-            <a href="/2016/09/29/iPad-Pro study/" class="read-more-link">Read more..</a>
+            <a href="/2016/09/29/iPad-Pro study/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -658,12 +726,12 @@
     
       <a class="prev" href="/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
+        <span class="prev-text">上一页</span>
       </a>
     
     
       <a class="next" href="/page/3/">
-        <span class="next-text">Next</span>
+        <span class="next-text">下一页</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -673,7 +741,7 @@
           </div>
           
 
-        </div>  
+        </div>
       </main>
 
       <footer id="footer" class="footer">
@@ -721,11 +789,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
-  
+  <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -743,6 +811,7 @@
     <span class="author">猫冬</span>
   </span>
 </div>
+
       </footer>
 
       <div class="back-to-top" id="back-to-top">
@@ -773,35 +842,8 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.3.x"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.3.x"></script>
-
-    
-  <script type="text/html" id="search-result">
-    <article class="post">
-      <header class="post-header">
-        <h1 class="post-title">
-          <a href="$url$" class="post-link">
-            $title$
-          </a>
-        </h1>
-      </header>
-      <div class="post-content">
-        $content$
-        <div class="read-more">
-          <a href="$url$" class="read-more-link">
-            Read more..
-          </a>
-        </div>
-      </div>
-    </article>
-  </script>
-  <script type="text/html" id="no-search-result">
-    <div class="no-result">
-      <h2>No result found!</h2>
-    </div>
-  </script>
-  <script type="text/javascript" src="/js/src/search.js?v=2.3.x"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
 
   </body>
 </html>

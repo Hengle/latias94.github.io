@@ -10,6 +10,11 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
 
 
   <meta name="description" content="Swift 算法查找篇笔记"/>
@@ -17,7 +22,13 @@
 
 
 
-  <meta name="keywords" content="算法,未完工," />
+  <meta name="keywords" content="算法, 未完工, 萤火之森" />
+
+
+
+
+
+
 
 
 
@@ -27,31 +38,14 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.3.x" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
 
 
 
 <link rel="canonical" href="http://frankorz.com/2016/10/12/Swift-Algorithms-1/"/>
 
 
-<meta name="description" content="未完工尚缺 k-th Largest Element、Selection Sampling、Union-Find   简介这是一系列关于Swift语言的算法笔记，Swift版本为3.0，参考的教程来自 Swift Algorithms Club 。 所有的代码可以直接在Xcode的Playground中运行，前面的算法较简单，主要说说算法的基础、思路和一些Swift语言的特性，我十分推荐你把这里">
-<meta name="keywords" content="算法,未完工">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Swift 算法查找篇笔记">
-<meta property="og:url" content="http://frankorz.com/2016/10/12/Swift-Algorithms-1/index.html">
-<meta property="og:site_name" content="萤火之森">
-<meta property="og:description" content="未完工尚缺 k-th Largest Element、Selection Sampling、Union-Find   简介这是一系列关于Swift语言的算法笔记，Swift版本为3.0，参考的教程来自 Swift Algorithms Club 。 所有的代码可以直接在Xcode的Playground中运行，前面的算法较简单，主要说说算法的基础、思路和一些Swift语言的特性，我十分推荐你把这里">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ooo.0o0.ooo/2016/10/12/57fe492d1e042.jpg">
-<meta property="og:image" content="http://ooo.0o0.ooo/2016/10/19/58076cee4c984.png">
-<meta property="og:updated_time" content="2016-10-13T23:44:39.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift 算法查找篇笔记">
-<meta name="twitter:description" content="未完工尚缺 k-th Largest Element、Selection Sampling、Union-Find   简介这是一系列关于Swift语言的算法笔记，Swift版本为3.0，参考的教程来自 Swift Algorithms Club 。 所有的代码可以直接在Xcode的Playground中运行，前面的算法较简单，主要说说算法的基础、思路和一些Swift语言的特性，我十分推荐你把这里">
-<meta name="twitter:image" content="http://ooo.0o0.ooo/2016/10/12/57fe492d1e042.jpg">
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.3.x" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
 
 
 
@@ -60,21 +54,8 @@
 
 
 
-
-<script>
-  var CONFIG = {
-    search: true,
-    searchPath: "/search.xml",
-    fancybox: true,
-    toc: true,
-  }
-</script>
-
-
-
-
   
-  <script type="text/javascript">
+  <script id="baidu_analytics">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -85,7 +66,8 @@
   </script>
 
 
-  <script type="text/javascript">
+
+  <script id="google_analytics">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -96,8 +78,30 @@
   </script>
 
 
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
-    <title> Swift 算法查找篇笔记 · 萤火之森 </title>
+
+
+
+
+
+
+
+
+    <title> Swift 算法查找篇笔记 - 萤火之森 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -118,7 +122,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -127,7 +131,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -136,7 +140,7 @@
         <li class="mobile-menu-item">
           
           
-            Tags
+            标签
           
         </li>
       </a>
@@ -145,7 +149,7 @@
         <li class="mobile-menu-item">
           
           
-            Categories
+            分类
           
         </li>
       </a>
@@ -166,7 +170,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -175,7 +179,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -184,7 +188,7 @@
           <a class="menu-item-link" href="/tags">
             
             
-              Tags
+              标签
             
           </a>
         </li>
@@ -193,18 +197,9 @@
           <a class="menu-item-link" href="/categories">
             
             
-              Categories
+              分类
             
           </a>
-        </li>
-      
-      
-        <li class="menu-search">
-          <form>
-            <i class="iconfont icon-search" id="open-search"></i>
-            <input type="text" class="search-input" id="search-input" />
-            <i class="iconfont icon-close" id="close-search"></i>
-          </form>
         </li>
       
     </ul>
@@ -228,15 +223,23 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Oct 12, 2016
+          2016-10-12
         </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Swift-算法/">Swift 算法</a>
+            
+          </div>
+        
+        
       </div>
     </header>
 
     
     
   <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
+    <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大-O-符号"><span class="toc-text">大 O 符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linear-Search"><span class="toc-text">Linear Search</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介-1"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能"><span class="toc-text">性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binary-Search"><span class="toc-text">Binary Search</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介-2"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分而治之"><span class="toc-text">分而治之</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代和递归"><span class="toc-text">迭代和递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Count-Occurrences"><span class="toc-text">Count Occurrences</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介-3"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码-2"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Select-Minimum-Maximum"><span class="toc-text">Select Minimum / Maximum</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最大值或最小值"><span class="toc-text">最大值或最小值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#🌰"><span class="toc-text">🌰</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码-3"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Swift标准库"><span class="toc-text">Swift标准库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大值和最小值"><span class="toc-text">最大值和最小值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#🌰-1"><span class="toc-text">🌰</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码-4"><span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-th-Largest-Element-Problem"><span class="toc-text">k-th Largest Element Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介-4"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#naive-solution"><span class="toc-text">naive solution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A-faster-solution"><span class="toc-text">A faster solution</span></a></li></ol></li></ol>
     </div>
@@ -418,21 +421,17 @@
 
   <div class="post-copyright">
     <p class="copyright-item">
-      <span>作者: </span>
-      <span>猫冬</span>
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
     </p>
     <p class="copyright-item">
-      <span>来源: </span>
-      <a href="http://frankorz.com">http://frankorz.com</a>
-    </p>
-    <p class="copyright-item">
-      <span>链接: </span>
+      <span>原文链接: </span>
       <a href="http://frankorz.com/2016/10/12/Swift-Algorithms-1/">http://frankorz.com/2016/10/12/Swift-Algorithms-1/</a>
     </p>
-
-    <p class="copyright-item lincese">
+    <p class="copyright-item">
+      <span>许可协议: </span>
       
-      本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
     </p>
   </div>
 
@@ -460,13 +459,13 @@
       <a class="prev" href="/2016/10/17/powerful-jsonexport/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">用JSONExport一键生成JSON Model</span>
-        <span class="prev-text nav-mobile">Prev</span>
+        <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
       <a class="next" href="/2016/10/06/proxy-methods/">
         <span class="next-text nav-default">macOS 代理解决方案</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -492,7 +491,7 @@
   </div>
 
 
-        </div>  
+        </div>
       </main>
 
       <footer id="footer" class="footer">
@@ -540,11 +539,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
-  
+  <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -562,6 +561,7 @@
     <span class="author">猫冬</span>
   </span>
 </div>
+
       </footer>
 
       <div class="back-to-top" id="back-to-top">
@@ -570,8 +570,6 @@
     </div>
 
     
-  
-
   
   <script type="text/javascript">
     var disqus_config = function () {
@@ -588,8 +586,6 @@
     (d.head || d.body).appendChild(s);
     })();  
   </script>
-
-  
 
 
 
@@ -614,35 +610,8 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.3.x"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.3.x"></script>
-
-    
-  <script type="text/html" id="search-result">
-    <article class="post">
-      <header class="post-header">
-        <h1 class="post-title">
-          <a href="$url$" class="post-link">
-            $title$
-          </a>
-        </h1>
-      </header>
-      <div class="post-content">
-        $content$
-        <div class="read-more">
-          <a href="$url$" class="read-more-link">
-            Read more..
-          </a>
-        </div>
-      </div>
-    </article>
-  </script>
-  <script type="text/html" id="no-search-result">
-    <div class="no-result">
-      <h2>No result found!</h2>
-    </div>
-  </script>
-  <script type="text/javascript" src="/js/src/search.js?v=2.3.x"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
 
   </body>
 </html>
