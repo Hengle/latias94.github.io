@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2017-08-05T07:08:33.533Z</updated>
+  <updated>2017-09-22T01:07:56.818Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3D数学基础-向量运算和矩阵变换</title>
+    <link href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/"/>
+    <id>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</id>
+    <published>2017-09-22T01:05:50.000Z</published>
+    <updated>2017-09-22T01:07:56.818Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="external">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
+<a id="more"></a>
+<h2 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h2><h3 id="点积（Dot-Product）"><a href="#点积（Dot-Product）" class="headerlink" title="点积（Dot Product）"></a>点积（Dot Product）</h3><p>将向量相乘得到一个标量<br>可以通过两个向量除以它们的模得到两个向量之间的夹角</p>
+<p>用途：</p>
+<ul>
+<li>求两个向量之间的夹角（光源和表面之间夹角的余弦值对于投影来说非常重要）</li>
+<li>找到一个向量在另一向量上的投影也非常重要（比如我们想知道一个点在新的坐标系下的坐标）。</li>
+<li>点积在笛卡尔坐标系下很有用</li>
+</ul>
+<p><img src="https://i.loli.net/2017/09/22/59c4580a4526e.png" alt=""><br><img src="https://i.loli.net/2017/09/20/59c275ef5ad97.png" alt=""></p>
+<h3 id="叉积（Cross-Product）"><a href="#叉积（Cross-Product）" class="headerlink" title="叉积（Cross Product）"></a>叉积（Cross Product）</h3><p>将向量相乘得到一个正交向量（垂直于向量a和向量b）</p>
+<p><img src="https://i.loli.net/2017/09/22/59c4585e45f5a.png" alt=""></p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f0c604b26.png" alt=""></p>
+<p>叉积所得到的向量的方向可以通过右手坐标系来得到：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f0ae5357d.png" alt=""></p>
+<p>用右手食指代表叉积中前一个向量，用中指代表叉积中后一个向量，则大拇指的方向就是叉积得到的向量方向。这简单的方法能提醒你将进行叉积的两个向量顺序调换的话，得到的向量方向会相反。</p>
+<p><img src="https://ooo.0o0.ooo/2017/09/21/59c2f15017b3b.png" alt=""><br><img src="https://i.loli.net/2017/09/21/59c2f2e8931f9.png" alt=""></p>
+<p>叉积可以用向量 a 的对偶矩阵来完成，所以可以将它表示成A星(A<em>)乘以b，其中A</em>是向量a的对偶矩阵（<a href="https://zh.wikipedia.org/zh-hans/%E5%85%B1%E8%BD%AD%E8%BD%AC%E7%BD%AE" target="_blank" rel="external">共轭转置</a>）。</p>
+<h3 id="正交坐标系"><a href="#正交坐标系" class="headerlink" title="正交坐标系"></a>正交坐标系</h3><p>正交基和坐标系对于表示点的位置非常重要，因为在图形学中，我们通常需要很多不同的坐标系，来表示点在不同参照物下的位置。例如，要表示自己身前一台电脑的位置，可以在自己的位置建立一个坐标系来表示电脑的位置，要表示北极的位置时，用地球的坐标系表示北极的位置会更容易。</p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f8a2d4ed7.png" alt=""><br><img src="https://ooo.0o0.ooo/2017/09/21/59c2f9bd606b9.png" alt=""></p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>图形学中矩阵很重要，因为大多数变换都涉及一个矩阵乘以一个向量，矩阵可以用来变换点。下面简单的列一下矩阵的性质，更多的性质可以参考下维基页面<a href="https://www.wikiwand.com/zh-hans/%E7%9F%A9%E9%98%B5" target="_blank" rel="external">矩阵</a>。</p>
+<h4 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h4><p><img src="https://i.loli.net/2017/09/22/59c45933d1131.png" alt=""></p>
+<p>矩阵相乘时，乘积处(i,j)处的元素是：第一个矩阵的 i 行和第二个矩阵 j 列的点积，这也是为什么要求第一个矩阵的列数等于第二个矩阵的行数。</p>
+<h4 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h4><p><img src="https://i.loli.net/2017/09/22/59c458eacdbd6.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c4590d452de.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45964cb258.png" alt=""></p>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><p><img src="https://i.loli.net/2017/09/22/59c45a25d31be.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45a6c47117.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45a7998963.png" alt=""></p>
+<p>矩阵与矩阵的逆相乘得到单位矩阵：</p>
+<p><img src="https://i.loli.net/2017/09/22/59c45a96aea14.png" alt=""></p>
+<h2 id="矩阵变换"><a href="#矩阵变换" class="headerlink" title="矩阵变换"></a>矩阵变换</h2><h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>二维空间下和三维空间下的缩放很简单，直接乘上相应的缩放倍数即可。</p>
+<p><img src="https://i.loli.net/2017/09/22/59c453fdb5b93.png" alt=""><br><img src="https://i.loli.net/2017/09/21/59c34830cf218.png" alt=""></p>
+<h3 id="切变"><a href="#切变" class="headerlink" title="切变"></a>切变</h3><p><img src="https://i.loli.net/2017/09/22/59c45377c6df7.png" alt=""></p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><h4 id="二维空间下的旋转"><a href="#二维空间下的旋转" class="headerlink" title="二维空间下的旋转"></a>二维空间下的旋转</h4><p>二维空间下，物体的旋转可以靠矩阵在X方向的变换于矩阵在Y方向的变换叠加得到，但不适用于三维空间。</p>
+<p>下面是推导过程：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c3a241c6dd6.png" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/09/21/59c35fd14cf71.png" alt=""></p>
+<p>这三种矩阵变换<strong>不符合交换律</strong>，也就是说变换的顺序改变会得到不同的结果，要恢复变换的话也要从最后一次变换开始恢复。（Unity的默认变换顺序是先缩放，再旋转，最后平移）</p>
+<p><img src="https://i.loli.net/2017/09/21/59c39af8088e2.png" alt=""></p>
+<h4 id="三维空间下的旋转"><a href="#三维空间下的旋转" class="headerlink" title="三维空间下的旋转"></a>三维空间下的旋转</h4><p>下图分别给出了绕Z轴旋转、X轴旋转和Y轴旋转的变换矩阵：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c3b45f62ef9.png" alt=""></p>
+<p>二维旋转可以看作是绕着Z轴的特殊旋转，因为Z轴保持不变。因此Rz（绕着Z轴的旋转）可以直接在二维空间旋转矩阵外的Z轴处填充1和0来使用，同理可得绕X轴的旋转矩阵和Y轴的旋转矩阵。</p>
+<h5 id="绕任意轴旋转"><a href="#绕任意轴旋转" class="headerlink" title="绕任意轴旋转"></a>绕任意轴旋转</h5><p><img src="https://i.loli.net/2017/09/21/59c3b89114b72.png" alt=""></p>
+<p>在这其中，三个正交向量（相互垂直）可以构成一个旋转矩阵，这样就可以将点映射到新的坐标系下。这个概念非常重要，因为在图形学中常常需要这样的变换，如把每个3D模型的顶点的法线从模型空间转到剪裁空间（不同的坐标系）再统一进行计算。</p>
+<p>这个旋转矩阵的逆只需要将XYZ轴换成u，v，w即可。</p>
+<p><img src="https://i.loli.net/2017/09/22/59c4467c7cf99.png" alt=""></p>
+<p>详见<a href="https://baike.baidu.com/item/%E7%BD%97%E5%BE%B7%E9%87%8C%E6%A0%BC%E6%97%8B%E8%BD%AC%E5%85%AC%E5%BC%8F" target="_blank" rel="external">罗德里格旋转公式</a></p>
+<hr>
+<p>下一篇笔记会写更多关于三维空间下的矩阵变换。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://book.douban.com/subject/1400419/" target="_blank" rel="external">3D数学基础：图形与游戏开发</a></li>
+<li><a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="external">edx-Computer Graphics</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在跟公开课 edx 的 &lt;a href=&quot;https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Computer Graphics&lt;/a&gt;（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="3D数学" scheme="http://frankorz.com/tags/3D%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows 效率软件推荐</title>
@@ -1269,9 +1341,9 @@
     
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
   </entry>
   
@@ -2407,422 +2479,6 @@
     
     
       <category term="iPad" scheme="http://frankorz.com/tags/iPad/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS学习资源集合</title>
-    <link href="http://frankorz.com/2016/09/24/iOS-learning-source/"/>
-    <id>http://frankorz.com/2016/09/24/iOS-learning-source/</id>
-    <published>2016-09-24T00:11:01.000Z</published>
-    <updated>2017-05-06T02:10:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="http://ooo.0o0.ooo/2016/09/30/57ee03bfdc293.jpg" alt=""></p>
-<p>总结个人在学习 iOS 的过程中遇到的精品资源，包含书籍、视频、网站等，一切等待我去探索的好物，主要以Swift 3.0为主。<br><a id="more"></a></p>
-<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><table>
-<thead>
-<tr>
-<th>视频</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://itunes.apple.com/us/course/developing-ios-10-apps-swift/id1198467120" target="_blank" rel="external">Developing iOS 10 Apps with Swift</a></td>
-<td>斯坦福白胡子老爷爷最新的 iOS10 和 Swift 3.0 课程。创建于 2017年1月24日，预计时长9周。</td>
-</tr>
-<tr>
-<td><a href="https://itunes.apple.com/us/course/developing-ios-9-apps-swift/id1104579961" target="_blank" rel="external">Developing iOS 9 Apps with Swift</a></td>
-<td>斯坦福白胡子老爷爷的 iOS9 和 Swift 课程，现在 <a href="https://github.com/SwiftGGTeam/Developing-iOS-9-Apps-with-Swift" target="_blank" rel="external">GitHub</a> 只翻译到第三节课。</td>
-</tr>
-<tr>
-<td><a href="https://itunes.apple.com/us/course/developing-ios-8-apps-swift/id961180099" target="_blank" rel="external">Developing iOS 8 Apps with Swift</a></td>
-<td>斯坦福白胡子老爷爷的 iOS8 和 Swift 课程，已经翻译完成 <a href="https://github.com/SwiftGGTeam/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="external">GitHub</a></td>
-</tr>
-<tr>
-<td><a href="http://www.swiftv.cn" target="_blank" rel="external">SwiftV课堂</a></td>
-<td>国内一个Swift视频学习站</td>
-</tr>
-<tr>
-<td><a href="http://www.pomo.tv" target="_blank" rel="external">pomo.tv</a></td>
-<td>国外一个收集关于Mac、iOS 和 Swift视频的网站</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/playlist?list=PLgwNtYvZGv9STGDSx_knjYyzS7XzmpK84" target="_blank" rel="external">Principle UI/UX Animation Tutorials</a></td>
-<td>SketchTV 在 Youtube 上录制的 Principle (交互原型设计软件) 视频，Principle 相关<a href="http://principleux.com/principle-chinese-document/" target="_blank" rel="external">中文文档</a>，<a href="http://principleformac.com/tutorial.html" target="_blank" rel="external">官方文档</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="YouTube-频道"><a href="#YouTube-频道" class="headerlink" title="YouTube 频道"></a>YouTube 频道</h3><table>
-<thead>
-<tr>
-<th>频道名</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.youtube.com/channel/UCysEngjfeIYapEER9K8aikw" target="_blank" rel="external">Brian Advent</a></td>
-<td>Follow me around and learn iOS and macOS Development by examples.</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UC-d1NWv5IWtIkfH47ux4dWA" target="_blank" rel="external">The Swift Guy</a></td>
-<td>On this channel I put out tutorials, and other types of videos that are relevant to the Swift programming language.</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UC2D6eRvCeMtcF5OGHf1-trw" target="_blank" rel="external">CodeWithChris</a></td>
-<td>Learn how to make an app with Swift and Xcode and how to turn your app idea into a reality!</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UCDIBBmkZIB2hjBsk1hUImdA" target="_blank" rel="external">Jared Davidson</a></td>
-<td>IOS Developer / How to Make Apps</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UCuP2vJ6kRutQBfRmdcI92mA" target="_blank" rel="external">Lets Build That App</a></td>
-<td>I’ll do my best to teach you how to build working apps from the AppStore, i.e. YouTube, Facebook, FB Messenger, etc.</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UChH6WbyYeX0INJjrK2-6WSg" target="_blank" rel="external">Mark Moeykens</a></td>
-<td>Free iOS, Xcode and Swift tutorials!</td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/channel/UCrhO60YNOqODpMPRQZj2NQg" target="_blank" rel="external">Harry Ng</a></td>
-<td>主要是 OSX 的教程</td>
-</tr>
-</tbody>
-</table>
-<h3 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h3><table>
-<thead>
-<tr>
-<th>书名</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://gg.swiftguide.cn" target="_blank" rel="external">中文版 Apple 官方 Swift 教程《The Swift Programming Language》</a></td>
-<td>国人发起的官方教程翻译，目前更新到Swift 3.0 <a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">Github</a> <a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html" target="_blank" rel="external">Start Developing iOS Apps (Swift)</a></td>
-</tr>
-<tr>
-<td><a href="https://www.raywenderlich.com/store/ios-10-by-tutorials" target="_blank" rel="external">iOS 10 by tutorials</a></td>
-<td>raywenderlich精品书籍，付费</td>
-</tr>
-<tr>
-<td><a href="https://www.appcoda.com/swift/" target="_blank" rel="external">Beginning iOS 10 Programming with Swift</a></td>
-<td>appcoda精品书籍，付费</td>
-</tr>
-<tr>
-<td><a href="http://www.appcoda.com.tw/books/" target="_blank" rel="external">iOS 10 App 程式設計實力超進化實戰攻略</a></td>
-<td>和楼上电子书对应的湾湾翻译版</td>
-</tr>
-<tr>
-<td><a href="https://www.bignerdranch.com/we-write/ios-programming/" target="_blank" rel="external">iOS Programming: The Big Nerd Ranch Guide 5th Edition</a></td>
-<td>The Big Nerd Ranch Guide 推崇困难式学习，该系列书的第四版中译获得豆瓣9.0的高分，目前第六版更新到iOS 10和Swift 3.0，十分值得学习，付费</td>
-</tr>
-<tr>
-<td><a href="https://itunes.apple.com/us/book/core-image-for-swift/id1073029980?mt=13" target="_blank" rel="external">Core Image for Swift</a></td>
-<td>学习 Core Image 框架，付费</td>
-</tr>
-<tr>
-<td><a href="https://book.douban.com/subject/26919791/" target="_blank" rel="external">Beginning iPhone Development with Swift 3 Exploring the iOS SDK</a></td>
-<td>Apress精品书，本系列中译名为精通iOS编程。这版本讲iOS 10和Swift 3.0，付费</td>
-</tr>
-<tr>
-<td><a href="https://www.gitbook.com/book/zsisme/ios-/details" target="_blank" rel="external">ios核心动画高级技巧</a></td>
-<td><a href="http://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques" target="_blank" rel="external">iOS Core Animation: Advanced Techniques</a>中文译本，由 OC 编写</td>
-</tr>
-<tr>
-<td><a href="https://www.gitbook.com/book/zonble/kkbox-ios-dev/details" target="_blank" rel="external">KKBOX iOS/Mac OS X 基本開發教材</a></td>
-<td>這份教材是為了 KKBOX iOS/Mac OS X 開發部門的新人訓練所設計，目的是培養 出可以開發、維護 KKBOX 的 iOS 與 Mac OS X 版本，以及我們其他軟體產品的工程師。本书由 OC 编写</td>
-</tr>
-<tr>
-<td><a href="https://gumroad.com/l/JnWS" target="_blank" rel="external">A GUIDE TO IOS ANIMATION 2.0</a></td>
-<td>一本关于 iOS 动画的独具匠心的交互式电子书，付费</td>
-</tr>
-<tr>
-<td><a href="https://www.hackingwithswift.com" target="_blank" rel="external">Hacking With Swift</a></td>
-<td>免费在线 Swift 教程</td>
-</tr>
-<tr>
-<td><a href="https://designcode.io" target="_blank" rel="external">Design+Code</a></td>
-<td>学习 iOS 开发设计最好的书籍，付费</td>
-</tr>
-<tr>
-<td><a href="https://designthencode.com" target="_blank" rel="external">Design Then Code</a></td>
-<td>学会设计和开发 iOS 应用，付费。<a href="https://github.com/Cloudox/Motion-Design-for-iOS" target="_blank" rel="external">中文翻译</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><table>
-<thead>
-<tr>
-<th>网站名</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Swift Resources</a></td>
-<td>苹果官方为开发者提供的 Swift 学习资源</td>
-</tr>
-<tr>
-<td><a href="http://swift.gg" target="_blank" rel="external">SwiftGG</a></td>
-<td>国内走心的Swift翻译组，翻译了很多高质量文章</td>
-</tr>
-<tr>
-<td><a href="https://swift.org/" target="_blank" rel="external">Swift 官方网站</a></td>
-<td>Swift的开源阶段成果和使用指导</td>
-</tr>
-<tr>
-<td><a href="https://github.com/apple/swift-evolution" target="_blank" rel="external">swift-evolution</a></td>
-<td>Swift改进的最新进度</td>
-</tr>
-<tr>
-<td><a href="https://www.raywenderlich.com" target="_blank" rel="external">Ray Wenderlich</a></td>
-<td>专注苹果开发，创造大量有价值的开发资源如文章、视频、播客、书籍等。<a href="https://www.raywenderlich.com/category/swift" target="_blank" rel="external">Swift文章区</a> <a href="https://www.raywenderlich.com/category/ios" target="_blank" rel="external">iOS文章区</a></td>
-</tr>
-<tr>
-<td><a href="http://www.learnswift.tips/" target="_blank" rel="external">LearnSwift.tips</a></td>
-<td>国外一个学习Swift资源列表网站</td>
-</tr>
-<tr>
-<td><a href="https://www.objc.io" target="_blank" rel="external">objc</a></td>
-<td>objc.io是一个专门为iOS和OS X开发者提供的深入讨论技术的平台,文章含金量很高。</td>
-</tr>
-<tr>
-<td><a href="https://www.objccn.io" target="_blank" rel="external">objc中国</a></td>
-<td>objc翻译组，<a href="https://github.com/objccn/articles" target="_blank" rel="external">Github</a></td>
-</tr>
-<tr>
-<td><a href="http://www.appcoda.com.tw/" target="_blank" rel="external">APPCoda 台湾</a></td>
-<td><a href="http://www.appcoda.com" target="_blank" rel="external">APPCoda</a> 中教程的翻译，APPCoda 也是专注苹果开发的网站，有自己的电子书和开发教学文章，<a href="http://www.appcoda.com.tw/feed/" target="_blank" rel="external">RSS</a></td>
-</tr>
-<tr>
-<td><a href="http://nshipster.cn" target="_blank" rel="external">NSHipster翻译</a></td>
-<td>NSHipster 关注被忽略的 Objective-C、Swift 和 Cocoa 特性，这里是NSHipster的翻译组网站</td>
-</tr>
-<tr>
-<td><a href="http://www.cocoachina.com" target="_blank" rel="external">CocoChina</a></td>
-<td>国内苹果开发中文社区</td>
-</tr>
-<tr>
-<td><a href="http://ios.jobbole.com" target="_blank" rel="external">伯乐在线</a></td>
-<td>国内分享iOS和Swift开发的网站</td>
-</tr>
-</tbody>
-</table>
-<h3 id="各大iOS资源合集"><a href="#各大iOS资源合集" class="headerlink" title="各大iOS资源合集"></a>各大iOS资源合集</h3><table>
-<thead>
-<tr>
-<th>Github</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/insidegui/WWDC" target="_blank" rel="external">WWDC</a></td>
-<td>非官方的 WWDC app for macOS</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Aufree/trip-to-iOS" target="_blank" rel="external">trip-to-iOS</a></td>
-<td>6000+star的iOS学习资料整理</td>
-</tr>
-<tr>
-<td><a href="https://github.com/ipader/SwiftGuide" target="_blank" rel="external">SwiftGuide</a></td>
-<td>1W+star的swift语言学习资源指南</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Tim9Liu9/TimLiu-iOS" target="_blank" rel="external">TimLiu-iOS</a></td>
-<td>4000+star的iOS开发常用三方库、插件、知名博客汇总</td>
-</tr>
-<tr>
-<td><a href="https://github.com/jobbole/awesome-ios-cn" target="_blank" rel="external">awesome-ios-cn</a></td>
-<td>1W5+star的 <a href="https://github.com/vsouza/awesome-ios" target="_blank" rel="external">awesome-ios</a> 中译版</td>
-</tr>
-<tr>
-<td><a href="https://github.com/matteocrippa/awesome-swift" target="_blank" rel="external">awesome-swift</a></td>
-<td>9000+star的Swift资源集合</td>
-</tr>
-<tr>
-<td><a href="https://github.com/dkhamsing/open-source-ios-apps" target="_blank" rel="external">open-source-ios-apps</a></td>
-<td>1W+star的开源iOS应用集合</td>
-</tr>
-<tr>
-<td><a href="https://github.com/raywenderlich/swift-algorithm-club" target="_blank" rel="external">swift-algorithm-club</a></td>
-<td>8000+star的Swift算法和数据结构集合，由raywenderlich创建。</td>
-</tr>
-<tr>
-<td><a href="https://github.com/larrynatalicio/15DaysofAnimationsinSwift" target="_blank" rel="external">15DaysofAnimationsinSwift</a></td>
-<td>2000+star学习用swift写动画的项目</td>
-</tr>
-<tr>
-<td><a href="https://www.v2ex.com/t/309549" target="_blank" rel="external">iOS 开发学习笔记</a></td>
-<td>OneNote笔记，onepkg格式可在win版导入OneNote，笔记适合刚入门的 iOS 开发或有 C 、 OC 基础的同学。</td>
-</tr>
-<tr>
-<td><a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">iOSBlogCN</a></td>
-<td>中文 iOS/Mac 开发博客列表</td>
-</tr>
-<tr>
-<td><a href="https://github.com/Draveness/iOS-Source-Code-Analyze" target="_blank" rel="external">iOS-Source-Code-Analyze</a></td>
-<td>深入解析 iOS 开源项目 <a href="http://draveness.me" target="_blank" rel="external">http://draveness.me</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="相关的教程"><a href="#相关的教程" class="headerlink" title="相关的教程"></a>相关的教程</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://pomax.github.io/bezierinfo/" target="_blank" rel="external">A Primer on Bézier Curves</a></td>
-<td>关于贝塞尔曲线的教程</td>
-</tr>
-<tr>
-<td><a href="https://github.com/yrq110/some-ios-tutorials-with-swift" target="_blank" rel="external">some-ios-tutorials-with-swift</a></td>
-<td><a href="https://github.com/yrq110" target="_blank" rel="external">yrq110</a> 翻译的一些使用 Swift 的 iOS 教程 <a href="https://yrq110.gitbooks.io/some_ios_tutorials_with_swift/content/" target="_blank" rel="external">Gitbook</a></td>
-</tr>
-<tr>
-<td><a href="http://t.swift.gg/d/2-rxswift" target="_blank" rel="external">RxSwift 系列教程</a></td>
-<td>靛青K 发布的 RxSwift 系列教程</td>
-</tr>
-<tr>
-<td><a href="https://www.shinobicontrols.com/blog/ios-10-day-by-day-index" target="_blank" rel="external">iOS10 Day-by-Day</a></td>
-<td>一个介绍 iOS 10 API 的系列教程</td>
-</tr>
-<tr>
-<td><a href="https://www.shinobicontrols.com/blog/ios9-day-by-day-index" target="_blank" rel="external">iOS9 Day-by-Day</a></td>
-<td>一个介绍 iOS 9 API 的系列教程</td>
-</tr>
-<tr>
-<td><a href="https://andrewmika.gitbooks.io/xcode-server-and-continuous-integration-guide-cn/content/" target="_blank" rel="external">《Xcode Server and Continuous Integration Guide》中文版</a></td>
-<td>使用Xcode Server进行持续集成，<a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/#//apple_ref/doc/uid/TP40013292-CH1-SW1" target="_blank" rel="external">About Continuous Integration in Xcode</a>的翻译，<a href="https://www.gitbook.com/book/andrewmika/-xcode-server-and-continuous-integration-guide/details" target="_blank" rel="external">GitBook地址</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/futurice/ios-good-practices" target="_blank" rel="external">ios-good-practices</a></td>
-<td>iOS 开发最佳实践</td>
-</tr>
-<tr>
-<td><a href="https://developer.apple.com/ios/human-interface-guidelines/overview/design-principles/" target="_blank" rel="external">iOS Human Interface Guidelines</a></td>
-<td>iOS 人机界面指南，<a href="https://github.com/Cloudox/iOS-Human-Interface-Guidelines" target="_blank" rel="external">中文翻译</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/raywenderlich/swift-style-guide" target="_blank" rel="external">Swift编码规范</a></td>
-<td>来自 Ray Wenderlich 的 Swift 编码规范</td>
-</tr>
-<tr>
-<td><a href="https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/" target="_blank" rel="external">Xcode Markup Formatting</a></td>
-<td>学习 Xcode 中如何使用 Markup Formatting</td>
-</tr>
-<tr>
-<td><a href="https://askwonder.com/q/quartz-composer-55723eb43dcda4201a12cbc4" target="_blank" rel="external">Quartz Composer学习</a></td>
-<td>QC 学习路线，关于 iOS 的一些动态交互</td>
-</tr>
-<tr>
-<td><a href="https://zsisme.gitbooks.io/ios-/content/" target="_blank" rel="external">iOS 核心动画高级技巧</a></td>
-<td><a href="http://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques" target="_blank" rel="external">iOS Core Animation: Advanced Techniques</a> 的译本，由 OC 编写</td>
-</tr>
-<tr>
-<td><a href="https://github.com/xitu/gold-miner/blob/master/TODO/google.interview.university.md#计算机科学课程" target="_blank" rel="external">Google Interview University</a></td>
-<td>一套完整的学习手册帮助自己准备 Google 的面试</td>
-</tr>
-</tbody>
-</table>
-<h3 id="RSS"><a href="#RSS" class="headerlink" title="RSS"></a>RSS</h3><p>我关注的一些 RSS 源，博客方面关注较少。</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>Feed 源</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Swift – Ray Wenderlich</td>
-<td><a href="https://www.raywenderlich.com/category/swift/feed" target="_blank" rel="external">https://www.raywenderlich.com/category/swift/feed</a></td>
-</tr>
-<tr>
-<td>AppCoda 台湾</td>
-<td><a href="http://www.appcoda.com.tw/feed/" target="_blank" rel="external">http://www.appcoda.com.tw/feed/</a></td>
-</tr>
-<tr>
-<td>Big Nerd Ranch</td>
-<td><a href="https://www.bignerdranch.com/rss" target="_blank" rel="external">https://www.bignerdranch.com/rss</a></td>
-</tr>
-<tr>
-<td>Swift GG 翻译组</td>
-<td><a href="http://swift.gg/atom.xml" target="_blank" rel="external">http://swift.gg/atom.xml</a></td>
-</tr>
-<tr>
-<td><a href="http://mobilefrontier.github.io" target="_blank" rel="external">移动开发前线</a></td>
-<td><a href="http://mobilefrontier.github.io/index.xml" target="_blank" rel="external">http://mobilefrontier.github.io/index.xml</a></td>
-</tr>
-<tr>
-<td><a href="https://medium.com/swift-programming/all" target="_blank" rel="external">Medium-Swift Programming</a></td>
-<td><a href="https://medium.com/feed/swift-programming/" target="_blank" rel="external">https://medium.com/feed/swift-programming/</a></td>
-</tr>
-<tr>
-<td><a href="https://medium.com/ios-os-x-development/all" target="_blank" rel="external">Medium-iOS App Development</a></td>
-<td><a href="https://medium.com/feed/ios-os-x-development/" target="_blank" rel="external">https://medium.com/feed/ios-os-x-development/</a></td>
-</tr>
-<tr>
-<td>掘金-iOS</td>
-<td><a href="https://api.prprpr.me/xitu/ios" target="_blank" rel="external">https://api.prprpr.me/xitu/ios</a></td>
-</tr>
-<tr>
-<td>IOS – 伯乐在线</td>
-<td><a href="http://ios.jobbole.com/feed/" target="_blank" rel="external">http://ios.jobbole.com/feed/</a></td>
-</tr>
-<tr>
-<td>CocoaChina</td>
-<td><a href="http://www.cocoachina.com/cms/rss.php" target="_blank" rel="external">http://www.cocoachina.com/cms/rss.php</a></td>
-</tr>
-<tr>
-<td><a href="http://mrpeak.cn/" target="_blank" rel="external">MrPeak杂货铺</a></td>
-<td><a href="http://mrpeak.cn/feed.xml" target="_blank" rel="external">http://mrpeak.cn/feed.xml</a></td>
-</tr>
-<tr>
-<td><a href="http://onevcat.com/" target="_blank" rel="external">OneV’s Den</a></td>
-<td><a href="https://onevcat.com/feed.xml" target="_blank" rel="external">https://onevcat.com/feed.xml</a></td>
-</tr>
-<tr>
-<td><a href="http://gank.io" target="_blank" rel="external">干货集中营</a></td>
-<td><a href="http://gank.io/feed" target="_blank" rel="external">http://gank.io/feed</a></td>
-</tr>
-</tbody>
-</table>
-<p>关于 Medium 上的文章 RSS 可以参考 <a href="http://webapps.stackexchange.com/questions/85611/rss-atom-feed-for-medium-com-blog-tag" target="_blank" rel="external">RSS/Atom feed for medium.com blog tag</a>。</p>
-<!--### 工具 -->
-<!--(写的不全又舍不得删，就这样吧。)
-
-| 名称 | 简介 |
-| --- | --- |
-| [RAP](http://rapapi.net/) | Web接口管理工具，开源免费，接口自动化，MOCK数据自动生成，自动化测试，企业级管理。 |
-| [iOS-Images-Extractor](https://github.com/devcxm/iOS-Images-Extractor) | 提取iOS应用图片 |
-| [接口参考](https://www.zhihu.com/question/39479153) | 知乎上关于接口资源的回答 |
-| [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) | Swift OAuth 库 |
-| [Alamofire](https://github.com/Alamofire/Alamofire) | Elegant HTTP Networking in Swift |-->
-<p>&lt;未完待续&gt;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ooo.0o0.ooo/2016/09/30/57ee03bfdc293.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;总结个人在学习 iOS 的过程中遇到的精品资源，包含书籍、视频、网站等，一切等待我去探索的好物，主要以Swift 3.0为主。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
-    
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
-      <category term="Objective-C" scheme="http://frankorz.com/tags/Objective-C/"/>
     
   </entry>
   

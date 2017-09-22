@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="3D数学基础-向量运算和矩阵变换"/>
+
+
+
+
+  <meta name="keywords" content="3D数学,游戏开发," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="萤火之森">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.3.x" />
+
+
+
+<link rel="canonical" href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/"/>
+
+
+<meta name="description" content="最近在跟公开课 edx 的 Computer Graphics（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。">
+<meta name="keywords" content="3D数学,游戏开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D数学基础-向量运算和矩阵变换">
+<meta property="og:url" content="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="最近在跟公开课 edx 的 Computer Graphics（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c4580a4526e.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/20/59c275ef5ad97.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c4585e45f5a.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c2f0c604b26.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c2f0ae5357d.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/09/21/59c2f15017b3b.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c2f2e8931f9.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c2f8a2d4ed7.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/09/21/59c2f9bd606b9.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45933d1131.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c458eacdbd6.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c4590d452de.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45964cb258.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45a25d31be.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45a6c47117.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45a7998963.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45a96aea14.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c453fdb5b93.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c34830cf218.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c45377c6df7.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c3a241c6dd6.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/09/21/59c35fd14cf71.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c39af8088e2.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c3b45f62ef9.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/21/59c3b89114b72.png">
+<meta property="og:image" content="https://i.loli.net/2017/09/22/59c4467c7cf99.png">
+<meta property="og:updated_time" content="2017-09-22T01:07:56.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3D数学基础-向量运算和矩阵变换">
+<meta name="twitter:description" content="最近在跟公开课 edx 的 Computer Graphics（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。">
+<meta name="twitter:image" content="https://i.loli.net/2017/09/22/59c4580a4526e.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.3.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: true,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-69634396-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> 3D数学基础-向量运算和矩阵变换 · 萤火之森 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          3D数学基础-向量运算和矩阵变换
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Sep 22, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础运算"><span class="toc-text">基础运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#点积（Dot-Product）"><span class="toc-text">点积（Dot Product）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#叉积（Cross-Product）"><span class="toc-text">叉积（Cross Product）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正交坐标系"><span class="toc-text">正交坐标系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵相乘"><span class="toc-text">矩阵相乘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵转置"><span class="toc-text">矩阵转置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩阵的逆"><span class="toc-text">矩阵的逆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵变换"><span class="toc-text">矩阵变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#缩放"><span class="toc-text">缩放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切变"><span class="toc-text">切变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转"><span class="toc-text">旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二维空间下的旋转"><span class="toc-text">二维空间下的旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三维空间下的旋转"><span class="toc-text">三维空间下的旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#绕任意轴旋转"><span class="toc-text">绕任意轴旋转</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="external">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
+<a id="more"></a>
+<h2 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h2><h3 id="点积（Dot-Product）"><a href="#点积（Dot-Product）" class="headerlink" title="点积（Dot Product）"></a>点积（Dot Product）</h3><p>将向量相乘得到一个标量<br>可以通过两个向量除以它们的模得到两个向量之间的夹角</p>
+<p>用途：</p>
+<ul>
+<li>求两个向量之间的夹角（光源和表面之间夹角的余弦值对于投影来说非常重要）</li>
+<li>找到一个向量在另一向量上的投影也非常重要（比如我们想知道一个点在新的坐标系下的坐标）。</li>
+<li>点积在笛卡尔坐标系下很有用</li>
+</ul>
+<p><img src="https://i.loli.net/2017/09/22/59c4580a4526e.png" alt=""><br><img src="https://i.loli.net/2017/09/20/59c275ef5ad97.png" alt=""></p>
+<h3 id="叉积（Cross-Product）"><a href="#叉积（Cross-Product）" class="headerlink" title="叉积（Cross Product）"></a>叉积（Cross Product）</h3><p>将向量相乘得到一个正交向量（垂直于向量a和向量b）</p>
+<p><img src="https://i.loli.net/2017/09/22/59c4585e45f5a.png" alt=""></p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f0c604b26.png" alt=""></p>
+<p>叉积所得到的向量的方向可以通过右手坐标系来得到：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f0ae5357d.png" alt=""></p>
+<p>用右手食指代表叉积中前一个向量，用中指代表叉积中后一个向量，则大拇指的方向就是叉积得到的向量方向。这简单的方法能提醒你将进行叉积的两个向量顺序调换的话，得到的向量方向会相反。</p>
+<p><img src="https://ooo.0o0.ooo/2017/09/21/59c2f15017b3b.png" alt=""><br><img src="https://i.loli.net/2017/09/21/59c2f2e8931f9.png" alt=""></p>
+<p>叉积可以用向量 a 的对偶矩阵来完成，所以可以将它表示成A星(A<em>)乘以b，其中A</em>是向量a的对偶矩阵（<a href="https://zh.wikipedia.org/zh-hans/%E5%85%B1%E8%BD%AD%E8%BD%AC%E7%BD%AE" target="_blank" rel="external">共轭转置</a>）。</p>
+<h3 id="正交坐标系"><a href="#正交坐标系" class="headerlink" title="正交坐标系"></a>正交坐标系</h3><p>正交基和坐标系对于表示点的位置非常重要，因为在图形学中，我们通常需要很多不同的坐标系，来表示点在不同参照物下的位置。例如，要表示自己身前一台电脑的位置，可以在自己的位置建立一个坐标系来表示电脑的位置，要表示北极的位置时，用地球的坐标系表示北极的位置会更容易。</p>
+<p><img src="https://i.loli.net/2017/09/21/59c2f8a2d4ed7.png" alt=""><br><img src="https://ooo.0o0.ooo/2017/09/21/59c2f9bd606b9.png" alt=""></p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>图形学中矩阵很重要，因为大多数变换都涉及一个矩阵乘以一个向量，矩阵可以用来变换点。下面简单的列一下矩阵的性质，更多的性质可以参考下维基页面<a href="https://www.wikiwand.com/zh-hans/%E7%9F%A9%E9%98%B5" target="_blank" rel="external">矩阵</a>。</p>
+<h4 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h4><p><img src="https://i.loli.net/2017/09/22/59c45933d1131.png" alt=""></p>
+<p>矩阵相乘时，乘积处(i,j)处的元素是：第一个矩阵的 i 行和第二个矩阵 j 列的点积，这也是为什么要求第一个矩阵的列数等于第二个矩阵的行数。</p>
+<h4 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h4><p><img src="https://i.loli.net/2017/09/22/59c458eacdbd6.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c4590d452de.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45964cb258.png" alt=""></p>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><p><img src="https://i.loli.net/2017/09/22/59c45a25d31be.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45a6c47117.png" alt=""><br><img src="https://i.loli.net/2017/09/22/59c45a7998963.png" alt=""></p>
+<p>矩阵与矩阵的逆相乘得到单位矩阵：</p>
+<p><img src="https://i.loli.net/2017/09/22/59c45a96aea14.png" alt=""></p>
+<h2 id="矩阵变换"><a href="#矩阵变换" class="headerlink" title="矩阵变换"></a>矩阵变换</h2><h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>二维空间下和三维空间下的缩放很简单，直接乘上相应的缩放倍数即可。</p>
+<p><img src="https://i.loli.net/2017/09/22/59c453fdb5b93.png" alt=""><br><img src="https://i.loli.net/2017/09/21/59c34830cf218.png" alt=""></p>
+<h3 id="切变"><a href="#切变" class="headerlink" title="切变"></a>切变</h3><p><img src="https://i.loli.net/2017/09/22/59c45377c6df7.png" alt=""></p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><h4 id="二维空间下的旋转"><a href="#二维空间下的旋转" class="headerlink" title="二维空间下的旋转"></a>二维空间下的旋转</h4><p>二维空间下，物体的旋转可以靠矩阵在X方向的变换于矩阵在Y方向的变换叠加得到，但不适用于三维空间。</p>
+<p>下面是推导过程：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c3a241c6dd6.png" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/09/21/59c35fd14cf71.png" alt=""></p>
+<p>这三种矩阵变换<strong>不符合交换律</strong>，也就是说变换的顺序改变会得到不同的结果，要恢复变换的话也要从最后一次变换开始恢复。（Unity的默认变换顺序是先缩放，再旋转，最后平移）</p>
+<p><img src="https://i.loli.net/2017/09/21/59c39af8088e2.png" alt=""></p>
+<h4 id="三维空间下的旋转"><a href="#三维空间下的旋转" class="headerlink" title="三维空间下的旋转"></a>三维空间下的旋转</h4><p>下图分别给出了绕Z轴旋转、X轴旋转和Y轴旋转的变换矩阵：</p>
+<p><img src="https://i.loli.net/2017/09/21/59c3b45f62ef9.png" alt=""></p>
+<p>二维旋转可以看作是绕着Z轴的特殊旋转，因为Z轴保持不变。因此Rz（绕着Z轴的旋转）可以直接在二维空间旋转矩阵外的Z轴处填充1和0来使用，同理可得绕X轴的旋转矩阵和Y轴的旋转矩阵。</p>
+<h5 id="绕任意轴旋转"><a href="#绕任意轴旋转" class="headerlink" title="绕任意轴旋转"></a>绕任意轴旋转</h5><p><img src="https://i.loli.net/2017/09/21/59c3b89114b72.png" alt=""></p>
+<p>在这其中，三个正交向量（相互垂直）可以构成一个旋转矩阵，这样就可以将点映射到新的坐标系下。这个概念非常重要，因为在图形学中常常需要这样的变换，如把每个3D模型的顶点的法线从模型空间转到剪裁空间（不同的坐标系）再统一进行计算。</p>
+<p>这个旋转矩阵的逆只需要将XYZ轴换成u，v，w即可。</p>
+<p><img src="https://i.loli.net/2017/09/22/59c4467c7cf99.png" alt=""></p>
+<p>详见<a href="https://baike.baidu.com/item/%E7%BD%97%E5%BE%B7%E9%87%8C%E6%A0%BC%E6%97%8B%E8%BD%AC%E5%85%AC%E5%BC%8F" target="_blank" rel="external">罗德里格旋转公式</a></p>
+<hr>
+<p>下一篇笔记会写更多关于三维空间下的矩阵变换。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://book.douban.com/subject/1400419/" target="_blank" rel="external">3D数学基础：图形与游戏开发</a></li>
+<li><a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="external">edx-Computer Graphics</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>猫冬</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="http://frankorz.com">http://frankorz.com</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/3D数学/">3D数学</a>
+            
+              <a href="/tags/游戏开发/">游戏开发</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/08/05/recommandation-of-some-efficient-software/">
+        <span class="next-text nav-default">Windows 效率软件推荐</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/';
+        this.page.identifier = '2017/09/22/basic-of-vector-and-matrix-transformation/';
+        this.page.title = '3D数学基础-向量运算和矩阵变换';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.3.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.3.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            Read more..
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.3.x"></script>
+
+  </body>
+</html>
