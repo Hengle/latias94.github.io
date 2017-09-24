@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2017-09-24T07:14:53.644Z</updated>
+  <updated>2017-09-24T08:52:02.901Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://frankorz.com/2017/09/24/matrix-transformation-2/"/>
     <id>http://frankorz.com/2017/09/24/matrix-transformation-2/</id>
     <published>2017-09-24T07:13:49.000Z</published>
-    <updated>2017-09-24T07:14:53.644Z</updated>
+    <updated>2017-09-24T08:52:02.901Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
@@ -64,7 +64,7 @@
 <p><img src="http://latex.codecogs.com/svg.latex?M%3D%5Cbegin%7Bbmatrix%7D%20R_%7B11%7D%20%26%20R_%7B12%7D%20%26%20R_%7B13%7D%20%26%200%5C%5C%20R_%7B21%7D%20%26%20R_%7B22%7D%20%26%20R_%7B23%7D%20%26%200%5C%5C%20R_%7B31%7D%20%26%20R_%7B32%7D%20%26%20R_%7B33%7D%20%26%200%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%20T_%7Bx%7D%5C%5C%200%20%26%201%20%26%200%20%26%20T_%7Bx%7D%5C%5C%200%20%26%200%20%26%201%20%26%20T_%7Bx%7D%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%20R_%7B3%5Ctimes%203%7D%20%26%20R_%7B3%5Ctimes%203%7DT_%7B3%5Ctimes%201%7D%5C%5C%200_%7B1%5Ctimes%203%7D%20%26%201%20%5Cend%7Bbmatrix%7D" alt=""></p>
 <p><img src="http://latex.codecogs.com/svg.latex?MP%3D%5Cbegin%7Bbmatrix%7D%20R_%7B3%5Ctimes%203%7D%20%26%20R_%7B3%5Ctimes%203%7DT_%7B3%5Ctimes%201%7D%5C%5C%200_%7B1%5Ctimes%203%7D%20%26%201%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D%20P%20%26%200%5C%5C%200%20%26%201%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%20RP%20%26%20RT%5C%5C%200%20%26%201%20%5Cend%7Bbmatrix%7D%3DRP&plus;RT" alt=""></p>
 <p>对比先平移再旋转的结果，可以看到不同的地方是 T 变成了 RT，也就是说旋转也施加在了平移的方向上。在下图中可看到小人在 Y 轴方向发生了平移，所以<strong>先旋转再平移</strong>可能会更容易得到理想的结果，但两种变换组合都是可行的。（在 gluLookAt 的推导中需要先做平移，gluLookAt 是 OpenGL 中观察变换的一个关键函数。）</p>
-<p><img src="https://i.loli.net/2017/09/24/59c6edf42ea6f.png" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/09/24/59c771e4d39f0.png" alt=""></p>
 <h2 id="法线变换"><a href="#法线变换" class="headerlink" title="法线变换"></a>法线变换</h2><p>在图形学中曲面法线的方向也很重要。</p>
 <h3 id="法线（Normal）"><a href="#法线（Normal）" class="headerlink" title="法线（Normal）"></a>法线（Normal）</h3><blockquote>
 <p>法线是始终垂直于某平面的虚线。在数学几何中法线指平面上垂直于曲线在某点的切线的一条线。<br>——百度百科</p>
@@ -522,11 +522,11 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="读后感" scheme="http://frankorz.com/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
     
       <category term="Python" scheme="http://frankorz.com/tags/Python/"/>
     
-      <category term="读后感" scheme="http://frankorz.com/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
+      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -975,9 +975,9 @@
     </summary>
     
     
-      <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
-    
       <category term="设计模式" scheme="http://frankorz.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
   </entry>
   
