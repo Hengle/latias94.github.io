@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2017-09-24T10:24:52.776Z</updated>
+  <updated>2017-09-25T01:34:36.787Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://frankorz.com/2017/09/24/matrix-transformation-2/"/>
     <id>http://frankorz.com/2017/09/24/matrix-transformation-2/</id>
     <published>2017-09-24T07:13:49.000Z</published>
-    <updated>2017-09-24T10:24:52.776Z</updated>
+    <updated>2017-09-25T01:34:36.787Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
@@ -80,7 +80,7 @@
 <p><img src="http://latex.codecogs.com/svg.latex?%28Qn%29%5E%7BT%7D%3D%28n%5E%7BT%7DQ%5E%7BT%7D%29%28Mt%29%3D0" alt=""></p>
 <p>在该等式中，只有当 <img src="http://latex.codecogs.com/svg.latex?Q%5E%7BT%7DM%3DI" alt=""> 时，矩阵才容易求解。</p>
 <p><img src="http://latex.codecogs.com/svg.latex?n%5E%7BT%7DQ%5E%7BT%7DMt%3D0%7E%7E%5CRightarrow%20%7E%7E%20Q%5E%7BT%7DM%3DI" alt=""></p>
-<p>最后可得法线变换公式，其中<img src="http://latex.codecogs.com/svg.latex?M%5E%7B-1%7D" alt="">只对左上角的 3*3矩阵求逆和转置。：</p>
+<p>最后可得法线变换公式，其中<img src="http://latex.codecogs.com/svg.latex?M%5E%7B-1%7D" alt="">只对左上角的 3*3矩阵求逆和转置：</p>
 <p><img src="http://latex.codecogs.com/svg.latex?Q%3D%28M%5E%7B-1%7D%29%5E%7BT%7D" alt=""></p>
 <p>要进行法线变换，这个公式要施加在曲面上所有的法线上。</p>
 <p>另外要注意的是法线是一个向量，不会随着平移而改变，因此平移变换对法线没影响。</p>
@@ -91,7 +91,7 @@
 <p>点 P 在两个坐标系中的坐标是不同的，而在图形学中，我们经常要做这样的变换。</p>
 <p><img src="https://i.loli.net/2017/09/24/59c72e3657a2a.jpg" alt=""></p>
 <p>如果我们在世界坐标系中有一个点，要计算出其在相机坐标系中的位置，则要同时考虑相机旋转的坐标系、相机的位置和观察的位置（视点）。</p>
-<p>在<img src="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#二维空间下的旋转" alt="二维空间下的旋转">中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
+<p>在<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#二维空间下的旋转">二维空间下的旋转</a>中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
 <p><img src="https://i.loli.net/2017/09/24/59c73178738e1.jpg" alt=""></p>
 <p>这样我们就能通过旋转矩阵来得到新的 uv 坐标系了！</p>
 <p><img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Bbmatrix%7D%20u%5C%5Cv%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%20cos%5Ctheta%20%26%20-sin%5Ctheta%20%5C%5C%20sin%5Ctheta%20%26%20cos%5Ctheta%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D%20x%5C%5Cy%20%5Cend%7Bbmatrix%7D" alt=""></p>

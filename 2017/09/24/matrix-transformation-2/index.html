@@ -130,7 +130,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -139,7 +139,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -148,7 +148,7 @@
         <li class="mobile-menu-item">
           
           
-            Tags
+            标签
           
         </li>
       </a>
@@ -157,7 +157,7 @@
         <li class="mobile-menu-item">
           
           
-            Categories
+            分类
           
         </li>
       </a>
@@ -178,7 +178,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -187,7 +187,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -196,7 +196,7 @@
           <a class="menu-item-link" href="/tags">
             
             
-              Tags
+              标签
             
           </a>
         </li>
@@ -205,7 +205,7 @@
           <a class="menu-item-link" href="/categories">
             
             
-              Categories
+              分类
             
           </a>
         </li>
@@ -253,7 +253,7 @@
     
     
   <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
+    <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#平移（Translation）"><span class="toc-text">平移（Translation）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#齐次坐标"><span class="toc-text">齐次坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合平移和旋转变换"><span class="toc-text">组合平移和旋转变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先平移再旋转"><span class="toc-text">先平移再旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先旋转再平移"><span class="toc-text">先旋转再平移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#法线变换"><span class="toc-text">法线变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#法线（Normal）"><span class="toc-text">法线（Normal）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变坐标系"><span class="toc-text">改变坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
     </div>
@@ -320,7 +320,7 @@
 <p><img src="http://latex.codecogs.com/svg.latex?%28Qn%29%5E%7BT%7D%3D%28n%5E%7BT%7DQ%5E%7BT%7D%29%28Mt%29%3D0" alt=""></p>
 <p>在该等式中，只有当 <img src="http://latex.codecogs.com/svg.latex?Q%5E%7BT%7DM%3DI" alt=""> 时，矩阵才容易求解。</p>
 <p><img src="http://latex.codecogs.com/svg.latex?n%5E%7BT%7DQ%5E%7BT%7DMt%3D0%7E%7E%5CRightarrow%20%7E%7E%20Q%5E%7BT%7DM%3DI" alt=""></p>
-<p>最后可得法线变换公式，其中<img src="http://latex.codecogs.com/svg.latex?M%5E%7B-1%7D" alt="">只对左上角的 3*3矩阵求逆和转置。：</p>
+<p>最后可得法线变换公式，其中<img src="http://latex.codecogs.com/svg.latex?M%5E%7B-1%7D" alt="">只对左上角的 3*3矩阵求逆和转置：</p>
 <p><img src="http://latex.codecogs.com/svg.latex?Q%3D%28M%5E%7B-1%7D%29%5E%7BT%7D" alt=""></p>
 <p>要进行法线变换，这个公式要施加在曲面上所有的法线上。</p>
 <p>另外要注意的是法线是一个向量，不会随着平移而改变，因此平移变换对法线没影响。</p>
@@ -331,7 +331,7 @@
 <p>点 P 在两个坐标系中的坐标是不同的，而在图形学中，我们经常要做这样的变换。</p>
 <p><img src="https://i.loli.net/2017/09/24/59c72e3657a2a.jpg" alt=""></p>
 <p>如果我们在世界坐标系中有一个点，要计算出其在相机坐标系中的位置，则要同时考虑相机旋转的坐标系、相机的位置和观察的位置（视点）。</p>
-<p>在<img src="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#二维空间下的旋转" alt="二维空间下的旋转">中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
+<p>在<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#二维空间下的旋转">二维空间下的旋转</a>中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
 <p><img src="https://i.loli.net/2017/09/24/59c73178738e1.jpg" alt=""></p>
 <p>这样我们就能通过旋转矩阵来得到新的 uv 坐标系了！</p>
 <p><img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Bbmatrix%7D%20u%5C%5Cv%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%20cos%5Ctheta%20%26%20-sin%5Ctheta%20%5C%5C%20sin%5Ctheta%20%26%20cos%5Ctheta%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D%20x%5C%5Cy%20%5Cend%7Bbmatrix%7D" alt=""></p>
@@ -351,15 +351,15 @@
 
   <div class="post-copyright">
     <p class="copyright-item">
-      <span>Author: </span>
+      <span>原文作者: </span>
       <a href="http://frankorz.com">猫冬</a>
     </p>
     <p class="copyright-item">
-      <span>Link: </span>
+      <span>原文链接: </span>
       <a href="http://frankorz.com/2017/09/24/matrix-transformation-2/">http://frankorz.com/2017/09/24/matrix-transformation-2/</a>
     </p>
     <p class="copyright-item">
-      <span>License: </span>
+      <span>许可协议: </span>
       
       <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
     </p>
@@ -389,7 +389,7 @@
     
       <a class="next" href="/2017/09/22/basic-of-vector-and-matrix-transformation/">
         <span class="next-text nav-default">3D数学基础-向量运算基础和矩阵变换</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -463,11 +463,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
