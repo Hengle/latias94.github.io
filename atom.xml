@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2017-12-16T16:14:10.488Z</updated>
+  <updated>2017-12-17T03:46:22.916Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://frankorz.com/2017/12/16/greedy-best-find-search/"/>
     <id>http://frankorz.com/2017/12/16/greedy-best-find-search/</id>
     <published>2017-12-16T15:24:27.000Z</published>
-    <updated>2017-12-16T16:14:10.488Z</updated>
+    <updated>2017-12-17T03:46:22.916Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>最近开始接触寻路算法，对此不太了解的话建议读者先看这篇文章<a href="http://www.gameres.com/777251.html" target="_blank" rel="external">《如何快速找到最优路线？深入理解游戏中寻路算法》</a> 。</p>
 <blockquote>
 <p>所有寻路算法都需要一种方法以数学的方式估算某个节点是否应该被选择。大多数游戏都会使用<strong>启发式</strong>（heuristic） ，以 h(x) 表示，就是估算从某个位置到目标位置的开销。理想情况下，启发式结果越接近真实越好。</p>
 <p>——《游戏编程算法与技巧》</p>
 </blockquote>
-<p>今天主要说的是贪婪最佳优先搜索（Greedy Best-First Search），贪心算法的含义是：求解问题时，总是做出在当前来说最好的选择。通俗点说就是，这是一个“短视”的算法。<br><a id="more"></a>`<br>为什么说是“短视”呢？首先要明白一个概念：<a href="https://baike.baidu.com/item/%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB" target="_blank" rel="external">曼哈顿距离</a>。</p>
+<p>今天主要说的是贪婪最佳优先搜索（Greedy Best-First Search），贪心算法的含义是：求解问题时，总是做出在当前来说最好的选择。通俗点说就是，这是一个“短视”的算法。<br><a id="more"></a><br>为什么说是“短视”呢？首先要明白一个概念：<a href="https://baike.baidu.com/item/%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB" target="_blank" rel="external">曼哈顿距离</a>。</p>
 <h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>曼哈顿距离被认为不能沿着对角线移动，如下图中，红、蓝、黄线都代表等距离的曼哈顿距离。绿线代表<a href="https://baike.baidu.com/item/%E6%AC%A7%E6%B0%8F%E8%B7%9D%E7%A6%BB" target="_blank" rel="external">欧氏距离</a>，如果地图允许对角线移动的话，曼哈顿距离会经常比欧式距离高。</p>
 <p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=591525660,2345357852&amp;fm=27&amp;gp=0.jpg" alt="img"></p>
 <p>在 2D 地图中，曼哈顿距离的计算如下：</p>
@@ -80,14 +80,14 @@
     <link href="http://frankorz.com/2017/09/24/matrix-transformation-2/"/>
     <id>http://frankorz.com/2017/09/24/matrix-transformation-2/</id>
     <published>2017-09-24T09:13:49.000Z</published>
-    <updated>2017-09-25T01:34:36.787Z</updated>
+    <updated>2018-01-15T07:17:52.658Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
 <h2 id="平移（Translation）"><a href="#平移（Translation）" class="headerlink" title="平移（Translation）"></a>平移（Translation）</h2><p>前一篇文章总结了旋转、缩放等变换，这里介绍一下平移变换。</p>
 <p>假如我们需要把X坐标从 x 变换到 x+5，我们需要构造什么样的变换矩阵来实现平移呢？</p>
 <p><img src="http://latex.codecogs.com/png.latex?%5Cbegin%7Bbmatrix%7Dx%27%20%5C%5C%20y%27%20%5C%5C%20z%27%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%20%26%20%26%20%5C%5C%20%26%20%3F%20%26%20%5C%5C%20%26%20%26%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7Dx%20%5C%5C%20y%20%5C%5C%20z%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7Dx&plus;5%20%5C%5C%20y%20%5C%5C%20z%20%5Cend%7Bbmatrix%7D" alt=""></p>
-<p>要注意的是，变换矩阵不能包含 x、y、z 等坐标变量。例如要得到 x+5，那么矩阵的第一个行向量不能是<img src="http://latex.codecogs.com/svg.latex?%28x%2C0%2C5/z%29" alt="">，因为变换的一个重要性质是<strong>变换矩阵保持不变</strong>。</p>
+<p>要注意的是，变换矩阵不能包含 x、y、z 等坐标变量。例如要得到 x+5，那么矩阵的第一个行向量不能是<img src="http://latex.codecogs.com/svg.latex?%281%2C0%2C5/z%29" alt="">，因为变换的一个重要性质是<strong>变换矩阵保持不变</strong>。</p>
 <p>我们可以给矩阵多加一个维度 w，令其等于1，这样就不需要用到 x、y、z 这些坐标变量了。</p>
 <p><img src="http://latex.codecogs.com/png.latex?%5Cbegin%7Bbmatrix%7Dx%27%20%5C%5C%20y%27%20%5C%5C%20z%27%20%5C%5C%20w%27%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%205%5C%5C%200%20%26%201%20%26%200%20%26%200%5C%5C%200%20%26%200%20%26%201%20%26%200%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7Dx%20%5C%5C%20y%20%5C%5C%20z%20%5C%5C%201%20%5Cend%7Bbmatrix%7D%3D%5Cbegin%7Bbmatrix%7Dx&plus;5%20%5C%5C%20y%20%5C%5C%20z%20%5C%5C%201%20%5Cend%7Bbmatrix%7D" alt=""></p>
 <p>这里引用到了<a href="https://www.wikiwand.com/zh/%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87" target="_blank" rel="external">齐次坐标</a>的概念。</p>
@@ -257,7 +257,7 @@
     <link href="http://frankorz.com/2017/08/05/recommandation-of-some-efficient-software/"/>
     <id>http://frankorz.com/2017/08/05/recommandation-of-some-efficient-software/</id>
     <published>2017-08-05T09:08:08.000Z</published>
-    <updated>2017-08-05T07:08:33.533Z</updated>
+    <updated>2017-08-05T07:08:33.534Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>用了几年苹果电脑之后，最近开始用回 Windows 系统，找到一些十分好用的效率向的工具，同时受 <a href="http://www.ituring.com.cn/article/469111" target="_blank" rel="external">效率必备，软件推荐</a> 启发，写篇文章推荐一下。</p>
 <a id="more"></a>
@@ -309,7 +309,7 @@
     <link href="http://frankorz.com/2017/08/04/my-reading-habit/"/>
     <id>http://frankorz.com/2017/08/04/my-reading-habit/</id>
     <published>2017-08-04T03:01:58.000Z</published>
-    <updated>2017-08-04T01:09:37.712Z</updated>
+    <updated>2017-08-04T01:09:37.713Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>本文是为了响应图灵社区自己的兴趣爱好的撰文活动，搬来博客刷下活跃度。</p>
 <p><img src="https://i.loli.net/2017/08/03/5982fcf675064.png" alt="番茄土豆"></p>
