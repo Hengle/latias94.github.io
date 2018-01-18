@@ -1300,9 +1300,9 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
       <category term="动画" scheme="http://frankorz.com/tags/%E5%8A%A8%E7%94%BB/"/>
     
@@ -1504,11 +1504,11 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
       <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
   </entry>
   
@@ -1824,9 +1824,9 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
       <category term="JSON" scheme="http://frankorz.com/tags/JSON/"/>
     
@@ -2019,9 +2019,9 @@
       <category term="Swift 算法" scheme="http://frankorz.com/categories/Swift-%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="未完工" scheme="http://frankorz.com/tags/%E6%9C%AA%E5%AE%8C%E5%B7%A5/"/>
-    
       <category term="算法" scheme="http://frankorz.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="未完工" scheme="http://frankorz.com/tags/%E6%9C%AA%E5%AE%8C%E5%B7%A5/"/>
     
   </entry>
   
