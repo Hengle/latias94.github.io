@@ -3,94 +3,27 @@
 
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  <url>
+    <loc>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</loc>
+    <lastmod>2018-01-31T07:53:10.983Z</lastmod>
+    <data>
+        <display>
+        <title>3D数学基础-向量运算基础和矩阵变换</title>
+        <pubTime>2017-09-22T03:05:50.000Z</pubTime>
+        
+        <tag>3D数学</tag>
+         
+        <tag>游戏开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="图形学" url="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://frankorz.com/2017/09/24/matrix-transformation-2/</loc>
@@ -126,28 +59,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</loc>
-    <lastmod>2017-09-24T07:14:59.374Z</lastmod>
-    <data>
-        <display>
-        <title>3D数学基础-向量运算基础和矩阵变换</title>
-        <pubTime>2017-09-22T03:05:50.000Z</pubTime>
-        
-        <tag>3D数学</tag>
-         
-        <tag>游戏开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="图形学" url="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
-          
         </display>
     </data>
     </url>
