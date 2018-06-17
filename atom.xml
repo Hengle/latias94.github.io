@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2018-04-13T04:45:53.868Z</updated>
+  <updated>2018-06-17T09:40:40.372Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2D 像素风平台游戏 Aretha’s Journey</title>
+    <link href="http://frankorz.com/2018/06/17/aretha-s-journey/"/>
+    <id>http://frankorz.com/2018/06/17/aretha-s-journey/</id>
+    <published>2018-06-17T09:38:10.000Z</published>
+    <updated>2018-06-17T09:40:40.372Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>继<a href="https://frankorz.com/2018/04/13/first-board-game/">《我设计的第一个桌游》</a>后，这次带来的是电子游戏的作业—— 2D像素平台游戏 Aretha’s Journey。</p>
+<h3 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h3><p>来自潘达尼亚的女孩 Aretha 已经离乡别井几年了，回乡之际，发现族人们都被神所诅咒而变成了石头，原因是他们的族人曾尝试反抗神。于是 Aretha 便踏上拯救家园之路……<br><a id="more"></a></p>
+<h3 id="游戏截图"><a href="#游戏截图" class="headerlink" title="游戏截图"></a>游戏截图</h3><p>美术风格采用了像素风，游戏一共有五关，第一关为教学关，第五关为 Boss 战，截图如下：</p>
+<p><img src="https://i.loli.net/2018/06/17/5b2624189ebf8.png" alt="Stage01"></p>
+<p><img src="https://i.loli.net/2018/06/17/5b2624185d904.png" alt="Stage02"></p>
+<p><img src="https://i.loli.net/2018/06/17/5b2624187816a.png" alt="Stage03"></p>
+<p><img src="https://i.loli.net/2018/06/17/5b262418800b1.png" alt="Stage04"></p>
+<p><img src="https://i.loli.net/2018/06/17/5b2624f413674.png" alt="Stage05"></p>
+<h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>游戏类型是常见的平台游戏。主角可以收集金币，去商人那购买”遗物”（Relic），遗物可以看做是一种装备，穿上能提供一些特殊增益，例如增加血上限、打怪吸血等。本来想设计成 Roguelike 中众多能提供不同能力的道具，但苦于时间不足，因此在游戏中只设计了几个能购买的遗物，有些遗物能在宝箱里面随机开出来。</p>
+<p>游戏地图是用 Unity 2017 的新特性 TileMap 做的，镜头使用 2D Cinemachine。现在回看作品，其实这一类型的游戏并不难，但是我们团队除了我都是第一次接触 Unity，踩过不少坑，也导致到 Due 的时候很多东西都没做完。</p>
+<p>我负责了游戏中除战斗系统外的编程任务，例如：Game Loop、Item Respawn、角色状态、背包系统等功能。可以说很多代码都是重用性很高的，但自己以前没有积累，所以做这游戏的时候也只能从零开始做，在编程中逐渐模块化系统代码。</p>
+<h3 id="Showcase"><a href="#Showcase" class="headerlink" title="Showcase"></a>Showcase</h3><p>不过很开心的是，游戏被入选到学校的 Student Games Showcase 里面，这个 Showcase 里还有其他同学期其他同学所做的优秀的游戏作品。大家有兴趣的话可以在这个网站查看2018年的入选游戏：<a href="http://www.gamesstudio.org/games" target="_blank" rel="external">Student Games</a> 。我们游戏在 Showcase 的评委投票和公开投票中都获得第二名的成绩，自己和小组都是很开心的~</p>
+<p><img src="https://i.loli.net/2018/06/17/5b262a27c0eb6.jpg" alt="猜猜我们组在哪~"></p>
+<p><img src="https://i.loli.net/2018/06/17/5b262a292f38c.jpg" alt="评委投票"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>游戏下载：<a href="https://github.com/Latias94/Aretha-s-Journey" target="_blank" rel="external">Aretha-s-Journey</a> </p>
+<p>总而言之，游戏设计课认识不少新朋友，也收获了很多，自己在游戏开发的路上又往前走了一步。</p>
+<p>Flag: 以后博客会更新得勤一些，学了啥就写啥，不能等到吃透了一个东西再放上来= =。</p>
+<blockquote>
+<p>Thank you for playing my game.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继&lt;a href=&quot;https://frankorz.com/2018/04/13/first-board-game/&quot;&gt;《我设计的第一个桌游》&lt;/a&gt;后，这次带来的是电子游戏的作业—— 2D像素平台游戏 Aretha’s Journey。&lt;/p&gt;
+&lt;h3 id=&quot;游戏背景&quot;&gt;&lt;a href=&quot;#游戏背景&quot; class=&quot;headerlink&quot; title=&quot;游戏背景&quot;&gt;&lt;/a&gt;游戏背景&lt;/h3&gt;&lt;p&gt;来自潘达尼亚的女孩 Aretha 已经离乡别井几年了，回乡之际，发现族人们都被神所诅咒而变成了石头，原因是他们的族人曾尝试反抗神。于是 Aretha 便踏上拯救家园之路……&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="游戏设计" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>我设计的第一个桌游</title>
@@ -1569,9 +1610,9 @@
     
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
-      <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
-    
       <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
+    
+      <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
     
   </entry>
   
@@ -2085,65 +2126,6 @@
       <category term="算法" scheme="http://frankorz.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="未完工" scheme="http://frankorz.com/tags/%E6%9C%AA%E5%AE%8C%E5%B7%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>macOS 代理解决方案</title>
-    <link href="http://frankorz.com/2016/10/06/proxy-methods/"/>
-    <id>http://frankorz.com/2016/10/06/proxy-methods/</id>
-    <published>2016-10-06T02:46:24.000Z</published>
-    <updated>2017-02-23T09:15:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c594c1a.png" alt=""><br><a id="more"></a></p>
-<h4 id="SpechtLite"><a href="#SpechtLite" class="headerlink" title="SpechtLite"></a>SpechtLite</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c6383e7.jpg" alt=""></p>
-<p>Specht 是 <a href="https://github.com/zhuhaow" target="_blank" rel="external">zhuhaow</a> 写的一款开源的基于 Network Extension 的 Mac 版代理。Specht 有两个版本，其中 <a href="https://github.com/zhuhaow/Specht" target="_blank" rel="external">Specht</a>是基于 Network Extension 的。可以自动设置代理，可以转发所有的 TCP 流，包括所有不支持代理的软件。但 Specht 需要有开发者帐号并且申请 Network Extension 自己编译使用，因此作者又提供了 <a href="https://github.com/zhuhaow/SpechtLite" target="_blank" rel="external">SpechtLite</a>，单方面代理功能和 Surge for Mac 相当，能自定义黑白域名和ip名单，支持http、https、shadowsocks、sock5等代理方式。</p>
-<p>如果你还在使用 shadowsocksX 或 shadowsocksX-R，不妨尝试下功能更丰富的 SpechtLite ，这里是<a href="https://github.com/zhuhaow/SpechtLite/releases" target="_blank" rel="external">下载地址</a>、<a href="https://github.com/zhuhaow/SpechtLite/wiki/如何配置Specht-Lite" target="_blank" rel="external">说明</a>和<a href="https://github.com/HoonHwang/SpechtLiteConf" target="_blank" rel="external">配置模板</a>。</p>
-<h5 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h5><p>我使用的是上面配置模板链接中的配置，下载之后把几个配置文件放入<code>~/.SpechtLite</code>中，修改之后在SpechtLite菜单中点击<code>reload config</code>，别忘了还要点击<code>Set as system log</code>设置为系统代理。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="attr">- id:</span> <span class="string">adapter1</span></div><div class="line">   <span class="comment"># 类型为HTTP代理服务器.</span></div><div class="line"><span class="attr">  type:</span> <span class="string">HTTP</span></div><div class="line"><span class="attr">  host:</span> <span class="string">http.proxy</span></div><div class="line"><span class="attr">  port:</span> <span class="number">3128</span></div><div class="line"><span class="attr">  auth:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  username:</span> <span class="string">proxy_username</span></div><div class="line"><span class="attr">  password:</span> <span class="string">proxy_password</span></div><div class="line"><span class="attr">- id:</span> <span class="string">adapter2</span></div><div class="line">   <span class="comment"># 类型为HTTP代理，但是使用SSL进行加密。</span></div><div class="line"><span class="attr">  type:</span> <span class="string">SHTTP</span></div><div class="line"><span class="attr">  host:</span> <span class="string">http.proxy.connect.via.https</span></div><div class="line"><span class="attr">  port:</span> <span class="number">3128</span></div><div class="line"><span class="attr">  auth:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  username:</span> <span class="string">proxy_username</span></div><div class="line"><span class="attr">  password:</span> <span class="string">proxy_password</span></div><div class="line"><span class="attr">- id:</span> <span class="string">adapter3</span></div><div class="line">  <span class="comment"># 类型为shadowsocks服务器。</span></div><div class="line"><span class="attr">  type:</span> <span class="string">ss</span></div><div class="line"><span class="attr">  host:</span> <span class="string">http.proxy.connect.via.https</span></div><div class="line"><span class="attr">  port:</span> <span class="number">3128</span></div><div class="line">  <span class="comment"># 当前支持的加密方法有: AES-128-CFB, AES-192-CFB, AES-256-CFB, chacha20, salsa20, rc4-md5</span></div><div class="line"><span class="attr">  method:</span> <span class="string">AES-128-CFB</span></div><div class="line"><span class="attr">  password:</span> <span class="string">ss_password</span></div><div class="line"><span class="attr">- id:</span> <span class="string">adapter4</span></div><div class="line"><span class="attr">  type:</span> <span class="string">socks5</span></div><div class="line"><span class="attr">  host:</span> <span class="string">socks5.server</span></div><div class="line"><span class="attr">  port:</span> <span class="number">3128</span></div></pre></td></tr></table></figure>
-<p>如果你只想使用其中的shadowsocks配置，请参考<code>adapter3</code>的<code>host</code>处填写服务器ip、<code>port</code>处填写端口、<code>method</code>参考注释填写加密方法、<code>password</code>处填写ss密码，然后把其他三个adapter项删掉，其他代理方法同理，下面的<code>speed</code>测速项也要对应修改有的<code>adapter</code>项。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="attr">rule:</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">iplist</span></div><div class="line">  <span class="comment"># 被污染的 host IP 地址</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/pollutedip</span></div><div class="line">  <span class="comment"># 我们要使用的adapter的id。</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">proxy</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">list</span></div><div class="line">  <span class="comment"># 直接连接给定的list文件中的正则表达式匹配域名信息（不包括IP）。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/directlist</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">direct</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">iplist</span></div><div class="line">  <span class="comment"># 直接连接基于给定的list文件中的ip范围。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/directiprange</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">direct</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">list</span></div><div class="line">  <span class="comment"># 代理连接给定的list文件中的正则表达式匹配域名信息（不包括IP）。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/proxylist</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">proxy</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">iplist</span></div><div class="line">  <span class="comment"># 连接基于给定的list文件中的ip范围。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/proxyiprange</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">proxy</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">list</span></div><div class="line">  <span class="comment"># 拒绝连接给定的list文件中的正则表达式匹配域名信息（不包括IP）。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/rejectlist</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">reject</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">iplist</span></div><div class="line">  <span class="comment"># 拒绝连接基于给定的list文件中的ip范围。</span></div><div class="line"><span class="attr">    file:</span> <span class="string">~/.SpechtLite/rejectiprange</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">reject</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">country</span></div><div class="line">  <span class="comment"># ISO 国家代码</span></div><div class="line">  <span class="comment"># 基于目标服务器的国家信息</span></div><div class="line"><span class="attr">    country:</span> <span class="string">CN</span></div><div class="line">  <span class="comment"># 这条规则是否匹配到符合这个国家的IP信息。</span></div><div class="line"><span class="attr">    match:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">direct</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">country</span></div><div class="line">  <span class="comment"># 当无法找到对应IP的地理位置信息时会返回“--”，这通常意味着这是一个内网IP。</span></div><div class="line"><span class="attr">    country:</span> <span class="bullet">--</span></div><div class="line"><span class="attr">    match:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">direct</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">DNSFail</span></div><div class="line">  <span class="comment"># 当DNS解析失败时匹配。</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">proxy</span></div><div class="line"><span class="attr">  - type:</span> <span class="string">all</span></div><div class="line">  <span class="comment"># 匹配所有的请求，建议为direct，需要走代理的网站写在proxylist中。</span></div><div class="line"><span class="attr">    adapter:</span> <span class="string">proxy</span></div></pre></td></tr></table></figure>
-<p>要修改规则的话可以直接去上面的路径修改，例如要走代理的域名按照下面正则的方式添加到<code>~/.SpechtLite/proxylist</code>。</p>
-<p><code>list</code>规则中的<code>file</code>是一组正则表达式，例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\.cn</div><div class="line">zhihu\.com  </div><div class="line">google</div></pre></td></tr></table></figure>
-<p>其中第二行 和 Surge 配置文件中<code>DOMAIN-SUFFIX</code>相似，第三行和 Surge 配置文件中<code>DOMAIN-KEYWORD</code>相似。</p>
-<ul>
-<li>注意如果 <code>Reload config</code> 时出错，请检查每项间隔有没有多余空格</li>
-</ul>
-<p>你也可以一个ss服务器一个项，这样就很像Surge for Mac了。</p>
-<p><img src="http://ooo.0o0.ooo/2016/10/06/57f606ca3ac40.jpg" alt=""></p>
-<p><img src="http://ooo.0o0.ooo/2016/10/06/57f606cb61d51.jpg" alt=""></p>
-<h5 id="添加测速"><a href="#添加测速" class="headerlink" title="添加测速"></a>添加测速</h5><p>如果你想实现自动选择最优线路，可以像我下面配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="attr">- id:</span> <span class="string">adapter1</span></div><div class="line"><span class="attr">  type:</span> <span class="string">ss</span></div><div class="line"><span class="attr">  host:</span> <span class="string">（ss</span> <span class="string">服务器地址）</span></div><div class="line"><span class="attr">  port:</span> <span class="string">（ss</span> <span class="string">端口）</span></div><div class="line"><span class="attr">  method:</span> <span class="string">（密码类型）</span></div><div class="line"><span class="attr">  password:</span> <span class="string">（ss</span> <span class="string">密码）</span></div><div class="line">   </div><div class="line"><span class="attr">- id:</span> <span class="string">adapter2</span></div><div class="line"><span class="attr">  type:</span> <span class="string">ss</span></div><div class="line"><span class="attr">  host:</span> <span class="string">（ss</span> <span class="string">服务器地址）</span></div><div class="line"><span class="attr">  port:</span> <span class="string">（ss</span> <span class="string">端口）</span></div><div class="line"><span class="attr">  method:</span> <span class="string">（密码类型）</span></div><div class="line"><span class="attr">  password:</span> <span class="string">（ss</span> <span class="string">密码）</span></div><div class="line">  </div><div class="line"><span class="attr">- id:</span> <span class="string">adapter3</span></div><div class="line"><span class="attr">  type:</span> <span class="string">ss</span></div><div class="line"><span class="attr">  host:</span> <span class="string">（ss</span> <span class="string">服务器地址）</span></div><div class="line"><span class="attr">  port:</span> <span class="string">（ss</span> <span class="string">端口）</span></div><div class="line"><span class="attr">  method:</span> <span class="string">（密码类型）</span></div><div class="line"><span class="attr">  password:</span> <span class="string">（ss</span> <span class="string">密码）</span></div><div class="line">  </div><div class="line"><span class="attr">- id:</span> <span class="string">proxy</span></div><div class="line"><span class="attr">  type:</span> <span class="string">SPEED</span></div><div class="line"><span class="attr">  adapters:</span></div><div class="line"><span class="attr">    - id:</span> <span class="string">adapter1</span></div><div class="line">    <span class="comment"># Delay in milliseconds.</span></div><div class="line"><span class="attr">      delay:</span> <span class="number">0</span></div><div class="line"><span class="attr">    - id:</span> <span class="string">adapter2</span></div><div class="line">    <span class="comment"># Delay in milliseconds.</span></div><div class="line"><span class="attr">      delay:</span> <span class="number">0</span></div><div class="line"><span class="attr">    - id:</span> <span class="string">adapter3</span></div><div class="line">    <span class="comment"># Delay in milliseconds.</span></div><div class="line"><span class="attr">      delay:</span> <span class="number">0</span></div></pre></td></tr></table></figure>
-<p>然后下面要走代理的 <code>rule</code> 项的 <code>adapter</code> 参数写 <code>proxy</code> 即可。</p>
-<h5 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h5><p>Chrome 需要安装 SwitchOmega 插件后选择系统代理使用。</p>
-<p><img src="http://ooo.0o0.ooo/2016/10/06/57f606cc988b8.jpg" alt=""></p>
-<h5 id="hosts"><a href="#hosts" class="headerlink" title="hosts"></a>hosts</h5><p>至于要用到 hosts 的话，你可以考虑走 hosts 的网站放进 directlist 中，再在 hosts 文件中添加配置。例如苹果服务可以通过 <a href="https://github.com/gongjianhui/AppleDNS" target="_blank" rel="external">AppleDNS</a> 配置进 hosts 中，然后在 directlist 中添加相应 Keyword。</p>
-<h5 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h5><p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c73da67.jpg" alt=""></p>
-<p>还有这个应用的Log文件不太准，一开始配置的时候就被坑了…像上图应该是<code>ShadowsocksAdapter</code>的这里却显示<code>DirectAdapter</code>，但是直连的话我是看不了Youtube的，真是迷呀。</p>
-<h4 id="iTerm-2"><a href="#iTerm-2" class="headerlink" title="iTerm 2"></a>iTerm 2</h4><p>在<code>~/.zshrc</code>中加入下面代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">where</span> proxy</span></div><div class="line">proxy () &#123;</div><div class="line">  export http_proxy="http://127.0.0.1:1086" # http代理地址</div><div class="line">  export https_proxy="http://127.0.0.1:1086" # https代理地址</div><div class="line">  echo "HTTP Proxy on"</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">where</span> noproxy</span></div><div class="line">noproxy () &#123;</div><div class="line">  unset http_proxy</div><div class="line">  unset https_proxy</div><div class="line">  echo "HTTP Proxy off"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果你想使用 SpechtLite 代理，可以把端口改成 SpechtLite 默认端口9090，修改后<code>source ~/.zshrc</code>就能使用了。</p>
-<p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c4f05a7.jpg" alt=""></p>
-<p>如果是终端.app的话需要自己复制export语句来使用代理。</p>
-<h4 id="其他选择"><a href="#其他选择" class="headerlink" title="其他选择"></a>其他选择</h4><ol>
-<li><a href="https://github.com/RobertYan/ShadowsocksX/releases" target="_blank" rel="external">ShadowsocksX</a></li>
-<li><a href="https://github.com/yichengchen/ShadowsocksX-R/releases" target="_blank" rel="external">ShadowsocksX-R</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ooo.0o0.ooo/2016/10/06/57f603c594c1a.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="工具癖" scheme="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-    
-    
-      <category term="macOS" scheme="http://frankorz.com/tags/macOS/"/>
-    
-      <category term="代理" scheme="http://frankorz.com/tags/%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   

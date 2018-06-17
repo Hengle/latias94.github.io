@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://frankorz.com/2018/06/17/aretha-s-journey/</loc>
+    <lastmod>2018-06-17T09:40:40.372Z</lastmod>
+    <data>
+        <display>
+        <title>2D 像素风平台游戏 Aretha’s Journey</title>
+        <pubTime>2018-06-17T09:38:10.000Z</pubTime>
+        
+        <tag>游戏设计</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://frankorz.com/2018/04/13/first-board-game/</loc>
     <lastmod>2018-04-13T04:45:53.868Z</lastmod>
     <data>
@@ -424,9 +441,9 @@
         
         <tag>Swift</tag>
          
-        <tag>Core Data</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>Core Data</tag>
          
          
            
