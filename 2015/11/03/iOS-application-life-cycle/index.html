@@ -130,7 +130,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -139,7 +139,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -148,7 +148,7 @@
         <li class="mobile-menu-item">
           
           
-            Tags
+            标签
           
         </li>
       </a>
@@ -157,7 +157,7 @@
         <li class="mobile-menu-item">
           
           
-            Categories
+            分类
           
         </li>
       </a>
@@ -187,7 +187,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -196,7 +196,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -205,7 +205,7 @@
           <a class="menu-item-link" href="/tags">
             
             
-              Tags
+              标签
             
           </a>
         </li>
@@ -214,7 +214,7 @@
           <a class="menu-item-link" href="/categories">
             
             
-              Categories
+              分类
             
           </a>
         </li>
@@ -271,7 +271,7 @@
     
     
   <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
+    <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用生命周期"><span class="toc-text">应用生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#五种状态"><span class="toc-text">五种状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iOS应用状态图"><span class="toc-text">iOS应用状态图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用回调的方法和本地通知"><span class="toc-text">应用回调的方法和本地通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用程序的运行状态"><span class="toc-text">应用程序的运行状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非运行状态——应用启动场景"><span class="toc-text">非运行状态——应用启动场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Active和Inactive的切换"><span class="toc-text">Active和Inactive的切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点击Home键——应用退出场景"><span class="toc-text">点击Home键——应用退出场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态跃迁的第一种情况"><span class="toc-text">状态跃迁的第一种情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#当应用程序进入后台时，我们应该做些什么呢？"><span class="toc-text">当应用程序进入后台时，我们应该做些什么呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用程序在后台时的内存使用"><span class="toc-text">应用程序在后台时的内存使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态跃迁的第二种情况"><span class="toc-text">状态跃迁的第二种情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#挂起重新运行场景"><span class="toc-text">挂起重新运行场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存清除——应用终止场景"><span class="toc-text">内存清除——应用终止场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
     </div>
@@ -280,7 +280,7 @@
 
     <div class="post-content">
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h2><p>作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h2><p>作为应用程序的委托对象，AppDelegate类在应用生命周期的不同阶段会回调不同的方法。</p>
 <a id="more"></a>
 <h3 id="五种状态"><a href="#五种状态" class="headerlink" title="五种状态"></a>五种状态</h3><p>iOS的应用程序一共有5种状态:</p>
 <ul>
@@ -294,7 +294,7 @@
 <h3 id="应用回调的方法和本地通知"><a href="#应用回调的方法和本地通知" class="headerlink" title="应用回调的方法和本地通知"></a>应用回调的方法和本地通知</h3><p>以下是状态跃迁过程中六个应用回调的方法和本地通知：</p>
 <p><img src="http://ooo.0o0.ooo/2016/09/30/57ede17d89308.jpg" alt=""></p>
 <h3 id="应用程序的运行状态"><a href="#应用程序的运行状态" class="headerlink" title="应用程序的运行状态"></a>应用程序的运行状态</h3><p>我们可以在“AppDelegate.m”文件中查看应用程序运行状态的方法，并为其添加日志输出，其中注释为官方注释，注意理解( ͒•ㅈ• ͒)</p>
-<figure class="highlight mm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> ()</span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AppDelegate</span></span></div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:</div><div class="line">(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</div><div class="line">    <span class="comment">// Override point for customization after application launch.</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"application:didFinishLaunchingWithOptions:"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)applicationWillResignActive:(<span class="built_in">UIApplication</span> *)application &#123;</div><div class="line">    <span class="comment">/* Sent when the application is about to move from active to inactive</span></div><div class="line"><span class="comment">    state. This can occur for certain types of temporary interruptions</span></div><div class="line"><span class="comment">    (such as an incoming phone call or SMS message) or when the user quits</span></div><div class="line"><span class="comment">    the application and it begins the transition to the background state.*/</span></div><div class="line">    <span class="comment">/* Use this method to pause ongoing tasks, disable timers,</span></div><div class="line"><span class="comment">    and throttle down OpenGL ES frame rates. Games should use this method</span></div><div class="line"><span class="comment">    to pause the game. */</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillResignActive:"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application &#123;</div><div class="line">    <span class="comment">/* Use this method to release shared resources, save user data,</span></div><div class="line"><span class="comment">    invalidate timers, and store enough application state information to</span></div><div class="line"><span class="comment">    restore your application to its current state in case it</span></div><div class="line"><span class="comment">    is terminated later.*/</span></div><div class="line">    <span class="comment">/* If your application supports background execution,</span></div><div class="line"><span class="comment">    this method is called instead of applicationWillTerminate:</span></div><div class="line"><span class="comment">    when the user quits.*/</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidEnterBackground:"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)applicationWillEnterForeground:(<span class="built_in">UIApplication</span> *)application &#123;</div><div class="line">    <span class="comment">/* Called as part of the transition from the background to the</span></div><div class="line"><span class="comment">    inactive state; here you can undo many of the changes made on</span></div><div class="line"><span class="comment">    entering the background.*/</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillEnterForeground:"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(<span class="built_in">UIApplication</span> *)application &#123;</div><div class="line">    <span class="comment">/* Restart any tasks that were paused (or not yet started) while</span></div><div class="line"><span class="comment">    the application was inactive. If the application was previously in</span></div><div class="line"><span class="comment">    the background, optionally refresh the user interface.*/</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidBecomeActive:"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)applicationWillTerminate:(<span class="built_in">UIApplication</span> *)application &#123;</div><div class="line">    <span class="comment">/* Called when the application is about to terminate.</span></div><div class="line"><span class="comment">    Save data if appropriate. See also</span></div><div class="line"><span class="comment">    applicationDidEnterBackground:.*/</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillTerminate:"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight mm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AppDelegate</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:</span><br><span class="line">(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"application:didFinishLaunchingWithOptions:"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillResignActive:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Sent when the application is about to move from active to inactive</span></span><br><span class="line"><span class="comment">    state. This can occur for certain types of temporary interruptions</span></span><br><span class="line"><span class="comment">    (such as an incoming phone call or SMS message) or when the user quits</span></span><br><span class="line"><span class="comment">    the application and it begins the transition to the background state.*/</span></span><br><span class="line">    <span class="comment">/* Use this method to pause ongoing tasks, disable timers,</span></span><br><span class="line"><span class="comment">    and throttle down OpenGL ES frame rates. Games should use this method</span></span><br><span class="line"><span class="comment">    to pause the game. */</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillResignActive:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationDidEnterBackground:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Use this method to release shared resources, save user data,</span></span><br><span class="line"><span class="comment">    invalidate timers, and store enough application state information to</span></span><br><span class="line"><span class="comment">    restore your application to its current state in case it</span></span><br><span class="line"><span class="comment">    is terminated later.*/</span></span><br><span class="line">    <span class="comment">/* If your application supports background execution,</span></span><br><span class="line"><span class="comment">    this method is called instead of applicationWillTerminate:</span></span><br><span class="line"><span class="comment">    when the user quits.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidEnterBackground:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillEnterForeground:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Called as part of the transition from the background to the</span></span><br><span class="line"><span class="comment">    inactive state; here you can undo many of the changes made on</span></span><br><span class="line"><span class="comment">    entering the background.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillEnterForeground:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Restart any tasks that were paused (or not yet started) while</span></span><br><span class="line"><span class="comment">    the application was inactive. If the application was previously in</span></span><br><span class="line"><span class="comment">    the background, optionally refresh the user interface.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationDidBecomeActive:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationWillTerminate:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">    <span class="comment">/* Called when the application is about to terminate.</span></span><br><span class="line"><span class="comment">    Save data if appropriate. See also</span></span><br><span class="line"><span class="comment">    applicationDidEnterBackground:.*/</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="string">@"applicationWillTerminate:"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p>打开程序：<br><img src="http://ooo.0o0.ooo/2016/09/30/57ede165e7a3a.jpg" alt=""></p>
 <p>按下Home键：<br><img src="http://ooo.0o0.ooo/2016/09/30/57ede168c2bcd.jpg" alt=""></p>
 <p>从界面重点图标打开程序：<br><img src="http://ooo.0o0.ooo/2016/09/30/57ede165d5aaf.jpg" alt=""></p>
@@ -358,7 +358,7 @@
 <h2 id="内存清除——应用终止场景"><a href="#内存清除——应用终止场景" class="headerlink" title="内存清除——应用终止场景"></a>内存清除——应用终止场景</h2><p>场景描述：应用在后台处理完成时进入挂起状态（这是一种休眠状态），如果这时发出低内存警告，为了满足其他应用对内存的需要，该应用就会被清除内存从而终止运行。</p>
 <p><img src="http://ooo.0o0.ooo/2016/09/30/57ede16925455.jpg" alt=""></p>
 <p>内存清除的时候应用终止运行。内存清除有两种情况，可能是系统强制清除内存，也可能是由使用者从任务栏中手动清除（即删掉应用）。内存清除后如果应用再次运行，上一次的运行状态不会被保存，相当于应用第一次运行。<br>在内存清除场景下，应用不会调用任何方法，也不会发出任何通知。</p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://blog.csdn.net/totogo2010/article/details/8048652" target="_blank" rel="external">iOS应用程序生命周期(前后台切换,应用的各种状态)详解</a><br>《iOS开发指南：从零基础到App Store上架（第2版 ）》</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://blog.csdn.net/totogo2010/article/details/8048652" target="_blank" rel="noopener">iOS应用程序生命周期(前后台切换,应用的各种状态)详解</a><br>《iOS开发指南：从零基础到App Store上架（第2版 ）》</p>
 
       
     </div>
@@ -369,15 +369,15 @@
 
   <div class="post-copyright">
     <p class="copyright-item">
-      <span>Author: </span>
+      <span>原文作者: </span>
       <a href="http://frankorz.com">猫冬</a>
     </p>
     <p class="copyright-item">
-      <span>Link: </span>
+      <span>原文链接: </span>
       <a href="http://frankorz.com/2015/11/03/iOS-application-life-cycle/">http://frankorz.com/2015/11/03/iOS-application-life-cycle/</a>
     </p>
     <p class="copyright-item">
-      <span>License: </span>
+      <span>许可协议: </span>
       
       <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
     </p>
@@ -407,13 +407,13 @@
       <a class="prev" href="/2016/02/04/阴历算法/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">阳历转阴历算法</span>
-        <span class="prev-text nav-mobile">Prev</span>
+        <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
       <a class="next" href="/2015/10/28/欢迎来到萤火之森/">
         <span class="next-text nav-default">欢迎来到萤火之森</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -487,11 +487,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
   <span class="division">|</span>
@@ -564,5 +564,5 @@
     <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
 <script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/"});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
 </html>
