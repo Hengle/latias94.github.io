@@ -110,7 +110,9 @@
 
 
     <title> Hexo 博客补丁 - 萤火之森 </title>
-  </head>
+  <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -274,7 +276,7 @@
 
     <div class="post-content">
       
-        <script src="\assets\js\APlayer.min.js"> </script><p>本博客部分修改内容</p>
+        <p>本博客部分修改内容</p>
 <p>注：原文的主题为 Next，现在在使用 Even，所以配置可能有些地方不一样。<br><a id="more"></a></p>
 <h3 id="小建议"><a href="#小建议" class="headerlink" title="小建议"></a>小建议</h3><p><code>hexo new &quot;标题&quot;</code> 的时候尽量取英文标题，在文章中再用 <code>title:</code> 指定中文标题，这样未来改标题好改，相应文章的多说评论也不会消失。</p>
 <h3 id="Github-Pages-中增加-README-md"><a href="#Github-Pages-中增加-README-md" class="headerlink" title="Github Pages 中增加 README.md"></a>Github Pages 中增加 README.md</h3><p>很多朋友的 hexo 博客都是建在 Github 上的，作为一个项目，<code>README.md</code>文件能够在 Github 上介绍博客的一些信息，但是贸然把文件放到 <code>source</code> 文件夹中会被 hexo 检测并转为 html 文档，我们在站点配置文件中跳过即可。</p>
@@ -327,74 +329,27 @@
 <p>例子：<br><script src="//gist.github.com/ebfae5e491e63bd58425b793596767e1.js"></script></p>
 <p>建议使用七牛云存文件，直接用文件外链来设置，其中歌词文件内容参照 lrc 格式填写。</p>
 <p><img src="http://ooo.0o0.ooo/2016/11/24/58367ff2a6f88.jpg" alt=""></p>
-<div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"><pre class="aplayer-lrc-content">[00:00.00]童话镇
-[00:05.00]演唱：陈一发儿
-[00:10.00]作曲 : 暗杠
-[00:15.00]作词 : 竹君
-[00:22.93]听说白雪公主在逃跑
-[00:26.43]小红帽在担心大灰狼
-[00:29.83]听说疯帽喜欢爱丽丝 
-[00:33.17]丑小鸭会变成白天鹅
-[00:36.34]听说彼得潘总长不大
-[00:40.23]杰克他有竖琴和魔法
-[00:43.56]听说森林里有糖果屋
-[00:46.82]灰姑娘丢了心爱的玻璃鞋
-[00:50.39]只有睿智的河水知道
-[00:53.68]白雪是因为贪玩跑出了城堡
-[00:57.31]小红帽有件抑制自己
-[01:00.73]变成狼的大红袍
-[01:03.80]总有一条蜿蜒在童话镇里七彩的河
-[01:11.00]沾染魔法的乖张气息
-[01:14.42]却又在爱里曲折
-[01:17.76]川流不息扬起水花
-[01:20.87]又卷入一帘时光入水
-[01:24.68]让所有很久很久以前
-[01:28.12]都走到幸福结局的时刻
-[01:33.18]music....
-[01:47.00]听说睡美人被埋藏
-[01:50.44]小人鱼在眺望金殿堂
-[01:53.79]听说阿波罗变成金乌
-[01:57.12]草原有奔跑的剑齿虎
-[02:00.73]听说匹诺曹总说着谎
-[02:04.16]侏儒怪拥有宝石满箱
-[02:07.57]听说悬崖有颗长生树
-[02:10.80]红鞋子不知疲倦地在跳舞
-[02:14.43]只有睿智的河水知道
-[02:17.84]睡美人逃避了生活的煎熬
-[02:21.14]小人鱼把阳光抹成眼影
-[02:24.58]投进泡沫的怀抱
-[02:27.77]总有一条蜿蜒在童话镇里七彩的河
-[02:35.06]沾染魔法的乖张气息
-[02:38.43]却又在爱里曲折
-[02:41.82]川流不息扬起水花
-[02:44.87]又卷入一帘时光入水
-[02:48.69]让所有很久很久以前
-[02:52.00]都走到幸福结局的时刻
-[02:55.46]总有一条蜿蜒在童话镇里梦幻的河
-[03:02.47]分隔了理想分隔现实
-[03:05.82]又在前方的山口汇合
-[03:09.22]川流不息扬起水花
-[03:12.36]又卷入一帘时光入水
-[03:16.23]让所有很久很久以前
-[03:19.38]都走到幸福结局的时刻
-[03:22.72]又陌生
-[03:24.52]啊~~啊~~啊~~啊~~</pre></div>
-		<script>
-			var ap = new APlayer({
-				element: document.getElementById("aplayer0"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 2,
-				music: {
-					title: "童话镇",
-					author: "陈一发儿",
-					url: "http://oelv7v3r6.bkt.clouddn.com/%E9%99%88%E4%B8%80%E5%8F%91%E5%84%BF%20-%20%E7%AB%A5%E8%AF%9D%E9%95%87.mp3",
-					pic: "http://p3.music.126.net/tfa811GLreJI_S0h9epqRA==/3394192426154346.jpg",
-				}
-			});
-			window.aplayers || (window.aplayers = []);
-			window.aplayers.push(ap);
-		</script>
+
+        <div id="aplayer-VMcqLTvc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-VMcqLTvc"),
+            narrow: false,
+            autoplay: false,
+            showlrc: 3,
+            music: {
+              title: "童话镇",
+              author: "陈一发儿",
+              url: "http://oelv7v3r6.bkt.clouddn.com/%E9%99%88%E4%B8%80%E5%8F%91%E5%84%BF%20-%20%E7%AB%A5%E8%AF%9D%E9%95%87.mp3",
+              pic: "http://p3.music.126.net/tfa811GLreJI_S0h9epqRA==/3394192426154346.jpg",
+              lrc: "http://oelv7v3r6.bkt.clouddn.com/lrc.txt"
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
 <h3 id="添加思维导图"><a href="#添加思维导图" class="headerlink" title="添加思维导图"></a>添加思维导图</h3><p>利用之前App store 限免过的iOS版 MindNode，制作完导图之后，选择在MyMindNode上共享。</p>
 <p><img src="http://ooo.0o0.ooo/2016/09/30/57ee83d2a3e7b.png" alt="IMG_0165"></p>
 <p>上传文件后得到网址，打开后选择右上角导出按钮-&gt;Embed。</p>

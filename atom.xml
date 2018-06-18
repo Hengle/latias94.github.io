@@ -22,7 +22,7 @@
     <published>2018-06-17T09:38:10.000Z</published>
     <updated>2018-06-18T01:36:20.866Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>继<a href="https://frankorz.com/2018/04/13/first-board-game/">《我设计的第一个桌游》</a>后，这次带来的是电子游戏的作业—— 2D像素平台游戏 Aretha’s Journey。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>继<a href="https://frankorz.com/2018/04/13/first-board-game/">《我设计的第一个桌游》</a>后，这次带来的是电子游戏的作业—— 2D像素平台游戏 Aretha’s Journey。</p>
 <h3 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h3><p>来自潘达尼亚的女孩 Aretha 已经离乡别井几年了，回乡之际，发现族人们都被神所诅咒而变成了石头，原因是他们的族人曾尝试反抗神。于是 Aretha 便踏上拯救家园之路……<br><a id="more"></a></p>
 <h3 id="游戏截图"><a href="#游戏截图" class="headerlink" title="游戏截图"></a>游戏截图</h3><p>美术风格采用了像素风，游戏一共有五关，第一关为教学关，第五关为 Boss 战，截图如下：</p>
 <p><img src="https://i.loli.net/2018/06/17/5b2624189ebf8.png" alt="Stage01"></p>
@@ -63,7 +63,7 @@
     <published>2018-04-13T04:45:07.000Z</published>
     <updated>2018-04-13T04:45:53.868Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>很久没写文章了，这次带来的是游戏设计课中的桌游大作业。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>很久没写文章了，这次带来的是游戏设计课中的桌游大作业。</p>
 <p>小组成员在第一节课就随机分好了，我们一开始选择每人准备一个桌游原型，然后共同选择一个原型来深入设计，最后一起选择了我的设计原型。<br><a id="more"></a></p>
 <h3 id="第一版设计"><a href="#第一版设计" class="headerlink" title="第一版设计"></a>第一版设计</h3><p><img src="https://i.loli.net/2018/04/13/5ad027ce886e5.png" alt="第一版地图"></p>
 <p>我的设计是：每个玩家初始有 4 HP，四个玩家从左下角通过掷骰子的方式在地图的点上往终点走，先到终点者胜，HP为零时需要从起点重新开始。地图中有四种不同功能的点，玩家到达某个点时会触发相应效果：</p>
@@ -126,7 +126,7 @@
     <published>2017-12-16T12:24:27.000Z</published>
     <updated>2017-12-17T03:46:22.916Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>最近开始接触寻路算法，对此不太了解的话建议读者先看这篇文章<a href="http://www.gameres.com/777251.html" target="_blank" rel="noopener">《如何快速找到最优路线？深入理解游戏中寻路算法》</a> 。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近开始接触寻路算法，对此不太了解的话建议读者先看这篇文章<a href="http://www.gameres.com/777251.html" target="_blank" rel="noopener">《如何快速找到最优路线？深入理解游戏中寻路算法》</a> 。</p>
 <blockquote>
 <p>所有寻路算法都需要一种方法以数学的方式估算某个节点是否应该被选择。大多数游戏都会使用<strong>启发式</strong>（heuristic） ，以 h(x) 表示，就是估算从某个位置到目标位置的开销。理想情况下，启发式结果越接近真实越好。</p>
 <p>——《游戏编程算法与技巧》</p>
@@ -186,7 +186,7 @@
     <published>2017-09-24T07:13:49.000Z</published>
     <updated>2018-01-15T07:17:52.658Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
 <h2 id="平移（Translation）"><a href="#平移（Translation）" class="headerlink" title="平移（Translation）"></a>平移（Translation）</h2><p>前一篇文章总结了旋转、缩放等变换，这里介绍一下平移变换。</p>
 <p>假如我们需要把X坐标从 x 变换到 x+5，我们需要构造什么样的变换矩阵来实现平移呢？</p>
@@ -289,7 +289,7 @@
     <published>2017-09-22T01:05:50.000Z</published>
     <updated>2018-01-31T07:53:10.983Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
 <a id="more"></a>
 <h2 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h2><h3 id="点积（Dot-Product）"><a href="#点积（Dot-Product）" class="headerlink" title="点积（Dot Product）"></a>点积（Dot Product）</h3><p>将向量相乘得到一个标量<br>可以通过两个向量除以它们的模得到两个向量之间的夹角</p>
 <p>用途：</p>
@@ -363,7 +363,7 @@
     <published>2017-08-05T07:08:08.000Z</published>
     <updated>2017-08-05T07:08:33.534Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>用了几年苹果电脑之后，最近开始用回 Windows 系统，找到一些十分好用的效率向的工具，同时受 <a href="http://www.ituring.com.cn/article/469111" target="_blank" rel="noopener">效率必备，软件推荐</a> 启发，写篇文章推荐一下。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>用了几年苹果电脑之后，最近开始用回 Windows 系统，找到一些十分好用的效率向的工具，同时受 <a href="http://www.ituring.com.cn/article/469111" target="_blank" rel="noopener">效率必备，软件推荐</a> 启发，写篇文章推荐一下。</p>
 <a id="more"></a>
 <h2 id="ShareX"><a href="#ShareX" class="headerlink" title="ShareX"></a>ShareX</h2><p><a href="https://getsharex.com/" target="_blank" rel="noopener">ShareX</a> 是一款主打捕获屏幕、文件分享、和生产力的开源工具。下面是我用 ShareX 来录制软件界面的 GIF 动图，可以看看其丰富的功能。</p>
 <p><img src="https://i.loli.net/2017/08/05/59855a1a27551.gif" alt=""></p>
@@ -415,7 +415,7 @@
     <published>2017-08-04T01:01:58.000Z</published>
     <updated>2017-08-04T01:09:37.713Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>本文是为了响应图灵社区自己的兴趣爱好的撰文活动，搬来博客刷下活跃度。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>本文是为了响应图灵社区自己的兴趣爱好的撰文活动，搬来博客刷下活跃度。</p>
 <p><img src="https://i.loli.net/2017/08/03/5982fcf675064.png" alt="番茄土豆"></p>
 <a id="more"></a>
 <p>才发现自己的完成番茄数就在不久前破千了！趁着活动还在，来社区写一篇文章总结下。</p>
@@ -452,7 +452,7 @@
     <published>2017-06-30T23:06:19.000Z</published>
     <updated>2017-07-19T22:14:39.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h2 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h2><h3 id="学了-Python-基础就够了吗？"><a href="#学了-Python-基础就够了吗？" class="headerlink" title="学了 Python 基础就够了吗？"></a>学了 Python 基础就够了吗？</h3><p>前言的引言给出了答案：</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h2><h3 id="学了-Python-基础就够了吗？"><a href="#学了-Python-基础就够了吗？" class="headerlink" title="学了 Python 基础就够了吗？"></a>学了 Python 基础就够了吗？</h3><p>前言的引言给出了答案：</p>
 <blockquote>
 <p>要不这样吧，如果编程语言里有个地方你弄不明白，而正好又有个人用了这个功能，那就开枪把他打死。这比学习新特性要容易些，然后过不了多久，那些活下来的程序员就会开始用 0.9.6 版的 Python，而且他们只需要使用这个版本中易于理解的那一小部分就好了（眨眼） 。<br>—— Tim Peters<br>传奇的核心开发者， “Python 之禅”作者</p>
 </blockquote>
@@ -705,7 +705,7 @@
     <published>2017-04-29T05:48:53.000Z</published>
     <updated>2017-04-30T01:06:48.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>本文通过 Go 语言写几个简单的通信示例，从 TCP 服务器过渡到 HTTP 开发，从而简单介绍 net 包的运用。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>本文通过 Go 语言写几个简单的通信示例，从 TCP 服务器过渡到 HTTP 开发，从而简单介绍 net 包的运用。</p>
 <a id="more"></a>
 <h2 id="TCP-服务器"><a href="#TCP-服务器" class="headerlink" title="TCP 服务器"></a>TCP 服务器</h2><p>首先来看一个 TCP 服务器例子</p>
 <figure class="highlight go"><figcaption><span>tcp-write/main.go</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// net 包提供方便的工具用于 network I/O 开发，包括TCP/IP, UDP 协议等。</span></span><br><span class="line">	<span class="comment">// Listen 函数会监听来自 8080 端口的连接，返回一个 net.Listener 对象。</span></span><br><span class="line">	li, err := net.Listen(<span class="string">"tcp"</span>, <span class="string">":8080"</span>)</span><br><span class="line">	<span class="comment">// 错误处理</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Panic(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 释放连接，通过 defer 关键字可以让连接在函数结束前进行释放</span></span><br><span class="line">	<span class="comment">// 这样可以不关心释放资源的语句位置，增加代码可读性</span></span><br><span class="line">	<span class="keyword">defer</span> li.Close()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 不断循环，不断接收来自客户端的请求</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="comment">// Accept 函数会阻塞程序，直到接收到来自端口的连接</span></span><br><span class="line">		<span class="comment">// 每接收到一个链接，就会返回一个 net.Conn 对象表示这个连接</span></span><br><span class="line">		conn, err := li.Accept()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Println(err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 字符串写入到客户端</span></span><br><span class="line">		fmt.Fprintln(conn, <span class="string">"Hello from TCP server"</span>)</span><br><span class="line"></span><br><span class="line">		conn.Close()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -780,7 +780,7 @@
     <published>2017-04-03T04:39:18.000Z</published>
     <updated>2017-06-11T08:26:44.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><center><img src="https://ooo.0o0.ooo/2017/04/06/58e5cd73cf67c.png" alt=""></center>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><center><img src="https://ooo.0o0.ooo/2017/04/06/58e5cd73cf67c.png" alt=""></center>
 
 <p>之前在写移动应用的时候，深刻体会到自己很有必要学会写后端，于是进了 Golang 的坑。以下是我在学习的时候遇到的好资源（多为英文），先写在这里。</p>
 <a id="more"></a>
@@ -1033,7 +1033,7 @@
     <published>2017-03-28T21:13:14.000Z</published>
     <updated>2017-04-06T05:08:33.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>在图灵社区活动「分享学习方法」中写了这篇文章，现在搬运过来，浅浅地普及下慕课这种学习新方式和目前所选用的时间管理工具。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在图灵社区活动「分享学习方法」中写了这篇文章，现在搬运过来，浅浅地普及下慕课这种学习新方式和目前所选用的时间管理工具。</p>
 <a id="more"></a>
 <h2 id="MOOC"><a href="#MOOC" class="headerlink" title="MOOC"></a>MOOC</h2><p>我以前有过看视频学编程的时光，视频里老师写一点代码，我就写一点代码。如今想起来这种方法虽然浪费时间，但是对小白而言是一个很好的入门方法，能够有效的让小白熟悉 IDE 和手把手入门编程。</p>
 <p>MOOC 则是最近又让我眼前一亮的学习方式，其代表有：<a href="http://coursera.org" target="_blank" rel="noopener">Coursera</a>、<a href="http://edx.org" target="_blank" rel="noopener">Edx</a> 、<a href="http://cn.udacity.com" target="_blank" rel="noopener">Udacity</a>等。同样是看视频学习，Coursera 使用了短视频+限时作业+考试的方法来让学生能轻松上课的同时，用 deadline 督促学生。其次付费证书和其课堂论坛也是亮点，你上完一个课程，可以付费购买课程的证书以彰显你的努力，论坛则是开放给全球各地上同样一节课的学生。Coursera 里有部分课程都是有中文字幕的，例如普林斯顿大学的「<a href="https://www.coursera.org/learn/algorithms-part1" target="_blank" rel="noopener">Algorithms</a>」课。算法红宝书《算法（第4版）》的作者就是这门课的老师，Robert Sedgewick 老师在课程中给的图例和制作的动画都十分清晰精致，并且配合课件能循序渐进地分解算法。其中小课程一般一节讲一个算法或知识点，内容充实并且需要学生课下消化。这种方式和看《算法（第4版）》结合起来，学习效率事半功倍。PS：上课的同时也请完成红宝书中的课后练习。</p>
@@ -1073,7 +1073,7 @@
     <published>2017-02-20T11:00:02.000Z</published>
     <updated>2017-04-06T11:24:13.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="https://ooo.0o0.ooo/2017/02/21/58ac04972e7f3.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="https://ooo.0o0.ooo/2017/02/21/58ac04972e7f3.jpg" alt=""></p>
 <p>阅读《大话设计模式》和《精通 Swift 设计模式》中的装饰器模式，本文为笔记。</p>
 <a id="more"></a>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>装饰器模式，可以用于在运行时选择性地修改对象的行为，在处理无法修改的类时能发挥其强大的能力。</p>
@@ -1156,7 +1156,7 @@
     <published>2017-02-16T06:50:50.000Z</published>
     <updated>2017-02-16T10:20:04.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
 <p>又在 Coursera 里面选了门课坑自己</p>
 </blockquote>
 <p>最近又学了很多东西，其中记不住的做笔记记下来，这篇文章是为 Ruby on Rails 运用 MongoDB 做准备。</p>
@@ -1302,7 +1302,7 @@
     <published>2017-01-22T03:30:10.000Z</published>
     <updated>2017-02-23T09:14:42.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><em>大坑未填完，发布下博文降低罪恶感..</em></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><em>大坑未填完，发布下博文降低罪恶感..</em></p>
 <blockquote>
 <p>人生的意义就是不断地挖坑，并不断地去填补。<br>——猫冬</p>
 </blockquote>
@@ -1419,7 +1419,7 @@
     <published>2017-01-16T09:54:55.000Z</published>
     <updated>2017-02-23T09:14:39.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote><p>Core Data 应该被当成一个对象图管理系统来正确使用，得益于其内建的缓存和对象管理机制，它在很多方面比其他数据库实际上反而更快。抽象级别更高的 API 可以让你专注于优化 APP 里关键部分的性能，而不是从头一开始来实现如何持久化。</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote><p>Core Data 应该被当成一个对象图管理系统来正确使用，得益于其内建的缓存和对象管理机制，它在很多方面比其他数据库实际上反而更快。抽象级别更高的 API 可以让你专注于优化 APP 里关键部分的性能，而不是从头一开始来实现如何持久化。</p>
 <footer><strong>《Core Data》</strong><cite>ObjC中国</cite></footer></blockquote>
 <p>本文为《Core Data by Tutorials》笔记上篇，代码用 swift 3 编写。等这系列写完会根据 ObjC 的《Core Data》 补充笔记，另外也推荐斯坦福课程 <a href="https://itunes.apple.com/us/course/developing-ios-9-apps-swift/id1104579961" target="_blank" rel="noopener">Developing iOS 9 Apps with Swift</a> 中的第十课《Core Data》，用来大致地学习下 Core Data 重要的知识点，本文也有部分笔记参考了这课程。</p>
 <p>下面的代码只给其中关键部分，请指教。由于笔记是给自己看的，部分地方可能会跳跃性比较大。</p>
@@ -1623,7 +1623,7 @@
     <published>2016-11-05T12:19:01.000Z</published>
     <updated>2017-04-21T11:44:50.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>随着 Instapaper 宣布免费，我开始尝试使用这款应用。这款应用很适合我，唯独抓取的时候对知乎支持不太好，有强迫症的我尝试解决它，其中比较有效的方法是：右上角菜单「Safari 打开」-打开阅读器视图-发邮件至 Instapaper 邮箱。但是这依旧有点麻烦了，我后来找到 <a href="https://mercury.postlight.com" target="_blank" rel="noopener">Mercury</a> 这个服务，并用 Workflow 解决了这问题。<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>随着 Instapaper 宣布免费，我开始尝试使用这款应用。这款应用很适合我，唯独抓取的时候对知乎支持不太好，有强迫症的我尝试解决它，其中比较有效的方法是：右上角菜单「Safari 打开」-打开阅读器视图-发邮件至 Instapaper 邮箱。但是这依旧有点麻烦了，我后来找到 <a href="https://mercury.postlight.com" target="_blank" rel="noopener">Mercury</a> 这个服务，并用 Workflow 解决了这问题。<br><a id="more"></a></p>
 <h3 id="Workflow-特点"><a href="#Workflow-特点" class="headerlink" title="Workflow 特点"></a>Workflow 特点</h3><ul>
 <li>支持知乎答案抓取（答案太短可能会抓取失败）</li>
 <li>知乎专栏文章和其他网站直接原生添加到 Instapapaer</li>
@@ -1686,7 +1686,7 @@
     <published>2016-10-24T00:52:42.000Z</published>
     <updated>2016-11-01T15:20:58.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ooo.0o0.ooo/2016/10/24/580d9e54d12dd.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="http://ooo.0o0.ooo/2016/10/24/580d9e54d12dd.jpg" alt=""></p>
 <p>在生活中，我时不时会买一些书，包括电子书和实体书。随着书籍的增多，我作为一个工具控也有着自己一套管理书籍的方式，在这里与大家分享。</p>
 <p>本文不会涉及电子书解密与分享，仅作经验分享。<br><a id="more"></a></p>
 <h3 id="电子书"><a href="#电子书" class="headerlink" title="电子书"></a>电子书</h3><p>随着亚马逊的大力推广，我较关注的技术书也因其时效性多以电子书形式发布，电子书实际上占用了我生活中所购买书的一大部分。</p>
@@ -1770,7 +1770,7 @@
     <published>2016-10-21T04:32:50.000Z</published>
     <updated>2016-12-07T15:53:44.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ooo.0o0.ooo/2016/10/21/5809ed7f43054.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="http://ooo.0o0.ooo/2016/10/21/5809ed7f43054.jpg" alt=""></p>
 <blockquote><p>时间统计法-不是一个节俭的计划工作者的预算，而是向时间自我剖析，对时间的崇敬。</p>
 <footer><strong>《奇特的一生》</strong><cite>格拉宁</cite></footer></blockquote>
 <p>今天在 Next 上发现又一款时间追踪软件横空出世了，所以对几个 macOS 上的时间追踪软件做个总结。近年以来，可以看到很多时间方面的应用遍地开花：Todo 类、番茄钟、备忘事项、日历等等，可以看出来人们对自己的时间越来越看重，如何掌握和使用好碎片时间，是当今一个热门的主题。而时间追踪类软件是其中一个较低调的类别，我目前遇到的大多是帮助你知道时间是如何花掉的，所以这类软件还需要一个会分析时间的使用者。<br><a id="more"></a><br><img src="http://ooo.0o0.ooo/2016/10/21/5809ed777617a.png" alt="时间管理"></p>
@@ -1886,7 +1886,7 @@
     <published>2016-10-17T10:08:17.000Z</published>
     <updated>2017-04-06T11:44:20.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>以前跟着《第一行代码》入门 Android 的时候，学过几个解析 JSON 的方法，一个一个按 key 名找、建对象存等等，解析的工具也很多，以前对 JSON 不熟悉，这也浪费了我很多时间。现在刚入门 iOS 没多久就让我看到神器 JSONExport，解析 JSON 从此只是几行代码的事情~</p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>以前跟着《第一行代码》入门 Android 的时候，学过几个解析 JSON 的方法，一个一个按 key 名找、建对象存等等，解析的工具也很多，以前对 JSON 不熟悉，这也浪费了我很多时间。现在刚入门 iOS 没多久就让我看到神器 JSONExport，解析 JSON 从此只是几行代码的事情~</p>
 <p>JSONExport 是一个运行在 macOS 上通过 JSON 字符串转为 model 的开源工具，支持 Java、Objective-C 和 Swift。我发现了这工具之后忍不住用 Charles 到处抓 API 测试，这是后话~</p>
 <p>每次学完了都觉得很基础..还是记下来吧..<br><a id="more"></a></p>
 <h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>JSONExport 的项目地址在这：<a href="https://github.com/Ahmed-Ali/JSONExport" target="_blank" rel="noopener">JSONExport</a><br>不过项目需要自己编译，嫌麻烦的可以直接下载我汉化好的 <a href="https://pan.baidu.com/s/1dE4WX1J" target="_blank" rel="noopener">JSONExport</a> ，如果失效请在评论留言，下面是界面：</p>
@@ -1943,7 +1943,7 @@
     <published>2016-10-12T10:22:47.000Z</published>
     <updated>2016-10-13T23:44:39.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
 <p>未完工<br>尚缺 k-th Largest Element、Selection Sampling、Union-Find</p>
 </blockquote>
 <p><img src="http://ooo.0o0.ooo/2016/10/12/57fe492d1e042.jpg" alt=""></p>
