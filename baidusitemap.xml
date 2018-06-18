@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://frankorz.com/2018/06/17/aretha-s-journey/</loc>
-    <lastmod>2018-06-17T09:48:44.183Z</lastmod>
+    <lastmod>2018-06-18T01:36:20.866Z</lastmod>
     <data>
         <display>
-        <title>2D 像素风平台游戏 Aretha's Journey</title>
+        <title>2D 像素风平台游戏 Aretha’s Journey</title>
         <pubTime>2018-06-17T09:38:10.000Z</pubTime>
         
         <tag>游戏设计</tag>
@@ -194,11 +194,11 @@
         <title>《流畅的 Python》读书笔记</title>
         <pubTime>2017-06-30T23:06:19.000Z</pubTime>
         
-        <tag>读后感</tag>
+        <tag>笔记</tag>
          
         <tag>Python</tag>
          
-        <tag>笔记</tag>
+        <tag>读后感</tag>
          
          
            
@@ -356,9 +356,9 @@
         <title>装饰器模式（Swift）</title>
         <pubTime>2017-02-20T11:00:02.000Z</pubTime>
         
-        <tag>设计模式</tag>
-         
         <tag>Swift</tag>
+         
+        <tag>设计模式</tag>
          
          
            
