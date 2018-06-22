@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
+    
+    <lastmod>2018-06-22T13:22:20.458Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://frankorz.com/2018/04/13/first-board-game/</loc>
     
     <lastmod>2018-06-22T13:18:21.827Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://frankorz.com/2018/06/17/arethas-journey/</loc>
     
     <lastmod>2018-06-22T13:17:28.793Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
-    
-    <lastmod>2018-06-22T13:16:12.046Z</lastmod>
     
   </url>
   
