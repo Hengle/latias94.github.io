@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2018-06-23T01:18:04.707Z</updated>
+  <updated>2018-06-23T01:41:14.417Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://frankorz.com/2018/06/22/finite-state-machine-in-unity/"/>
     <id>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</id>
     <published>2018-06-22T08:19:31.000Z</published>
-    <updated>2018-06-23T01:18:04.707Z</updated>
+    <updated>2018-06-23T01:41:14.417Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近在阅读《游戏人工智能编程案例精粹（修订版）》，本文是书中第二章的一篇笔记。</p>
 <p>有限状态机（英语：Finite-state machine, 缩写：FSM），是一个被数学家用来解决问题的严格形式化的设备，在游戏业中也常见有限状态机的身影。</p>
@@ -44,7 +44,11 @@
 <li><strong>直觉性</strong>：人们总是自然地把事物思考为处在一种或另一种状态。人类并不是像有限状态机一样工作，但我们发现这种方式下考虑行为是很有用的，或者说我们能更好更容易地进行 AI 状态的分解和创建操作 AI 的规则，容易理解的概念也让程序员之间能更好地交流其设计。</li>
 <li><strong>灵活性</strong>：游戏 AI 的有限状态机能很容易地由程序员进行调整，增添新的状态和规则也很容易扩展一个 AI 的行为。</li>
 </ol>
-<p>有限状态机的缺点是：当状态过多时，难以维护代码。</p>
+<p>有限状态机的缺点是：</p>
+<ol>
+<li>当状态过多时，难以维护代码。</li>
+<li>《AI Game Development》的作者 Alex J. Champandard 发表过一篇文章<a href="http://aigamedev.com/open/article/fsm-age-is-over/" target="_blank" rel="noopener">《10 Reasons the Age of Finite State Machines is Over》</a></li>
+</ol>
 <h2 id="if-then-实现"><a href="#if-then-实现" class="headerlink" title="if-then 实现"></a>if-then 实现</h2><p>这是第一种实现有限状态机的方法，用一系列 if-then 语句或者 switch 语句来表达状态。</p>
 <p>下面拿那个只有三个状态的僵尸 AI 举例：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ZombieState</span><br><span class="line">&#123;</span><br><span class="line">    Chase, Attack, Die</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Zombie</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> ZombieState currentState;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (currentState)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ZombieState.Chase:</span><br><span class="line">                <span class="keyword">if</span> (currentHealth &lt;= <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    ChangeState(ZombieState.Die);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 玩家在攻击范围内则进入攻击状态</span></span><br><span class="line">                <span class="keyword">if</span> (PlayerInAttackRange())</span><br><span class="line">                &#123;</span><br><span class="line">                    ChangeState(ZombieState.Attack);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ZombieState.Attack:</span><br><span class="line">                <span class="keyword">if</span> (currentHealth &lt;= <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    ChangeState(ZombieState.Die);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (!PlayerInAttackRange())</span><br><span class="line">                &#123;</span><br><span class="line">                    ChangeState(ZombieState.Chase);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ZombieState.Die:</span><br><span class="line">                Debug.Log(<span class="string">"僵尸死亡"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这种写法能实现有限状态机，但当游戏对象复杂到一定程度时，case 就会变得特别多，使程序难以理解、调试。另外这种写法也不灵活，难以扩展超出它原始设定的范围。</p>
@@ -1804,9 +1808,9 @@
     
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
-      <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
-    
       <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
+    
+      <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
     
   </entry>
   
