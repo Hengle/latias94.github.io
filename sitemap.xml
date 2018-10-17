@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://frankorz.com/resume/index.html</loc>
+    
+    <lastmod>2018-10-17T07:04:31.748Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
     
     <lastmod>2018-06-26T02:52:24.118Z</lastmod>

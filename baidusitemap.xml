@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
     <lastmod>2018-06-26T02:52:24.118Z</lastmod>
@@ -212,9 +213,9 @@
         <title>《流畅的 Python》读书笔记</title>
         <pubTime>2017-06-30T23:06:19.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>笔记</tag>
+         
+        <tag>Python</tag>
          
         <tag>读后感</tag>
          
@@ -268,11 +269,11 @@
         <title>iOS学习资源集合</title>
         <pubTime>2016-09-24T00:11:01.000Z</pubTime>
         
-        <tag>Swift</tag>
-         
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
+         
+        <tag>Swift</tag>
          
          
            
@@ -349,9 +350,9 @@
         <title>用JSONExport一键生成JSON Model</title>
         <pubTime>2016-10-17T10:08:17.000Z</pubTime>
         
-        <tag>Swift</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>Swift</tag>
          
         <tag>JSON</tag>
          
@@ -432,9 +433,9 @@
         <title>iOS 动画笔记</title>
         <pubTime>2017-01-22T03:30:10.000Z</pubTime>
         
-        <tag>Swift</tag>
-         
         <tag>iOS</tag>
+         
+        <tag>Swift</tag>
          
         <tag>动画</tag>
          
@@ -456,11 +457,11 @@
         <title>Core Data 笔记[上篇]</title>
         <pubTime>2017-01-16T09:54:55.000Z</pubTime>
         
+        <tag>iOS</tag>
+         
         <tag>Swift</tag>
          
         <tag>Core Data</tag>
-         
-        <tag>iOS</tag>
          
          
            
