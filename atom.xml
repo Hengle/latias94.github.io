@@ -888,11 +888,11 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="读后感" scheme="http://frankorz.com/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
     
       <category term="Python" scheme="http://frankorz.com/tags/Python/"/>
     
-      <category term="读后感" scheme="http://frankorz.com/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
+      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -1341,9 +1341,9 @@
     </summary>
     
     
-      <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
-    
       <category term="设计模式" scheme="http://frankorz.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
   </entry>
   
@@ -1602,9 +1602,9 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
       <category term="动画" scheme="http://frankorz.com/tags/%E5%8A%A8%E7%94%BB/"/>
     
@@ -1806,11 +1806,11 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
       <category term="Core Data" scheme="http://frankorz.com/tags/Core-Data/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
   </entry>
   
@@ -2126,9 +2126,9 @@
       <category term="iOS基础" scheme="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
     
     
-      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
-    
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
+    
+      <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
     
       <category term="JSON" scheme="http://frankorz.com/tags/JSON/"/>
     
