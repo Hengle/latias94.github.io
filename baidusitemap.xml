@@ -1,578 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
-    
   <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
     <lastmod>2018-06-26T02:52:24.118Z</lastmod>
-    <data>
-        <display>
-        <title>Unity 中用有限状态机来实现一个 AI</title>
-        <pubTime>2018-06-22T08:19:31.000Z</pubTime>
-        
-        <tag>游戏开发</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2018/04/13/first-board-game/</loc>
     <lastmod>2018-06-22T13:18:21.827Z</lastmod>
-    <data>
-        <display>
-        <title>我设计的第一个桌游</title>
-        <pubTime>2018-04-13T04:45:07.000Z</pubTime>
-        
-        <tag>游戏设计</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2018/06/17/arethas-journey/</loc>
     <lastmod>2018-06-22T13:17:28.793Z</lastmod>
-    <data>
-        <display>
-        <title>2D 像素风平台游戏 Aretha’s Journey</title>
-        <pubTime>2018-06-17T09:38:10.000Z</pubTime>
-        
-        <tag>游戏设计</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2015/10/28/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E8%90%A4%E7%81%AB%E4%B9%8B%E6%A3%AE/</loc>
     <lastmod>2018-06-18T02:24:24.093Z</lastmod>
-    <data>
-        <display>
-        <title>欢迎来到萤火之森</title>
-        <pubTime>2015-10-28T08:45:22.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</loc>
     <lastmod>2018-01-31T07:53:10.983Z</lastmod>
-    <data>
-        <display>
-        <title>3D数学基础-向量运算基础和矩阵变换</title>
-        <pubTime>2017-09-22T01:05:50.000Z</pubTime>
-        
-        <tag>3D数学</tag>
-         
-        <tag>游戏开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="图形学" url="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/09/24/matrix-transformation-2/</loc>
     <lastmod>2018-01-15T07:17:52.658Z</lastmod>
-    <data>
-        <display>
-        <title>3D数学基础-矩阵变换（二）</title>
-        <pubTime>2017-09-24T07:13:49.000Z</pubTime>
-        
-        <tag>3D数学</tag>
-         
-        <tag>游戏开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="图形学" url="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/12/16/greedy-best-find-search/</loc>
     <lastmod>2017-12-17T03:46:22.916Z</lastmod>
-    <data>
-        <display>
-        <title>寻路算法-贪婪最佳优先算法</title>
-        <pubTime>2017-12-16T12:24:27.000Z</pubTime>
-        
-        <tag>游戏开发</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/08/05/recommandation-of-some-efficient-software/</loc>
     <lastmod>2017-08-05T07:08:33.534Z</lastmod>
-    <data>
-        <display>
-        <title>Windows 效率软件推荐</title>
-        <pubTime>2017-08-05T07:08:08.000Z</pubTime>
-        
-        <tag>效率</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/02/04/%E9%98%B4%E5%8E%86%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2017-08-04T01:11:38.401Z</lastmod>
-    <data>
-        <display>
-        <title>阳历转阴历算法</title>
-        <pubTime>2016-02-04T02:54:09.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2015/11/03/iOS-application-life-cycle/</loc>
     <lastmod>2017-08-04T01:11:08.742Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 应用程序生命周期</title>
-        <pubTime>2015-11-02T13:13:18.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS基础" url="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/08/04/my-reading-habit/</loc>
     <lastmod>2017-08-04T01:09:37.713Z</lastmod>
-    <data>
-        <display>
-        <title>自己的阅读兴趣</title>
-        <pubTime>2017-08-04T01:01:58.000Z</pubTime>
-        
-        <tag>学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/07/01/fluent-python-note/</loc>
     <lastmod>2017-07-19T22:14:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>《流畅的 Python》读书笔记</title>
-        <pubTime>2017-06-30T23:06:19.000Z</pubTime>
-        
-        <tag>笔记</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>读后感</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/09/30/Hexo-patch/</loc>
     <lastmod>2017-07-06T06:43:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo 博客补丁</title>
-        <pubTime>2016-09-30T12:46:29.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/04/03/go-learning-source/</loc>
     <lastmod>2017-06-11T08:26:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>Go 学习资源集合</title>
-        <pubTime>2017-04-03T04:39:18.000Z</pubTime>
-        
-        <tag>Go</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/09/24/iOS-learning-source/</loc>
     <lastmod>2017-05-06T02:10:22.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS学习资源集合</title>
-        <pubTime>2016-09-24T00:11:01.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS基础" url="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/04/29/go-from-tcp-to-http/</loc>
     <lastmod>2017-04-30T01:06:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>Go 语言的网络编程简介</title>
-        <pubTime>2017-04-29T05:48:53.000Z</pubTime>
-        
-        <tag>Go</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/11/05/workflow-of-zhihu-to-instapaper/</loc>
     <lastmod>2017-04-21T11:44:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>用 Workflow 把知乎答案存到 Instapaper</title>
-        <pubTime>2016-11-05T12:19:01.000Z</pubTime>
-        
-        <tag>Workflow</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具癖" url="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/01/rss-tutor/</loc>
     <lastmod>2017-04-10T05:53:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>打造属于自己的RSS源</title>
-        <pubTime>2016-10-01T09:25:18.000Z</pubTime>
-        
-        <tag>RSS</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具癖" url="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/17/powerful-jsonexport/</loc>
     <lastmod>2017-04-06T11:44:20.000Z</lastmod>
-    <data>
-        <display>
-        <title>用JSONExport一键生成JSON Model</title>
-        <pubTime>2016-10-17T10:08:17.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>iOS</tag>
-         
-        <tag>JSON</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS基础" url="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/02/20/decorator-in-swift/</loc>
     <lastmod>2017-04-06T11:24:13.000Z</lastmod>
-    <data>
-        <display>
-        <title>装饰器模式（Swift）</title>
-        <pubTime>2017-02-20T11:00:02.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>设计模式</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/03/29/mooc-and-pomotodo/</loc>
     <lastmod>2017-04-06T05:08:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>聊聊慕课与时间管理工具</title>
-        <pubTime>2017-03-28T21:13:14.000Z</pubTime>
-        
-        <tag>学习</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/06/proxy-methods/</loc>
     <lastmod>2017-02-23T09:15:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>macOS 代理解决方案</title>
-        <pubTime>2016-10-06T02:46:24.000Z</pubTime>
-        
-        <tag>macOS</tag>
-         
-        <tag>代理</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具癖" url="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/01/22/ios-animations-note/</loc>
     <lastmod>2017-02-23T09:14:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 动画笔记</title>
-        <pubTime>2017-01-22T03:30:10.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>iOS</tag>
-         
-        <tag>动画</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS基础" url="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/01/16/core-data-note-1/</loc>
     <lastmod>2017-02-23T09:14:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>Core Data 笔记[上篇]</title>
-        <pubTime>2017-01-16T09:54:55.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>Core Data</tag>
-         
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS基础" url="http://frankorz.com/categories/iOS%E5%9F%BA%E7%A1%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2017/02/16/mongodb_operate_in_irb/</loc>
     <lastmod>2017-02-16T10:20:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>IRB 中操作 MongoDB</title>
-        <pubTime>2017-02-16T06:50:50.000Z</pubTime>
-        
-        <tag>MongoDB</tag>
-         
-        <tag>Ruby</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/09/29/iPad-Pro%20study/</loc>
     <lastmod>2016-12-11T06:26:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>利用iPad Pro学习方面的探索</title>
-        <pubTime>2016-09-29T10:49:13.000Z</pubTime>
-        
-        <tag>iPad</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/21/new-time-tracking-app-on-macOS/</loc>
     <lastmod>2016-12-07T15:53:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>macOS 上的时间跟踪软件</title>
-        <pubTime>2016-10-21T04:32:50.000Z</pubTime>
-        
-        <tag>macOS</tag>
-         
-        <tag>APP</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具癖" url="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/24/manage-books-on-macOS/</loc>
     <lastmod>2016-11-01T15:20:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>macOS 上管理书的一些分享</title>
-        <pubTime>2016-10-24T00:52:42.000Z</pubTime>
-        
-        <tag>macOS</tag>
-         
-        <tag>APP</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具癖" url="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/12/Swift-Algorithms-1/</loc>
     <lastmod>2016-10-13T23:44:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift 算法查找篇笔记</title>
-        <pubTime>2016-10-12T10:22:47.000Z</pubTime>
-        
-        <tag>未完工</tag>
-         
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="Swift 算法" url="http://frankorz.com/categories/Swift-%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
+  </url>
 </urlset>
