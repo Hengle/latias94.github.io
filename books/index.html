@@ -257,7 +257,7 @@
   <article class="post">
     <div class="post-content">
       <blockquote>
-    <p>仓促本身就是最要不得的态度。当你做某件事的时候，一旦想要求快，就表示你再也不关心它，而想去做别的事。<cite>罗伯特 · M · 波西格 《禅与摩托车维修艺术》</cite></p>
+    <p>仓促本身就是最要不得的态度。当你做某件事的时候，一旦想要求快，就表示你再也不关心它，而想去做别的事。<br><cite>罗伯特 · M · 波西格 《禅与摩托车维修艺术》</cite></p>
 </blockquote>
 
 <style>
@@ -272,7 +272,7 @@
 }
 
 .hexo-douban-active {
-    background: #657b83;
+    background: #FBF6F5;
     color: #fff;
 }
 
@@ -322,7 +322,7 @@
 }
 
 .hexo-douban-button:hover {
-    background: #657b83;
+    background: #FBF6F5;
     color: #fff;
 }
 
@@ -525,7 +525,7 @@
     <div class="hexo-douban-info">
         <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/27102599/"> 编程风格</a></div>
         <div class="hexo-douban-meta">[美] Cristina Videira Lopes / 2017-8 人民邮电出版社
-            / 8.0 分
+            / 7.8 分
         </div>
         <div class="hexo-douban-meta">2017-09-14 / 编程</div>
         <div class="hexo-douban-comments"></div>
@@ -866,7 +866,7 @@ function urlify() {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     var divs = document.getElementsByClassName("hexo-douban-comments");
     Array.from(divs).forEach(div => {
-        div.innerHTML = div.innerHTML.replace(urlRegex, '<a href="$1">$1</a>');
+        div.innerHTML = div.innerHTML.replace(urlRegex, '<a href="$1" target="_Blank">$1</a>');
     });
 }
 var tabs = document.getElementsByClassName("hexo-douban-tab");
