@@ -257,8 +257,7 @@
   <article class="post">
     <div class="post-content">
       <blockquote>
-    <p>仓促本身就是最要不得的态度。当你做某件事的时候，一旦想要求快，就表示你再也不关心它，而想去做别的事。</p>
-    <cite>罗伯特 · M · 波西格 《禅与摩托车维修艺术》</cite>
+    <p>仓促本身就是最要不得的态度。当你做某件事的时候，一旦想要求快，就表示你再也不关心它，而想去做别的事。<cite>罗伯特 · M · 波西格 《禅与摩托车维修艺术》</cite></p>
 </blockquote>
 
 <style>
@@ -273,7 +272,7 @@
 }
 
 .hexo-douban-active {
-    background: #FBF6F5;
+    background: #657b83;
     color: #fff;
 }
 
@@ -323,7 +322,7 @@
 }
 
 .hexo-douban-button:hover {
-    background: #FBF6F5;
+    background: #657b83;
     color: #fff;
 }
 
@@ -723,7 +722,7 @@ http://frankorz.com/2017/07/01/fluent-python-note/</div>
             / 0.0 分
         </div>
         <div class="hexo-douban-meta">2017-06-13 / Python 编程 Web开发 / ★★★★☆ 推荐</div>
-        <div class="hexo-douban-comments">看的是图灵的翻译版，读后感在 http://www.ituring.com.cn/article/465904。</div>
+        <div class="hexo-douban-comments">看的是图灵的翻译版，读后感在 http://www.ituring.com.cn/article/465904</div>
     </div>
 </div>
 
@@ -863,13 +862,20 @@ function tabClick() {
         sibs[k].classList.add('hexo-douban-hide');
     }
 }
+function urlify() {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var divs = document.getElementsByClassName("hexo-douban-comments");
+    Array.from(divs).forEach(div => {
+        div.innerHTML = div.innerHTML.replace(urlRegex, '<a href="$1">$1</a>');
+    });
+}
 var tabs = document.getElementsByClassName("hexo-douban-tab");
 for (var i = 0; i < tabs.length; i++) {
     tabs[i].onclick = tabClick;
     tabs[i].onclick.apply(tabs[i]);
 }
 tabs[2].click();
-
+urlify();
     var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
 var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
 var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
