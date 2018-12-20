@@ -7,7 +7,7 @@
             "QualifiedName": "game.AnimSystem",
             "Description": "",
             "Source": {
-                "File": "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Assets/Pokemon/Scripts/AnimSystem.ts",
+                "File": "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Assets/Scripts/AnimSystem.ts",
                 "Line": 3,
                 "Character": 17
             }
@@ -17,7 +17,7 @@
             "QualifiedName": "game.MovementSystem",
             "Description": "New System",
             "Source": {
-                "File": "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Assets/Pokemon/Scripts/MovementSystem.ts",
+                "File": "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Assets/Scripts/MovementSystem.ts",
                 "Line": 4,
                 "Character": 17
             }
@@ -29,40 +29,40 @@
         {
             "Key": "tsconfig",
             "Description": "Time taken to read and parse the given tsconfig.json file",
-            "Duration": 253,
+            "Duration": 179,
             "Steps": 1
         },
         {
             "Key": "checksum",
             "Description": "Time taken to compute the MD5 of all inputs",
-            "Duration": 237,
+            "Duration": 218,
             "Steps": 1
         },
         {
             "Key": "compile",
             "Description": "Time taken to compile the TypeScript program",
-            "Duration": 1348,
+            "Duration": 786,
             "Steps": 11
         },
         {
             "Key": "emit",
             "Description": "Time taken to generate and write the JavaScript output",
-            "Duration": 101,
+            "Duration": 42,
             "Steps": 2
         },
         {
             "Key": "metadata",
             "Description": "Time taken to reflect Tiny metadata from the compiled program",
-            "Duration": 5,
+            "Duration": 3,
             "Steps": 2
         }
     ],
     "SourceFiles": [
-        "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Assets/Pokemon/Scripts/AnimSystem.ts",
-        "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Assets/Pokemon/Scripts/MovementSystem.ts",
-        "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Library/PackageCache/com.unity.tiny@0.13.4-preview/Runtime/Modules/UTiny.EntityGroup/Scripts/EntityGroup.ts",
-        "C:/Users/narut/Documents/Unity Project/Try Tiny Mode/Library/PackageCache/com.unity.tiny@0.13.4-preview/Runtime/Modules/UTiny.EntityGroup/Scripts/EntityLookupCache.ts"
+        "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Assets/Scripts/AnimSystem.ts",
+        "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Assets/Scripts/MovementSystem.ts",
+        "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Library/PackageCache/com.unity.tiny@0.13.4-preview/Runtime/Modules/UTiny.EntityGroup/Scripts/EntityGroup.ts",
+        "C:/Users/narut/Documents/Unity Project/Tiny Pokemon/Library/PackageCache/com.unity.tiny@0.13.4-preview/Runtime/Modules/UTiny.EntityGroup/Scripts/EntityLookupCache.ts"
     ],
-    "InputHash": "18dd2377a83df3b0756aa161328be21c",
-    "GeneratedAt": "Wed Dec 19 2018 23:33:24 GMT+0800 (中国标准时间)"
+    "InputHash": "a19306afd96109d1326c3da3a0c4c31e",
+    "GeneratedAt": "Thu Dec 20 2018 22:37:02 GMT+0800 (中国标准时间)"
 }
