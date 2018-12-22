@@ -11,6 +11,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var game;
 (function (game) {
     var AnimSystem = /** @class */ (function (_super) {
@@ -62,6 +68,113 @@ var game;
         return AnimSystem;
     }(ut.ComponentSystem));
     game.AnimSystem = AnimSystem;
+})(game || (game = {}));
+var game;
+(function (game) {
+    var AudioService = /** @class */ (function () {
+        function AudioService() {
+        }
+        AudioService.playAudioSourceByName = function (world, name) {
+            var entity = world.getEntityByName(name);
+            if (entity.isNone()) {
+                console.error("AudioService cannot find the entity with the name '" + name + "'");
+                return;
+            }
+            AudioService.playAudioSource(world, entity);
+        };
+        AudioService.playAudioSource = function (world, entity) {
+            if (!world.hasComponent(entity, ut.Audio.AudioSource)) {
+                console.error("AudioService Entity " + world.getEntityName(entity) + " does not have an AudioSource component");
+                return;
+            }
+            if (!world.hasComponent(entity, ut.Audio.AudioSourceStart)) {
+                world.addComponent(entity, ut.Audio.AudioSourceStart);
+            }
+        };
+        return AudioService;
+    }());
+    game.AudioService = AudioService;
+})(game || (game = {}));
+var game;
+(function (game) {
+    var GameManagerSystem = /** @class */ (function (_super) {
+        __extends(GameManagerSystem, _super);
+        function GameManagerSystem() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        GameManagerSystem.prototype.OnUpdate = function () {
+            var config = this.world.getConfigData(game.GameConfig);
+            switch (config.state) {
+                case game.GameState.Initialize:
+                    {
+                        game.GameService.startMenu(this.world);
+                    }
+                    break;
+                case game.GameState.Start: {
+                    // TODO 开始界面
+                    if (ut.Runtime.Input.getKeyDown(ut.Core2D.KeyCode.Space)) {
+                        game.GameService.newGame(this.world);
+                    }
+                }
+                case game.GameState.Menu:
+                    {
+                        // TODO Menu
+                    }
+                    break;
+                case game.GameState.Play:
+                    {
+                    }
+                    break;
+                case game.GameState.Exit:
+                    {
+                        // TODO Exit game
+                    }
+                    break;
+            }
+        };
+        GameManagerSystem = __decorate([
+            ut.executeAfter(ut.Shared.UserCodeStart),
+            ut.executeBefore(ut.Shared.UserCodeEnd)
+        ], GameManagerSystem);
+        return GameManagerSystem;
+    }(ut.ComponentSystem));
+    game.GameManagerSystem = GameManagerSystem;
+})(game || (game = {}));
+var game;
+(function (game) {
+    var GameService = /** @class */ (function () {
+        function GameService() {
+        }
+        /*
+         * Clear all entities and prepare for new game
+         */
+        // static clear(world: ut.World) {
+        //     ut.EntityGroup.destroyAll(world, this.StartSceneName);
+        //     ut.EntityGroup.destroyAll(world, this.PlaySceneName);
+        //     ut.EntityGroup.destroyAll(world, this.GameExitSceneName);
+        // }
+        GameService.startMenu = function (world) {
+            ut.EntityGroup.instantiate(world, this.StartSceneName);
+            this.setGameState(world, game.GameState.Start);
+        };
+        GameService.newGame = function (world) {
+            ut.EntityGroup.destroyAll(world, this.StartSceneName);
+            game.AudioService.playAudioSourceByName(world, 'audio/bgm');
+            // restart game, maybe add some feature to save player state
+            ut.EntityGroup.instantiate(world, this.PlaySceneName);
+            this.setGameState(world, game.GameState.Play);
+        };
+        GameService.setGameState = function (world, state) {
+            var config = world.getConfigData(game.GameConfig);
+            config.state = state;
+            world.setConfigData(config);
+        };
+        GameService.StartSceneName = 'game.Start';
+        GameService.PlaySceneName = 'game.GameScene';
+        GameService.GameExitSceneName = 'game.GameExit';
+        return GameService;
+    }());
+    game.GameService = GameService;
 })(game || (game = {}));
 var game;
 (function (game) {
