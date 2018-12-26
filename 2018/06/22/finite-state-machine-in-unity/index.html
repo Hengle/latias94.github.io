@@ -38,19 +38,22 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
 
 
 
 <link rel="canonical" href="http://frankorz.com/2018/06/22/finite-state-machine-in-unity/"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
-
-
 
   <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
 
 
 
@@ -67,15 +70,15 @@
 
 
 
-  <script id="google_analytics">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        ga('create', 'UA-69634396-1', 'auto');
-        ga('send', 'pageview');
-  </script>
+  gtag('config', 'UA-69634396-1');
+</script>
 
 
   <script id="baidu_push">
@@ -108,6 +111,10 @@
 
 
 
+
+<script>
+  window.config = {"leancloud":{"app_id":"v6QgYmEcmbiM4ijI41WdeQSg-gzGzoHsz","app_key":"Kfe1eyGyevT3hHuiDfm8Hw1G"},"toc":true,"fancybox":true,"pjax":""};
+</script>
 
     <title> Unity 中用有限状态机来实现一个 AI - 萤火之森 </title>
   </head>
@@ -271,11 +278,11 @@
         </span>
         
         
-        <div class="post-visits"
+        <span class="post-visits"
              data-url="/2018/06/22/finite-state-machine-in-unity/"
              data-title="Unity 中用有限状态机来实现一个 AI">
-            阅读次数
-          </div>
+          阅读次数 0
+        </span>
         
       </div>
     </header>
@@ -288,6 +295,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-then-实现"><span class="toc-text">if-then 实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态变换表"><span class="toc-text">状态变换表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置规则"><span class="toc-text">内置规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#West-World-项目"><span class="toc-text">West World 项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Base-Game-Entity-类"><span class="toc-text">Base Game Entity 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Miner-类"><span class="toc-text">Miner 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Miner-状态"><span class="toc-text">Miner 状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#再谈状态设计模式"><span class="toc-text">再谈状态设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使-State-基类可重用"><span class="toc-text">使 State 基类可重用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态翻转（State-Blip）"><span class="toc-text">状态翻转（State Blip）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StateMachine-类"><span class="toc-text">StateMachine 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新人物-Elsa"><span class="toc-text">新人物 Elsa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息功能"><span class="toc-text">消息功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Telegram-结构"><span class="toc-text">Telegram 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送消息"><span class="toc-text">发送消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理消息"><span class="toc-text">处理消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol>
     </div>
   </div>
+
 
 
     <div class="post-content">
@@ -516,6 +524,7 @@
     
   </nav>
 
+
       </footer>
     
 
@@ -579,11 +588,16 @@
     
       
     
+      
     
+      
+    
+
     
       <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     
   </div>
+
 
 
 <div class="copyright">
@@ -639,6 +653,9 @@
     })();  
   </script>
 
+  
+
+  
 
 
 
@@ -649,8 +666,10 @@
 
 
 
+
+
   
-    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   
 
   
@@ -661,9 +680,12 @@
     <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   
 
+  
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
 
   <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

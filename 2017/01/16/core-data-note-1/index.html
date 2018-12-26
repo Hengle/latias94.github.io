@@ -38,19 +38,22 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
 
 
 
 <link rel="canonical" href="http://frankorz.com/2017/01/16/core-data-note-1/"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
-
-
 
   <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
 
 
 
@@ -67,15 +70,15 @@
 
 
 
-  <script id="google_analytics">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        ga('create', 'UA-69634396-1', 'auto');
-        ga('send', 'pageview');
-  </script>
+  gtag('config', 'UA-69634396-1');
+</script>
 
 
   <script id="baidu_push">
@@ -108,6 +111,10 @@
 
 
 
+
+<script>
+  window.config = {"leancloud":{"app_id":"v6QgYmEcmbiM4ijI41WdeQSg-gzGzoHsz","app_key":"Kfe1eyGyevT3hHuiDfm8Hw1G"},"toc":true,"fancybox":true,"pjax":""};
+</script>
 
     <title> Core Data 笔记[上篇] - 萤火之森 </title>
   </head>
@@ -270,18 +277,18 @@
           2017-01-16
         </span>
         
-          <div class="post-category">
+          <span class="post-category">
             
               <a href="/categories/iOS基础/">iOS基础</a>
             
-          </div>
+          </span>
         
         
-        <div class="post-visits"
+        <span class="post-visits"
              data-url="/2017/01/16/core-data-note-1/"
              data-title="Core Data 笔记[上篇]">
-            阅读次数
-          </div>
+          阅读次数 0
+        </span>
         
       </div>
     </header>
@@ -294,6 +301,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保存数据"><span class="toc-text">保存数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提取数据"><span class="toc-text">提取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSManagedObject-子类"><span class="toc-text">NSManagedObject 子类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传递-viewContext"><span class="toc-text">传递 viewContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索"><span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#校验数据"><span class="toc-text">校验数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-Data-Stack"><span class="toc-text">Core Data Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-persistent-store"><span class="toc-text">The persistent store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-persistent-store-coordinator"><span class="toc-text">The persistent store coordinator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-managed-object-context"><span class="toc-text">The managed object context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-persistent-store-container"><span class="toc-text">The persistent store container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例：遛狗"><span class="toc-text">实例：遛狗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Intermediate-Fetching"><span class="toc-text">Intermediate Fetching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSFetchRequest"><span class="toc-text">NSFetchRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取不同结果的类型"><span class="toc-text">获取不同结果的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#例如：获取其数量！"><span class="toc-text">例如：获取其数量！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例如：获取后计算！"><span class="toc-text">例如：获取后计算！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#managedObjectResultType"><span class="toc-text">managedObjectResultType</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Faulting"><span class="toc-text">Faulting</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步获取数据"><span class="toc-text">异步获取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量更新-Batch-updates"><span class="toc-text">批量更新(Batch updates)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量删除"><span class="toc-text">批量删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSFetchedResultsController"><span class="toc-text">NSFetchedResultsController</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例：世界杯"><span class="toc-text">实例：世界杯</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#section"><span class="toc-text">section</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存"><span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据控制"><span class="toc-text">数据控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#未完待续"><span class="toc-text">未完待续</span></a></li></ol>
     </div>
   </div>
+
 
 
     <div class="post-content">
@@ -535,6 +543,7 @@
     
   </nav>
 
+
       </footer>
     
 
@@ -598,11 +607,16 @@
     
       
     
+      
     
+      
+    
+
     
       <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     
   </div>
+
 
 
 <div class="copyright">
@@ -658,6 +672,9 @@
     })();  
   </script>
 
+  
+
+  
 
 
 
@@ -668,8 +685,10 @@
 
 
 
+
+
   
-    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   
 
   
@@ -680,9 +699,12 @@
     <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   
 
+  
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
 
   <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
