@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/</loc>
+    <lastmod>2019-01-06T12:52:55.911Z</lastmod>
+  </url>  <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
-    <lastmod>2018-06-26T02:52:24.118Z</lastmod>
+    <lastmod>2019-01-06T12:52:05.712Z</lastmod>
   </url>  <url>
     <loc>http://frankorz.com/2018/04/13/first-board-game/</loc>
     <lastmod>2018-06-22T13:18:21.827Z</lastmod>

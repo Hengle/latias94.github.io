@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://frankorz.com/resume/index.html</loc>
+    <loc>http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/</loc>
     
-    <lastmod>2018-10-17T07:07:33.214Z</lastmod>
+    <lastmod>2019-01-06T12:52:55.911Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>
     
-    <lastmod>2018-06-26T02:52:24.118Z</lastmod>
+    <lastmod>2019-01-06T12:52:05.712Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://frankorz.com/resume/index.html</loc>
+    
+    <lastmod>2018-10-17T07:07:33.214Z</lastmod>
     
   </url>
   

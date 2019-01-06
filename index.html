@@ -36,7 +36,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2" />
 
 
 
@@ -51,7 +51,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2" />
 
 
 
@@ -270,6 +270,76 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2019/01/06/hotfix-introduction-of-unity-et-framework/">Unity 开源双端框架 ET 中初尝热更新技术</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-01-06
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/游戏开发/">游戏开发</a>
+            
+          </span>
+        
+        
+        <span class="post-visits"
+             data-url="/2019/01/06/hotfix-introduction-of-unity-et-framework/"
+             data-title="Unity 开源双端框架 ET 中初尝热更新技术">
+          阅读次数 0
+        </span>
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="ET-框架简介"><a href="#ET-框架简介" class="headerlink" title="ET 框架简介"></a>ET 框架简介</h2><p>正所谓时势造英雄，在 Web 开发领域或者传统软件开发领域中，人们把经过千锤百炼的代码总结出一套开发框架，从而提高开发效率，让开发者能更专注于业务本身。对于游戏领域而言，不同游戏需求的东西也不一样：有的游戏对性能有着苛刻要求，有的游戏需要快速地迭代出来，有的游戏需要联网热更新等等。因此不同的游戏框架应运而生。</p>
+<p>例如：</p>
+<ul>
+<li><a href="https://github.com/EllanJiang/GameFramework" target="_blank" rel="noopener">Game Framework</a> 是一个基于 Unity 引擎的游戏框架，主要对游戏开发过程中常用模块进行了封装，很大程度地规范开发过程、加快开发速度并保证产品质量。</li>
+<li><a href="https://github.com/liangxiegame/QFramework" target="_blank" rel="noopener">QFramework</a> 一套渐进式的快速开发框架。框架内部积累了多个项目的在各个技术方向的解决方案。</li>
+<li><a href="https://github.com/sschmid/Entitas-CSharp" target="_blank" rel="noopener">Entitas</a> 一套基于 C# 和 Unity 的实体组件系统。</li>
+<li><a href="https://github.com/Unity-Technologies/EntityComponentSystemSamples" target="_blank" rel="noopener">Entities</a> Unity 官方的实体组件系统实现，不过还是 Beta 版本，详细介绍可以查看<a href="https://unity.com/unity/features/job-system-ECS" target="_blank" rel="noopener">官网</a>。</li>
+<li><a href="https://github.com/strangeioc/strangeioc" target="_blank" rel="noopener">StrangeIoC</a> 一套基于 C# 和 Unity 的控制反转 (Inversion-of-Control) 框架。</li>
+</ul>
+<p>今天介绍的是 ET 框架。</p>
+<blockquote>
+<p>ET是一个开源的游戏客户端（基于unity3d）服务端双端框架，服务端是使用C# .net core开发的分布式游戏服务端，其特点是开发效率高，性能强，双端共享逻辑代码，客户端服务端热更机制完善，同时支持可靠udp tcp websocket协议，支持服务端3D recast寻路等等</p>
+</blockquote>
+<p>ET 框架能让我们只用 C# 就能搞定前后端，热更新方面也采用了基于 C# 的 IL 运行时——<a href="https://ourpalm.github.io/ILRuntime/" target="_blank" rel="noopener">ILRuntime</a>， 贯彻了 “珍爱生命，远离 Lua” 这句话。目前自己接触的大多是客户端部分，因此服务器方面不做介绍。<br>
+          <div class="read-more">
+            <a href="/2019/01/06/hotfix-introduction-of-unity-et-framework/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+      
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2018/06/22/finite-state-machine-in-unity/">Unity 中用有限状态机来实现一个 AI</a>
         
       </h1>
@@ -278,6 +348,12 @@
         <span class="post-time">
           2018-06-22
         </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/游戏开发/">游戏开发</a>
+            
+          </span>
         
         
         <span class="post-visits"
@@ -753,57 +829,6 @@
   </article>
 
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/04/29/go-from-tcp-to-http/">Go 语言的网络编程简介</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-04-29
-        </span>
-        
-        
-        <span class="post-visits"
-             data-url="/2017/04/29/go-from-tcp-to-http/"
-             data-title="Go 语言的网络编程简介">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>本文通过 Go 语言写几个简单的通信示例，从 TCP 服务器过渡到 HTTP 开发，从而简单介绍 net 包的运用。</p>
-          <div class="read-more">
-            <a href="/2017/04/29/go-from-tcp-to-http/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
       
   <nav class="pagination">
     
@@ -896,7 +921,7 @@
      
       2015 - 
     
-    2018
+    2019
 
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -941,7 +966,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
   <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
