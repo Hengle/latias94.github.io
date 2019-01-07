@@ -348,7 +348,7 @@
 <p>游戏运行后，在 Hierarchy 界面中也可以看到组件的结构，其中 <code>uilogin.unity3d</code> 就是登陆界面的 AB 包引用：</p>
 <p><img src="https://i.loli.net/2019/01/05/5c30bd561727f.png" alt=""></p>
 <p>这就是通过热更新逻辑生成的界面，也就是说，上面的代码让我们可以通过热更新来给应用加载各种界面和改写页面跳转逻辑，当然还可以通过热更来增加修改游戏逻辑和功能。</p>
-<p>如果不喜欢这种页面加载方式，可以考虑不使用 <code>Hotfix/Init.cs</code> 中的 <code>Game.Scene.AddComponent&lt;UIComponent&gt;();</code> 这个 UIComponent，而使用其他 UI 组件，例如 <a href="https://github.com/egametang/ET-Modules" target="_blank" rel="noopener">ET-Modules</a> 中的 FairyGUI 组件，让 FairyGUI 来单独负责 UI 界面。这里也可以看出基于组件的框架的灵活性，我以后也会出文章单独介绍 FairyGUI。</p>
+<p>如果不喜欢这种页面加载方式，可以考虑不使用 <code>Hotfix/Init.cs</code> 中的 <code>Game.Scene.AddComponent&lt;UIComponent&gt;();</code> 这个 UIComponent，而使用其他 UI 组件，例如主仓库中的 FairyGUI 分支，让 FairyGUI 来单独负责 UI 界面。这里也可以看出基于组件的框架的灵活性，我以后也会出文章单独介绍 FairyGUI。</p>
 <h2 id="热更新切换"><a href="#热更新切换" class="headerlink" title="热更新切换"></a>热更新切换</h2><p>首先看看作者的介绍：</p>
 <blockquote>
 <p>7.客户端热更新一键切换<br>因为ios的限制，之前unity热更新一般使用lua，导致unity3d开发人员要写两种代码，麻烦的要死。之后幸好出了ILRuntime库，利用ILRuntime库，unity3d可以利用C#语言加载热更新dll进行热更新。ILRuntime一个缺陷就是开发时候不支持VS debug，这有点不爽。ET框架使用了一个预编译指令ILRuntime，可以无缝切换。平常开发的时候不使用ILRuntime，而是使用Assembly.Load加载热更新动态库，这样可以方便用VS单步调试。在发布的时候，定义预编译指令ILRuntime就可以无缝切换成使用ILRuntime加载热更新动态库。这样开发起来及其方便，再也不用使用狗屎lua了<br>8.客户端全热更新<br>客户端可以实现所有逻辑热更新，包括协议，config，ui等等</p>
@@ -375,7 +375,7 @@
 <p>再点击 Tools 菜单中的 web 资源服务器开启映射了 Release 文件夹的本地文件服务器。</p>
 <p>点击 Play 按钮，应用通过下载热更新资源，生成了登陆界面，也把热更资源下载到了应用中，也就是 Assets/StreamingAssets 文件夹。</p>
 <p><img src="https://i.loli.net/2019/01/06/5c31f3b4ad69f.png" alt=""></p>
-<p>重新启动 web 资源服务器，再次运行应用，会发现没有再次下载热更新资源。因为对比了Version 文件后，应用本地的文件已经不需要更新了。</p>
+<p>重新启动 web 资源服务器清除 log 信息，再次运行应用，会发现没有再次下载热更新资源。因为对比了 Version 文件后，应用本地的文件已经不需要更新了。</p>
 <p><img src="https://i.loli.net/2019/01/06/5c31f4aa1c424.png" alt=""></p>
 <p>至此，我们完成了一次完整的热更新。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ET 框架给了我们一种统一的开发体验，提供了方便的热更新切换和调试方案，这足以支撑起一些小游戏的开发需求，有需要的同学可以了解下 <a href="https://github.com/egametang/ET" target="_blank" rel="noopener">ET 框架</a>~</p>
