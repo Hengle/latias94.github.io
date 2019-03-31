@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="不越狱在 iOS 12.1 设备安装 Kodi"/>
+  <meta name="description" content="属于 Unity 的 Flutter——UIWidgets"/>
 
 
 
 
-  <meta name="keywords" content="iPad, APP, 萤火之森" />
+  <meta name="keywords" content="游戏开发, 萤火之森" />
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-<link rel="canonical" href="http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/"/>
+<link rel="canonical" href="http://frankorz.com/2019/04/01/uiwidgets-practice/"/>
 
 
 
@@ -118,7 +118,7 @@
   window.config = {"leancloud":{"app_id":"v6QgYmEcmbiM4ijI41WdeQSg-gzGzoHsz","app_key":"Kfe1eyGyevT3hHuiDfm8Hw1G"},"toc":true,"fancybox":true,"pjax":""};
 </script>
 
-    <title> 不越狱在 iOS 12.1 设备安装 Kodi - 萤火之森 </title>
+    <title> 属于 Unity 的 Flutter——UIWidgets - 萤火之森 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -270,25 +270,25 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          不越狱在 iOS 12.1 设备安装 Kodi
+          属于 Unity 的 Flutter——UIWidgets
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-01-13
+          2019-04-01
         </span>
         
           <span class="post-category">
             
-              <a href="/categories/工具癖/">工具癖</a>
+              <a href="/categories/Unity/">Unity</a>
             
           </span>
         
         
         <span class="post-visits"
-             data-url="/2019/01/13/install-kodi-with-tweakbox/"
-             data-title="不越狱在 iOS 12.1 设备安装 Kodi">
+             data-url="/2019/04/01/uiwidgets-practice/"
+             data-title="属于 Unity 的 Flutter——UIWidgets">
           阅读次数 0
         </span>
         
@@ -300,7 +300,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍-Tweakbox"><span class="toc-text">介绍 Tweakbox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多"><span class="toc-text">更多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#碎碎念"><span class="toc-text">碎碎念</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架图"><span class="toc-text">框架图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-框架结构"><span class="toc-text">Flutter 框架结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIWidgets-框架结构"><span class="toc-text">UIWidgets 框架结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行效率"><span class="toc-text">执行效率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件树"><span class="toc-text">组件树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的示例"><span class="toc-text">我的示例</span></a></li></ol>
     </div>
   </div>
 
@@ -308,44 +308,50 @@
 
     <div class="post-content">
       
-        <p>今天一不小心发现 <a href="https://kodi.tv/" target="_blank" rel="noopener">Kodi</a> 这个播放神器居然还有 iPad 版！</p>
-<p>但是苹果 App Store 不允许 Kodi 应用商家，于是自己在网上找了些方法：</p>
-<ol>
-<li>越狱（手动再见）</li>
-<li>下载官方提供的安装包用 Xcode 打包进去（太麻烦）</li>
-<li>国内同步助手等提供的“VIP服务”，购买服务后，用它们提供企业证书来下载（吃相难看）</li>
-<li>…</li>
-</ol>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://github.com/UnityTech/UIWidgets/" target="_blank" rel="noopener">UIWidgets</a> 是 Unity 的一个插件包，是一个从 Google 的移动 UI 框架 Flutter 演变过来的 UI 框架。  </p>
+<p>相对于原生开发的高开发成本（不同平台都需要不同的一套代码），Flutter、React-Native 等这种跨平台 UI 框架应运而生。  </p>
+<p>Flutter 自 2018 年 3 月发布以来，社区不断壮大。由于 Flutter 自身设计理念的出色，Unity 中国已经着手将其移植过来。当然了，也因为这两个东西都非常的年轻，因此开发的时候都像开荒一样。  </p>
 <a id="more"></a>
-<h2 id="介绍-Tweakbox"><a href="#介绍-Tweakbox" class="headerlink" title="介绍 Tweakbox"></a>介绍 Tweakbox</h2><p>最终发现了国外一个不错的免费服务：<a href="https://tweakbox.fyi/" target="_blank" rel="noopener">Tweakbox</a>，官方介绍也很令人振奋：</p>
-<blockquote>
-<p>TweakBox is an app store where you can download apps for iOS devices that are not available in the official Apple app store. TweakBox App is completely free and it has tons of features that make it a very popular choice among the other third party app stores.</p>
-</blockquote>
-<p>简而言之，Tweakbox 允许你：</p>
-<ul>
-<li>不需要越狱，苹果 ID </li>
-<li>下载部分 Appstore 上没有或者付费的软件和游戏</li>
-<li>下载部分主流的<strong>修改增强版</strong>软件和游戏</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
-<li>iPhone 和 iPad 设备上在 Safari 浏览器中进入网页 <a href="https://tweakbox.fyi/download/" target="_blank" rel="noopener">Download</a></li>
-<li>点 “Download App” 按钮安装描述文件</li>
-<li>然后就会下载 Tweakbox 应用</li>
-<li>打开设置 -&gt; 通用 -&gt; 描述文件与设备管理 -&gt; TweakBox 点击信任</li>
-<li>之后就能打开 Tweakbox 应用来安装应用了！</li>
-<li>打开 Tweakbox，点击屏幕上方的 Apps 选项，点击 Tweakbox Apps 一列，Kodi 应用就在其中。</li>
+<h2 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h2><p>Flutter 有自己的一套渲染系统，那么 Unity 作为一个游戏引擎，底层的图形 API 用自己的一套东西就行了，因此移植过来更方便了。</p>
+<h3 id="Flutter-框架结构"><a href="#Flutter-框架结构" class="headerlink" title="Flutter 框架结构"></a>Flutter 框架结构</h3><p><img src="https://diycode.b0.upaiyun.com/photo/2019/1a23a68a54815bf23cf842dafa932a23.png" alt=""></p>
+<h3 id="UIWidgets-框架结构"><a href="#UIWidgets-框架结构" class="headerlink" title="UIWidgets 框架结构"></a>UIWidgets 框架结构</h3><p><img src="https://i.loli.net/2019/03/31/5ca0a9930c276.png" alt=""></p>
+<h2 id="执行效率"><a href="#执行效率" class="headerlink" title="执行效率"></a>执行效率</h2><p><img src="https://i.loli.net/2019/03/31/5ca0b27a35401.gif" alt=""></p>
+<p>这里提一些基础的知识：</p>
+<p>Batch 就是 DrawCall 的另一种说法，了解渲染流水线的同学会知道流水线在 CPU 与 GPU 之间通信时，一般有三个步骤：  </p>
+<ol>
+<li>把数据加载到显存中。  </li>
+<li>设置渲染状态。  </li>
+<li>调用 Draw Call  </li>
 </ol>
-<p><img src="https://i.loli.net/2019/01/13/5c3b083aede5c.png" alt="发现 Kodi!"></p>
-<p>点进去 install 就能下载应用了，下载完还需要再次去信任描述文件才能使用。</p>
-<p>唯一有点缺陷的是 Kodi 有时会弹出插屏广告，断网使用即可。</p>
-<p>汉化参考：<a href="https://jingyan.baidu.com/article/6dad50750da52ca122e36e5c.html" target="_blank" rel="noopener">KODI播放器 V17设置中文</a></p>
-<h2 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h2><p>前面说到 Tweakbox 还能安装其他实用的应用：</p>
-<p><img src="https://i.loli.net/2019/01/13/5c3b0ade16e14.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/01/13/5c3b0b00308dd.png" alt="增强版 Spotify"></p>
-<p><img src="https://i.loli.net/2019/01/13/5c3b0b1c42964.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/01/13/5c3b0b6874005.png" alt=""></p>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>周更博客真的难 = =，有些主题觉得没比别人写的好，于是就不想写了…</p>
-<p>这周先水过去，再次赞下 Tweakbox！</p>
+<p>Draw Call 就是一个调用命令，让 CPU 告诉 GPU 要怎么样用给定的渲染状态和输入的顶点信息来计算。Batch 里面装着顶点信息，也就是 DrawCall 中 GPU 需要的顶点信息。  </p>
+<p>DrawCall 可以在 Profiler 中看，Batches 可以在 Stats 窗口看，大家可以仔细看看上面动图（右键在新标签页打开图片）里面的数据变化。  </p>
+<p><img src="https://i.loli.net/2019/03/31/5ca0ac9d4fd8c.png" alt=""></p>
+<p>在我随便写的一个例子中间，可以看到 Batches 数只有 1 。即使在有动画的时候 Batches 会多一点，但动画停止后 DrawCall 和 Batches 都马上下来了。这也有我这个应用写的太简单的原因，但是这种效率还是非常值得期待的。</p>
+<h3 id="组件树"><a href="#组件树" class="headerlink" title="组件树"></a>组件树</h3><p>学过前端的同学应该熟悉组件树，这里就不介绍了。  </p>
+<p>为了更高的渲染效率，Unity 采用了 Render Object Compositiing 的技术。    </p>
+<p><img src="https://i.loli.net/2019/03/31/5ca0b42e394a0.png" alt=""></p>
+<p>如果一个子树没有发生改变，Unity 就会将其渲染到一个离屏的 Render Texture 上缓存下来，需要的时候再将其贴到屏幕上。  </p>
+<p>相比之下，以前的做法是，Canvas 只要有 UI element 改动了，整个 Canvas 都需要重新绘制。即使也有一种优化做法是准备两个 Canvas 分别绘制动态 UI element 和 静态 UI element，但这样也存在很多手动管理的地方。  </p>
+<p>另外一方面，你可能也意识到了，我们不需要再管什么用同一个材质等等来优化图的合批，UIWidgets 会自动来管理这些事情。这方面也跟 <a href="http://fairygui.com" target="_blank" rel="noopener">FairyGUI</a> 非常像，开发者能专注在生产效率上，让插件来管理麻烦的事情。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>能开发游戏以外的 APP</li>
+<li>游戏中的 UI</li>
+<li>新的用户体验</li>
+<li>不用管渲染过程，提升效率</li>
+<li>因为是 Unity 的插件，可以轻松加各种粒子效果和其他骚操作。</li>
+<li>一套代码能跑在游戏中、APP 中、网页中和 Unity 的 Editor 窗口中。（开发者还用其做了一个 Unity 中文文档的网站…一套代码能用在网页上和 APP 端，不过还在开发中）</li>
+<li>和 Flutter 的 API 几乎一样，可以参考 Flutter 教程来用 UIWidgets 搭应用。</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>无论是 Flutter 还是 UIWidgets 都还很年轻，有很多组件 UIWidgets 还没移植过来（GridView、Circle Avatar 等等）</li>
+<li>官方示例、文档还没完善</li>
+<li>开发时是开荒模式，所以可能忍不住直接转用 Flutter 去了…</li>
+</ul>
+<h2 id="我的示例"><a href="#我的示例" class="headerlink" title="我的示例"></a>我的示例</h2><p><img src="https://i.loli.net/2019/03/31/5ca082d35a884.gif" alt=""></p>
+<p>这里借用了 <a href="https://github.com/Miraikomachi/MiraikomachiUnity" target="_blank" rel="noopener">ミライ小町</a> 的模型，所以代码窗口大小会比较大。（项目里面还有ミライ小町的跳舞动画 animation！）</p>
+<p>项目仓库：<a href="https://github.com/Latias94/UIWidget-Practice" target="_blank" rel="noopener">Latias94/UIWidget-Practice</a>  </p>
+<p>UIWidgets：<a href="https://github.com/UnityTech/UIWidgets/" target="_blank" rel="noopener">UnityTech/UIWidgets</a><a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3</a>)  </p>
+<p>官方讲解录播：<a href="https://www.bilibili.com/video/av47558897" target="_blank" rel="noopener">[官方直播] UIWidgets - 不止游戏！如何使用Unity开发跨平台应用</a></p>
 
       
     </div>
@@ -361,7 +367,7 @@
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/">http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/</a>
+      <a href="http://frankorz.com/2019/04/01/uiwidgets-practice/">http://frankorz.com/2019/04/01/uiwidgets-practice/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span>
@@ -381,9 +387,7 @@
         
           <div class="post-tags">
             
-              <a href="/tags/iPad/">iPad</a>
-            
-              <a href="/tags/APP/">APP</a>
+              <a href="/tags/游戏开发/">游戏开发</a>
             
           </div>
         
@@ -391,15 +395,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/04/01/uiwidgets-practice/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">属于 Unity 的 Flutter——UIWidgets</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2019/01/06/hotfix-introduction-of-unity-et-framework/">
-        <span class="next-text nav-default">Unity 开源双端框架 ET 中初尝热更新技术</span>
+      <a class="next" href="/2019/01/13/install-kodi-with-tweakbox/">
+        <span class="next-text nav-default">不越狱在 iOS 12.1 设备安装 Kodi</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -521,9 +519,9 @@
   
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/';
-        this.page.identifier = '2019/01/13/install-kodi-with-tweakbox/';
-        this.page.title = '不越狱在 iOS 12.1 设备安装 Kodi';
+        this.page.url = 'http://frankorz.com/2019/04/01/uiwidgets-practice/';
+        this.page.identifier = '2019/04/01/uiwidgets-practice/';
+        this.page.title = '属于 Unity 的 Flutter——UIWidgets';
     };
     (function() {
     var d = document, s = d.createElement('script');
