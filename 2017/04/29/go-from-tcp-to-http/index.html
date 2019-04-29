@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-  <head>
+  <head><meta name="generator" content="Hexo 3.8.0">
     
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-<meta name="theme-color" content="#f8f5ec" />
+<meta name="theme-color" content="#f8f5ec">
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
 
-  <meta name="description" content="Go 语言的网络编程简介"/>
+  <meta name="description" content="Go 语言的网络编程简介">
 
 
 
 
-  <meta name="keywords" content="Go, 萤火之森" />
+  <meta name="keywords" content="Go, 萤火之森">
 
 
 
-  <meta name="baidu-site-verification" content="BxJt2YcBZH" />
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
 
 
 
@@ -40,22 +40,22 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
 
 
 
-<link rel="canonical" href="http://frankorz.com/2017/04/29/go-from-tcp-to-http/"/>
+<link rel="canonical" href="http://frankorz.com/2017/04/29/go-from-tcp-to-http/">
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
 
 
 
-  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 
 
 
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
 
 
 
@@ -118,11 +118,11 @@
   window.config = {"leancloud":{"app_id":"v6QgYmEcmbiM4ijI41WdeQSg-gzGzoHsz","app_key":"Kfe1eyGyevT3hHuiDfm8Hw1G"},"toc":true,"fancybox":true,"pjax":""};
 </script>
 
-    <title> Go 语言的网络编程简介 - 萤火之森 </title>
+    <title> Go 语言的网络编程简介 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
     <a href="/." class="logo">萤火之森</a>
   </div>
   <div class="mobile-navbar-icon">
@@ -280,9 +280,7 @@
         </span>
         
         
-        <span class="post-visits"
-             data-url="/2017/04/29/go-from-tcp-to-http/"
-             data-title="Go 语言的网络编程简介">
+        <span class="post-visits" data-url="/2017/04/29/go-from-tcp-to-http/" data-title="Go 语言的网络编程简介">
           阅读次数 0
         </span>
         
@@ -323,7 +321,7 @@
 <p>接下来，我们尝试写出能输出对应格式响应内容的服务器。</p>
 <figure class="highlight go"><figcaption><span>tcp-server-for-http/main.go</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	li, err := net.Listen(<span class="string">"tcp"</span>, <span class="string">":8080"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatalln(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> li.Close()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		conn, err := li.Accept()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatalln(err.Error())</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 函数前添加 go 关键字，就能使其拥有 Go 语言的并发功能</span></span><br><span class="line">		<span class="comment">// 这样我们可以同时处理来自不同客户端的请求</span></span><br><span class="line">		<span class="keyword">go</span> handle(conn)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">(conn net.Conn)</span></span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> conn.Close()</span><br><span class="line">	<span class="comment">// 回应客户端的请求</span></span><br><span class="line">	respond(conn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">respond</span><span class="params">(conn net.Conn)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 消息体</span></span><br><span class="line">	body := <span class="string">`&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;meta charet="UTF-8"&gt;&lt;title&gt;Go example&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;strong&gt;Hello World&lt;/strong&gt;&lt;/body&gt;&lt;/html&gt;`</span></span><br><span class="line">	<span class="comment">// HTTP 协议及请求码</span></span><br><span class="line">	fmt.Fprint(conn, <span class="string">"HTTP/1.1 200 OK\r\n"</span>)</span><br><span class="line">	<span class="comment">// 内容长度</span></span><br><span class="line">	fmt.Fprintf(conn, <span class="string">"Content-Length: %d\r\n"</span>, <span class="built_in">len</span>(body)) </span><br><span class="line">	<span class="comment">// MIME类型</span></span><br><span class="line">	fmt.Fprint(conn, <span class="string">"Content-Type: text/html\r\n"</span>)</span><br><span class="line">	fmt.Fprint(conn, <span class="string">"\r\n"</span>)</span><br><span class="line">	fmt.Fprint(conn, body)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>go run main.go</code> 启动服务器之后，跳转到 <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a>，就能看到网页内容，并且用开发者工具能看到其请求头。</p>
-<p><img src="https://ooo.0o0.ooo/2017/04/29/59047bb81e615.jpg" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/04/29/59047bb81e615.jpg" alt></p>
 <h2 id="最简单的-HTTP-服务器"><a href="#最简单的-HTTP-服务器" class="headerlink" title="最简单的 HTTP 服务器"></a>最简单的 HTTP 服务器</h2><p>几行代码就能实现一个最简单的 HTTP 服务器。</p>
 <figure class="highlight go"><figcaption><span>simple-http/main.go</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"net/http"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>打开后会发现显示「404 page not found」，这说明 HTTP 已经开始服务了！</p>
@@ -336,7 +334,7 @@
 <figure class="highlight go"><figcaption><span>http.Handler</span><a href="https://golang.org/src/net/http/server.go?s" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Handler <span class="keyword">interface</span> &#123;</span><br><span class="line">        ServeHTTP(ResponseWriter, *Request)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight go"><figcaption><span>servehttp/main.go</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 创建一个 foo 类型</span></span><br><span class="line"><span class="keyword">type</span> foo <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"><span class="comment">// 为 foo 类型创建 ServeHTTP 方法，以实现 Handle 接口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f foo)</span> <span class="title">ServeHTTP</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">	fmt.Fprintln(w, <span class="string">"Implement the Handle interface."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 创建对象，类型名写后面..</span></span><br><span class="line">	<span class="keyword">var</span> f foo</span><br><span class="line">	http.ListenAndServe(<span class="string">":8080"</span>,f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行代码后打开能看到输出的字符串。</p>
-<p><img src="https://ooo.0o0.ooo/2017/04/29/59047bb28f70d.jpg" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/04/29/59047bb28f70d.jpg" alt></p>
 <h3 id="http-Request"><a href="#http-Request" class="headerlink" title="*http.Request"></a>*http.Request</h3><p>上面我们实现的小服务器里，我们无论访问 <a href="localhost:8080" target="_blank" rel="noopener">localhost:8080</a> 还是 <a href="localhost:8080/foo" target="_blank" rel="noopener">localhost:8080/foo</a> 都是一样的页面，这说明我们之前设定的是默认的页面，还没有为特定的路由(route)设置内容。</p>
 <p>路由这些信息实际上就存在 ServeHTTP 函数的第二个参数 <code>*http.Request</code> 中， <code>*http.Request</code> 存放着客户端发送至服务器的请求信息，例如请求链接、请求方法、响应头、消息体等等。</p>
 <p>现在我们可以把上面的代码改造一下。</p>
@@ -578,5 +576,22 @@
 
     <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":120,"height":240,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
 </html>
