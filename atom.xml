@@ -90,9 +90,9 @@
       <category term="工具癖" scheme="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
     
     
-      <category term="iPad" scheme="http://frankorz.com/tags/iPad/"/>
-    
       <category term="APP" scheme="http://frankorz.com/tags/APP/"/>
+    
+      <category term="iPad" scheme="http://frankorz.com/tags/iPad/"/>
     
   </entry>
   
@@ -334,9 +334,9 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Python" scheme="http://frankorz.com/tags/Python/"/>
+    
+      <category term="笔记" scheme="http://frankorz.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="读后感" scheme="http://frankorz.com/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
     
@@ -476,9 +476,9 @@
     
       <category term="Swift" scheme="http://frankorz.com/tags/Swift/"/>
     
-      <category term="动画" scheme="http://frankorz.com/tags/%E5%8A%A8%E7%94%BB/"/>
-    
       <category term="iOS" scheme="http://frankorz.com/tags/iOS/"/>
+    
+      <category term="动画" scheme="http://frankorz.com/tags/%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
