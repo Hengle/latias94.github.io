@@ -311,16 +311,10 @@
 <a id="more"></a>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>DOTS 要实现的特点有：</p>
 <ul>
-<li><strong>性能的准确性。</strong>我们希望的效果是：如果循环因为某些原因无法向量化，它应该会出现编译器错误，而不是使代码运行速度慢8倍，并得到正确结果，完全不报错。</li>
+<li><strong>性能的准确性。</strong>我们希望的效果是：如果循环因为某些原因无法向量化（Vectorization，可以参考 <a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">StackOverflow 的问题</a>），它应该会出现编译器错误，而不是使代码运行速度慢8倍，并得到正确结果，完全不报错。</li>
 <li><strong>跨平台架构特性</strong>。我们编写的输入代码无论是面向 iOS 系统还是 Xbox，都应该是相同的。</li>
 <li>我们应该<strong>有不错的迭代循环</strong>。在修改代码时，可以轻松查看为所有架构生成的机器代码。机器代码“查看器”应该很好地说明或解释所有机器指令的行为。</li>
 <li><strong>安全性</strong>。大多数游戏开发者不把安全性放在很高的优先级，但我们认为，解决Unity出现内存损坏问题是关键特性之一。在运行代码时应该有一个特别模式，如果读取或写入到内存界限外或取消引用Null时，它能够提供我们明确的错误信息。</li>
-</ul>
-<p>其中向量化指的是 Vectorization。</p>
-<p>相关介绍：</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">https://stackoverflow.com/questions/1422149/what-is-vectorization</a></li>
-<li><a href="https://www.wikiwand.com/en/Array_programming" target="_blank" rel="noopener">https://www.wikiwand.com/en/Array_programming</a></li>
 </ul>
 <h2 id="高性能-C"><a href="#高性能-C" class="headerlink" title="高性能 C"></a>高性能 C</h2><p>当我们使用 C# 语言时，仍然无法控制数据在内存中如何进行分布，但这是我们提升性能的关键点。</p>
 <p>除此之外，标准库面向的是“堆上的对象”和“具有其它对象指针引用的对象”。</p>
@@ -347,7 +341,7 @@
 <p>每个 Job 都具有“功能性”，因为 Job 没有副作用。 Job 会明确指定使用的只读缓冲区和读写缓冲区，尝试访问其它数据会出现编译器错误。</p>
 <p>Job 调度程序会确保在 Job 运行时，任何程序都不会写入只读缓冲区。我们会确保在 Job 运行时，任何程序都不会读取读写缓冲区。</p>
 <p>如果调度的 Job 违反了这些规则，我们会得到运行时错误。这种错误不仅在竞态条件下得到，错误信息会说明，你正在尝试调度的 Job 想要读取缓冲区 A，但你之前已经调度了会写入缓冲区 A 的 Job ，所以如果想要执行该操作，需要把之前的 Job 指定为依赖。</p>
-<h2 id="深入栈"><a href="#深入栈" class="headerlink" title="深入栈"></a>深入栈</h2><p>由于能够处理所有组件，我们可以使这些组件了解各自的存在。例如：向量化无法进行的常见情况是，编译器无法确保二个指针不指向相同的内存，即混淆情况。</p>
+<h2 id="深入栈"><a href="#深入栈" class="headerlink" title="深入栈"></a>深入栈</h2><p>由于能够处理所有组件，我们可以使这些组件了解各自的存在。例如：向量化（Vectorization）无法进行的常见情况是，编译器无法确保二个指针不指向相同的内存，即混淆情况（Alias）。</p>
 <p>而两个集合库中的 NativeArray 从不会混淆，我们可以在 Burst 中运用这个知识，使它不会由于害怕两个数组指针指向相同内存而放弃优化（Alias）。Alias 的问题在 Unity GDC 中也有一个演讲提到过：<a href="https://www.youtube.com/watch?v=NF6kcNS6U80" target="_blank" rel="noopener">Unity at GDC - C# to Machine Code</a></p>
 <p>Unity 还编写了 <a href="https://github.com/Unity-Technologies/Unity.Mathematics" target="_blank" rel="noopener">Unity.Mathemetics</a> 数学库，提供了很多像 Shader 代码的数据结构。Burst 也能和这数学库很好的工作，未来 Burst 将能够为 <code>math.sin()</code> 等计算作出牺牲精度的优化。</p>
 <p>对于 Burst 而言，<code>math.sin()</code> 不仅是要编译的 C# 方法，Burst 还能理解出 <code>sin()</code> 的三角函数属性，同时知道 x 值较小时会出现 <code>sin(x)</code> 等于 x 的情况，并了解它能替换为泰勒级数展开，以便牺牲特定精度。</p>
@@ -378,7 +372,7 @@
 <p><img src="https://i.loli.net/2019/05/07/5cd16af8d2324.png" alt></p>
 <p>一个<a href="https://forum.unity.com/threads/memory-layout-for-ecs-components.590731/" target="_blank" rel="noopener">帖子</a>中有人提供了更加形象的内存布局图，例如上半部分的原型由 Position 组件和 Rock 组件组成，其中整个原型占了一个块（Chunk），两个组件的数据分别存在两个数组中，里面还带着组件数据对应的实体的信息。</p>
 <p><img src="https://i.loli.net/2019/05/07/5cd16b0954b2a.png" alt></p>
-<p>每个原型都有一个 Chunks 块列表，用来保存原型的实体。我们会循环所有块，并在每个块中，对紧凑的内存进行线性循环处理，以读取或写入组件数据。该线性循环会对每个实体运行相同的代码，同时为 Burst 创造向量化（Vectorization，可以参考 <a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">StackOverflow 的问题</a>）处理的机会。</p>
+<p>每个原型都有一个 Chunks 块列表，用来保存原型的实体。我们会循环所有块，并在每个块中，对紧凑的内存进行线性循环处理，以读取或写入组件数据。该线性循环会对每个实体运行相同的代码，同时为 Burst 创造向量化（Vectorization）处理的机会。</p>
 <p>每个块会被安排好内存中的位置，以便于快速从内存得到想要的数据，详情可以参考下面的文章。</p>
 <p><a href="https://blog.csdn.net/yudianxia/article/details/80498015" target="_blank" rel="noopener">Unity2018 ECS框架Entities源码解析（二）组件与Chunk的内存布局 - 大鹏的专栏 - CSDN博客</a></p>
 <h4 id="实体（Entity）"><a href="#实体（Entity）" class="headerlink" title="实体（Entity）"></a>实体（Entity）</h4><p>实体是什么？实体只是一个 32 位的整数 key （和一些额外的数据例如 index 和 version 实体版本，不过在这里不重要），所以除了实体的组件数据外，不必为实体保存或分配太多内存。实体可以实现游戏对象的所有功能，甚至更多功能，因为实体非常轻量。</p>
