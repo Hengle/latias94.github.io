@@ -344,7 +344,7 @@
 <h3 id="问题一：数据分布在内存的各个角落"><a href="#问题一：数据分布在内存的各个角落" class="headerlink" title="问题一：数据分布在内存的各个角落"></a>问题一：数据分布在内存的各个角落</h3><p><img src="https://i.loli.net/2019/05/10/5cd557e05fa56.jpg" alt></p>
 <p>离散的数据导致搜索效率十分低下，还有 Cache Miss 的问题，这个问题可以参考下面的链接：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/41652478" target="_blank" rel="noopener">ECS的泛泛之谈</a></p>
-<h3 id="问题二：很多不必要的数据也被提供了"><a href="#问题二：很多不必要的数据也被提供了" class="headerlink" title="问题二：很多不必要的数据也被提供了"></a>问题二：很多不必要的数据也被提供了</h3><p><img src="https://i.loli.net/2019/05/10/5cd547408094c.jpg" alt></p>
+<h3 id="问题二：很多不必要的数据也被提供了"><a href="#问题二：很多不必要的数据也被提供了" class="headerlink" title="问题二：很多不必要的数据也被提供了"></a>问题二：很多不必要的数据也被提供了</h3><p><img src="https://i.loli.net/2019/05/10/5cd56a9b06095.png" alt></p>
 <p>例如当我们要调用 Transform 时，可能实际上我们只需要 position 和 rotation 两个属性来移动 gameObject，但是其他不需要的数据也被提供给了 gameObject。</p>
 <h3 id="问题三：低效的单线程数据处理"><a href="#问题三：低效的单线程数据处理" class="headerlink" title="问题三：低效的单线程数据处理"></a>问题三：低效的单线程数据处理</h3><p>传统模式只使用单线程来按顺序一个一个地处理数据和操作，这样十分低效。</p>
 <h2 id="高性能-C＃（HPC-）"><a href="#高性能-C＃（HPC-）" class="headerlink" title="高性能 C＃（HPC#）"></a>高性能 C＃（HPC#）</h2><p>当我们使用 C# 语言时，仍然无法控制数据在内存中如何进行分布，但这是我们提升性能的关键点。</p>
@@ -386,7 +386,7 @@
 <p>ECS 以 16k 大小的块（Chunk）来分配内存，每个块仅包含单个原型中所有<strong>实体</strong>的<strong>组件</strong>数据。</p>
 <p><img src="https://i.loli.net/2019/05/07/5cd16af8d2324.png" alt></p>
 <p>一个<a href="https://forum.unity.com/threads/memory-layout-for-ecs-components.590731/" target="_blank" rel="noopener">帖子</a>中有人提供了更加形象的内存布局图，例如上半部分的原型由 Position 组件和 Rock 组件组成，其中整个原型占了一个块（Chunk），两个组件的数据分别存在两个数组中，里面还带着组件数据对应的实体的信息。</p>
-<p><img src="https://i.loli.net/2019/05/07/5cd16b0954b2a.png" alt></p>
+<p><img src="https://i.loli.net/2019/05/10/5cd583e06c6ef.jpg" alt></p>
 <p>每个原型都有一个 Chunks 块列表，用来保存原型的实体。我们会循环所有块，并在每个块中，对紧凑的内存进行线性循环处理，以读取或写入组件数据。该线性循环会对每个实体运行相同的代码，同时为 Burst 创造向量化（Vectorization，可以参考 <a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">StackOverflow 的问题</a>）处理的机会。</p>
 <p>每个块会被安排好内存中的位置，以便于快速从内存得到想要的数据，详情可以参考下面的文章。</p>
 <p><a href="https://blog.csdn.net/yudianxia/article/details/80498015" target="_blank" rel="noopener">Unity2018 ECS框架Entities源码解析（二）组件与Chunk的内存布局 - 大鹏的专栏 - CSDN博客</a></p>
@@ -648,7 +648,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
