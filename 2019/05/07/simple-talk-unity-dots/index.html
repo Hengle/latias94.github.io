@@ -330,7 +330,8 @@
 <p>Burst 对于 HPC# 更详细的支持可以在下面找到：</p>
 <p><a href="https://docs.unity3d.com/Packages/com.unity.burst@0.2/manual/index.html#cnet-language-support" target="_blank" rel="noopener">Burst User Guide</a></p>
 <h3 id="深入栈"><a href="#深入栈" class="headerlink" title="深入栈"></a>深入栈</h3><p>向量化（Vectorization）无法进行的常见情况是，编译器无法确保二个指针不指向相同的内存，即混淆情况（Alias）。Alias 的问题在 Unity GDC 中也有一个演讲提到过：<a href="https://www.youtube.com/watch?v=NF6kcNS6U80" target="_blank" rel="noopener">Unity at GDC - C# to Machine Code</a>。</p>
-<p>但两个 NativeArray 之间从不会发生混淆这种情况，这也是为什么我们将会经常使用这个之前不常用的集合类型 —— NativeArray。我们可以在 Burst 中运用这个知识，使它不会由于害怕两个数组指针指向相同内存而放弃优化。</p>
+<p><a href="https://docs.unity3d.com/Packages/com.unity.collections@0.0/manual/index.html" target="_blank" rel="noopener">Collections 类</a>就是为了解决这个问题而诞生的，里面包含 NativeList<t>、NativeHashMap<tkey, tvalue>、NativeMultiHashMap<tkey, tvalue> 和 NativeQueue<t> 四种额外的数据结构。</t></tkey,></tkey,></t></p>
+<p>两个 NativeArray 之间从不会发生混淆这种情况，这也是为什么我们将会经常使用这些数据结构。我们可以在 Burst 中运用这个知识，使它不会由于害怕两个数组指针指向相同内存而放弃优化。</p>
 <p>Unity 还编写了 <a href="https://github.com/Unity-Technologies/Unity.Mathematics" target="_blank" rel="noopener">Unity.Mathemetics</a> 数学库，提供了很多像 Shader 代码的数据结构。Burst 也能和这数学库很好的工作，未来 Burst 将能够为 <code>math.sin()</code> 等计算作出牺牲精度的优化。</p>
 <p>对于 Burst 而言，<code>math.sin()</code> 不仅是要编译的 C# 方法，Burst 还能理解出 <code>sin()</code> 的三角函数属性，同时知道 x 值较小时会出现 <code>sin(x)</code> 等于 x 的情况，并了解它能替换为泰勒级数展开，以便牺牲特定精度。</p>
 <p><strong>跨平台和架构的浮点准确性是 Burst 未来的目标。</strong></p>
@@ -648,7 +649,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
