@@ -314,6 +314,7 @@
 <li>ECS，又称实体组件系统。与传统的面向对象编程相比，ECS 是一种基于数据设计的编程模式。<a href="http://frankorz.com/2019/05/07/simple-talk-unity-dots/#Entity-Component-System">前文</a>从内存结构分析了 OOP 模式的缺点，也提到了 ECS 是怎么样基于数据的设计内存结构的。</li>
 </ul>
 <p>Job System 是 Unity 自带的库，而要使用 ECS 我们需要从 Package Manager 中安装 “Entities” 预览包。这两者虽说完全是两种东西，但是他们能很好地相辅相成：ECS 保证数据线性地排列在内存中，这样通过更高效的数据读取，能有效提升 Job 的执行速度，同时也给了 Burst 编译器更多优化的机会。  </p>
+<a id="more"></a>
 <h1 id="Entities（实体）"><a href="#Entities（实体）" class="headerlink" title="Entities（实体）"></a>Entities（实体）</h1><p>在 <code>World</code>中， <code>EntityManager</code> 管理所有实体和组件。</p>
 <p>当你需要创建实体和为其添加组件的时候， <code>EntityManager</code>会一直跟踪所有独立的组件组合（也就是原型 Archetype）。</p>
 <h2 id="创建实体"><a href="#创建实体" class="headerlink" title="创建实体"></a>创建实体</h2><p>最简单的方法就是在编辑器直接挂一个 <code>ConvertToEntity</code> 脚本，在运行时中把 GameObject 转成实体。</p>
@@ -755,7 +756,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
