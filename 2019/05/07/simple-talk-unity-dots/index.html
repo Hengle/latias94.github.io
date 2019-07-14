@@ -311,7 +311,7 @@
 <a id="more"></a>
 <h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>DOTS 要实现的特点有：</p>
 <ul>
-<li><strong>性能的准确性。</strong>我们希望的效果是：如果循环因为某些原因无法向量化，它应该会出现编译器错误，而不是使代码运行速度慢8倍，并得到正确结果，完全不报错。</li>
+<li><strong>性能的准确性。</strong>我们希望的效果是：如果循环因为某些原因无法向量化，它应该会出现编译器错误，而不是使代码运行速度慢 8 倍，并得到正确结果，完全不报错。</li>
 <li><strong>跨平台架构特性</strong>。我们编写的输入代码无论是面向 iOS 系统还是 Xbox，都应该是相同的。</li>
 <li>我们应该<strong>有不错的迭代循环</strong>。在修改代码时，可以轻松查看为所有架构生成的机器代码。机器代码“查看器”应该很好地说明或解释所有机器指令的行为。</li>
 <li><strong>安全性</strong>。大多数游戏开发者不把安全性放在很高的优先级，但我们认为，解决 Unity 出现内存损坏问题是关键特性之一。在运行代码时应该有一个特别模式，如果读取或写入到内存界限外或取消引用 Null 时，它能够提供我们明确的错误信息。</li>
@@ -344,7 +344,7 @@
 <p><img src="https://i.loli.net/2019/05/07/5cd16b478f8af.png" alt></p>
 <h2 id="问题一：数据分布在内存的各个角落"><a href="#问题一：数据分布在内存的各个角落" class="headerlink" title="问题一：数据分布在内存的各个角落"></a>问题一：数据分布在内存的各个角落</h2><p><img src="https://i.loli.net/2019/05/10/5cd557e05fa56.jpg" alt></p>
 <p>离散的数据导致搜索效率十分低下，还有 Cache Miss 的问题，这个问题可以参考下面的链接：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/41652478" target="_blank" rel="noopener">ECS的泛泛之谈</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/41652478" target="_blank" rel="noopener">ECS 的泛泛之谈</a></p>
 <h2 id="问题二：很多不必要的数据也被提供了"><a href="#问题二：很多不必要的数据也被提供了" class="headerlink" title="问题二：很多不必要的数据也被提供了"></a>问题二：很多不必要的数据也被提供了</h2><p><img src="https://i.loli.net/2019/05/10/5cd56a9b06095.png" alt></p>
 <p>例如当我们要调用 Transform 时，可能实际上我们只需要 position 和 rotation 两个属性来移动 gameObject，但是其他不需要的数据也被提供给了 gameObject。</p>
 <h2 id="问题三：低效的单线程数据处理"><a href="#问题三：低效的单线程数据处理" class="headerlink" title="问题三：低效的单线程数据处理"></a>问题三：低效的单线程数据处理</h2><p>传统模式只使用单线程来按顺序一个一个地处理数据和操作，这样十分低效。</p>
@@ -391,7 +391,7 @@
 <p><img src="https://i.loli.net/2019/05/10/5cd583e06c6ef.jpg" alt></p>
 <p>每个原型都有一个 Chunks 块列表，用来保存原型的实体。我们会循环所有块，并在每个块中，对紧凑的内存进行线性循环处理，以读取或写入组件数据。该线性循环会对每个实体运行相同的代码，同时为 Burst 创造向量化（Vectorization，可以参考 <a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">StackOverflow 的问题</a>）处理的机会。</p>
 <p>每个块会被安排好内存中的位置，以便于快速从内存得到想要的数据，详情可以参考下面的文章。</p>
-<p><a href="https://blog.csdn.net/yudianxia/article/details/80498015" target="_blank" rel="noopener">Unity2018 ECS框架Entities源码解析（二）组件与Chunk的内存布局 - 大鹏的专栏 - CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/yudianxia/article/details/80498015" target="_blank" rel="noopener">Unity2018 ECS 框架 Entities 源码解析（二）组件与 Chunk 的内存布局 - 大鹏的专栏</a></p>
 <h3 id="实体（Entity）"><a href="#实体（Entity）" class="headerlink" title="实体（Entity）"></a>实体（Entity）</h3><p>实体是什么？实体只是一个 32 位的整数 key （和一些额外的数据例如 index 和 version 实体版本，不过在这里不重要），所以除了实体的组件数据外，不必为实体保存或分配太多内存。实体可以实现游戏对象的所有功能，甚至更多功能，因为实体非常轻量。</p>
 <p>实体的性能消耗很低，所以我们可以把实体用在不适合游戏对象的情况，例如：为粒子系统内的每个单独粒子使用一个实体。</p>
 <p>实体本身不是对象，也不是一个容器，它的作用是把其组件的数据关联到一起。</p>
@@ -399,7 +399,7 @@
 <h3 id="系统（System）"><a href="#系统（System）" class="headerlink" title="系统（System）"></a>系统（System）</h3><p><img src="https://i.loli.net/2019/05/07/5cd16b28a3b79.png" alt></p>
 <p>我们不必使用用户的 Update 方法搜索组件，然后在运行时对每个实例进行操作，使用 ECS 时我们只需静态地声明：我想对同时附带 Velocity 组件和 Rigidbody 组件的所有实体进行操作。为了找到所有实体，我们只需找到所有符合<strong>特定“组件搜索查询”的原型</strong>即可，而这个过程就是由系统（System）来完成的。</p>
 <p>很多情况下，这个过程会分成多个 Job ，使处理 ECS 组件的代码达到几乎 100% 的核心利用率。ECS 会完成所有工作，我们只需要提供对每个实体运行的代码即可。我们也可以手动处理块迭代过程（<a href="https://github.com/Unity-Technologies/EntityComponentSystemSamples/blob/master/Samples/Assets/HelloECS/HelloCube_03_IJobChunk/README.md" target="_blank" rel="noopener">IJobChunk</a>）。</p>
-<p>当我们从实体添加或移除组件时，ECS会切换原型。我们会把它从当前块移动到新原型的块，然后交换之前块的最后实体来“填补空缺”。</p>
+<p>当我们从实体添加或移除组件时，ECS 会切换原型。我们会把它从当前块移动到新原型的块，然后交换之前块的最后实体来“填补空缺”。</p>
 <p>在 ECS 中，我们还要静态声明要对组件数据进行什么处理，是 ReadOnly 只读还是 ReadWrite 读写（Job System 一小节提到过的两种缓冲区）。通过确定仅对 Position 组件进行读取，ECS 可以更高效地调度 Job ，其它需要读取 Position 组件的 Job 不必进行等待。</p>
 <p>大体上，实体提供纯粹的数据给系统，系统根据自己所需要的组件来获得相应的满足条件的实体，最后系统再通过多线程来基于 Job System 来处理数据。</p>
 <p><img src="https://i.loli.net/2019/05/10/5cd547a7c0260.jpg" alt></p>
@@ -424,8 +424,8 @@
 <li>这篇文章总结得很好，但很多视频链接都错了，我提供给了一个改好的版本：<a href="https://www.notion.so/frankorz/DOTS-3562fce36b2a44909e5910609ddfd6a7" target="_blank" rel="noopener">DOD 相关文章</a></li>
 </ul>
 </li>
-<li><a href="https://zhuanlan.zhihu.com/p/36649462" target="_blank" rel="noopener">Unity ECS编程官方文档选译—Getting Started</a></li>
-<li><a href="https://mp.weixin.qq.com/s/GsrX6o-sHLrqVgffp1svqg" target="_blank" rel="noopener">面向数据技术栈DOTS之ECS实体组件系统</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36649462" target="_blank" rel="noopener">Unity ECS 编程官方文档选译—Getting Started</a></li>
+<li><a href="https://mp.weixin.qq.com/s/GsrX6o-sHLrqVgffp1svqg" target="_blank" rel="noopener">面向数据技术栈 DOTS 之 ECS 实体组件系统</a></li>
 <li><a href="https://blogs.unity3d.com/2019/03/08/on-dots-entity-component-system/" target="_blank" rel="noopener">On DOTS: Entity Component System - Unity Blog</a></li>
 <li><a href="https://blogs.unity3d.com/2019/02/26/on-dots-c-c/" target="_blank" rel="noopener">On DOTS: C++ &amp; C# - Unity Blog</a></li>
 <li><a href="https://rams3s.github.io/blog/2019-01-09-ecs-deep-dive/" target="_blank" rel="noopener">ECS Deep Dive</a></li>
@@ -479,6 +479,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/14/clarify-ecs-basic-concept/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">洞明 Unity ECS 基础概念</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2019/04/01/uiwidgets-practice/">

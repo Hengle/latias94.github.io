@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="鸣真的各种知识火种~">
+  <meta name="description" content="洞明 Unity ECS 基础概念">
 
 
 
+
+  <meta name="keywords" content="游戏开发, ECS, 萤火之森">
 
 
 
@@ -42,7 +44,7 @@
 
 
 
-<link rel="canonical" href="http://frankorz.com/">
+<link rel="canonical" href="http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/">
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
@@ -116,7 +118,7 @@
   window.config = {"leancloud":{"app_id":"v6QgYmEcmbiM4ijI41WdeQSg-gzGzoHsz","app_key":"Kfe1eyGyevT3hHuiDfm8Hw1G"},"toc":true,"fancybox":true,"pjax":""};
 </script>
 
-    <title> 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> 洞明 Unity ECS 基础概念 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -264,15 +266,11 @@
           <div id="content" class="content">
             
   
-  <section id="posts" class="posts">
-    
-      
-        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/07/14/clarify-ecs-basic-concept/">洞明 Unity ECS 基础概念</a>
+          洞明 Unity ECS 基础概念
         
       </h1>
 
@@ -297,15 +295,18 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ECS-与-Job-System"><span class="toc-text">ECS 与 Job System</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Entities（实体）"><span class="toc-text">Entities（实体）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建实体"><span class="toc-text">创建实体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加和移除组件"><span class="toc-text">增加和移除组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#World（世界）"><span class="toc-text">World（世界）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Components（组件）"><span class="toc-text">Components（组件）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#General-Purpose-Component（普通用途组件）"><span class="toc-text">General Purpose Component（普通用途组件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shared-components（共享组件）"><span class="toc-text">Shared components（共享组件）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存结构"><span class="toc-text">内存结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他要点"><span class="toc-text">其他要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-state-components（系统状态组件）"><span class="toc-text">System state components（系统状态组件）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Motivation（诱因）"><span class="toc-text">Motivation（诱因）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Concept（概念）"><span class="toc-text">Concept（概念）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#检测组件的添加"><span class="toc-text">检测组件的添加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检测组件的删除"><span class="toc-text">检测组件的删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#监测实体的删除"><span class="toc-text">监测实体的删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dynamic-Buffers（动态缓冲）"><span class="toc-text">Dynamic Buffers（动态缓冲）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义缓冲"><span class="toc-text">定义缓冲</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Systems（系统）"><span class="toc-text">Systems（系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ComponentSystem（组件系统）"><span class="toc-text">ComponentSystem（组件系统）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JobComponentSystem（任务组件系统）"><span class="toc-text">JobComponentSystem（任务组件系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动化的-Job-依赖管理"><span class="toc-text">自动化的 Job 依赖管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么运行的？"><span class="toc-text">怎么运行的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖管理是保守的（conservative）和确定性的（deterministic）"><span class="toc-text">依赖管理是保守的（conservative）和确定性的（deterministic）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sync-points（同步点）"><span class="toc-text">Sync points（同步点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multiple-Worlds（多个世界）"><span class="toc-text">Multiple Worlds（多个世界）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entity-Command-Buffer（实体命令缓冲）"><span class="toc-text">Entity Command Buffer（实体命令缓冲）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Entity-Command-Buffer-Systems（实体命令缓冲系统）"><span class="toc-text">Entity Command Buffer Systems（实体命令缓冲系统）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-ParallelFor-jobs-中使用-EntityCommandBuffers"><span class="toc-text">在 ParallelFor jobs 中使用 EntityCommandBuffers</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Update-Order（系统更新顺序）"><span class="toc-text">System Update Order（系统更新顺序）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#System-Ordering-Attributes（系统顺序属性）"><span class="toc-text">System Ordering Attributes（系统顺序属性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Default-System-Groups（默认系统组）"><span class="toc-text">Default System Groups（默认系统组）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tips-and-Best-Practices（提示与最佳实践）"><span class="toc-text">Tips and Best Practices（提示与最佳实践）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>虽然网络上已经有不少 ECS 文档的汉化，但自己读官方文档的时候也会产生不少疑问，为此通过查询各种资料，写下本文。</p>
+        <p>虽然网络上已经有不少 ECS 文档的汉化，但自己读官方文档的时候也会产生不少疑问，为此通过查询各种资料，写下本文。</p>
 <p>本文从 ECS 官方文档出发，加之内存布局结构的讲解，力求读者能够和博主一起吃透 ECS 中的基本概念。同时建议读者可以先读读我的上一篇博文<a href="http://frankorz.com/2019/05/07/simple-talk-unity-dots/#Entity-Component-System">《Unity DOTS 走马观花》</a>的 ECS 部分，本文不再复述前文已经提到过的相关概念。</p>
 <h1 id="ECS-与-Job-System"><a href="#ECS-与-Job-System" class="headerlink" title="ECS 与 Job System"></a>ECS 与 Job System</h1><p>我认为有必要重申其两者的关系。</p>
 <ul>
@@ -540,547 +541,79 @@
 <li><a href="https://docs.google.com/presentation/d/1vxE61D_N79cvgUI3eIocF2n4rn04wjgRRq00ugyoB1M/edit?usp=sharing" target="_blank" rel="noopener">UniteLA 2018 - ECS deep dive</a></li>
 </ul>
 
-        
       
     </div>
 
     
+      
+      
 
-    
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/">http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
 
-  </article>
+
 
       
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/05/07/simple-talk-unity-dots/">Unity DOTS 走马观花</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-05-07
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Unity/">Unity</a>
-            
-          </span>
-        
-        
-        <span class="post-visits" data-url="/2019/05/07/simple-talk-unity-dots/" data-title="Unity DOTS 走马观花">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
       
-        
-        
-          
-        
+    
 
+    
+      <footer class="post-footer">
         
-          <p><img src="https://i.loli.net/2019/05/07/5cd168d7974ba.png" alt="The Big Picture"></p>
-<p>简单介绍 Data-Oriented Technology Stack (DOTS, 数据导向型技术栈) ，其包含了 C# Job System、the Entity Component System (ECS) 和 Burst。</p>
-          <div class="read-more">
-            <a href="/2019/05/07/simple-talk-unity-dots/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/游戏开发/">游戏开发</a>
+            
+              <a href="/tags/ECS/">ECS</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/04/01/uiwidgets-practice/">属于 Unity 的 Flutter——UIWidgets</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-04-01
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/Unity/">Unity</a>
-            
-          </span>
         
         
-        <span class="post-visits" data-url="/2019/04/01/uiwidgets-practice/" data-title="属于 Unity 的 Flutter——UIWidgets">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
+  <nav class="post-nav">
     
     
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://github.com/UnityTech/UIWidgets/" target="_blank" rel="noopener">UIWidgets</a> 是 Unity 的一个插件包，是一个从 Google 的移动 UI 框架 Flutter 演变过来的 UI 框架。  </p>
-<p>相对于原生开发的高开发成本（不同平台都需要不同的一套代码），Flutter、React-Native 等这种跨平台 UI 框架应运而生。  </p>
-<p>Flutter 自 2018 年 3 月发布以来，社区不断壮大。由于 Flutter 自身设计理念的出色，Unity 中国已经着手将其移植过来。当然了，也因为这两个东西都非常的年轻，因此开发的时候都像开荒一样。  </p>
-          <div class="read-more">
-            <a href="/2019/04/01/uiwidgets-practice/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/01/13/install-kodi-with-tweakbox/">不越狱在 iOS 12.1 设备安装 Kodi</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-01-13
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/工具癖/">工具癖</a>
-            
-          </span>
-        
-        
-        <span class="post-visits" data-url="/2019/01/13/install-kodi-with-tweakbox/" data-title="不越狱在 iOS 12.1 设备安装 Kodi">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>今天一不小心发现 <a href="https://kodi.tv/" target="_blank" rel="noopener">Kodi</a> 这个播放神器居然还有 iPad 版！</p>
-<p>但是苹果 App Store 不允许 Kodi 应用商家，于是自己在网上找了些方法：</p>
-<ol>
-<li>越狱（手动再见）</li>
-<li>下载官方提供的安装包用 Xcode 打包进去（太麻烦）</li>
-<li>国内同步助手等提供的“VIP 服务”，购买服务后，用它们提供企业证书来下载（吃相难看）</li>
-<li>…</li>
-</ol>
-          <div class="read-more">
-            <a href="/2019/01/13/install-kodi-with-tweakbox/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2019/01/06/hotfix-introduction-of-unity-et-framework/">Unity 开源双端框架 ET 中初尝热更新技术</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-01-06
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/游戏开发/">游戏开发</a>
-            
-          </span>
-        
-        
-        <span class="post-visits" data-url="/2019/01/06/hotfix-introduction-of-unity-et-framework/" data-title="Unity 开源双端框架 ET 中初尝热更新技术">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h2 id="ET-框架简介"><a href="#ET-框架简介" class="headerlink" title="ET 框架简介"></a>ET 框架简介</h2><p>正所谓时势造英雄，在 Web 开发领域或者传统软件开发领域中，人们把经过千锤百炼的代码总结出一套开发框架，从而提高开发效率，让开发者能更专注于业务本身。对于游戏领域而言，不同游戏需求的东西也不一样：有的游戏对性能有着苛刻要求，有的游戏需要快速地迭代出来，有的游戏需要联网热更新等等。因此不同的游戏框架应运而生。</p>
-<p>例如：</p>
-<ul>
-<li><a href="https://github.com/EllanJiang/GameFramework" target="_blank" rel="noopener">Game Framework</a> 是一个基于 Unity 引擎的游戏框架，主要对游戏开发过程中常用模块进行了封装，很大程度地规范开发过程、加快开发速度并保证产品质量。</li>
-<li><a href="https://github.com/liangxiegame/QFramework" target="_blank" rel="noopener">QFramework</a> 一套渐进式的快速开发框架。框架内部积累了多个项目的在各个技术方向的解决方案。</li>
-<li><a href="https://github.com/sschmid/Entitas-CSharp" target="_blank" rel="noopener">Entitas</a> 一套基于 C# 和 Unity 的实体组件系统。</li>
-<li><a href="https://github.com/Unity-Technologies/EntityComponentSystemSamples" target="_blank" rel="noopener">Entities</a> Unity 官方的实体组件系统实现，不过还是 Beta 版本，详细介绍可以查看<a href="https://unity.com/unity/features/job-system-ECS" target="_blank" rel="noopener">官网</a>。</li>
-<li><a href="https://github.com/strangeioc/strangeioc" target="_blank" rel="noopener">StrangeIoC</a> 一套基于 C# 和 Unity 的控制反转 (Inversion-of-Control) 框架。</li>
-</ul>
-<p>今天介绍的是 ET 框架。</p>
-<blockquote>
-<p>ET是一个开源的游戏客户端（基于unity3d）服务端双端框架，服务端是使用C# .net core开发的分布式游戏服务端，其特点是开发效率高，性能强，双端共享逻辑代码，客户端服务端热更机制完善，同时支持可靠udp tcp websocket协议，支持服务端3D recast寻路等等</p>
-</blockquote>
-<p>ET 框架能让我们只用 C# 就能搞定前后端，热更新方面也采用了基于 C# 的 IL 运行时——<a href="https://ourpalm.github.io/ILRuntime/" target="_blank" rel="noopener">ILRuntime</a>， 贯彻了 “珍爱生命，远离 Lua” 这句话。目前自己接触的大多是客户端部分，因此服务器方面不做介绍。<br>
-          <div class="read-more">
-            <a href="/2019/01/06/hotfix-introduction-of-unity-et-framework/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </p></div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/06/22/finite-state-machine-in-unity/">Unity 中用有限状态机来实现一个 AI</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-06-22
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/游戏开发/">游戏开发</a>
-            
-          </span>
-        
-        
-        <span class="post-visits" data-url="/2018/06/22/finite-state-machine-in-unity/" data-title="Unity 中用有限状态机来实现一个 AI">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>最近在阅读《游戏人工智能编程案例精粹（修订版）》，本文是书中第二章的一篇笔记。</p>
-<p>有限状态机（英语：Finite-state machine, 缩写：FSM），是一个被数学家用来解决问题的严格形式化的设备，在游戏业中也常见有限状态机的身影。</p>
-<p>对于游戏程序员来说，可以用下面这个定义来了解：</p>
-<blockquote>
-<p>一个有限状态机是一个设备（device），或是一个设备模型（a model of a device）。具有有限数量的状态，它可以在任何给定的时间根据输入进行操作，是的从一个状态变换到另一个状态，或者是促使一个输出或者一种行为的发生。一个有限状态机在任何瞬间只能处在一种状态。<br>——《游戏人工智能编程案例精粹（修订版）》 Mat Buckland</p>
-</blockquote>
-<p>有限状态机就是要把一个对象的行为分解成易于处理的“块”或者状态。拿某个开关来说，我们可以把它分成两个状态：开或关。其中开开关这个操作，就是一次<strong>状态转移</strong>，使开关的状态从“关”变换到“开”，反之亦然。<br>
-          <div class="read-more">
-            <a href="/2018/06/22/finite-state-machine-in-unity/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </p></div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/06/17/arethas-journey/">2D 像素风平台游戏 Aretha’s Journey</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-06-17
-        </span>
-        
-        
-        <span class="post-visits" data-url="/2018/06/17/arethas-journey/" data-title="2D 像素风平台游戏 Aretha’s Journey">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>继<a href="https://frankorz.com/2018/04/13/first-board-game/">《我设计的第一个桌游》</a>后，这次带来的是电子游戏的作业—— 2D像素平台游戏 Aretha’s Journey。</p>
-<h2 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h2><p>来自潘达尼亚的女孩 Aretha 已经离乡别井几年了，回乡之际，发现族人们都被神所诅咒而变成了石头，原因是他们的族人曾尝试反抗神。于是 Aretha 便踏上拯救家园之路……<br>
-          <div class="read-more">
-            <a href="/2018/06/17/arethas-journey/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </p></div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/04/13/first-board-game/">我设计的第一个桌游</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-04-13
-        </span>
-        
-        
-        <span class="post-visits" data-url="/2018/04/13/first-board-game/" data-title="我设计的第一个桌游">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>很久没写文章了，这次带来的是游戏设计课中的桌游大作业。</p>
-<p>小组成员在第一节课就随机分好了，我们一开始选择每人准备一个桌游原型，然后共同选择一个原型来深入设计，最后一起选择了我的设计原型。<br>
-          <div class="read-more">
-            <a href="/2018/04/13/first-board-game/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </p></div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/16/greedy-best-find-search/">寻路算法-贪婪最佳优先算法</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-12-16
-        </span>
-        
-        
-        <span class="post-visits" data-url="/2017/12/16/greedy-best-find-search/" data-title="寻路算法-贪婪最佳优先算法">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>最近开始接触寻路算法，对此不太了解的话建议读者先看这篇文章<a href="http://www.gameres.com/777251.html" target="_blank" rel="noopener">《如何快速找到最优路线？深入理解游戏中寻路算法》</a> 。</p>
-<blockquote>
-<p>所有寻路算法都需要一种方法以数学的方式估算某个节点是否应该被选择。大多数游戏都会使用<strong>启发式</strong>（heuristic） ，以 h(x) 表示，就是估算从某个位置到目标位置的开销。理想情况下，启发式结果越接近真实越好。</p>
-<p>——《游戏编程算法与技巧》</p>
-</blockquote>
-<p>今天主要说的是贪婪最佳优先搜索（Greedy Best-First Search），贪心算法的含义是：求解问题时，总是做出在当前来说最好的选择。通俗点说就是，这是一个“短视”的算法。<br>
-          <div class="read-more">
-            <a href="/2017/12/16/greedy-best-find-search/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </p></div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/09/24/matrix-transformation-2/">3D数学基础-矩阵变换（二）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017-09-24
-        </span>
-        
-          <span class="post-category">
-            
-              <a href="/categories/图形学/">图形学</a>
-            
-          </span>
-        
-        
-        <span class="post-visits" data-url="/2017/09/24/matrix-transformation-2/" data-title="3D数学基础-矩阵变换（二）">
-          阅读次数 0
-        </span>
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D 数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
-          <div class="read-more">
-            <a href="/2017/09/24/matrix-transformation-2/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-      
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2019/05/07/simple-talk-unity-dots/">
+        <span class="next-text nav-default">Unity DOTS 走马观花</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
 
+      </footer>
     
-  </section>
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
       </main>
@@ -1173,6 +706,27 @@
     </div>
 
     
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/';
+        this.page.identifier = '2019/07/14/clarify-ecs-basic-concept/';
+        this.page.title = '洞明 Unity ECS 基础概念';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
 
 
     
