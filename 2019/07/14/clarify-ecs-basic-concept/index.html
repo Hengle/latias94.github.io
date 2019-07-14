@@ -533,7 +533,8 @@
 <li><strong>尽量使用已存在的 <code>EntityCommandBufferSystem</code> 而不是重新添加一个新的。</strong>因为一个 <code>EntityCommandBufferSystem</code> 代表一个主线程等待子线程完成的同步点（sync point），如果重用一个在每个根系统组（root-level system group）中预定义的 Begin/End 系统，就能节省多个同步点所带来的额外时间间隔（可以回去看同步点小节的示意图，同步点的位置是由最晚执行完的子线程所决定的）。</li>
 <li><strong>避免放自定义的逻辑到 <code>ComponentSystemGroup.OnUpdate()</code> 中。</strong>虽然 <code>ComponentSystemGroup</code> 功能上和一个组件系统（component system）一样，但是我们应该避免这么做。因为它作为一个系统组，在外面不能马上知道成员系统是否已经执行了 update，因此推荐的做法是只让系统组当一个组（group）来用，而把逻辑放到与其分离的组件系统中，再定好该系统与系统组的相对顺序。</li>
 </ul>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>自己才刚考完试，所以计划的文章一直拖到现在。ECS 对我而言充满着吸引力，可能有些程序员也会对性能特别执着吧，它就像魔法一样，完全不同的开发模式，还需要我们深入了解内存的结构。尽管 ECS 可能在工作中对我是一种屠龙技，但有些知识啊，学了就已经很开心了~<br>我的毕业季也到来了，有空的话可能会写写 Demo 把剩下的实践部分补完，当然计划也可能搁浅。不管怎么样，希望本文对 ECS 同好有所帮助，有问题也欢迎在评论指出。 </p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>自己才刚考完试，所以计划的文章一直拖到现在。ECS 对我而言充满着吸引力，可能有些程序员也会对性能特别执着吧，它就像魔法一样，完全不同的开发模式，还需要我们深入了解内存的结构。尽管 ECS 可能在工作中对我是一种屠龙技，但有些知识啊，学了就已经很开心了~</p>
+<p>我的毕业季也到来了，有空的话可能会写写 Demo 把剩下的实践部分补完，当然计划也可能搁浅。不管怎么样，希望本文对 ECS 同好有所帮助，有问题也欢迎在评论指出。 </p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="https://docs.unity3d.com/Packages/com.unity.entities@0.0/manual/index.html" target="_blank" rel="noopener">《Entity Component System Manual》</a></li>
 <li><a href="https://github.com/BrianWill/LearnUnity/tree/master/ecs-jobs" target="_blank" rel="noopener">BrianWill LearnUnity/ecs-jobs</a></li>
