@@ -106,7 +106,7 @@
 
 
 
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
 
 
 
@@ -283,7 +283,7 @@
         
         
         
-        <span id="busuanzi_container_page_pv" class="post-category">阅读：<span id="busuanzi_value_page_pv"></span></span>
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span>次阅读</span>
         
       </div>
     </header>
@@ -328,7 +328,7 @@
 <h5 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h5><p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c73da67.jpg" alt></p>
 <p>还有这个应用的Log文件不太准，一开始配置的时候就被坑了…像上图应该是<code>ShadowsocksAdapter</code>的这里却显示<code>DirectAdapter</code>，但是直连的话我是看不了Youtube的，真是迷呀。</p>
 <h4 id="iTerm-2"><a href="#iTerm-2" class="headerlink" title="iTerm 2"></a>iTerm 2</h4><p>在<code>~/.zshrc</code>中加入下面代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> where proxy</span><br><span class="line">proxy () &#123;</span><br><span class="line">  export http_proxy="http://127.0.0.1:1086" # http代理地址</span><br><span class="line">  export https_proxy="http://127.0.0.1:1086" # https代理地址</span><br><span class="line">  echo "HTTP Proxy on"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> where noproxy</span><br><span class="line">noproxy () &#123;</span><br><span class="line">  unset http_proxy</span><br><span class="line">  unset https_proxy</span><br><span class="line">  echo "HTTP Proxy off"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">where</span> proxy</span></span><br><span class="line">proxy () &#123;</span><br><span class="line">  export http_proxy="http://127.0.0.1:1086" # http代理地址</span><br><span class="line">  export https_proxy="http://127.0.0.1:1086" # https代理地址</span><br><span class="line">  echo "HTTP Proxy on"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">where</span> noproxy</span></span><br><span class="line">noproxy () &#123;</span><br><span class="line">  unset http_proxy</span><br><span class="line">  unset https_proxy</span><br><span class="line">  echo "HTTP Proxy off"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果你想使用 SpechtLite 代理，可以把端口改成 SpechtLite 默认端口9090，修改后<code>source ~/.zshrc</code>就能使用了。</p>
 <p><img src="http://ooo.0o0.ooo/2016/10/06/57f603c4f05a7.jpg" alt></p>
 <p>如果是终端.app的话需要自己复制export语句来使用代理。</p>
