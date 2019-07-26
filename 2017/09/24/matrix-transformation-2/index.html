@@ -304,7 +304,7 @@
         <p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D 数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
 <h2 id="平移（Translation）"><a href="#平移（Translation）" class="headerlink" title="平移（Translation）"></a>平移（Translation）</h2><p>前一篇文章总结了旋转、缩放等变换，这里介绍一下平移变换。</p>
-<p>假如我们需要把X坐标从 x 变换到 x + 5，我们需要构造什么样的变换矩阵来实现平移呢？</p>
+<p>假如我们需要把 X 坐标从 x 变换到 x + 5，我们需要构造什么样的变换矩阵来实现平移呢？</p>
 <script type="math/tex; mode=display">
 \begin{bmatrix}x' \\ y' \\ z' \end{bmatrix}=\begin{bmatrix} & & \\ & ? & \\ & & \end{bmatrix}\begin{bmatrix}x \\ y \\ z \end{bmatrix}=\begin{bmatrix}x+5 \\ y \\ z \end{bmatrix}</script><p>要注意的是，变换矩阵不能包含 x、y、z 等坐标变量。例如要得到 x + 5，那么矩阵的第一个行向量不能是 <script type="math/tex">(1, 0, 5/z)</script>，因为变换的一个重要性质是<strong>变换矩阵保持不变</strong>。</p>
 <p>我们可以给矩阵多加一个维度 w，令其等于 1，这样就不需要用到 x、y、z 这些坐标变量了。</p>
@@ -344,8 +344,10 @@
 <script type="math/tex; mode=display">t\rightarrow Mt</script><p>而法线变换是另外一个矩阵，我们称之为 Q。</p>
 <script type="math/tex; mode=display">n\rightarrow Qn~~Q=?</script><p>法线必须垂直于这些切线，因此法线和切线的点积等于 0。</p>
 <script type="math/tex; mode=display">n^{T}t=0</script><p>变换后法线和切点依然互相垂直，可得：</p>
-<script type="math/tex; mode=display">(Qn)^{T}=(n^{T}Q^{T})(Mt)=0</script><p>在该等式中，只有当 <script type="math/tex">Q^{T}M=I</script> 时，矩阵才容易求解。</p>
-<script type="math/tex; mode=display">n^{T}Q^{T}Mt=0~~\Rightarrow ~~ Q^{T}M=I</script><p>最后可得法线变换公式，其中 <script type="math/tex">M^{-1}</script> 只对左上角的 3 * 3 矩阵求逆和转置：</p>
+<script type="math/tex; mode=display">
+(Qn)^{T}=(n^{T}Q^{T})(Mt)=0</script><p>在该等式中，只有当 <script type="math/tex">Q^{T}M=I</script> 时，矩阵才容易求解。</p>
+<script type="math/tex; mode=display">
+n^{T} Q^{T} M t=0 \Rightarrow Q^{T} M=I</script><p>最后可得法线变换公式，其中 <script type="math/tex">M^{-1}</script> 只对左上角的 3 * 3 矩阵求逆和转置：</p>
 <script type="math/tex; mode=display">Q=(M^{-1})^{T}</script><p>要进行法线变换，这个公式要施加在曲面上所有的法线上。</p>
 <p>另外要注意的是法线是一个向量，不会随着平移而改变，因此平移变换对法线没影响。</p>
 <h2 id="改变坐标系"><a href="#改变坐标系" class="headerlink" title="改变坐标系"></a>改变坐标系</h2><p><img src="https://i.loli.net/2017/09/24/59c70f36b057b.jpg" alt></p>
