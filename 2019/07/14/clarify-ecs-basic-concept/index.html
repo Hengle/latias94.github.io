@@ -315,7 +315,7 @@
 <h1 id="Entities（实体）"><a href="#Entities（实体）" class="headerlink" title="Entities（实体）"></a>Entities（实体）</h1><p>在 <code>World</code>中， <code>EntityManager</code> 管理所有实体和组件。</p>
 <p>当你需要创建实体和为其添加组件的时候， <code>EntityManager</code>会一直跟踪所有独立的组件组合（也就是原型 Archetype）。</p>
 <h2 id="创建实体"><a href="#创建实体" class="headerlink" title="创建实体"></a>创建实体</h2><p>最简单的方法就是在编辑器直接挂一个 <code>ConvertToEntity</code> 脚本，在运行时中把 GameObject 转成实体。</p>
-<p><img src="https://i.loli.net/2019/07/14/5d2afb77ee64e53003.png" alt="在编辑器中挂脚本，GameObject 会在运行时中转成实体"></p>
+<p><img src="http://img.frankorz.com/5d2afb77ee64e53003.png" alt="在编辑器中挂脚本，GameObject 会在运行时中转成实体"></p>
 <p>在编辑器中挂脚本，GameObject 会在运行时中转成实体</p>
 <p>脚本中，你也可以创建系统（System）并在一个 Job 中创建多个实体，也可以通过 <code>EntityManager.CreateEntity</code> 方法来一次生成大量 Entity。</p>
 <p>我们可以通过下面四种方法来创建一个实体：</p>
@@ -356,7 +356,7 @@
 <p><code>EntityManager</code> 会组织所有实体中独立的的组件组合成不同的<strong>原型（Archetypes）</strong>，还会将拥有同样原型的所有实体的组件（数据）储存到一起，都放到同一个<strong>内存块（Chunks）</strong>中。</p>
 <p>如果你为一个实体新增了一个组件，那么其原型就改变了，实体的数据也需要从原来的内存块移到新的内存块，因为只有相同原型的实体数据才会放到相同的内存块中。</p>
 <p>一个原型由很多个内存块组成，这些内存块中存的都是拥有相同原型的实体。</p>
-<p><img src="https://i.loli.net/2019/05/07/5cd16af8d2324.png" alt></p>
+<p><img src="http://img.frankorz.com/5cd16af8d2324.png" alt></p>
 <h2 id="General-Purpose-Component（普通用途组件）"><a href="#General-Purpose-Component（普通用途组件）" class="headerlink" title="General Purpose Component（普通用途组件）"></a>General Purpose Component（普通用途组件）</h2><p>这里指的是最普通的组件，可以通过实现 <code>IComponentData</code> 接口来创建。</p>
 <p><code>IComponentData</code> 不存储行为，只储存数据。<code>IComponentData</code> 还是一个结构体（Struct）而不是一个类（Class），这意味着被复制时默认是通过值而不是通过引用。</p>
 <p>通常我们会用下面的<strong>模式</strong>来修改组件数据：</p>
@@ -367,7 +367,7 @@
 <h2 id="Shared-components（共享组件）"><a href="#Shared-components（共享组件）" class="headerlink" title="Shared components（共享组件）"></a>Shared components（共享组件）</h2><p>Shared components 是一种特殊的组件，你可以把某些特殊的需要共享的值放到 shared component 中，从而在实体中与其他组件划分开。例如有时候我们的实体需要共享一套材质，我们可以为需要共享的材质创建 <code>Rendering.RenderMesh</code>，再放到 shared components 中。原型中也可以定义 shared components，这一点和其他组件是一样的。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">System.Serializable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> RenderMesh : ISharedComponentData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> Mesh                 mesh;</span><br><span class="line">    <span class="keyword">public</span> Material             material;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ShadowCastingMode    castShadows;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span>                 receiveShadows;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当你为一个实体添加一个 shared components 时， <code>EntityManager</code> 会把所有带有同样 shared components 的实体放到一个同样的内存块中（Chunks）。shared components 允许我们的系统去一并处理相似的（有同样 shared components 的）实体。</p>
-<h3 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h3><p><img src="https://i.loli.net/2019/07/13/5d295d398f62598876.png" alt></p>
+<h3 id="内存结构"><a href="#内存结构" class="headerlink" title="内存结构"></a>内存结构</h3><p><img src="http://img.frankorz.com/5d295d398f62598876.png" alt></p>
 <p>每个内存块（Chunk）会有一个存放 shared components 索引的数组。这句话包含了几个要点：</p>
 <ol>
 <li>对于实体来说，有同样 <code>SharedComponentData</code> 的实体会被一起放到同样的内存块（Chunk）中。</li>
@@ -376,7 +376,7 @@
 <li>因为内存块只需要存其索引，<code>SharedComponentData</code> 的内存消耗几乎可以忽略不计。</li>
 </ol>
 <p>因为上面的第二个要点，我们不能滥用 shared components。滥用 shared components 将让 Unity 不能利用好内存块（Chunk），因此我们要避免添加不必要的数据或修改数据到 shared components 中。我们可以通过 Entity Debugger 来监测内存块的利用。</p>
-<p><img src="https://i.loli.net/2019/07/13/5d295b6d78b7f51832.png" alt></p>
+<p><img src="http://img.frankorz.com/5d295b6d78b7f51832.png" alt></p>
 <p>拿上一段 RenderMesh 的例子来说，共享材质会更有效率，因为 shared components 有其自己的 <code>manager</code> 和哈希表。其中 <code>manager</code> 带有一个存储 shared components 数据的自由列表（<a href="https://zh.wikipedia.org/wiki/自由表" target="_blank" rel="noopener">freelist</a>），哈希表可以快速地找到相应的值。内存块里面存的是索引数组，需要找数据的时候就会从 Shared Component Manager 中找。</p>
 <h3 id="其他要点"><a href="#其他要点" class="headerlink" title="其他要点"></a>其他要点</h3><ul>
 <li><code>EntityQuery</code> 可以迭代所有拥有相同 <code>SharedComponentData</code> 的实体</li>
@@ -426,12 +426,12 @@
 <h2 id="ComponentSystem（组件系统）"><a href="#ComponentSystem（组件系统）" class="headerlink" title="ComponentSystem（组件系统）"></a>ComponentSystem（组件系统）</h2><p><code>ComponentSystem</code> 通常指 ECS 实体组件系统中最基本的概念 System，它提供要执行的操作给实体。</p>
 <p><code>ComponentSystem</code> 不能包含实体的数据。从传统的开发模式来看，它与旧的 Component 类有点相似，不过 <code>ComponentSystem</code>  <strong>只包含方法</strong>。</p>
 <p>一个 <code>ComponentSystem</code>  负责更新所有<strong>匹配组件类型</strong>的实体。例如：系统可以通过条件过滤来获得所有拥有 Player 标记（Tag）和位置（Translation）的实体，再对获得的一系列 Player 实体进行处理。其中这种条件过滤由 <a href="https://docs.unity3d.com/Packages/com.unity.entities@0.0/manual/component_group.html" target="_blank" rel="noopener">EntityQuery</a> 结构定义。</p>
-<p><img src="https://i.loli.net/2019/07/13/5d29bcddd863174576.png" alt></p>
+<p><img src="http://img.frankorz.com/5d29bcddd863174576.png" alt></p>
 <p>要注意的是，<code>ComponentSystem</code> 只在<strong>主线程</strong>中执行。</p>
 <p>我们可以通过继承 <code>ComponentSystem</code>  抽象类来定义我们的系统。</p>
 <p>See file: /Packages/com.unity.entities/Unity.Entities/ComponentSystem.cs.</p>
 <h2 id="JobComponentSystem（任务组件系统）"><a href="#JobComponentSystem（任务组件系统）" class="headerlink" title="JobComponentSystem（任务组件系统）"></a>JobComponentSystem（任务组件系统）</h2><p>前文提到了 ECS 能很好的和 JobSystem 一起合作，那么这个类型就是一个很好的例子。<code>ComponentSystem</code> 只在<strong>主线程</strong>中执行，而 <code>JobComponentSystem</code>  则能在<strong>多线程</strong>中执行，更能利用多核的优势。</p>
-<p><img src="https://i.loli.net/2019/07/13/5d29bd129f0d058419.png" alt></p>
+<p><img src="http://img.frankorz.com/5d29bd129f0d058419.png" alt></p>
 <h3 id="自动化的-Job-依赖管理"><a href="#自动化的-Job-依赖管理" class="headerlink" title="自动化的 Job 依赖管理"></a>自动化的 Job 依赖管理</h3><p><code>JobComponentSystem</code> 能帮我们自动管理依赖。原理很简单，来自不同系统的 Job 可以并行地读取相同类型的 <code>IComponentData</code>。如果其中一个 Job 正在写（write）数据，那么所有的 Job 就不能并行地执行，而是设定它们的依赖来安排执行顺序。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RotationSpeedSystem</span> : <span class="title">JobComponentSystem</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">BurstCompile</span>]</span><br><span class="line">    <span class="keyword">struct</span> RotationSpeedRotation : IJobForEach&lt;Rotation, RotationSpeed&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">float</span> dt;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params"><span class="keyword">ref</span> Rotation rotation, [ReadOnly]<span class="keyword">ref</span> RotationSpeed speed</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            rotation.<span class="keyword">value</span> = math.mul(math.normalize(rotation.<span class="keyword">value</span>), quaternion.axisAngle(math.up(), speed.speed * dt));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有对 Rotation 读/写的和对 RotationSpeed 进行写操作的</span></span><br><span class="line">        <span class="comment">// 已经排程的 Job 会自动放到 JobHandle 类型的依赖句柄 inputDeps 中</span></span><br><span class="line">        <span class="comment">// 在方法中，我们也需要把自己的 Job 依赖加进句柄中，并在方法末尾返回回来。</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> JobHandle <span class="title">OnUpdate</span>(<span class="params">JobHandle inputDeps</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> job = <span class="keyword">new</span> RotationSpeedRotation() &#123; dt = Time.deltaTime &#125;;</span><br><span class="line">        <span class="keyword">return</span> job.Schedule(<span class="keyword">this</span>, inputDeps);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="怎么运行的？"><a href="#怎么运行的？" class="headerlink" title="怎么运行的？"></a>怎么运行的？</h3><p>所有 Jobs 和系统会声明它们会读/写哪些组件类型（ComponentTypes）。JobComponentSystem 返回的 <a href="https://docs.unity3d.com/ScriptReference/Unity.Jobs.JobHandle.html" target="_blank" rel="noopener">JobHandle</a> 依赖句柄会自动注册到 <code>EntityManager</code> 中，以及所有包含读或写（reading or writing）信息的类型中。</p>
@@ -440,7 +440,7 @@
 <h3 id="依赖管理是保守的（conservative）和确定性的（deterministic）"><a href="#依赖管理是保守的（conservative）和确定性的（deterministic）" class="headerlink" title="依赖管理是保守的（conservative）和确定性的（deterministic）"></a>依赖管理是保守的（conservative）和确定性的（deterministic）</h3><p>依赖管理是保守的。 <code>ComponentSystem</code> 只是简单的跟踪所有使用的 <code>EntityQuery</code>，然后基于 <code>EntityQuery</code> 存储需要读或写的类型。</p>
 <p>当在一个系统中分发多个 Jobs 的时候，依赖必须被发送到所有 Jobs 中，即使不同的 Jobs 可能需要更少的依赖。如果这里被证明有性能问题，那最好的解决方法是将系统一分为二。</p>
 <p>依赖管理的手段也是保守的。它通过提供一个非常简单的 API 来允许确定性和正确的行为。</p>
-<h3 id="Sync-points（同步点）"><a href="#Sync-points（同步点）" class="headerlink" title="Sync points（同步点）"></a>Sync points（同步点）</h3><p><img src="https://i.loli.net/2019/07/13/5d29bd3e4103143937.png" alt></p>
+<h3 id="Sync-points（同步点）"><a href="#Sync-points（同步点）" class="headerlink" title="Sync points（同步点）"></a>Sync points（同步点）</h3><p><img src="http://img.frankorz.com/5d29bd3e4103143937.png" alt></p>
 <p>所有结构性的变化都有确切的同步点（hard sync points）。 <code>CreateEntity</code>、<code>Instantiate</code>、 <code>Destroy</code>、 <code>AddComponent</code>、 <code>RemoveComponent</code>、<code>SetSharedComponentData</code> 都有一个确切的同步点。这代表所有通过 <code>JobComponentSystem</code> 排期的 Jobs 都会在创建实体之前自动完成。</p>
 <p>例如，在一帧中间的 <code>EntityManager.CreateEntity</code> 可能带来较大的<strong>停滞</strong>，因为所有在世界中的提前排期好的 Jobs 都需要完成。</p>
 <p>如果要在游戏中避免上面提到的停滞，可以使用 <code>EntityCommandBuffer</code>。</p>
@@ -479,10 +479,10 @@
 </ul>
 <h3 id="Default-System-Groups（默认系统组）"><a href="#Default-System-Groups（默认系统组）" class="headerlink" title="Default System Groups（默认系统组）"></a>Default System Groups（默认系统组）</h3><p>默认世界（default World）包含 <code>ComponentSystemGroup</code> 实例的层次结构（hierarchy）。在 Unity Player Loop 中会添加三个根层次（root-level）的系统组。</p>
 <p>下图中打开 Entity Debugger，也能看到这三个系统组和其顺序。</p>
-<p><img src="https://i.loli.net/2019/07/14/5d2ab0dd94fe244311.png" alt></p>
+<p><img src="http://img.frankorz.com/5d2ab0dd94fe244311.png" alt></p>
 <p>这三个系统组各司其职， <code>InitializationSystemGroup</code> 做初始化工作， <code>SimulationSystemGroup</code> 在 Update 中做主要的逻辑运算， <code>PresentationSystemGroup</code> 做图形渲染工作。</p>
 <p>如果勾选 “Show Full Player Loop” 项，还能看到完整的游戏主循环，以及系统组执行的顺序。</p>
-<p><img src="https://i.loli.net/2019/07/14/5d2acd6b5ea8681591.png" alt></p>
+<p><img src="http://img.frankorz.com/5d2acd6b5ea8681591.png" alt></p>
 <p>下面列表也展示了预定义的系统组和其成员系统：</p>
 <ul>
 <li>InitializationSystemGroup （在游戏循环（Player Loop）的 <code>Initialization</code> 层最后 update）<ul>
@@ -678,7 +678,6 @@
     主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
-  <span class="division">|</span>
   <span class="host-by">
     Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
   </span>
@@ -696,12 +695,17 @@
     <span class="author">猫冬</span>
   </span>
   
-  <span id="busuanzi_container_site_uv" class="author">
-  本站访客数<span id="busuanzi_value_site_pv"></span>人次
-  </span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
   
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
 </div>
-
       </footer>
 
       <div class="back-to-top" id="back-to-top">

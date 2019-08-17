@@ -306,7 +306,7 @@
         <blockquote>
 <p>未完工<br>尚缺 k-th Largest Element、Selection Sampling、Union-Find</p>
 </blockquote>
-<p><img src="http://ooo.0o0.ooo/2016/10/12/57fe492d1e042.jpg" alt></p>
+<p><img src="http://img.frankorz.com/57fe492d1e042.jpg" alt></p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>这是一系列关于Swift语言的算法笔记，Swift版本为3.0，参考的教程来自 <a href="https://github.com/raywenderlich/swift-algorithm-club" target="_blank" rel="noopener">Swift Algorithms Club</a> 。</p>
 <p>所有的代码可以直接在Xcode的Playground中运行，前面的算法较简单，主要说说算法的基础、思路和一些Swift语言的特性，我十分推荐你把这里的算法独自实现一遍。</p>
 <p>另外这里可以下载 Swift Algorithms Club 算法教程的Epub文件！ <a href="https://github.com/aquarchitect/swift-algorithm-club/releases/download/1.0.0/SwiftAlgo.epub" target="_blank" rel="noopener">点我下载</a><br><a id="more"></a></p>
@@ -374,7 +374,7 @@
 </tbody>
 </table>
 </div>
-<p><img src="http://ooo.0o0.ooo/2016/10/19/58076cee4c984.png" alt></p>
+<p><img src="http://img.frankorz.com/58076cee4c984.png" alt></p>
 <h3 id="Linear-Search"><a href="#Linear-Search" class="headerlink" title="Linear Search"></a>Linear Search</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>Linear Search，又称线性查找、顺序查找。在给定的数组中，我们会遍历所有的元素，并逐个对比是否与要找的特定元素相等，找到即停止查找，返回特定元素的索引，反之继续遍历对比直至对比完最后一个元素。</p>
 <p>目标：从一个数组查找到一个元素</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">linearSearch</span>&lt;T: Equatable&gt;<span class="params">(<span class="number">_</span> array: [T], <span class="number">_</span> object: T)</span></span> -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">  <span class="keyword">for</span> (index, obj) <span class="keyword">in</span> array.enumerated() <span class="keyword">where</span> obj == object &#123;</span><br><span class="line">    <span class="keyword">return</span> index</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -616,7 +616,6 @@
     主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
-  <span class="division">|</span>
   <span class="host-by">
     Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
   </span>
@@ -634,12 +633,17 @@
     <span class="author">猫冬</span>
   </span>
   
-  <span id="busuanzi_container_site_uv" class="author">
-  本站访客数<span id="busuanzi_value_site_pv"></span>人次
-  </span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
   
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
 </div>
-
       </footer>
 
       <div class="back-to-top" id="back-to-top">
