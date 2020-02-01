@@ -327,14 +327,9 @@
 <h2 id="结构和类"><a href="#结构和类" class="headerlink" title="结构和类"></a>结构和类</h2><p>这其实也是用栈还是用堆的考量。</p>
 <h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>Unity 用的是 mono 虚拟机，其堆的内存是通过垃圾回收算法 Boehm GC 来管理的，其不分代（Non-generational）和非压缩式（Non-compacting）的特性，导致了我们平常要注意避免加载过多的小内存，从而内存碎片化（Memory fragmentation）。</p>
 <ul>
-<li><p><strong>分代</strong>：大块内存、小内存、超小内存是分在不同内存区域来进行管理。还有长久内存，当有一个内存很久没动的时候会移到长久内存区域中，从而省出内存给更频繁分配的内存。</p>
-</li>
-<li><p><strong>压缩式</strong>：当有内存被回收的时候，压缩内存会把下图空的地方重新排布。</p>
-<p><img src="http://img.frankorz.com/compacting.png" alt="compacting.png"></p>
-</li>
-<li><p><strong>内存碎片化</strong>：内存过多小内存，导致大内存不能有效地被使用。</p>
-<p><img src="http://img.frankorz.com/memory-fragmentation.png" alt="memory fragmentation"></p>
-</li>
+<li><strong>分代</strong>：大块内存、小内存、超小内存是分在不同内存区域来进行管理。还有长久内存，当有一个内存很久没动的时候会移到长久内存区域中，从而省出内存给更频繁分配的内存。</li>
+<li><strong>压缩式</strong>：当有内存被回收的时候，压缩内存会把下图空的地方重新排布。<br><img src="http://img.frankorz.com/compacting.png" alt="compacting.png"></li>
+<li><strong>内存碎片化</strong>：内存过多小内存，导致大内存不能有效地被使用。<br><img src="http://img.frankorz.com/memory-fragmentation.png" alt="memory fragmentation"></li>
 </ul>
 <p>具体可以参考 Unity 文档 <a href="https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity4-1.html" target="_blank" rel="noopener">Understanding the managed heap</a></p>
 <p>同时也推荐高川老师的演讲：<a href="https://www.bilibili.com/video/av79798486/" target="_blank" rel="noopener">浅谈 Unity 内存管理</a>，和我看视频时的笔记：<a href="https://www.notion.so/Unity-f79bb1d4ccfc483fbd8f8eb859ae55fe" target="_blank" rel="noopener">笔记</a>。</p>
