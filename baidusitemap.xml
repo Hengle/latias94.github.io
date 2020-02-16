@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/</loc>
+    <lastmod>2020-02-11</lastmod>
+  </url>  <url>
     <loc>http://frankorz.com/2020/01/31/illustrated-csharp-and-performance/</loc>
     <lastmod>2020-02-02</lastmod>
   </url>  <url>
@@ -65,9 +68,6 @@
     <lastmod>2019-08-17</lastmod>
   </url>  <url>
     <loc>http://frankorz.com/2019/05/07/simple-talk-unity-dots/</loc>
-    <lastmod>2019-08-17</lastmod>
-  </url>  <url>
-    <loc>http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/</loc>
     <lastmod>2019-08-17</lastmod>
   </url>  <url>
     <loc>http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/</loc>
