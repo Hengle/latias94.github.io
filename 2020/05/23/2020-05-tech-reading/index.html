@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="2020年5月技术导读">
+
+
+
+
+  <meta name="keywords" content="游戏开发, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2020/05/23/2020-05-tech-reading/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> 2020年5月技术导读 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          2020年5月技术导读
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-05-23
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/导读/">导读</a>
+            
+          </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#书籍"><span class="toc-text">书籍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#《软技能2：软件开发者职业生涯指南》"><span class="toc-text">《软技能2：软件开发者职业生涯指南》</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#公开课"><span class="toc-text">公开课</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Games101-图形学入门"><span class="toc-text">Games101 图形学入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Cherno-的游戏引擎教程"><span class="toc-text">The Cherno 的游戏引擎教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Missing-Semester-of-Your-CS-Education"><span class="toc-text">The Missing Semester of Your CS Education</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MIT-教授-Gilbert-Strang-「线性代数」课程"><span class="toc-text">MIT 教授 Gilbert Strang 「线性代数」课程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他计算机公开课"><span class="toc-text">其他计算机公开课</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文章"><span class="toc-text">文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>最近一直在思考自己在技术学习上是否过于低效的问题。出现这个问题的缘由是，自己工作下班之后没多少精力和时间去留给自己学习。本来就有限的时间，如果还没有合适的学习计划，而是一昧凭兴趣去学一些离自己目标方向比较远的东西，可能会事倍功半。</p>
+<p>就我而言，自己目前的水平更像是“磨”出来的，东学学西学学，什么都有点印象，但是专业方向的知识之间的连接却非常离散。读研的时候有大量时间给我“磨”，总归能学会点什么，但工作则不一样。<br><a id="more"></a></p>
+<p>例如一本《Shader 入门精要》目前看了两次，但仍然害怕离开书来写 Shader。再者，一门技术很久不用，再拿起来也需要时间。为此，我总结了三点原因：</p>
+<ol>
+<li>工作中很少用到，游戏有特效师，自己也不会主动地思考怎样的 Shader 能为游戏带来更好的效果。</li>
+<li>学的时候只光看了，跟着书敲了，但一直没有走出书本，去自己实现自己想要的功能。</li>
+<li>觉得 Shader 像 CSS 一样，要记各种东西，凭经验实现效果，而这种知识自己最容易不用就忘。（当然这是错的，这也是为什么我在上期导读选择跟 Games101 图形学课程打基础）</li>
+</ol>
+<p>基于上面的原因，导读也是偏向自己打基础的方面。</p>
+<p>上一期的博文在：<a href="http://frankorz.com/2020/04/13/2020-04-tech-reading/">《2020年4月技术导读》</a></p>
+<h1 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h1><h2 id="《软技能2：软件开发者职业生涯指南》"><a href="#《软技能2：软件开发者职业生涯指南》" class="headerlink" title="《软技能2：软件开发者职业生涯指南》"></a>《软技能2：软件开发者职业生涯指南》</h2><p><a href="https://book.douban.com/subject/35043940/" target="_blank" rel="noopener">豆瓣地址</a></p>
+<p>其实正如上文所说，我学东西靠的是“磨”，但这并不是什么好的学习方式。而且除去编程，作为一个开发者，我们仍然有很多“软技能”需要注意，例如自己的职业规划、如何发现技能短板、如何推进职业生涯等等。</p>
+<p>我相信不止是我，很多开发者也在不断地摸索如何成为一个目标中资深且专业的开发者。而本月出版的这本书就是为这方面而量身定做的，是著名的《软技能》的第二版。这本书目前看到的翻译都十分优秀，每次开卷都有益。如果你也想专注于自己的职业发展，我十分推荐这本书。</p>
+<p>下面是书中介绍的十步学习法，自己根据它来调整了下学习计划：</p>
+<p><img src="http://img.frankorz.com/study-method.png" alt="十步学习法"></p>
+<h1 id="公开课"><a href="#公开课" class="headerlink" title="公开课"></a>公开课</h1><h2 id="Games101-图形学入门"><a href="#Games101-图形学入门" class="headerlink" title="Games101 图形学入门"></a>Games101 图形学入门</h2><p>这门公开课我已经在上期导读中提到：<a href="http://frankorz.com/2020/04/13/2020-04-tech-reading/#%E5%9B%BE%E5%BD%A2%E5%AD%A6">《2020年4月技术导读》</a>，再次提到是因为经过学习，我认为课程中理论部分讲的深入浅出，而且也能了解到当下流行的图形技术和它们是怎么跟我们所学的联系在一起。</p>
+<p>闫老师提到他的学习方式是：Why, What then How，课程也是按照这种思路来设计的。先问为什么要学这个东西，然后问学的是什么，最后了解这东西具体是怎么运作的、怎么用。How 部分是最不重要的，也是最容易忘的部分，我们只需把握好 Why 和 What 部分即可。</p>
+<p>那课程是怎么把知识点联系起来的呢，就凭借一个个 Why 来连接。拿光线追踪来举例，下面是我做的笔记：</p>
+<p><img src="http://img.frankorz.com/ray-tracing-note.jpg" alt="光线追踪笔记截图"></p>
+<p>如果你对笔记感兴趣，我也将其分享了出来：<a href="https://www.notion.so/frankorz/2cbfd6f8e62f40b5abb0b236b045d6b4" target="_blank" rel="noopener">《光线追踪》</a>。</p>
+<h2 id="The-Cherno-的游戏引擎教程"><a href="#The-Cherno-的游戏引擎教程" class="headerlink" title="The Cherno 的游戏引擎教程"></a>The Cherno 的游戏引擎教程</h2><p><a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT" target="_blank" rel="noopener">油管地址</a></p>
+<p><a href="https://www.bilibili.com/video/BV1KE41117BD" target="_blank" rel="noopener">B站搬运地址</a></p>
+<p><a href="https://github.com/TheCherno/Hazel" target="_blank" rel="noopener">教学版引擎仓库地址</a></p>
+<p>Up 主 The Cherno 在自己的 CPP 和 OpenGL 教程之后，再基于两者推出了游戏引擎教程。引擎的仓库是跟着视频教程的进度而推进的，有兴趣的可以了解下。</p>
+<h2 id="The-Missing-Semester-of-Your-CS-Education"><a href="#The-Missing-Semester-of-Your-CS-Education" class="headerlink" title="The Missing Semester of Your CS Education"></a>The Missing Semester of Your CS Education</h2><p><a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">课程地址</a></p>
+<p><a href="https://www.bilibili.com/video/BV1x7411H7wa" target="_blank" rel="noopener">B站搬运地址</a></p>
+<p>这门公开课是通过知乎专栏<a href="https://zhuanlan.zhihu.com/p/139361685" target="_blank" rel="noopener">《6.NULL：恨不相逢“未嫁时”》</a>了解到的。</p>
+<blockquote>
+<p>Classes teach you all about advanced topics within CS, from operating systems to machine learning, but there’s one critical subject that’s rarely covered, and is instead left to students to figure out on their own: proficiency with their tools. We’ll teach you how to master the command-line, use a powerful text editor, use fancy features of version control systems, and much more!</p>
+</blockquote>
+<p>简而言之，这门课不是教计算机的理论，而是介绍一些常用的工具，让你在面对问题的时候有更多的手段。自己可以看看一些不熟悉的主题查漏补缺。</p>
+<h2 id="MIT-教授-Gilbert-Strang-「线性代数」课程"><a href="#MIT-教授-Gilbert-Strang-「线性代数」课程" class="headerlink" title="MIT 教授 Gilbert Strang 「线性代数」课程"></a>MIT 教授 Gilbert Strang 「线性代数」课程</h2><p><a href="https://ocw.mit.edu/resources/res-18-010-a-2020-vision-of-linear-algebra-spring-2020/index.htm" target="_blank" rel="noopener">课程地址</a></p>
+<p>这门公开课是通过知乎专栏<a href="https://zhuanlan.zhihu.com/p/139045147" target="_blank" rel="noopener">《86岁还在录网课：MIT教授Gilbert Strang最新「线性代数」课程上线》</a>了解到的。</p>
+<p>这门课程在今年录制，目前有 6 个视频讲座，对于之前录制的课程也可以在 B 站找录播，例如：<a href="https://www.bilibili.com/video/av6951511" target="_blank" rel="noopener">麻省理工公开课：线性代数</a>。</p>
+<p>具体介绍可以看知乎专栏，自己对于这门课程优先级比较低，线代遇坎儿了再学。</p>
+<h2 id="其他计算机公开课"><a href="#其他计算机公开课" class="headerlink" title="其他计算机公开课"></a>其他计算机公开课</h2><p>有网友总结了国外的计算机课程，还附上了视频链接，可以参考<a href="https://www.yuque.com/guigumentor/guigu/computer" target="_blank" rel="noopener">《电子工程和计算机科学系》</a>。</p>
+<h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul>
+<li><a href="https://www.raywenderlich.com/7630142-entity-component-system-for-unity-getting-started" target="_blank" rel="noopener">Entity Component System for Unity: Getting Started</a><ul>
+<li>Ray Wenderlich 的教程通常会提供初始项目，手把手带你写代码，加上独特风格的配图，很适合用来入门某个技术。这次带来的是 Unity ECS 的入门，用 Entities 包实现一个坦克射击游戏。</li>
+</ul>
+</li>
+<li><a href="https://learn.unity.com/tutorial/fixing-performance-problems-2019-3" target="_blank" rel="noopener">Fixing Performance Problems - 2019.3</a><ul>
+<li>Unity 发表的关于解决性能问题的教程，里面有很多小知识点，对初学者可能有帮助。虽然之前好像看过，但这是 2019.3 版本的。</li>
+</ul>
+</li>
+<li><a href="https://zhuanlan.zhihu.com/p/102293437" target="_blank" rel="noopener">Cache的基本原理</a><ul>
+<li>作者图文并茂地讲解了缓存内部是如何运作的，Visio 手绘风格的图画也很清晰明了。对缓存感兴趣的还可以进一步关注作者的专栏。</li>
+</ul>
+</li>
+<li><a href="https://refactoringguru.cn/design-patterns" target="_blank" rel="noopener">Refactoring.Guru</a><ul>
+<li>这网站也图文并茂地介绍了重构、 设计模式、 SOLID 原则 （单一职责、 开闭原则、 里氏替换、 接口隔离以及依赖反转） 以及其他和智能编程主题相关的内容。</li>
+</ul>
+</li>
+<li><a href="https://jason2506.gitbooks.io/cpumemory/content/" target="_blank" rel="noopener">每位程式設計師都該知道的記憶體知識</a><ul>
+<li>这系列文章是 Ulrich Drepper 於 2007 年写的论文<a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf" target="_blank" rel="noopener">《What Every Programmer Should Know About Memory》</a>的中文繁体翻译，这篇论文十分有名，游戏开发者都应该看看了解内存的细节。</li>
+</ul>
+</li>
+<li><a href="http://www.sebaslab.com/zero-allocation-code-in-unity/" target="_blank" rel="noopener">Zero allocation code in C# and Unity</a><ul>
+<li>文章作者开源过叫 Svelto 的 ECS 框架，这篇文章是他对 Zero allocation 代码（也就是自己管理内存）的理解，也介绍了相关的概念、书籍和很多查看内存分配的工具，对想了解 DOTS 的同学可以阅读一下。</li>
+</ul>
+</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>其实本篇导读相当一部分在讲的是我个人怎么样看待自己目前学习情况，每次导读中所有的内容我其实只能看完一部分，怎么样更高效地学和怎么样更好地平衡生活是我最近不断思考的问题。当然了，我不会放弃。</p>
+<p>这次导读分享的多是游戏内存、缓存、图形学相关的的内容，自己没分享过某种具体实现的 Shader 的文章，是因为我认为自己基础要先打好，这也是我对其他 Shader 课程的态度。希望这次分享能对读者有帮助。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2020/05/23/2020-05-tech-reading/">http://frankorz.com/2020/05/23/2020-05-tech-reading/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/游戏开发/">游戏开发</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2020/04/13/2020-04-tech-reading/">
+        <span class="next-text nav-default">2020年4月技术导读</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2020/05/23/2020-05-tech-reading/';
+        this.page.identifier = '2020/05/23/2020-05-tech-reading/';
+        this.page.title = '2020年5月技术导读';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>

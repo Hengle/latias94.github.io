@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://frankorz.com/"/>
-  <updated>2020-04-16T14:50:47.608Z</updated>
+  <updated>2020-05-23T08:20:30.539Z</updated>
   <id>http://frankorz.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020年5月技术导读</title>
+    <link href="http://frankorz.com/2020/05/23/2020-05-tech-reading/"/>
+    <id>http://frankorz.com/2020/05/23/2020-05-tech-reading/</id>
+    <published>2020-05-23T08:05:35.000Z</published>
+    <updated>2020-05-23T08:20:30.539Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近一直在思考自己在技术学习上是否过于低效的问题。出现这个问题的缘由是，自己工作下班之后没多少精力和时间去留给自己学习。本来就有限的时间，如果还没有合适的学习计划，而是一昧凭兴趣去学一些离自己目标方向比较远的东西，可能会事倍功半。</p><p>就我而言，自己目前的水平更像是“磨”出来的，东学学西学学，什么都有点印象，但是专业方向的知识之间的连接却非常离散。读研的时候有大量时间给我“磨”，总归能学会点什么，但工作则不一样。<br><a id="more"></a></p><p>例如一本《Shader 入门精要》目前看了两次，但仍然害怕离开书来写 Shader。再者，一门技术很久不用，再拿起来也需要时间。为此，我总结了三点原因：</p><ol><li>工作中很少用到，游戏有特效师，自己也不会主动地思考怎样的 Shader 能为游戏带来更好的效果。</li><li>学的时候只光看了，跟着书敲了，但一直没有走出书本，去自己实现自己想要的功能。</li><li>觉得 Shader 像 CSS 一样，要记各种东西，凭经验实现效果，而这种知识自己最容易不用就忘。（当然这是错的，这也是为什么我在上期导读选择跟 Games101 图形学课程打基础）</li></ol><p>基于上面的原因，导读也是偏向自己打基础的方面。</p><p>上一期的博文在：<a href="http://frankorz.com/2020/04/13/2020-04-tech-reading/">《2020年4月技术导读》</a></p><h1 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h1><h2 id="《软技能2：软件开发者职业生涯指南》"><a href="#《软技能2：软件开发者职业生涯指南》" class="headerlink" title="《软技能2：软件开发者职业生涯指南》"></a>《软技能2：软件开发者职业生涯指南》</h2><p><a href="https://book.douban.com/subject/35043940/" target="_blank" rel="noopener">豆瓣地址</a></p><p>其实正如上文所说，我学东西靠的是“磨”，但这并不是什么好的学习方式。而且除去编程，作为一个开发者，我们仍然有很多“软技能”需要注意，例如自己的职业规划、如何发现技能短板、如何推进职业生涯等等。</p><p>我相信不止是我，很多开发者也在不断地摸索如何成为一个目标中资深且专业的开发者。而本月出版的这本书就是为这方面而量身定做的，是著名的《软技能》的第二版。这本书目前看到的翻译都十分优秀，每次开卷都有益。如果你也想专注于自己的职业发展，我十分推荐这本书。</p><p>下面是书中介绍的十步学习法，自己根据它来调整了下学习计划：</p><p><img src="http://img.frankorz.com/study-method.png" alt="十步学习法"></p><h1 id="公开课"><a href="#公开课" class="headerlink" title="公开课"></a>公开课</h1><h2 id="Games101-图形学入门"><a href="#Games101-图形学入门" class="headerlink" title="Games101 图形学入门"></a>Games101 图形学入门</h2><p>这门公开课我已经在上期导读中提到：<a href="http://frankorz.com/2020/04/13/2020-04-tech-reading/#%E5%9B%BE%E5%BD%A2%E5%AD%A6">《2020年4月技术导读》</a>，再次提到是因为经过学习，我认为课程中理论部分讲的深入浅出，而且也能了解到当下流行的图形技术和它们是怎么跟我们所学的联系在一起。</p><p>闫老师提到他的学习方式是：Why, What then How，课程也是按照这种思路来设计的。先问为什么要学这个东西，然后问学的是什么，最后了解这东西具体是怎么运作的、怎么用。How 部分是最不重要的，也是最容易忘的部分，我们只需把握好 Why 和 What 部分即可。</p><p>那课程是怎么把知识点联系起来的呢，就凭借一个个 Why 来连接。拿光线追踪来举例，下面是我做的笔记：</p><p><img src="http://img.frankorz.com/ray-tracing-note.jpg" alt="光线追踪笔记截图"></p><p>如果你对笔记感兴趣，我也将其分享了出来：<a href="https://www.notion.so/frankorz/2cbfd6f8e62f40b5abb0b236b045d6b4" target="_blank" rel="noopener">《光线追踪》</a>。</p><h2 id="The-Cherno-的游戏引擎教程"><a href="#The-Cherno-的游戏引擎教程" class="headerlink" title="The Cherno 的游戏引擎教程"></a>The Cherno 的游戏引擎教程</h2><p><a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT" target="_blank" rel="noopener">油管地址</a></p><p><a href="https://www.bilibili.com/video/BV1KE41117BD" target="_blank" rel="noopener">B站搬运地址</a></p><p><a href="https://github.com/TheCherno/Hazel" target="_blank" rel="noopener">教学版引擎仓库地址</a></p><p>Up 主 The Cherno 在自己的 CPP 和 OpenGL 教程之后，再基于两者推出了游戏引擎教程。引擎的仓库是跟着视频教程的进度而推进的，有兴趣的可以了解下。</p><h2 id="The-Missing-Semester-of-Your-CS-Education"><a href="#The-Missing-Semester-of-Your-CS-Education" class="headerlink" title="The Missing Semester of Your CS Education"></a>The Missing Semester of Your CS Education</h2><p><a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">课程地址</a></p><p><a href="https://www.bilibili.com/video/BV1x7411H7wa" target="_blank" rel="noopener">B站搬运地址</a></p><p>这门公开课是通过知乎专栏<a href="https://zhuanlan.zhihu.com/p/139361685" target="_blank" rel="noopener">《6.NULL：恨不相逢“未嫁时”》</a>了解到的。</p><blockquote><p>Classes teach you all about advanced topics within CS, from operating systems to machine learning, but there’s one critical subject that’s rarely covered, and is instead left to students to figure out on their own: proficiency with their tools. We’ll teach you how to master the command-line, use a powerful text editor, use fancy features of version control systems, and much more!</p></blockquote><p>简而言之，这门课不是教计算机的理论，而是介绍一些常用的工具，让你在面对问题的时候有更多的手段。自己可以看看一些不熟悉的主题查漏补缺。</p><h2 id="MIT-教授-Gilbert-Strang-「线性代数」课程"><a href="#MIT-教授-Gilbert-Strang-「线性代数」课程" class="headerlink" title="MIT 教授 Gilbert Strang 「线性代数」课程"></a>MIT 教授 Gilbert Strang 「线性代数」课程</h2><p><a href="https://ocw.mit.edu/resources/res-18-010-a-2020-vision-of-linear-algebra-spring-2020/index.htm" target="_blank" rel="noopener">课程地址</a></p><p>这门公开课是通过知乎专栏<a href="https://zhuanlan.zhihu.com/p/139045147" target="_blank" rel="noopener">《86岁还在录网课：MIT教授Gilbert Strang最新「线性代数」课程上线》</a>了解到的。</p><p>这门课程在今年录制，目前有 6 个视频讲座，对于之前录制的课程也可以在 B 站找录播，例如：<a href="https://www.bilibili.com/video/av6951511" target="_blank" rel="noopener">麻省理工公开课：线性代数</a>。</p><p>具体介绍可以看知乎专栏，自己对于这门课程优先级比较低，线代遇坎儿了再学。</p><h2 id="其他计算机公开课"><a href="#其他计算机公开课" class="headerlink" title="其他计算机公开课"></a>其他计算机公开课</h2><p>有网友总结了国外的计算机课程，还附上了视频链接，可以参考<a href="https://www.yuque.com/guigumentor/guigu/computer" target="_blank" rel="noopener">《电子工程和计算机科学系》</a>。</p><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul><li><a href="https://www.raywenderlich.com/7630142-entity-component-system-for-unity-getting-started" target="_blank" rel="noopener">Entity Component System for Unity: Getting Started</a><ul><li>Ray Wenderlich 的教程通常会提供初始项目，手把手带你写代码，加上独特风格的配图，很适合用来入门某个技术。这次带来的是 Unity ECS 的入门，用 Entities 包实现一个坦克射击游戏。</li></ul></li><li><a href="https://learn.unity.com/tutorial/fixing-performance-problems-2019-3" target="_blank" rel="noopener">Fixing Performance Problems - 2019.3</a><ul><li>Unity 发表的关于解决性能问题的教程，里面有很多小知识点，对初学者可能有帮助。虽然之前好像看过，但这是 2019.3 版本的。</li></ul></li><li><a href="https://zhuanlan.zhihu.com/p/102293437" target="_blank" rel="noopener">Cache的基本原理</a><ul><li>作者图文并茂地讲解了缓存内部是如何运作的，Visio 手绘风格的图画也很清晰明了。对缓存感兴趣的还可以进一步关注作者的专栏。</li></ul></li><li><a href="https://refactoringguru.cn/design-patterns" target="_blank" rel="noopener">Refactoring.Guru</a><ul><li>这网站也图文并茂地介绍了重构、 设计模式、 SOLID 原则 （单一职责、 开闭原则、 里氏替换、 接口隔离以及依赖反转） 以及其他和智能编程主题相关的内容。</li></ul></li><li><a href="https://jason2506.gitbooks.io/cpumemory/content/" target="_blank" rel="noopener">每位程式設計師都該知道的記憶體知識</a><ul><li>这系列文章是 Ulrich Drepper 於 2007 年写的论文<a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf" target="_blank" rel="noopener">《What Every Programmer Should Know About Memory》</a>的中文繁体翻译，这篇论文十分有名，游戏开发者都应该看看了解内存的细节。</li></ul></li><li><a href="http://www.sebaslab.com/zero-allocation-code-in-unity/" target="_blank" rel="noopener">Zero allocation code in C# and Unity</a><ul><li>文章作者开源过叫 Svelto 的 ECS 框架，这篇文章是他对 Zero allocation 代码（也就是自己管理内存）的理解，也介绍了相关的概念、书籍和很多查看内存分配的工具，对想了解 DOTS 的同学可以阅读一下。</li></ul></li></ul><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>其实本篇导读相当一部分在讲的是我个人怎么样看待自己目前学习情况，每次导读中所有的内容我其实只能看完一部分，怎么样更高效地学和怎么样更好地平衡生活是我最近不断思考的问题。当然了，我不会放弃。</p><p>这次导读分享的多是游戏内存、缓存、图形学相关的的内容，自己没分享过某种具体实现的 Shader 的文章，是因为我认为自己基础要先打好，这也是我对其他 Shader 课程的态度。希望这次分享能对读者有帮助。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近一直在思考自己在技术学习上是否过于低效的问题。出现这个问题的缘由是，自己工作下班之后没多少精力和时间去留给自己学习。本来就有限的时间，如果还没有合适的学习计划，而是一昧凭兴趣去学一些离自己目标方向比较远的东西，可能会事倍功半。&lt;/p&gt;
+&lt;p&gt;就我而言，自己目前的水平更像是“磨”出来的，东学学西学学，什么都有点印象，但是专业方向的知识之间的连接却非常离散。读研的时候有大量时间给我“磨”，总归能学会点什么，但工作则不一样。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="导读" scheme="http://frankorz.com/categories/%E5%AF%BC%E8%AF%BB/"/>
+    
+    
+      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>2020年4月技术导读</title>
@@ -194,9 +217,9 @@
       <category term="工具癖" scheme="http://frankorz.com/categories/%E5%B7%A5%E5%85%B7%E7%99%96/"/>
     
     
-      <category term="APP" scheme="http://frankorz.com/tags/APP/"/>
-    
       <category term="iPad" scheme="http://frankorz.com/tags/iPad/"/>
+    
+      <category term="APP" scheme="http://frankorz.com/tags/APP/"/>
     
   </entry>
   
@@ -348,9 +371,9 @@
       <category term="图形学" scheme="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
-    
       <category term="3D数学" scheme="http://frankorz.com/tags/3D%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -372,9 +395,9 @@
       <category term="图形学" scheme="http://frankorz.com/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
-    
       <category term="3D数学" scheme="http://frankorz.com/tags/3D%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="游戏开发" scheme="http://frankorz.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -490,26 +513,6 @@
     
     
       <category term="Go" scheme="http://frankorz.com/tags/Go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>聊聊慕课与时间管理工具</title>
-    <link href="http://frankorz.com/2017/03/29/mooc-and-pomotodo/"/>
-    <id>http://frankorz.com/2017/03/29/mooc-and-pomotodo/</id>
-    <published>2017-03-29T00:13:14.000Z</published>
-    <updated>2019-08-17T04:01:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在图灵社区活动「分享学习方法」中写了这篇文章，现在搬运过来，浅浅地普及下慕课这种学习新方式和目前所选用的时间管理工具。</p><a id="more"></a><h2 id="MOOC"><a href="#MOOC" class="headerlink" title="MOOC"></a>MOOC</h2><p>我以前有过看视频学编程的时光，视频里老师写一点代码，我就写一点代码。如今想起来这种方法虽然浪费时间，但是对小白而言是一个很好的入门方法，能够有效的让小白熟悉 IDE 和手把手入门编程。</p><p>MOOC 则是最近又让我眼前一亮的学习方式，其代表有：<a href="http://coursera.org" target="_blank" rel="noopener">Coursera</a>、<a href="http://edx.org" target="_blank" rel="noopener">Edx</a> 、<a href="http://cn.udacity.com" target="_blank" rel="noopener">Udacity</a>等。同样是看视频学习，Coursera 使用了短视频+限时作业+考试的方法来让学生能轻松上课的同时，用 deadline 督促学生。其次付费证书和其课堂论坛也是亮点，你上完一个课程，可以付费购买课程的证书以彰显你的努力，论坛则是开放给全球各地上同样一节课的学生。Coursera 里有部分课程都是有中文字幕的，例如普林斯顿大学的「<a href="https://www.coursera.org/learn/algorithms-part1" target="_blank" rel="noopener">Algorithms</a>」课。算法红宝书《算法（第4版）》的作者就是这门课的老师，Robert Sedgewick 老师在课程中给的图例和制作的动画都十分清晰精致，并且配合课件能循序渐进地分解算法。其中小课程一般一节讲一个算法或知识点，内容充实并且需要学生课下消化。这种方式和看《算法（第4版）》结合起来，学习效率事半功倍。PS：上课的同时也请完成红宝书中的课后练习。</p><p>我认为 MOOC 可贵的一个地方还是它的课程质量，因为国外 CS 课程的授课老师往往同时有很强的 academic 和 industry 的背景，所以课程通常会兼顾深度和实用性。美国大学一门课收费大约在五千刀左右，所以请努力争取白赚这些钱吧~</p><p>在这里随便列举几门课程：有被称为第一神课的「<a href="https://www.coursera.org/learn/programming-languages" target="_blank" rel="noopener">程序设计语言</a>」、斯坦福密码学大牛 Dan Boneh 讲的「<a href="https://www.coursera.org/learn/crypto" target="_blank" rel="noopener">Cryptography I</a>」、Coursera 创始人吴恩达讲的「<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">机器学习</a>」等等。</p><p>遗憾的是 Coursera 改版之后删除了很多经典神课，例如以 CSAPP 为教材的「<a href="https://courses.cs.washington.edu/courses/cse351/16sp/videos.html" target="_blank" rel="noopener">The Hardware/Software Interface</a>」，斯坦福大学的编译原理课「Compilers」、斯坦福的另外一门偏理论的算法课「Algorithms: Design and Analysis」等等，这些课程需要自己去学校官网上找，或者去 Youtube 看视频。同时科学上网会有更好的上课体验，另外英语的学习也是很有必要的，毕竟不是门门课都有志愿者翻译成中文。</p><p>PS: 斯坦福大学也有自己的 mooc 网站，<a href="https://lagunita.stanford.edu" target="_blank" rel="noopener">Stanford Online</a></p><p>已经翻译了的公开课也有志愿者搬运到了 B 站（汗…）、网易公开课、学堂在线等平台。例如哈佛大学的计算机入门课「<a href="http://open.163.com/special/opencourse/cs50.html" target="_blank" rel="noopener">计算机科学 cs50</a>」、麻省理工学院的「<a href="http://open.163.com/special/opencourse/algorithms.html" target="_blank" rel="noopener">算法导论</a>」课、线性代数神课「<a href="https://www.bilibili.com/video/av6731067/" target="_blank" rel="noopener">线性代数的本质</a>」、用 Python 讲解的计算机科学入门课「<a href="http://www.xuetangx.com/courses/course-v1:MITx+6_00_1x+sp/about" target="_blank" rel="noopener">计算机科学和Python编程导论</a>」、B 站 UP 主翻译的斯坦福密码学课「<a href="http://www.bilibili.com/video/av1269426/" target="_blank" rel="noopener">密码学</a>」、微软信仰中心翻译的「<a href="http://space.bilibili.com/18340402/#!/channel/detail?cid=1436" target="_blank" rel="noopener">UWP 开发入门教程</a>」等等。</p><p>更多课程及查看评分：<br><a href="http://mooc.guokr.com" target="_blank" rel="noopener">mooc 学院</a><br><a href="http://blog.coursegraph.com/coursera课程下载和存档计划四计算机科学基础公开课" target="_blank" rel="noopener">Coursera课程下载和存档计划四：计算机科学基础公开课</a><br><a href="https://www.zhihu.com/question/21095181" target="_blank" rel="noopener">三大 MOOC 网站：Coursera 与 Udacity 和 edX 比较，哪个更适合中国人？你有何经验分享？</a></p><h2 id="番茄工作法"><a href="#番茄工作法" class="headerlink" title="番茄工作法"></a>番茄工作法</h2><p>近年来时间管理话题变得十分火热，番茄工作法大家应该都耳熟能详了，我就不详细介绍了。很多番茄工作法的应用如雨后春笋般出现，由于受限于单平台，我没有坚持使用下来。今天推荐一款我在用一段时间的「<a href="http://pomotodo.com" target="_blank" rel="noopener">番茄土豆</a>」服务，番茄土豆拥有全平台应用，涵盖了我的苹果本、iPhone 和 iPad。另外一点就是能方便地回溯自己的番茄时间。</p><p>例如下面是在 Coursera 上算法课的统计，右下角统计了时间。</p><p><img src="http://img.frankorz.com/58db5ca5de499.jpg" alt></p><p>下面是最近看书学 Go 语言的记录。</p><p><img src="http://img.frankorz.com/58db5ca6c13fa.jpg" alt></p><p>查看自己花在阅读上的时间。</p><p><img src="http://img.frankorz.com/58db5ca64e605.jpg" alt></p><p>我认为每完成一个番茄就记录这段时间所做的事，这样能够培养主动记录的习惯，也方便自己对时间的统计分析。建议在记录任务的时候分配好标签，记录完整在做的事情，这样利用很短的时间就能代替追踪时间的效果。</p><p>一般免费版就足够用了，我购买了高级版是因为能够补充线下没有统计的番茄时间，高级版对于学生或教师有半价。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>学习方法太多了，我敢写在这的都是我感觉的确对我有帮助的方法。自己也是个菜鸟，还在探索自己的学习方法。现在越学习越清楚英语的重要性，希望大家学好英语，这样你可用的学习资源也会多出几十倍来，而不需要靠别人翻译拾人牙慧。 </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在图灵社区活动「分享学习方法」中写了这篇文章，现在搬运过来，浅浅地普及下慕课这种学习新方式和目前所选用的时间管理工具。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学习" scheme="http://frankorz.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
