@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Hexo 博客补丁">
+
+
+
+
+  <meta name="keywords" content="Hexo, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2016/09/30/Hexo-patch/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> Hexo 博客补丁 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Hexo 博客补丁
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-09-30
+        </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#小建议"><span class="toc-text">小建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Pages-中增加-README-md"><span class="toc-text">Github Pages 中增加 README.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网站底部字数统计"><span class="toc-text">网站底部字数统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文章更新时间"><span class="toc-text">添加文章更新时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地搜索"><span class="toc-text">本地搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加音乐"><span class="toc-text">添加音乐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#歌曲"><span class="toc-text">歌曲</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#歌单"><span class="toc-text">歌单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#歌词"><span class="toc-text">歌词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加思维导图"><span class="toc-text">添加思维导图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本博客动态背景"><span class="toc-text">本博客动态背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制首页中文章显示量"><span class="toc-text">控制首页中文章显示量</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>本博客部分修改内容</p>
+<p>注：原文的主题为 Next，现在在使用 Even，所以配置可能有些地方不一样。<br><a id="more"></a></p>
+<h3 id="小建议"><a href="#小建议" class="headerlink" title="小建议"></a>小建议</h3><p><code>hexo new &quot;标题&quot;</code> 的时候尽量取英文标题，在文章中再用 <code>title:</code> 指定中文标题，这样未来改标题好改，相应文章的多说评论也不会消失。</p>
+<h3 id="Github-Pages-中增加-README-md"><a href="#Github-Pages-中增加-README-md" class="headerlink" title="Github Pages 中增加 README.md"></a>Github Pages 中增加 README.md</h3><p>很多朋友的 hexo 博客都是建在 Github 上的，作为一个项目，<code>README.md</code>文件能够在 Github 上介绍博客的一些信息，但是贸然把文件放到 <code>source</code> 文件夹中会被 hexo 检测并转为 html 文档，我们在站点配置文件中跳过即可。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">skip_render:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">README.md</span></span><br></pre></td></tr></table></figure>
+<h3 id="网站底部字数统计"><a href="#网站底部字数统计" class="headerlink" title="网站底部字数统计"></a>网站底部字数统计</h3><p>安装 hexo-wordcount<br><code>npm install hexo-wordcount --save</code></p>
+<p>在<code>（博客主目录）/themes/next/layout/_partials/footer.swig</code>中最后加上</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"theme-info"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"powered-by"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-count"</span>&gt;</span>博客全站共&#123;&#123; totalcount(site) &#125;&#125;字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>更多参考：<a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a></p>
+<h3 id="添加文章更新时间"><a href="#添加文章更新时间" class="headerlink" title="添加文章更新时间"></a>添加文章更新时间</h3><p>修改<code>（博客主目录）/themes/next/layout/_macro/post.swig</code>文件，在<code>&lt;span class=&quot;post-time&quot;&gt;...&lt;/span&gt;</code>标签后添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="keyword">if</span> post.updated and post.updated &gt; post.date%&#125;</span><br><span class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"post-updated"</span>&gt;</span><br><span class="line">	&amp;nbsp; | &amp;nbsp; &#123;&#123; __(<span class="string">'post.updated'</span>) &#125;&#125;</span><br><span class="line">	&lt;time itemprop=<span class="string">"dateUpdated"</span> datetime=<span class="string">"&#123;&#123; moment(post.updated).format() &#125;&#125;"</span> content=<span class="string">"&#123;&#123; date(post.updated, config.date_format) &#125;&#125;"</span>&gt;</span><br><span class="line">	  &#123;&#123; date(post.updated, config.date_format) &#125;&#125;</span><br><span class="line">	&lt;<span class="regexp">/time&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.frankorz.com/58004a76775f7.jpg" alt></p>
+<p>根据博客配置文件中的 <code>language</code> 参数修改对应的语言配置文件<code>（博客主目录）/themes/next/languages/zh_Hans.yml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">post:</span><br><span class="line">  updated: 更新于</span><br></pre></td></tr></table></figure></p>
+<p>修改主题配置文件<code>（博客主目录）/themes/next/_config.yml</code>，增加一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display_updated: true</span><br></pre></td></tr></table></figure></p>
+<p>写文章的时候可以直接在文章开头设置更新时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updated: 2016-10-14 10:53:09</span><br></pre></td></tr></table></figure></p>
+<p>没有这参数的话将会显示md文件的修改日期</p>
+<h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><p>安装 hexo-generator-search<br><code>npm install hexo-generator-search --save</code></p>
+<p>编辑主目录下站点配置文件<code>_config.yml</code>加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br></pre></td></tr></table></figure>
+<h3 id="添加音乐"><a href="#添加音乐" class="headerlink" title="添加音乐"></a>添加音乐</h3><h4 id="歌曲"><a href="#歌曲" class="headerlink" title="歌曲"></a>歌曲</h4><p>在markdown文件中要添加音乐处加入iframe标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">marginwidth</span>=<span class="string">"0"</span> <span class="attr">marginheight</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">"http://music.163.com/outchain/player?type=2&amp;auto=0&amp;id=34578162&amp;height=66"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要居中可以在外添加<code>&lt;center&gt;</code>标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">marginwidth</span>=<span class="string">"0"</span> <span class="attr">marginheight</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">"http://music.163.com/outchain/player?type=2&amp;id=34578162&amp;auto=0&amp;height=66"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中id后数字为网易云音乐歌曲id，可以从<a href="http://music.daoapp.io" target="_blank" rel="noopener">Music</a>处搜索歌名，例如搜索<code>memories</code>，我选择了<code>MEMORIES - 『MEMORIES』- ALAN WALKER</code>之后到达 <a href="http://music.daoapp.io/player?song=34578162" target="_blank" rel="noopener">http://music.daoapp.io/player?song=34578162</a> ，song后数字便是歌曲id。另外高度宽度可以自己根据博客样式更改，<code>auto = 0</code>是不自动播放，需要自动播放请改为<code>auto = 1</code>。</p>
+<p>你也可以直接从网易云音乐<a href="http://music.163.com/" target="_blank" rel="noopener">官网</a>中搜索到歌曲，再生成外链播放器。有些版权保护的歌曲或歌单不支持生成外链，可以直接像上面的方法一样查 id 改代码即可。</p>
+<p><img src="http://img.frankorz.com/5808e65d13ca0.jpg" alt></p>
+<p>示例：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=34578162&auto=0&height=66"></iframe>
+
+<h4 id="歌单"><a href="#歌单" class="headerlink" title="歌单"></a>歌单</h4><p>操作和上面一样，搜索后选择歌单，找到id再替换。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">marginwidth</span>=<span class="string">"0"</span> <span class="attr">marginheight</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">450</span> <span class="attr">src</span>=<span class="string">"http://music.163.com/outchain/player?type=0&amp;id=144236857&amp;auto=0&amp;height=430"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="http://music.163.com/outchain/player?type=0&id=144236857&auto=0&height=430"></iframe>
+
+<p>其他高深玩法参考 <a href="https://github.com/YUX-IO/163music-APlayer-you-get-docker" target="_blank" rel="noopener">163music-APlayer-you-get-docker</a></p>
+<h4 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h4><p>要带歌词的话需要用到适用于 Hexo 的 <a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="noopener">Aplayer</a>。<br>如果歌词、音乐文件、音乐图片保存到博客服务器中，请参考上面的链接进去设置 <code>post asset folders</code>，这里用外链做例子。</p>
+<p>安装 Aplayer：<br><code>npm install --save hexo-tag-aplayer</code></p>
+<p>使用：</p>
+<script src="//gist.github.com/7c95ad593ae121addbd0f49952346f95.js"></script>
+<p>参数：</p>
+<ul>
+<li><code>title</code> : 音乐标题</li>
+<li><code>author</code> : 歌手名</li>
+<li><code>url</code>: 音乐文件路径</li>
+<li><code>picture_url</code>: 可选，音乐图片路径</li>
+<li><code>narrow</code>: 可选，狭窄的样式</li>
+<li><code>autoplay</code>: 可选，自动播放，不支持移动浏览器</li>
+<li><code>width:xxx</code> : 可选，前缀 <code>width:</code>，播放器的宽度 (默认: 100%)</li>
+<li><code>lrc:xxx</code> : 可选，前缀 <code>lrc:</code>，LRC 文件路径</li>
+</ul>
+<p>例子：<br><script src="//gist.github.com/ebfae5e491e63bd58425b793596767e1.js"></script></p>
+<p>建议使用七牛云存文件，直接用文件外链来设置，其中歌词文件内容参照 lrc 格式填写。</p>
+<p><img src="http://img.frankorz.com/58367ff2a6f88.jpg" alt></p>
+
+        <div id="aplayer-epRQMYQm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-epRQMYQm"),
+            narrow: false,
+            autoplay: false,
+            showlrc: 3,
+            music: {
+              title: "童话镇",
+              author: "陈一发儿",
+              url: "http://oelv7v3r6.bkt.clouddn.com/%E9%99%88%E4%B8%80%E5%8F%91%E5%84%BF%20-%20%E7%AB%A5%E8%AF%9D%E9%95%87.mp3",
+              pic: "http://p3.music.126.net/tfa811GLreJI_S0h9epqRA==/3394192426154346.jpg",
+              lrc: "http://oelv7v3r6.bkt.clouddn.com/lrc.txt"
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+<h3 id="添加思维导图"><a href="#添加思维导图" class="headerlink" title="添加思维导图"></a>添加思维导图</h3><p>利用之前App store 限免过的iOS版 MindNode，制作完导图之后，选择在MyMindNode上共享。</p>
+<p><img src="http://img.frankorz.com/57ee83d2a3e7b.png" alt="IMG_0165"></p>
+<p>上传文件后得到网址，打开后选择右上角导出按钮-&gt;Embed。</p>
+<p><img src="http://img.frankorz.com/57ee83d13764e.jpg" alt></p>
+<p>这里选择宽度和高度，再如添加音乐一样添加iframe标签即可，示例参考：<a href="http://latias94.github.io/books/" target="_blank" rel="noopener">2016年书单、公开课</a> 。</p>
+<h3 id="本博客动态背景"><a href="#本博客动态背景" class="headerlink" title="本博客动态背景"></a>本博客动态背景</h3><p>在 <a href="https://pan.baidu.com/s/1jIuJ03s" target="_blank" rel="noopener">百度云</a> 下载<code>particle.js</code>，并移动到<code>（博客主目录）/themes/next/source/js/src</code> 文件夹下。</p>
+<p>然后在<code>（博客主目录）/themes/next/source/layout/_layout.swig</code>中的最后<code>body</code>标签上添加</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/src/particle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="控制首页中文章显示量"><a href="#控制首页中文章显示量" class="headerlink" title="控制首页中文章显示量"></a>控制首页中文章显示量</h3><p>在要显示的文字后添加<code>&lt;!--more--&gt;</code>，例如本文章：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 博客补丁</span><br><span class="line">date: 2016-09-30 22:46:29</span><br><span class="line">tags: [hexo]</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">本博客大部分的修改都在这里找到喔！</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2016/09/30/Hexo-patch/">http://frankorz.com/2016/09/30/Hexo-patch/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Hexo/">Hexo</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/10/01/rss-tutor/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">打造属于自己的RSS源</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/09/29/iPad-Pro study/">
+        <span class="next-text nav-default">利用iPad Pro学习方面的探索</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2016/09/30/Hexo-patch/';
+        this.page.identifier = '2016/09/30/Hexo-patch/';
+        this.page.title = 'Hexo 博客补丁';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>

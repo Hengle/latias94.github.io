@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="装饰器模式（Swift）">
+
+
+
+
+  <meta name="keywords" content="Swift, 设计模式, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2017/02/20/decorator-in-swift/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> 装饰器模式（Swift） - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          装饰器模式（Swift）
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-02-20
+        </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰器模式"><span class="toc-text">装饰器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加新功能"><span class="toc-text">增加新功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并装饰器"><span class="toc-text">合并装饰器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p><img src="http://img.frankorz.com/58ac04972e7f3.jpg" alt></p>
+<p>阅读《大话设计模式》和《精通 Swift 设计模式》中的装饰器模式，本文为笔记。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>装饰器模式，可以用于在运行时选择性地修改对象的行为，在处理无法修改的类时能发挥其强大的能力。</p>
+<p>我们可以在想修改<strong>对象的行为</strong>时，又不想修改<strong>对象所属的类或其使用者</strong>，就可以使用装饰器模式。如果想修改对象的类实现，则不推荐使用装饰器模式，此时直接修改类往往更简单。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>阅读前请下载 OS X 命令工具行初始项目 <a href="https://github.com/Latias94/Decorator_in_Swift/tree/master/Decorator_start" target="_blank" rel="noopener">Decorator_start</a>，项目中注释较详细，如有问题请联系我。</p>
+<p>项目地址：<a href="https://github.com/Latias94/Decorator_in_Swift" target="_blank" rel="noopener">Decorator_in_Swift</a></p>
+<p><img src="http://img.frankorz.com/58ac03cfe0d06.png" alt="初始项目 UML 图"></p>
+<p>Purchase 类表示顾客在商店买了什么，其中定义了两个属性来存储商品名称和价格，还有两个计算属性把信息提供给外界。</p>
+<p>CustomerAccount 类表示一组 Purchase 对象，代表了顾客所购买的商品，<code>addPurchase(Purchase)</code>方法代表顾客购买了新商品。</p>
+<p>Options 类中包含三个类，为前两个类提供了礼品服务，例如：2 元的礼品包装、1 元的彩带和 5 元的礼品配送。这里利用继承在 Options 类创建了三个装饰器类解决一个小问题——在不修改原来的两个类时添加了礼品服务功能。</p>
+<p>Purchase 类和 CustomerAccount 类实现了创建一个用户对象，然后买一个特定价格的商品，如：张三购买了 10 元的帽子。后三个类则扩展了功能，能为每一个商品增加一个礼品服务的选项，如：张三购买了有彩带包装的 10 元的帽子。</p>
+<p>但是已有的代码实现不了为一个商品添加多个礼品服务，如：张三购买了有礼品和彩带包装的 10 元的帽子。</p>
+<p>源码运行结果：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Purchase Red Hat, Price ￥10.00</span><br><span class="line">Purchase Scarf, Price ￥20.00</span><br><span class="line">Purchase Scarf + delivery, Price ￥25.00</span><br><span class="line">Total due: ￥55.00</span><br></pre></td></tr></table></figure>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>装饰器模式通过创建装饰器类解决上述组合问题（礼品包装+彩带、礼品包装+彩带+礼品配送等），装饰器类是指用于封装原始类并改变其行为的类。</p>
+<p>装饰器类提供的 API 和封装的原始类相同，为了创建其他组合，装饰器还可以封装其他装饰器。</p>
+<p>这里的单个礼品服务类 <code>Options.swift</code> 可以看做是一个小小的装饰器。</p>
+<p><img src="http://img.frankorz.com/58ac03d000641.png" alt="装饰器模式"></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>装饰器类需要继承无法修改的类，来创建一个拥有该类所有方法和属性的类，用来替换原始类的功能。装饰器需要定义一个用来存储被封装对象的私有属性，从而为外界提供该对象的基本功能。</p>
+<p>Options.swift</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 装饰器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BasePurchasDecorator</span> : <span class="title">Purchase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> wrappedPurchase: <span class="type">Purchase</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">init</span>(purchase: <span class="type">Purchase</span>) &#123;</span><br><span class="line">    wrappedPurchase = purchase</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(product: purchase.description, price: purchase.totalPrice)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 礼品包装</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PurchaseWithGiftWrap</span> : <span class="title">BasePurchasDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"\(super.description) + giftwrap"</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice + <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 礼带</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PurchaseWithRibbon</span> : <span class="title">BasePurchasDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"\(super.description) + ribbon"</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice + <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 礼品配送</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PurchaseWithDelivery</span> : <span class="title">BasePurchasDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"\(super.description) + delivery"</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice + <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里在开头创建了一个继承自 Purchase 类的礼品服务的基类 BasePurchasDecorator，并把原有礼品服务类的父类修改成了它。在 BasePurchasDecorator 类中，不仅定义了一个私有属性 <code>wrappedPurchase</code> 来保存 Purchase 对象（<a href="http://frankorz.com/2017/02/20/decorator-in-swift/#增加新功能">增加新功能</a>小节能看到用途），还会对礼品服务类的属性（<code>description</code> 和 <code>totalPrice</code>）进行处理，以供继承的子类去根据自身的配送描述和价格修改其内容。</p>
+<p>main.swift 修改为</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> account = <span class="type">CustomerAccount</span>(name: <span class="string">"Joe"</span>)</span><br><span class="line">account.addPurchase(<span class="type">Purchase</span>(product: <span class="string">"Red Hat"</span>, price: <span class="number">10</span>))</span><br><span class="line">account.addPurchase(<span class="type">Purchase</span>(product: <span class="string">"Scarf"</span>, price: <span class="number">20</span>))</span><br><span class="line"><span class="comment">// 礼品配送服务</span></span><br><span class="line"><span class="comment">//account.addPurchase(PurchaseWithDelivery(product: "Scarf", price: 20))</span></span><br><span class="line"><span class="comment">// 带礼品配送服务的20元围巾</span></span><br><span class="line">account.addPurchase(</span><br><span class="line">  <span class="type">PurchaseWithDelivery</span>(purchase:</span><br><span class="line">    <span class="type">Purchase</span>(product: <span class="string">"Scarf"</span>, price: <span class="number">20</span>)))</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 带礼品包装和礼品配送服务的25元太阳眼镜</span></span><br><span class="line">account.addPurchase(</span><br><span class="line">  <span class="type">PurchaseWithDelivery</span>(purchase:</span><br><span class="line">    <span class="type">PurchaseWithGiftWrap</span>(purchase:</span><br><span class="line">      <span class="type">Purchase</span>(product: <span class="string">"Sunglasses"</span>, price:<span class="number">25</span>))))</span><br><span class="line"></span><br><span class="line">account.printAccount()</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Purchase Red Hat, Price ￥10.00</span><br><span class="line">Purchase Scarf, Price ￥20.00</span><br><span class="line">Purchase Scarf + delivery, Price ￥25.00</span><br><span class="line">Purchase Sunglasses + giftwrap + delivery, Price ￥32.00</span><br><span class="line">Total due: ￥87.00</span><br></pre></td></tr></table></figure>
+<h3 id="增加新功能"><a href="#增加新功能" class="headerlink" title="增加新功能"></a>增加新功能</h3><p>如果我们还想要用装饰器为原对象增加新的方法或属性，例如节日打折，我们可以继续定义一个折扣装饰器 <code>DiscountDecorator</code>，并创建子类实现不同折扣。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 新增了折扣功能的装饰器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DiscountDecorator</span>: <span class="title">Purchase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> wrappedPurchase: <span class="type">Purchase</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">init</span>(purchase: <span class="type">Purchase</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.wrappedPurchase = purchase</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(product: purchase.description, price: purchase.totalPrice)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.description</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/// 优惠了多少元</span></span><br><span class="line">  <span class="keyword">var</span> discountAmount: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/// 判断产品是否适用折扣优惠，计算已用折扣数</span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">countDiscounts</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="number">1</span></span><br><span class="line">    <span class="comment">// 注意这里对象本身就已经是一个折扣，wrappedPurchase 是折扣后跟着的purchase对象，还是折扣的话折扣数+1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> discounter = wrappedPurchase <span class="keyword">as</span>? <span class="type">DiscountDecorator</span> &#123;</span><br><span class="line">      total += discounter.countDiscounts()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 黑色星期五打8折</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlackFridayDecorator</span>: <span class="title">DiscountDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice - discountAmount</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> discountAmount: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice * <span class="number">0.20</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 清仓大甩卖打3折</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EndOfLineDecorator</span>: <span class="title">DiscountDecorator</span> </span>&#123;</span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice - discountAmount</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> discountAmount: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.totalPrice * <span class="number">0.70</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中我们根据 <code>wrappedPurchase</code> 属性是否继承自折扣装饰器，来判断方法所包含的对象是否是有折扣的商品。例如下面代码中的 <code>EndOfLineDecorator(Purchase)</code> 方法所包含的对象： <code>BlackFirdayDecorator(purchase:
+      PurchaseWithDelivery(purchase:
+        PurchaseWithGiftWrap(purchase:
+          Purchase(product: &quot;Towel&quot;, price: 12))))</code> 有黑五折扣的礼品配送和礼品包装服务的12元太阳眼镜。</p>
+<p>main.swift 中新增用了折扣的商品的代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//... 忽略部分代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 带礼品配送+礼品包装服务的12元太阳眼镜共19元，3折加8折后4.56元。</span></span><br><span class="line">account.addPurchase(</span><br><span class="line">  <span class="type">EndOfLineDecorator</span>(purchase:</span><br><span class="line">    <span class="type">BlackFridayDecorator</span>(purchase:</span><br><span class="line">      <span class="type">PurchaseWithDelivery</span>(purchase:</span><br><span class="line">        <span class="type">PurchaseWithGiftWrap</span>(purchase:</span><br><span class="line">          <span class="type">Purchase</span>(product: <span class="string">"Towel"</span>, price: <span class="number">12</span>))))))</span><br><span class="line"></span><br><span class="line">account.printAccount()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出每个商品的折扣数</span></span><br><span class="line"><span class="keyword">for</span> purchase <span class="keyword">in</span> account.purchases &#123;</span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">let</span> discountPurchase = purchase <span class="keyword">as</span>? <span class="type">DiscountDecorator</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(discountPurchase) has \(discountPurchase.countDiscounts()) discounts"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"\(purchase) has no discounts"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Purchase Red Hat, Price ￥10.00</span><br><span class="line">Purchase Scarf, Price ￥20.00</span><br><span class="line">Purchase Scarf + delivery, Price ￥25.00</span><br><span class="line">Purchase Sunglasses + giftwrap + delivery, Price ￥32.00</span><br><span class="line">Purchase Towel + giftwrap + delivery, Price ￥4.56</span><br><span class="line">Total due: ￥91.56</span><br><span class="line">Red Hat has no discounts</span><br><span class="line">Scarf has no discounts</span><br><span class="line">Scarf + delivery has no discounts</span><br><span class="line">Sunglasses + giftwrap + delivery has no discounts</span><br><span class="line">Towel + giftwrap + delivery has 2 discounts</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.frankorz.com/58ac03d361786.png" alt="UML 图"></p>
+<p>如果想要让折扣只作用在产品价格而不对礼品服务做影响，也是很简单的。</p>
+<p>main.swift </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 带礼品配送+礼品包装服务的12元太阳眼镜共19元，黑五8折只对产品价格有效，之后再打清仓3折后4.98元。</span></span><br><span class="line">account.addPurchase(</span><br><span class="line">  <span class="type">EndOfLineDecorator</span>(purchase:</span><br><span class="line">    <span class="type">PurchaseWithDelivery</span>(purchase:</span><br><span class="line">      <span class="type">PurchaseWithGiftWrap</span>(purchase:</span><br><span class="line">        <span class="type">BlackFridayDecorator</span>(purchase:</span><br><span class="line">          <span class="type">Purchase</span>(product: <span class="string">"Towel"</span>, price: <span class="number">12</span>))))))</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Purchase Towel + giftwrap + delivery, Price ￥4.98</span><br><span class="line">...</span><br><span class="line">Towel + giftwrap + delivery has 1 discounts</span><br></pre></td></tr></table></figure>
+<p>计算折扣数的时候有点小问题，但是价格是对的。</p>
+<p>用装饰器的时候需要谨慎，要评估对应用其他部分带来哪些影响，特别是已经使用了其他装饰器的情况下。</p>
+<h3 id="合并装饰器"><a href="#合并装饰器" class="headerlink" title="合并装饰器"></a>合并装饰器</h3><p>装饰器可以为原始类新增新功能，也能合并装饰器。</p>
+<p>注意：</p>
+<ul>
+<li>装饰器的作用应该是增强或者拓展原始类的功能，而不是给现有的 API 渗透功能。</li>
+<li>小项目中直接用多个独立的装饰器类会比较简单，对于复杂的项目会不便于维护，所以将相关联的装饰器类合并会比较合适。</li>
+</ul>
+<p>Options.swift</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 合并装饰器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GiftOptionDecorator</span>: <span class="title">Purchase</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> wrappedPurchase: <span class="type">Purchase</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> options: [<span class="type">Option</span>]</span><br><span class="line">  </span><br><span class="line">  <span class="class"><span class="keyword">enum</span> <span class="title">Option</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> giftWrap</span><br><span class="line">    <span class="keyword">case</span> ribbon</span><br><span class="line">    <span class="keyword">case</span> delivery</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">init</span>(purchase: <span class="type">Purchase</span>, options: [<span class="type">Option</span>]) &#123;</span><br><span class="line">    <span class="keyword">self</span>.wrappedPurchase = purchase</span><br><span class="line">    <span class="keyword">self</span>.options = options</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(product: purchase.description, price: purchase.totalPrice)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result = wrappedPurchase.description</span><br><span class="line">    <span class="keyword">for</span> option <span class="keyword">in</span> options &#123;</span><br><span class="line">      <span class="keyword">switch</span> option &#123;</span><br><span class="line">      <span class="keyword">case</span> .giftWrap:</span><br><span class="line">        result = <span class="string">"\(result) + giftwrap"</span></span><br><span class="line">      <span class="keyword">case</span> .ribbon:</span><br><span class="line">        result = <span class="string">"\(result) + ribbon"</span></span><br><span class="line">      <span class="keyword">case</span> .delivery:</span><br><span class="line">        result = <span class="string">"\(result) + delivery"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">var</span> totalPrice: <span class="type">Float</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result = wrappedPurchase.totalPrice</span><br><span class="line">    <span class="keyword">for</span> option <span class="keyword">in</span> options &#123;</span><br><span class="line">      <span class="keyword">switch</span> option &#123;</span><br><span class="line">      <span class="keyword">case</span> .giftWrap:</span><br><span class="line">        result += <span class="number">2</span></span><br><span class="line">      <span class="keyword">case</span> .ribbon:</span><br><span class="line">        result += <span class="number">1</span></span><br><span class="line">      <span class="keyword">case</span> .delivery:</span><br><span class="line">        result += <span class="number">5</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>main.swift</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用合并装饰器实现：带礼品配送+礼品包装服务的12元太阳眼镜共19元，3折加8折后4.56元。</span></span><br><span class="line">account.addPurchase(<span class="type">EndOfLineDecorator</span>(purchase:</span><br><span class="line">  <span class="type">BlackFridayDecorator</span>(purchase:</span><br><span class="line">    <span class="type">GiftOptionDecorator</span>(purchase:</span><br><span class="line">      <span class="type">Purchase</span>(product: <span class="string">"Towel"</span>, price: <span class="number">12</span>),</span><br><span class="line">                        options: [<span class="type">GiftOptionDecorator</span>.<span class="type">Option</span>.giftWrap,</span><br><span class="line">                                  <span class="type">GiftOptionDecorator</span>.<span class="type">Option</span>.delivery]))))</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Purchase Towel + giftwrap + delivery, Price ￥4.56</span><br><span class="line">...</span><br><span class="line">Towel + giftwrap + delivery has 2 discounts</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.frankorz.com/58ac06eae716c.png" alt="完整项目 UML 图"></p>
+<p>结果一样，但是实现方式简洁了不少。</p>
+<p>合并装饰器的优点是能把类的核心职责和装饰功能区分开，去除相关类重复的装饰逻辑。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>完整的项目放在 <a href="https://github.com/Latias94/Decorator_in_Swift/tree/master/Decorator_end" target="_blank" rel="noopener">Decorator_end</a>。</p>
+<p>如果我们错误地实现了装饰器模式，那么装饰器所做的修改会对所有对象产生影响，或者另应用多出一些和对象无关的功能。</p>
+<p>如<a href="http://frankorz.com/2017/02/20/decorator-in-swift/#增加新功能">增加新功能</a>小节中所提及的，实现装饰器模式后，要注意装饰顺序，否则不同的折扣就应用到不同的范围上了。</p>
+<p>重申一遍，装饰器模式是在<strong>已有功能</strong>上加<strong>更多</strong>功能的一种方式，不能修改原始类的已有功能和属性。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2017/02/20/decorator-in-swift/">http://frankorz.com/2017/02/20/decorator-in-swift/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Swift/">Swift</a>
+            
+              <a href="/tags/设计模式/">设计模式</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/03/29/mooc-and-pomotodo/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">聊聊慕课与时间管理工具</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/02/16/mongodb_operate_in_irb/">
+        <span class="next-text nav-default">IRB 中操作 MongoDB</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2017/02/20/decorator-in-swift/';
+        this.page.identifier = '2017/02/20/decorator-in-swift/';
+        this.page.title = '装饰器模式（Swift）';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>

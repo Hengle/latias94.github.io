@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Unity 开源双端框架 ET 中初尝热更新技术">
+
+
+
+
+  <meta name="keywords" content="Unity, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> Unity 开源双端框架 ET 中初尝热更新技术 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Unity 开源双端框架 ET 中初尝热更新技术
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-01-06
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/游戏开发/">游戏开发</a>
+            
+          </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ET-框架简介"><span class="toc-text">ET 框架简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架文件结构"><span class="toc-text">框架文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端文件结构"><span class="toc-text">客户端文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件设计"><span class="toc-text">组件设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登陆界面的热更新启动过程"><span class="toc-text">登陆界面的热更新启动过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#热更新切换"><span class="toc-text">热更新切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#体验热更新"><span class="toc-text">体验热更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="ET-框架简介"><a href="#ET-框架简介" class="headerlink" title="ET 框架简介"></a>ET 框架简介</h2><p>正所谓时势造英雄，在 Web 开发领域或者传统软件开发领域中，人们把经过千锤百炼的代码总结出一套开发框架，从而提高开发效率，让开发者能更专注于业务本身。对于游戏领域而言，不同游戏需求的东西也不一样：有的游戏对性能有着苛刻要求，有的游戏需要快速地迭代出来，有的游戏需要联网热更新等等。因此不同的游戏框架应运而生。</p>
+<p>例如：</p>
+<ul>
+<li><a href="https://github.com/EllanJiang/GameFramework" target="_blank" rel="noopener">Game Framework</a> 是一个基于 Unity 引擎的游戏框架，主要对游戏开发过程中常用模块进行了封装，很大程度地规范开发过程、加快开发速度并保证产品质量。</li>
+<li><a href="https://github.com/liangxiegame/QFramework" target="_blank" rel="noopener">QFramework</a> 一套渐进式的快速开发框架。框架内部积累了多个项目的在各个技术方向的解决方案。</li>
+<li><a href="https://github.com/sschmid/Entitas-CSharp" target="_blank" rel="noopener">Entitas</a> 一套基于 C# 和 Unity 的实体组件系统。</li>
+<li><a href="https://github.com/Unity-Technologies/EntityComponentSystemSamples" target="_blank" rel="noopener">Entities</a> Unity 官方的实体组件系统实现，不过还是 Beta 版本，详细介绍可以查看<a href="https://unity.com/unity/features/job-system-ECS" target="_blank" rel="noopener">官网</a>。</li>
+<li><a href="https://github.com/strangeioc/strangeioc" target="_blank" rel="noopener">StrangeIoC</a> 一套基于 C# 和 Unity 的控制反转 (Inversion-of-Control) 框架。</li>
+</ul>
+<p>今天介绍的是 ET 框架。</p>
+<blockquote>
+<p>ET是一个开源的游戏客户端（基于unity3d）服务端双端框架，服务端是使用C# .net core开发的分布式游戏服务端，其特点是开发效率高，性能强，双端共享逻辑代码，客户端服务端热更机制完善，同时支持可靠udp tcp websocket协议，支持服务端3D recast寻路等等</p>
+</blockquote>
+<p>ET 框架能让我们只用 C# 就能搞定前后端，热更新方面也采用了基于 C# 的 IL 运行时——<a href="https://ourpalm.github.io/ILRuntime/" target="_blank" rel="noopener">ILRuntime</a>， 贯彻了 “珍爱生命，远离 Lua” 这句话。目前自己接触的大多是客户端部分，因此服务器方面不做介绍。<br><a id="more"></a></p>
+<h2 id="框架文件结构"><a href="#框架文件结构" class="headerlink" title="框架文件结构"></a>框架文件结构</h2><p><a href="https://github.com/egametang/ET" target="_blank" rel="noopener">ET 官网</a> 本身给了很多介绍，我们可以克隆 Git 仓库到本地。</p>
+<p>下面来看看每个文件夹的作用：</p>
+<p><img src="http://img.frankorz.com/5c30b35ce39f5.png" alt></p>
+<h2 id="客户端文件结构"><a href="#客户端文件结构" class="headerlink" title="客户端文件结构"></a>客户端文件结构</h2><p>本文主要来介绍客户端，因此进入到 Unity 文件夹，文件夹结构如下：</p>
+<p><img src="http://img.frankorz.com/5c30b35088c36.png" alt></p>
+<p>当前 Master 分支目前需要 Unity 2018.3 以上版本。使用之前需要参考下官方的 <a href="https://github.com/egametang/ET/blob/master/Doc/%E8%BF%90%E8%A1%8C%E6%8C%87%E5%8D%97.md" target="_blank" rel="noopener">运行指南</a>。</p>
+<p>在 VS 中重新编译，或者 Rider Rebuild 一下项目。Scene 选择 Scenes\Init.unity，点 Play 按钮应该就能成功运行，看到登陆界面。</p>
+<p><img src="http://img.frankorz.com/5c30b2ce0c2f1.png" alt></p>
+<h2 id="组件设计"><a href="#组件设计" class="headerlink" title="组件设计"></a>组件设计</h2><p>ET 框架使用了组件的设计，一切都是实体（Entity）和组件（Component），官方文档 <a href="https://github.com/egametang/ET/blob/master/Doc/%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1.md" target="_blank" rel="noopener">组件设计</a> 介绍的很详细。</p>
+<p>看完文档，我们来看看项目代码的启动入口。</p>
+<p><img src="http://img.frankorz.com/5c30b502d774a.png" alt></p>
+<p>这个 Init.cs 文件，在 Model 文件夹下。可能有同学注意到 Hotfix 文件夹下也有一个 Init.cs 文件，而且这两个文件夹的结构大同小异，两边都有一些相同的文件，而它们只是命名空间不一样。这是因为我们用到 ILRuntime，而 ILRuntime 最好不要跨域继承。</p>
+<p><code>Model/Init.cs</code> 文件中</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> ETVoid <span class="title">StartAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		...</span><br><span class="line">		<span class="comment">// 添加了组件，就赋予了各种功能。</span></span><br><span class="line">		<span class="comment">// 例如加了 Timer 组件，就有了计时功能</span></span><br><span class="line">		Game.Scene.AddComponent&lt;TimerComponent&gt;();</span><br><span class="line">		...</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 下载热更用的 AssetBundle 包</span></span><br><span class="line">		<span class="keyword">await</span> BundleHelper.DownloadBundle();</span><br><span class="line">		<span class="comment">// 加载热更用的dll等文件，调用 Hotfix/Init.cs</span></span><br><span class="line">		Game.Hotfix.LoadHotfixAssembly();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 加载配置</span></span><br><span class="line">		Game.Scene.GetComponent&lt;ResourcesComponent&gt;().LoadBundle(<span class="string">"config.unity3d"</span>);</span><br><span class="line">		Game.Scene.AddComponent&lt;ConfigComponent&gt;();</span><br><span class="line">		<span class="comment">// 加载后卸载相应的 AB 包</span></span><br><span class="line">		Game.Scene.GetComponent&lt;ResourcesComponent&gt;().UnloadBundle(<span class="string">"config.unity3d"</span>);</span><br><span class="line">		Game.Scene.AddComponent&lt;OpcodeTypeComponent&gt;();</span><br><span class="line">		Game.Scene.AddComponent&lt;MessageDispatcherComponent&gt;();</span><br><span class="line"></span><br><span class="line">		Game.Hotfix.GotoHotfix();</span><br><span class="line"></span><br><span class="line">		Game.EventSystem.Run(EventIdType.TestHotfixSubscribMonoEvent, <span class="string">"TestHotfixSubscribMonoEvent"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过组件设计，可以轻易地加载组件和卸载组件，例如我可以写一个心跳包组件来每隔30秒发送一个心跳包到服务器，当我需要这个组件的时候，可以直接 <code>AddComponent</code>，不需要的时候可以 <code>RemoveComponent</code> 移除组件。</p>
+<h2 id="登陆界面的热更新启动过程"><a href="#登陆界面的热更新启动过程" class="headerlink" title="登陆界面的热更新启动过程"></a>登陆界面的热更新启动过程</h2><p>接下来看到 <code>Hotfix/Init.cs</code> 文件中</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 注册热更层回调</span></span><br><span class="line">		ETModel.Game.Hotfix.Update = () =&gt; &#123; Update(); &#125;;</span><br><span class="line">		ETModel.Game.Hotfix.LateUpdate = () =&gt; &#123; LateUpdate(); &#125;;</span><br><span class="line">		ETModel.Game.Hotfix.OnApplicationQuit = () =&gt; &#123; OnApplicationQuit(); &#125;;</span><br><span class="line">		...</span><br><span class="line">		<span class="comment">// 加载热更配置</span></span><br><span class="line">		ETModel.Game.Scene.GetComponent&lt;ResourcesComponent&gt;().LoadBundle(<span class="string">"config.unity3d"</span>);</span><br><span class="line">		Game.Scene.AddComponent&lt;ConfigComponent&gt;();</span><br><span class="line">		ETModel.Game.Scene.GetComponent&lt;ResourcesComponent&gt;().UnloadBundle(<span class="string">"config.unity3d"</span>);</span><br><span class="line"></span><br><span class="line">		UnitConfig unitConfig = (UnitConfig)Game.Scene.GetComponent&lt;ConfigComponent&gt;().Get(<span class="keyword">typeof</span>(UnitConfig), <span class="number">1001</span>);</span><br><span class="line">		Log.Debug(<span class="string">$"config <span class="subst">&#123;JsonHelper.ToJson(unitConfig)&#125;</span>"</span>);</span><br><span class="line">		<span class="comment">// 发送事件来启动界面</span></span><br><span class="line">		Game.EventSystem.Run(EventIdType.InitSceneStart);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来看看发送的事件，代码在<br> <code>Hotfix\Module\Demo\UI\UILogin\System\InitSceneStart_CreateLoginUI.cs</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ETHotfix</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 用 Attribute 来注册事件</span></span><br><span class="line">	[<span class="meta">Event(EventIdType.InitSceneStart)</span>]</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InitSceneStart_CreateLoginUI</span>: <span class="title">AEvent</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			UI ui = UILoginFactory.Create();</span><br><span class="line">			<span class="comment">// 这里就是启动登陆界面的地方，界面可以直接 add 或者 remove</span></span><br><span class="line">			Game.Scene.GetComponent&lt;UIComponent&gt;().Add(ui);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来看看一个界面是怎么生成的，代码在 <code>Hotfix\Module\Demo\UI\UILogin\System\UILoginFactory.cs</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UI <span class="title">Create</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">		 ...</span><br><span class="line">    ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent&lt;ResourcesComponent&gt;();</span><br><span class="line">		<span class="comment">// 让资源组件读取登陆界面的 AB 包</span></span><br><span class="line">    resourcesComponent.LoadBundle(UIType.UILogin.StringToAB());</span><br><span class="line">		<span class="comment">// 从 AB 包拿到登陆界面的 GameObject</span></span><br><span class="line">    GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset(UIType.UILogin.StringToAB(), UIType.UILogin);</span><br><span class="line">    GameObject gameObject = UnityEngine.Object.Instantiate(bundleGameObject);</span><br><span class="line"></span><br><span class="line">    UI ui = ComponentFactory.Create&lt;UI, <span class="keyword">string</span>, GameObject&gt;(UIType.UILogin, gameObject, <span class="literal">false</span>);</span><br><span class="line">		<span class="comment">// 添加登陆界面组件</span></span><br><span class="line">    ui.AddComponent&lt;UILoginComponent&gt;();</span><br><span class="line">    <span class="keyword">return</span> ui;</span><br><span class="line">		...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来看看登陆界面组件，代码在 <code>Hotfix\Module\Demo\UI\UILogin\Component\UILoginComponent.cs</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UILoginComponent</span>: <span class="title">Component</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">private</span> GameObject account;</span><br><span class="line">	<span class="keyword">private</span> GameObject loginBtn;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// 通过引用来获取 UI 组件，再为其添加点击事件</span></span><br><span class="line">		ReferenceCollector rc = <span class="keyword">this</span>.GetParent&lt;UI&gt;().GameObject.GetComponent&lt;ReferenceCollector&gt;();</span><br><span class="line">		loginBtn = rc.Get&lt;GameObject&gt;(<span class="string">"LoginBtn"</span>);</span><br><span class="line">		loginBtn.GetComponent&lt;Button&gt;().onClick.Add(OnLogin);</span><br><span class="line">		<span class="keyword">this</span>.account = rc.Get&lt;GameObject&gt;(<span class="string">"Account"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnLogin</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123; <span class="comment">// 有兴趣可以再进去看看 OnLoginAsync，其中登陆的 Session 连接了服务器地址 127.0.0.1:10002</span></span><br><span class="line">		LoginHelper.OnLoginAsync(<span class="keyword">this</span>.account.GetComponent&lt;InputField&gt;().text).Coroutine();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>服务器地址存在了 Tools 菜单中的全局配置，上面的资源路径则是热更新服务器的地址。</p>
+<p><img src="http://img.frankorz.com/5c30c3d30a5a8.png" alt></p>
+<p>游戏运行后，在 Hierarchy 界面中也可以看到组件的结构，其中 <code>uilogin.unity3d</code> 就是登陆界面的 AB 包引用：</p>
+<p><img src="http://img.frankorz.com/5c30bd561727f.png" alt></p>
+<p>这就是通过热更新逻辑生成的界面，也就是说，上面的代码让我们可以通过热更新来给应用加载各种界面和改写页面跳转逻辑，当然还可以通过热更来增加修改游戏逻辑和功能。</p>
+<p>如果不喜欢这种页面加载方式，可以考虑不使用 <code>Hotfix/Init.cs</code> 中的 <code>Game.Scene.AddComponent&lt;UIComponent&gt;();</code> 这个 UIComponent，而使用其他 UI 组件，例如主仓库中的 FairyGUI 分支，让 FairyGUI 来单独负责 UI 界面。这里也可以看出基于组件的框架的灵活性，我以后也会出文章单独介绍 FairyGUI。</p>
+<h2 id="热更新切换"><a href="#热更新切换" class="headerlink" title="热更新切换"></a>热更新切换</h2><p>首先看看作者的介绍：</p>
+<blockquote>
+<p>7.客户端热更新一键切换<br>因为ios的限制，之前unity热更新一般使用lua，导致unity3d开发人员要写两种代码，麻烦的要死。之后幸好出了ILRuntime库，利用ILRuntime库，unity3d可以利用C#语言加载热更新dll进行热更新。ILRuntime一个缺陷就是开发时候不支持VS debug，这有点不爽。ET框架使用了一个预编译指令ILRuntime，可以无缝切换。平常开发的时候不使用ILRuntime，而是使用Assembly.Load加载热更新动态库，这样可以方便用VS单步调试。在发布的时候，定义预编译指令ILRuntime就可以无缝切换成使用ILRuntime加载热更新动态库。这样开发起来及其方便，再也不用使用狗屎lua了<br>8.客户端全热更新<br>客户端可以实现所有逻辑热更新，包括协议，config，ui等等</p>
+</blockquote>
+<p><img src="http://img.frankorz.com/5c30c69760435.png" alt></p>
+<p>预编译指令指的就是在 Player Setting 中，上图右下角箭头指着的地方。当前有两个预编译指令，通常在开发中，可以只填写 <code>NET452</code>，这样可以得到完整的堆栈信息来调试程序。还有一个预编译指令 <code>ASYNC</code>，加上后，应用就会从前面填写的热更新服务器下载热更包，该指令在后文会提到。</p>
+<p>在国内环境下，手机游戏热更新的需求较强烈。市场上手机系统普遍分成 Android 和 iOS 阵营，其中 iOS 不支持 JIT 热更，因此 ET 框架给了两种选择：ILRuntime 热更新和 Mono 热更新。</p>
+<p>两者概念可以参考文末的参考链接，在这里不多说。</p>
+<h2 id="体验热更新"><a href="#体验热更新" class="headerlink" title="体验热更新"></a>体验热更新</h2><p>体验热更新之前，先把项目切到 Android 平台。</p>
+<p>按照下图配置 Mono 热更新：</p>
+<p><img src="http://img.frankorz.com/5c31edd4669a9.png" alt></p>
+<p>确保 Scripting Backend 为 Mono，下面预编译宏去掉 ILRuntime，加上 ASYNC，按下<strong>回车键</strong>执行变更。ASYNC 说明我们现在的热更新资源从资源服务器中获取，这里的热更新资源包括 Res 文件夹、Bundles 文件夹、Hotfix 文件夹中的代码等。在这个例子中，登陆界面的代码就已经写在热更新文件夹中了，我们将尝试通过热更新来展示登陆界面。</p>
+<p>点击 Play 按钮，会有两个报错：</p>
+<p><img src="http://img.frankorz.com/5c31eefc3359a.png" alt></p>
+<p>第二个 Log 信息展示了应用想要获取资源的热更资源服务器地址，这个地址可以在 Tools 菜单的全局配置中找到。报错信息提示找不到终端主机。报错是理所当然的，因为我们还没有启动本地服务器。</p>
+<p>首先要生成热更新文件，在 Tools 菜单中点击打包工具，如下图所示：</p>
+<p><img src="http://img.frankorz.com/5c31f02a12e8c.png" alt></p>
+<p>平台选择当前的 Android 平台，目前不需要打包应用，所以无视第一个单选按钮。</p>
+<p>前面的思维导图提到了 ET 根目录的 Release 文件夹存的就是热更新资源文件。打包工具也会把打包后的资源放在 Release 文件夹下。而第二个按钮指的是是否把打包的热更新资源也放在应用中，目前也不需要选择。开启热更新后，应用会比较服务器和本地应用的 Version 文件，计算文件差异后才会下载相关的热更新资源文件。</p>
+<p>如果勾选了第二个按钮，打包工具将会把资源也复制到 Assets/StreamingAssets 文件夹下，同时更新 Version 文件，这样我们将不能测试下载热更包的过程。</p>
+<p><img src="http://img.frankorz.com/5c31f17b71319.png" alt></p>
+<p>点击开始打包后，热更文件就生成了：</p>
+<p><img src="http://img.frankorz.com/5c31f2f8dbf1d.png" alt></p>
+<p>再点击 Tools 菜单中的 web 资源服务器开启映射了 Release 文件夹的本地文件服务器。</p>
+<p>点击 Play 按钮，应用通过下载热更新资源，生成了登陆界面，也把热更资源下载到了应用中，也就是 Assets/StreamingAssets 文件夹。</p>
+<p><img src="http://img.frankorz.com/5c31f3b4ad69f.png" alt></p>
+<p>重新启动 web 资源服务器清除 log 信息，再次运行应用，会发现没有再次下载热更新资源。因为对比了 Version 文件后，应用本地的文件已经不需要更新了。</p>
+<p><img src="http://img.frankorz.com/5c31f4aa1c424.png" alt></p>
+<p>至此，我们完成了一次完整的热更新。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>ET 框架给了我们一种统一的开发体验，提供了方便的热更新切换和调试方案，这足以支撑起一些小游戏的开发需求，有需要的同学可以了解下 <a href="https://github.com/egametang/ET" target="_blank" rel="noopener">ET 框架</a>~</p>
+<p>2019 年立了个 Flag：周更技术博客，欢迎督促和交流，也欢迎常来我博客 <a href="http://frankorz.com">萤火之森</a> 逛！</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/34551169" target="_blank" rel="noopener">一些新潮的Unity热更方案</a></li>
+<li><a href="https://answer.uwa4d.com/question/5abdea21425802635474fbb4" target="_blank" rel="noopener">Mono和IL2CPP选哪个更合适？</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37291067" target="_blank" rel="noopener">Unity实现c#热更新方案探究（一）</a></li>
+<li><a href="https://answer.uwa4d.com/question/5a9fc420d35eb22c10a0a365" target="_blank" rel="noopener">关于热更新，大家现在都是怎么实现的？</a> 中网友 gx 的回答</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/">http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Unity/">Unity</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/01/13/install-kodi-with-tweakbox/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">不越狱在 iOS 12.113.3 设备安装 Kodi</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/06/22/finite-state-machine-in-unity/">
+        <span class="next-text nav-default">Unity 中用有限状态机来实现一个 AI</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2019/01/06/hotfix-introduction-of-unity-et-framework/';
+        this.page.identifier = '2019/01/06/hotfix-introduction-of-unity-et-framework/';
+        this.page.title = 'Unity 开源双端框架 ET 中初尝热更新技术';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>

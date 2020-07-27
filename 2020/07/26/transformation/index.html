@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="图形学常见的变换推导">
+
+
+
+
+  <meta name="keywords" content="游戏开发, 3D数学, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2020/07/26/transformation/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> 图形学常见的变换推导 - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          图形学常见的变换推导
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-07-26
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/图形学/">图形学</a>
+            
+          </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#线性变换"><span class="toc-text">线性变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Matrix"><span class="toc-text">Scale Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Non-Uniform"><span class="toc-text">Scale (Non-Uniform)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reflection-Matrix"><span class="toc-text">Reflection Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shear-Matrix"><span class="toc-text">Shear Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2D-Rotation-Matrix"><span class="toc-text">2D Rotation Matrix</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#齐次坐标"><span class="toc-text">齐次坐标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Translation"><span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Affine-Transformations-仿射变换"><span class="toc-text">Affine Transformations 仿射变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2D-Transformations"><span class="toc-text">2D Transformations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale"><span class="toc-text">Scale</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rotation"><span class="toc-text">Rotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Translation-1"><span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逆变换"><span class="toc-text">逆变换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三维变换"><span class="toc-text">三维变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-1"><span class="toc-text">Scale</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Translation-2"><span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rotation-1"><span class="toc-text">Rotation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#绕轴旋转"><span class="toc-text">绕轴旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rodrigues’-Rotation-Formula"><span class="toc-text">Rodrigues’ Rotation Formula</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四元数相关"><span class="toc-text">四元数相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View-Camera-Transformation-视图变换"><span class="toc-text">View/Camera Transformation 视图变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义相机"><span class="toc-text">定义相机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图变换"><span class="toc-text">视图变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求视图变换矩阵"><span class="toc-text">求视图变换矩阵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Projection-Transformation-投影变换"><span class="toc-text">Projection Transformation 投影变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Perspective-projection-vs-orthographic-projection"><span class="toc-text">Perspective projection vs. orthographic projection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Orthographic-Projection-正交投影"><span class="toc-text">Orthographic Projection 正交投影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Perspective-Projection-透视投影"><span class="toc-text">Perspective Projection 透视投影</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Recall"><span class="toc-text">Recall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么做透视投影"><span class="toc-text">怎么做透视投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求出任何一个点挤压后的-x’-y’-值"><span class="toc-text">求出任何一个点挤压后的 x’, y’ 值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求出任何一个点挤压后的-z’-值"><span class="toc-text">求出任何一个点挤压后的 z’ 值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义视锥"><span class="toc-text">定义视锥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成推导正交投影矩阵"><span class="toc-text">完成推导正交投影矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成推导透视投影矩阵"><span class="toc-text">完成推导透视投影矩阵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>注意：由于这个博客主题对 MathJax 支持不好，部分推导转用图片代替，或者可以移步我的 Notion 笔记：<a href="https://www.notion.so/frankorz/ce300124a4444c2cacc90a5ea0a5a19b" target="_blank" rel="noopener">Transformation</a>。</p>
+<p>本文是 Games101-现代计算机图形学入门 第三和第四节课的笔记，文中对二维变换、三维变换、视图变换、正交投影和透视投影做了推导，相关视频在下方。</p>
+<p><a href="https://www.bilibili.com/video/BV1X7411F744?p=3" target="_blank" rel="noopener">GAMES101-Lecture03 Transformation</a></p>
+<p><a href="https://www.bilibili.com/video/BV1X7411F744?p=4" target="_blank" rel="noopener">GAMES101-Lecture04 Transformation Cont.</a></p>
+<p>本文同时参考了《Unity Shader 入门精要》的第四章，作者公开了第四章的 PDF，可以在下面下载到。</p>
+<p><a href="https://github.com/candycat1992/Unity_Shaders_Book#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%8B%98%E8%AF%AF" target="_blank" rel="noopener">candycat1992/Unity_Shaders_Book</a></p>
+<p>闫老师的推导十分简洁易懂，我也尽量把过程补充到文章中，读者看了我相信肯定也能跟着思路把变换公式推导出来。</p>
+<p>在读本文的过程中，也推荐参考上面提到的视频和 pdf 互相参考，本文是视频中推导的详细笔记，冯乐乐的 pdf 中虽然没有投影变换的推导，但是在很多地方都把理论讲的十分清晰，例如必要的数学基础和各种图形学概念的讲解。</p>
+<a id="more"></a>
+
+<h1 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h1><p>$$<br>\begin{array}{l}x^{\prime}=a x+b y \\ y^{\prime}=c x+d y\end{array}<br>$$</p>
+<p>如果我们可以把变换写成这样一种形式，矩阵乘以输入坐标等于输出坐标，这样可以叫做线性变换。</p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{ll}a &amp; b \\ c &amp; d\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]<br>$$</p>
+<p>$$<br>\mathbf{x}^{\prime}=\mathbf{M} \mathbf{x}<br>$$</p>
+<h2 id="Scale-Matrix"><a href="#Scale-Matrix" class="headerlink" title="Scale Matrix"></a>Scale Matrix</h2><p><img src="http://img.frankorz.com/2d-scale-2.png" alt="Transformation%206c54d524cd134bc0943ed5335afa2508/Untitled.png"></p>
+<p>$$<br>\begin{array}{l}x^{\prime}=s x \\ y^{\prime}=s y\end{array}<br>$$</p>
+<p>其变换矩阵：</p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{ll}s &amp; 0 \\ 0 &amp; s\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]<br>$$</p>
+<h2 id="Scale-Non-Uniform"><a href="#Scale-Non-Uniform" class="headerlink" title="Scale (Non-Uniform)"></a>Scale (Non-Uniform)</h2><p>x y 可以不均匀地缩放</p>
+<p><img src="http://img.frankorz.com/2d-scale.png" alt="201.png"></p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{ll}s_{x} &amp; 0 \\ 0 &amp; s_{y}\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]<br>$$</p>
+<h2 id="Reflection-Matrix"><a href="#Reflection-Matrix" class="headerlink" title="Reflection Matrix"></a>Reflection Matrix</h2><p><img src="http://img.frankorz.com/2d-reflection.png" alt="202.png"></p>
+<p>Horizontal reflection:</p>
+<p>$$<br>\begin{array}{l}x^{\prime}=-x \\ y^{\prime}=y\end{array}<br>$$</p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{cc}-1 &amp; 0 \\ 0 &amp; 1\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]<br>$$</p>
+<h2 id="Shear-Matrix"><a href="#Shear-Matrix" class="headerlink" title="Shear Matrix"></a>Shear Matrix</h2><p><img src="http://img.frankorz.com/2d-shear.png" alt="203.png"></p>
+<h2 id="2D-Rotation-Matrix"><a href="#2D-Rotation-Matrix" class="headerlink" title="2D Rotation Matrix"></a>2D Rotation Matrix</h2><p><img src="http://img.frankorz.com/2d-rotation-deduce.png" alt="204.png"></p>
+<p><img src="http://img.frankorz.com/2d-rotation.png" alt="205.png"></p>
+<h1 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h1><h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>平移变换非常特殊。</p>
+<p><img src="http://img.frankorz.com/2d-translation.png" alt="206.png"></p>
+<p>$$<br>\begin{array}{l}x^{\prime}=x+t_{x} \\ y^{\prime}=y+t_{y}\end{array}<br>$$</p>
+<p>写出来简单，但是两个式子不能写成线性变换的形式。</p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{ll}a &amp; b \\ c &amp; d\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]<br>$$</p>
+<p>只能写成：</p>
+<p>$$<br>\left[\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right]=\left[\begin{array}{ll}a &amp; b \\ c &amp; d\end{array}\right]\left[\begin{array}{l}x \\ y\end{array}\right]+\left[\begin{array}{l}t_{x} \\ t_{y}\end{array}\right]<br>$$</p>
+<p>因此平移变换并不是线性变换。</p>
+<p>但是我们不希望将平移变换看作一个特殊的例子，那么有没有办法将缩放、错切、平移等变换用一种统一的方式来表示？</p>
+<p>在计算机科学，永远要考虑 “Trade-Off”。数据结构中不同降低时间复杂度的办法都会引入空间复杂度。如果两者都能低就很好，但更多时候是非此即彼的事情。“No Free Lunch Theory”。</p>
+<p><img src="http://img.frankorz.com/2d-translation-ppt.png" alt="207.png"></p>
+<p>引入齐次坐标，可以通过增加一个维度来将平移变换也写成矩阵乘一个点的形式。</p>
+<p>向量具有平移不变性，因此后面是 (x, y, 0)，平移变换后也不变。</p>
+<p>我们也可以通过 w 分量来推出我们操作的结果：</p>
+<p>Valid operation if w-coordinate of result is 1 or 0</p>
+<ul>
+<li>vector + vector = vector</li>
+<li>point – point = vector</li>
+<li>point + vector = point</li>
+<li>point + point = ??</li>
+</ul>
+<h2 id="Affine-Transformations-仿射变换"><a href="#Affine-Transformations-仿射变换" class="headerlink" title="Affine Transformations 仿射变换"></a>Affine Transformations 仿射变换</h2><p>Affine map = linear map + translation</p>
+<p>$$<br>\left(\begin{array}{l}x^{\prime} \\ y^{\prime}\end{array}\right)=\left(\begin{array}{ll}a &amp; b \\ c &amp; d\end{array}\right) \cdot\left(\begin{array}{l}x \\ y\end{array}\right)+\left(\begin{array}{l}t_{x} \\ t_{y}\end{array}\right)<br>$$</p>
+<p>Using homogenous coordinates:</p>
+<p>$$<br>\left(\begin{array}{l}x^{\prime} \\ y^{\prime} \\ 1\end{array}\right)=\left(\begin{array}{ccc}a &amp; b &amp; t_{x} \\ c &amp; d &amp; t_{y} \\ 0 &amp; 0 &amp; 1\end{array}\right) \cdot\left(\begin{array}{l}x \\ y \\ 1\end{array}\right)<br>$$</p>
+<h2 id="2D-Transformations"><a href="#2D-Transformations" class="headerlink" title="2D Transformations"></a>2D Transformations</h2><h2 id="Scale"><a href="#Scale" class="headerlink" title="Scale"></a>Scale</h2><p>$$<br>\mathbf{S}\left(s_{x}, s_{y}\right)=\left(\begin{array}{ccc}s_{x} &amp; 0 &amp; 0 \\ 0 &amp; s_{y} &amp; 0 \\ 0 &amp; 0 &amp; \text { 1 }\end{array}\right)<br>$$</p>
+<h2 id="Rotation"><a href="#Rotation" class="headerlink" title="Rotation"></a>Rotation</h2><p>$$<br>\mathbf{R}(\alpha)=\left(\begin{array}{ccc}\cos \alpha &amp; -\sin \alpha &amp; 0 \\ \sin \alpha &amp; \cos \alpha &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<h2 id="Translation-1"><a href="#Translation-1" class="headerlink" title="Translation"></a>Translation</h2><p>$$<br>\mathbf{T}\left(t_{x}, t_{y}\right)=\left(\begin{array}{ccc}1 &amp; 0 &amp; t_{x} \\ 0 &amp; 1 &amp; t_{y} \\ 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<h2 id="逆变换"><a href="#逆变换" class="headerlink" title="逆变换"></a>逆变换</h2><p><img src="http://img.frankorz.com/inverse-transform.png" alt="209.png"></p>
+<p><img src="http://img.frankorz.com/translate-then-rotate.png" alt="2010.png"></p>
+<p><img src="http://img.frankorz.com/rotate-then-translate.png" alt="2011.png"></p>
+<p>因此变换顺序是很重要的，不满足交换律。</p>
+<p>$$<br>R_{45} \cdot T_{(1,0)} \neq T_{(1,0)} \cdot R_{45}<br>$$</p>
+<p>矩阵是从右到左运算的：</p>
+<p>$$<br>T_{(1,0)} \cdot R_{45}\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]=\left[\begin{array}{ccc}1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]\left[\begin{array}{ccc}\cos 45^{\circ} &amp; -\sin 45^{\circ} &amp; 0 \\ \sin 45^{\circ} &amp; \cos 45^{\circ} &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]<br>$$</p>
+<p>矩阵没有交换律，但有结合律。</p>
+<p><img src="http://img.frankorz.com/20200726202424.png"></p>
+<h1 id="三维变换"><a href="#三维变换" class="headerlink" title="三维变换"></a>三维变换</h1><p>齐次坐标系下的三维变换可以写成下面的形式</p>
+<p>$$<br>\left(\begin{array}{l}x^{\prime} \\ y^{\prime} \\ z^{\prime} \\ 1\end{array}\right)=\left(\begin{array}{llll}a &amp; b &amp; c &amp; t_{x} \\ d &amp; e &amp; f &amp; t_{y} \\ g &amp; h &amp; i &amp; t_{z} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right) \cdot\left(\begin{array}{l}x \\ y \\ z \\ 1\end{array}\right)<br>$$</p>
+<h2 id="Scale-1"><a href="#Scale-1" class="headerlink" title="Scale"></a>Scale</h2><p>$$<br>\mathbf{S}\left(s_{x}, s_{y}, s_{z}\right)=\left(\begin{array}{cccc}s_{x} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; s_{y} &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; s_{z} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<h2 id="Translation-2"><a href="#Translation-2" class="headerlink" title="Translation"></a>Translation</h2><p>$$<br>\mathbf{T}\left(t_{x}, t_{y}, t_{z}\right)=\left(\begin{array}{cccc}1 &amp; 0 &amp; 0 &amp; t_{x} \\ 0 &amp; 1 &amp; 0 &amp; t_{y} \\ 0 &amp; 0 &amp; 1 &amp; t_{z} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<h2 id="Rotation-1"><a href="#Rotation-1" class="headerlink" title="Rotation"></a>Rotation</h2><h3 id="绕轴旋转"><a href="#绕轴旋转" class="headerlink" title="绕轴旋转"></a>绕轴旋转</h3><p>Rotation around x-, y-, or z-axis</p>
+<p>$$<br>\mathbf{R}_{x}(\alpha)=\left(\begin{array}{cccc}1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; \cos \alpha &amp; -\sin \alpha &amp; 0 \\ 0 &amp; \sin \alpha &amp; \cos \alpha &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<p>$$<br>\mathbf{R}_{y}(\alpha)=\left(\begin{array}{cccc}\cos \alpha &amp; 0 &amp; \sin \alpha &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ -\sin \alpha &amp; 0 &amp; \cos \alpha &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<p>$$<br>\mathbf{R}_{z}(\alpha)=\left(\begin{array}{cccc}\cos \alpha &amp; -\sin \alpha &amp; 0 &amp; 0 \\ \sin \alpha &amp; \cos \alpha &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
+<p><img src="http://img.frankorz.com/rotate-around-x-axis.png" alt="2012.png"></p>
+<p>绕着 x 轴旋转，说明 y 和 z 都是在进行旋转的，但 x 不变。因此绕 x 轴的旋转矩阵相比二维的旋转矩阵，第一行是不变的。中间部分和二维旋转矩阵一样。</p>
+<p>绕 y 轴旋转不一样，这里涉及到我们要如何思考轴的相互顺序。</p>
+<p>根据右手螺旋定则，x 叉乘 y 得到 z，y 叉乘 z 得到 x。但 z 叉乘 x 才能得到 y，是反的，因此 Ry 部分不一样。</p>
+<h3 id="Rodrigues’-Rotation-Formula"><a href="#Rodrigues’-Rotation-Formula" class="headerlink" title="Rodrigues’ Rotation Formula"></a>Rodrigues’ Rotation Formula</h3><p>我们能够解决一些简单的问题，复杂的问题可以转化成一些简单问题的组合。</p>
+<p>给定根据三个轴的旋转，能否将某一个方向旋转到任意一个方向上去？</p>
+<p><img src="http://img.frankorz.com/compose-any-3d-rotation.png" alt="2013.png"></p>
+<p>Rotation by angle α round axis n</p>
+<p>有人将任意一个旋转分解成通过 x y z 轴分别做旋转。</p>
+<p>$$<br>\mathbf{R}(\mathbf{n}, \alpha)=\cos (\alpha) \mathbf{I}+(1-\cos (\alpha)) \mathbf{n} \mathbf{n}^{T}+\sin (\alpha)\left(\begin{array}{ccc}0 &amp; -n_{z} &amp; n_{y} \\ n_{z} &amp; 0 &amp; -n_{x} \\ -n_{y} &amp; n_{x} &amp; 0\end{array}\right)<br>$$</p>
+<p>证明过程可以参考闫令琪老师的证明：</p>
+<p><a href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_04_supp.pdf" target="_blank" rel="noopener">GAMES101_Lecture_04_supp.pdf</a></p>
+<p>公式给了我们一个旋转矩阵，定义中给了我们一个旋转轴 n 和旋转角度 α。旋转角度好理解，但旋转轴似乎不能这么简单地定义。因为一个旋转轴首先跟起点有关系，然后跟方向有关系，只给一个向量是不是不太合适？</p>
+<p>假如说沿着 y 轴旋转，跟沿着 x 和 n 各等于 1 并且也是沿着 y 方向的向量。方向一样，但起点不一样，结果肯定也是不一样的。因此我们说沿着某个轴的方向旋转，就默认了是过原点的，这样起点就在原点上，方向就是 n 方向。</p>
+<p>那么如果轴 n 可以平移怎么办？那么我们可以将其进行变换的分解。如果我们要沿着任意轴旋转且轴的起点不在原点，我们可以将所有的东西移到起点为原点的条件下，再旋转，再移回去。</p>
+<h1 id="四元数相关"><a href="#四元数相关" class="headerlink" title="四元数相关"></a>四元数相关</h1><p>我们上面所用到的旋转矩阵是不太适合做插值的，例如二维旋转 10 度的旋转矩阵加二维旋转 20 度的旋转矩阵求平均，不能得到二维旋转 15 度的旋转矩阵。四元数在这方面方便很多。</p>
+<h1 id="View-Camera-Transformation-视图变换"><a href="#View-Camera-Transformation-视图变换" class="headerlink" title="View/Camera Transformation 视图变换"></a>View/Camera Transformation 视图变换</h1><h2 id="定义相机"><a href="#定义相机" class="headerlink" title="定义相机"></a>定义相机</h2><p><img src="http://img.frankorz.com/perform-view-transformation.png" alt="2014.png"></p>
+<p>定义一个相机需要三个变量，位置，朝向，和一个向上的方向。</p>
+<h2 id="视图变换"><a href="#视图变换" class="headerlink" title="视图变换"></a>视图变换</h2><p><img src="http://img.frankorz.com/perform-view-transformation-2.png" alt="2015.png"></p>
+<p>当相机和要拍的东西一起移动的时候，那拍出来的相片是一样的。也就是说，当我们移动物体时，只要同时以相同的方式移动相机，没有相对位置，那么得出来的结果就是一样的。</p>
+<p>如果我们将相机放在一个固定的位置上，那么所有东西在移动时，都可以认为是其他东西在移动，而相机一直在原点不动。相机永远往 -z 方向看，以 y 轴为向上方向（右手坐标系，符合 OpenGL 传统）。这是约定俗成的。相机放在原点有很多好处，能简化计算。</p>
+<p>从坐标空间的角度来看，就是将物体和相机从世界空间转到观察空间（摄像机空间）。</p>
+<p><img src="http://img.frankorz.com/perform-view-transformation-3.png" alt="2016.png"></p>
+<p>我们要将相机移到原点，就需要先把相机中心 e 平移到原点，还得把观察的方向 g 移到 -z 上，再把向上方向 t 旋转到 y 方向上，把 g X t 的方向移到 x 方向上。</p>
+<p>下面将这系列操作转为矩阵操作。</p>
+<h2 id="求视图变换矩阵"><a href="#求视图变换矩阵" class="headerlink" title="求视图变换矩阵"></a>求视图变换矩阵</h2><ol>
+<li><strong>先把相机中心 e 平移到原点</strong></li>
+</ol>
+<p>$$<br>T_{v i e w}=\left[\begin{array}{cccc}1 &amp; 0 &amp; 0 &amp; -x_{e} \\ 0 &amp; 1 &amp; 0 &amp; -y_{e} \\ 0 &amp; 0 &amp; 1 &amp; -z_{e} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]<br>$$</p>
+<p>平移矩阵写好后，接下来写旋转矩阵。</p>
+<ol start="2">
+<li><strong>把观察的方向 g 旋转到 -z 上，把向上方向 t 旋转到 y 方向上，g X t (g 叉乘 t)的方向旋转到 x 方向上</strong></li>
+</ol>
+<ul>
+<li>Rotate g to -z , t to y,  g X t To x （世界空间到观察空间）</li>
+<li>Consider its inverse rotation: x to  g X t , y to t, z to -g （观察空间到世界空间）</li>
+</ul>
+<p>我们可以反过来写，例如把 x 轴 (1,0,0 ) 旋转到 g X t 方向上的旋转矩阵，就比 g X t 移到 x 轴的旋转矩阵要好写很多，而这两个旋转矩阵是互逆的。写出 x 轴旋转到 g X t 方向的旋转矩阵后，再求其逆变换就是我们所需要的 g X t 移到 x 轴的旋转矩阵。</p>
+<p>x to g X t , y to t, z to -g 的旋转矩阵就是：</p>
+<p>这里 z to -g 是因为我们定义相机的坐标空间为右手坐标系。</p>
+<p>$$R_{v i e w}^{-1}=\left[\begin{array}{cccc}x_{\hat{g} \times \hat{t}} &amp; x_{t} &amp; x_{-g} &amp; 0 \\ y_{\hat{g} \times \hat{t}} &amp; y_{t} &amp; y_{-g} &amp; 0 \\ z_{\hat{g} \times \hat{t}} &amp; z_{t} &amp; z_{-g} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]$$</p>
+<p>要验证也很简单，用该旋转矩阵变换 x 轴就能得到 g X t 的方向。</p>
+<p><img src="http://img.frankorz.com/20200726202305.png"></p>
+<p>那么我们的旋转矩阵就能通过对上面的矩阵求逆得出：</p>
+<p>因为旋转矩阵是正交矩阵，因此要求逆矩阵，对其转置即可。</p>
+<p>$$<br>R_{v i e w}=\left[\begin{array}{cccc}x_{\hat{g} \times \hat{t}} &amp; y_{\hat{g} \times \hat{t}} &amp; z_{\hat{g} \times \hat{t}} &amp; 0 \\ x_{t} &amp; y_{t} &amp; z_{t} &amp; 0 \\ x_{-g} &amp; y_{-g} &amp; z_{-g} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]<br>$$</p>
+<p>这样我们世界空间到观察空间的变换矩阵就能得出来了：M_view=R_view·T_view</p>
+<p><img src="http://img.frankorz.com/20200726202326.png"></p>
+<p>其中 V_g×t 为 g×t 的向量，V_e 为相机原点。</p>
+<p>相机需要进行这种变换，变换到约定俗成的位置（原点）上去，那么其他所有物体也需要做这样的变换，这样相对运动不变。这个就是<strong>视图变换</strong>。</p>
+<p>模型变换和视图变换经常一起被称为<strong>模型视图变换（ModelView Transformation）</strong>。</p>
+<h1 id="Projection-Transformation-投影变换"><a href="#Projection-Transformation-投影变换" class="headerlink" title="Projection Transformation 投影变换"></a>Projection Transformation 投影变换</h1><p>Projection in Computer Graphics</p>
+<ul>
+<li>3D to 2D</li>
+<li>Orthographic projection</li>
+<li>Perspective projection</li>
+</ul>
+<p><img src="http://img.frankorz.com/projection-transformation.png" alt="2017.png"></p>
+<h2 id="Perspective-projection-vs-orthographic-projection"><a href="#Perspective-projection-vs-orthographic-projection" class="headerlink" title="Perspective projection vs. orthographic projection"></a>Perspective projection vs. orthographic projection</h2><p><img src="http://img.frankorz.com/vs-two-projection.png" alt="2018.png"></p>
+<h2 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection 正交投影"></a>Orthographic Projection 正交投影</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>A simple way of understanding</p>
+<ul>
+<li>Camera located at origin, looking at -Z, up at Y (looks familiar?)</li>
+<li>Drop Z coordinate</li>
+<li>Translate and scale the resulting rectangle to $[-1,1]^{2}$</li>
+</ul>
+<p><img src="http://img.frankorz.com/remove-z.png" alt="2019.png"></p>
+<p>将坐标中的 z 扔掉，如何区分物体的前和后？</p>
+<p>感兴趣可以参考 <a href="https://catlikecoding.com/unity/tutorials/rendering/part-1/" target="_blank" rel="noopener">Catlikecoding Render 1</a> 中 Orthographic Camera 部分。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>In general, we want to map a cuboid [l, r] x [b, t] x [<strong>f, n</strong>] to the “canonical (正则、规范、标准)” cube [-1,1]^3 </p>
+<p>我们在 x 轴上定义左和右 [l, r] （左比右小），y 轴上定义下和上 [b, t]（下比上小），z 轴上定义远和近 [f, n]（远比近小）。</p>
+<p>不管 x, y 多大，都将其映射到 [-1, 1] 之间。这也是个约定俗成的事情，能方便计算。这样任何空间中的长方体，都可以映射成一个标准的立方体。</p>
+<p>这也是<strong>标准化设备坐标（NDC）</strong>的定义。</p>
+<p>上面的左比右小是相对于 x 轴来说的，下比上小是相对于 y 轴说的，但 z 轴上不太直观，因为我们推导的 NDC 是右手坐标系，（相机）看的是 -z 方向，因此一个面离我们远，说明 z 值更小。离我们近，说明 z 值更大。</p>
+<p><img src="http://img.frankorz.com/ndc.png" alt="2020.png"></p>
+<p>在标准化设备坐标系中 OpenGL 使用的是左手坐标系，因为左手系在这一点上会比较方便。但也会造成别的问题：x × y ≠ z。</p>
+<p><a href="https://learnopengl-cn.github.io/01%20Getting%20started/08%20Coordinate%20Systems/#3d" target="_blank" rel="noopener"></a></p>
+<p>Slightly different orders (to the “simple way”)</p>
+<ul>
+<li>Center cuboid by translating 移到原点</li>
+<li>Scale into “canonical” cube 映射到 [-1, 1]，也就是缩放</li>
+</ul>
+<p>Translate (<strong>center</strong> to origin) first, then scale (length/width/height to <strong>2</strong>) 因为 -1 到 1 的长度就是 2。</p>
+<p>因此我们可以用一个平移矩阵和缩放矩阵来求出正交投影矩阵，先平移，再缩放：</p>
+<p><img src="http://img.frankorz.com/20200726202211.png"></p>
+<p>如果把长方体范围缩成立方体，物体不会被拉伸吗？<br>会，这就涉及到另外一个变换。在所有变换做完之后，还要做一个视口变换，还要做一次拉伸。</p>
+<h2 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h2><ul>
+<li>Most common in Computer Graphics, art, visual system</li>
+<li>Further objects are smaller</li>
+<li>Parallel lines not parallel; converge to single point</li>
+</ul>
+<p><img src="http://img.frankorz.com/image-plane.png" alt="2021.png"></p>
+<p><img src="http://img.frankorz.com/projection-wiki.png" alt="2022.png"></p>
+<p>平行线就是永不相交的两条线，但照片上铁轨是平行的，却交于一点。透视投影的情况下，一个平面相当于被投影到了另外一个平面上，这种情况下就不是平行线了。</p>
+<h3 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h3><ul>
+<li>Before we move on</li>
+<li>Recall: property of homogeneous coordinates<ul>
+<li>(x, y, z, 1),(k x, k y, k z, k !=0), (x z, y z, z^2, z !=0) all represent the same point (x, y, z) in 3D<ul>
+<li>只要一个点乘于一个不为零的 k，那么它们还是一个点。那么我们还可以将其乘以 z，其表示的点还是空间中同样的点。下面我们会用到。</li>
+</ul>
+</li>
+<li>e.g. (1, 0, 0, 1) and (2, 0, 0, 2) both represent (1, 0, 0)</li>
+</ul>
+</li>
+<li>Simple, but useful</li>
+</ul>
+<h3 id="怎么做透视投影"><a href="#怎么做透视投影" class="headerlink" title="怎么做透视投影"></a>怎么做透视投影</h3><p>How to do perspective projection</p>
+<ul>
+<li>First “squish” the frustum into a cuboid (n→n, f→f) (M_persp→ortho)</li>
+<li>Do orthographic projection ( M_ortho, already known!)</li>
+</ul>
+<p><img src="http://img.frankorz.com/frustum-and-cuboid.png" alt="2023.png"></p>
+<p>透视投影的视锥体中，远的平面比近的平面要大。</p>
+<p>我们可以把远的平面往里“挤”，“挤”到同一高度且同近平面大小，“挤”成空间中的长方体，再做正交投影就解决了。</p>
+<p>我们已经知道正交投影怎么做了，因此剩下的就是“挤”这个操作。</p>
+<p>在这个过程中，需要规定：</p>
+<ul>
+<li>近平面上任何一个点不变。</li>
+<li>Z 值不变</li>
+<li>远平面的中心也不会发生变化</li>
+</ul>
+<h3 id="求出任何一个点挤压后的-x’-y’-值"><a href="#求出任何一个点挤压后的-x’-y’-值" class="headerlink" title="求出任何一个点挤压后的 x’, y’ 值"></a>求出任何一个点挤压后的 x’, y’ 值</h3><p>要做“挤”的操作，首先要知道任何一个点的 x, y 值是怎么变化的。因为我们任何一个面都要挤成近平面大小，我们也可以将 (x,y,z) 投影到近平面上求出变换后的 x’, y’ 值。对于 x, y 值来说，这种变换是线性的。</p>
+<p>因此，在视锥体的上面一部分中，我们可以通过相似三角形求出变换后的 x’, y’ 值。（z’ 值不是线性变化的，后面会提到）</p>
+<p><img src="http://img.frankorz.com/projection-similar-triangle.png" alt="2024.png"></p>
+<p>上图中，n 为近平面的 z 值，z 为任何一个点(x,y,z)中的 z 值。</p>
+<p>挤压后的 y’ 值，我们可以通过相似三角形原理得出：</p>
+<p>$$<br>y^{\prime}=\frac{n}{z} y<br>$$</p>
+<p>同理可得挤压后的 x’ 值：</p>
+<p>$$<br>x^{\prime}=\frac{n}{z} x<br>$$</p>
+<p>在齐次坐标系中，对于变换后的 (x’, y’, z’)  我们只剩下 z’ 未知。 </p>
+<p>这里给矩阵乘了 z，其表示的点还是空间中同样的点。</p>
+<p><img src="http://img.frankorz.com/20200726202624.png"></p>
+<p>也就是说 (x,y,z,1) 经过 Mpersp→ortho 矩阵“挤压”后，会被映射到 (nx,ny,??,z)：</p>
+<p>$$<br>M_{p e r s p \rightarrow o r t h o}^{(4 \times 4)}\left(\begin{array}{c}x \\ y \\ z \\ 1\end{array}\right)=\left(\begin{array}{c}n x \\ n y \\ \text { unknown } \\ z\end{array}\right)<br>$$</p>
+<p>根据上式，我们可以得出部分的 Mpersp→ortho 矩阵：</p>
+<p>$$<br>M_{p e r s p \rightarrow o r t h o}=\left(\begin{array}{llll}n &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; n &amp; 0 &amp; 0 \\ ? &amp; ? &amp; ? &amp; ? \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right)<br>$$</p>
+<p>对于 z，我们不知道 z 会怎么变，我们只规定了近的平面上和远的平面上 z 不变。</p>
+<p>Observation: the third row is responsible for z’</p>
+<ul>
+<li>Any point on the near plane will not change<ul>
+<li>近平面的点不变，对于任何 (x,y,n,1) 运算完了一定还是 (x,y,n,1)</li>
+</ul>
+</li>
+<li>Any point’s z on the far plane will not change<ul>
+<li>远平面的点，虽然 x, y 会变化，但是 z 没有变。</li>
+</ul>
+</li>
+</ul>
+<h3 id="求出任何一个点挤压后的-z’-值"><a href="#求出任何一个点挤压后的-z’-值" class="headerlink" title="求出任何一个点挤压后的 z’ 值"></a>求出任何一个点挤压后的 z’ 值</h3><p>由“近平面的点不变，对于任何 (x,y,n,1) 运算完了一定还是 (x,y,n,1)”可得：</p>
+<p>这里给矩阵乘了 n，其表示的点还是空间中同样的点。</p>
+<p><img src="http://img.frankorz.com/20200726201617.png"></p>
+<p>因此 Mpersp→ortho 第三行一定是 (0,0,A,B) 的形式，因为：</p>
+<p>$$<br>\left(\begin{array}{llll}0 &amp; 0 &amp; A &amp; B\end{array}\right)\left(\begin{array}{l}x \\ y \\ n \\ 1\end{array}\right)=n^{2}<br>$$</p>
+<p>由上式可得：</p>
+<p>$$<br>A n+B=n^{2}<br>$$</p>
+<p>前面我们已经知道第三行前两个数是 0。</p>
+<p>我们前面已经规定了远平面的中心经过 Mpersp→ortho 变换后也不会发生变化。</p>
+<p>另外一个等式可以用远平面可以用其特殊的中心点得出，给中心点再乘个 f 可得：</p>
+<p><img src="http://img.frankorz.com/20200726201652.png"></p>
+<p>平截头体（Frustum）被压缩成长方体以后，内部的点的 z 值是更偏向于近平面还是更偏向于远平面？</p>
+<p>可以参考 ScratchAPixel 的 <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/building-basic-perspective-projection-matrix" target="_blank" rel="noopener">The Perspective and Orthographic Projection Matrix</a></p>
+<p><img src="http://img.frankorz.com/z-fighting.png" alt="2025.png"></p>
+<p><a href="https://developer.nvidia.com/content/depth-precision-visualized" target="_blank" rel="noopener">Depth Precision Visualized</a></p>
+<h2 id="定义视锥"><a href="#定义视锥" class="headerlink" title="定义视锥"></a>定义视锥</h2><p>前面提到了长方体近平面的 l, r, b, t，有没有更好的方法去定义这些呢？</p>
+<p>vertical <strong>field-of-view (fovY)</strong> and <strong>aspect ratio</strong></p>
+<p>我们现实中相机有视角的定义，也就是可以看到的角度的范围，也就是 field of view。广角相机就是可视角度比较大，对于视锥体来说，就是张的比较开。</p>
+<p>垂直的可视角度就是 fovY。而相机的长宽比就是 aspect ratio。</p>
+<p>我们也可以通过 fovY 和 aspect ratio，来推出水平的可视角度。</p>
+<p><img src="http://img.frankorz.com/fovY.png" alt="2026.png"></p>
+<p>How to convert from fovY and aspect to l, r, b, t?</p>
+<p><img src="http://img.frankorz.com/fovY-2.png" alt="2027.png"></p>
+<p><img src="http://img.frankorz.com/20200726202655.png"></p>
+<h2 id="完成推导正交投影矩阵"><a href="#完成推导正交投影矩阵" class="headerlink" title="完成推导正交投影矩阵"></a>完成推导正交投影矩阵</h2><p><img src="http://img.frankorz.com/unity-camera-property.png" alt="2028.png"></p>
+<p>正交投影没有 fovY，在 Unity 中，正交投影的参数由 Camera 组件中的参数 Size, Near, Far（Viewport Rect 暂时忽略）和 Game 视图的横纵比（aspect ratio）共同决定。</p>
+<p>这里的 Near 是近裁面的距离，也就是 -n，Far 同理，等于 -f。</p>
+<p>Size 属性用来更改视锥体竖直方向上高度的一半，也就是前面近平面的高度 t。</p>
+<p>由此可得正交投影近远平面的高度 t-b 为：2·Size=2·t</p>
+<p>正交投影近远平面的宽度 r-l 为：</p>
+<p>$$<br>Aspect\cdot \text{近远平面的高度}=2\cdot Aspect\cdot Size=2\cdot Aspect\cdot t<br>$$</p>
+<p><img src="http://img.frankorz.com/projection-property.png" alt="2029.png"></p>
+<p><img src="http://img.frankorz.com/20200726202046.png"></p>
+<p>注意：这里的 n 和 f 是 -z 轴上的，代表近裁面和远裁面的 z 值，值为负数。</p>
+<h2 id="完成推导透视投影矩阵"><a href="#完成推导透视投影矩阵" class="headerlink" title="完成推导透视投影矩阵"></a>完成推导透视投影矩阵</h2><p><img src="http://img.frankorz.com/20200726202021.png"></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在长文的最后，我强烈推荐大家也手推一下各种变换，n, f 取 -z 轴上的 z 值或绝对值（也就是距离）得出来的变换矩阵也不一样，都推导一遍可以理解更深刻。</p>
+<p>此外，我们也可以开始实现一个简单的 CPU 软光栅渲染器，我近期也在准备写一个软光栅，把必要的过程都推导一遍，到时候再写博文分享一下。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2020/07/26/transformation/">http://frankorz.com/2020/07/26/transformation/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/游戏开发/">游戏开发</a>
+            
+              <a href="/tags/3D数学/">3D数学</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2020/05/23/2020-05-tech-reading/">
+        <span class="next-text nav-default">2020年5月技术导读</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2020/07/26/transformation/';
+        this.page.identifier = '2020/07/26/transformation/';
+        this.page.title = '图形学常见的变换推导';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
+</html>

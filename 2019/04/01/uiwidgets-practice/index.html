@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="属于 Unity 的 Flutter——UIWidgets">
+
+
+
+
+  <meta name="keywords" content="游戏开发, 萤火之森">
+
+
+
+  <meta name="baidu-site-verification" content="BxJt2YcBZH">
+
+
+
+
+
+
+
+
+  
+    <link rel="alternate" href="/atom.xml" title="萤火之森" type="application/atom+xml">
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://frankorz.com/2019/04/01/uiwidgets-practice/">
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+  <script id="baidu_analytics">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a6af339098c7b3314fd48d6640bbf8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69634396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-69634396-1');
+</script>
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+  <script async src="//zhousiwei.gitee.io/busuanzi.pure.js"></script>
+
+
+
+<script>
+  window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":""};
+</script>
+
+    <title> 属于 Unity 的 Flutter——UIWidgets - 萤火之森 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="mobile-header-logo">
+    <a href="/." class="logo">萤火之森</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/books">
+        <li class="mobile-menu-item">
+          
+          
+            读书
+          
+        </li>
+      </a>
+    
+      <a href="/leetcode">
+        <li class="mobile-menu-item">
+          
+          
+            LeetCode
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">萤火之森</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/books">
+            
+            
+              读书
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/leetcode">
+            
+            
+              LeetCode
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          属于 Unity 的 Flutter——UIWidgets
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-01
+        </span>
+        
+          <span class="post-category">
+            
+              <a href="/categories/Unity/">Unity</a>
+            
+          </span>
+        
+        
+        
+        <span id="busuanzi_container_page_pv" class="post-category"><span id="busuanzi_value_page_pv"></span> 次阅读</span>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架图"><span class="toc-text">框架图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-框架结构"><span class="toc-text">Flutter 框架结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIWidgets-框架结构"><span class="toc-text">UIWidgets 框架结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行效率"><span class="toc-text">执行效率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件树"><span class="toc-text">组件树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的示例"><span class="toc-text">我的示例</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://github.com/UnityTech/UIWidgets/" target="_blank" rel="noopener">UIWidgets</a> 是 Unity 的一个插件包，是一个从 Google 的移动 UI 框架 Flutter 演变过来的 UI 框架。  </p>
+<p>相对于原生开发的高开发成本（不同平台都需要不同的一套代码），Flutter、React-Native 等这种跨平台 UI 框架应运而生。  </p>
+<p>Flutter 自 2018 年 3 月发布以来，社区不断壮大。由于 Flutter 自身设计理念的出色，Unity 中国已经着手将其移植过来。当然了，也因为这两个东西都非常的年轻，因此开发的时候都像开荒一样。  </p>
+<a id="more"></a>
+<h2 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h2><p>Flutter 有自己的一套渲染系统，那么 Unity 作为一个游戏引擎，底层的图形 API 用自己的一套东西就行了，因此移植过来更方便了。</p>
+<h3 id="Flutter-框架结构"><a href="#Flutter-框架结构" class="headerlink" title="Flutter 框架结构"></a>Flutter 框架结构</h3><p><img src="http://img.frankorz.com/flutter-architecture.png" alt></p>
+<h3 id="UIWidgets-框架结构"><a href="#UIWidgets-框架结构" class="headerlink" title="UIWidgets 框架结构"></a>UIWidgets 框架结构</h3><p><img src="http://img.frankorz.com/5ca0a9930c276.png" alt></p>
+<h2 id="执行效率"><a href="#执行效率" class="headerlink" title="执行效率"></a>执行效率</h2><p><img src="http://img.frankorz.com/5ca0b27a35401.gif" alt></p>
+<p>这里提一些基础的知识：</p>
+<p>Batch 就是 DrawCall 的另一种说法，了解渲染流水线的同学会知道流水线在 CPU 与 GPU 之间通信时，一般有三个步骤：  </p>
+<ol>
+<li>把数据加载到显存中。  </li>
+<li>设置渲染状态。  </li>
+<li>调用 Draw Call  </li>
+</ol>
+<p>Draw Call 就是一个调用命令，让 CPU 告诉 GPU 要怎么样用给定的渲染状态和输入的顶点信息来计算。Batch 里面装着顶点信息，也就是 DrawCall 中 GPU 需要的顶点信息。  </p>
+<p>DrawCall 可以在 Profiler 中看，Batches 可以在 Stats 窗口看，大家可以仔细看看上面动图（右键在新标签页打开图片）里面的数据变化。  </p>
+<p><img src="http://img.frankorz.com/5ca0ac9d4fd8c.png" alt></p>
+<p>在我随便写的一个例子中间，可以看到 Batches 数只有 1 。即使在有动画的时候 Batches 会多一点，但动画停止后 DrawCall 和 Batches 都马上下来了。这也有我这个应用写的太简单的原因，但是这种效率还是非常值得期待的。</p>
+<h3 id="组件树"><a href="#组件树" class="headerlink" title="组件树"></a>组件树</h3><p>学过前端的同学应该熟悉组件树，这里就不介绍了。  </p>
+<p>为了更高的渲染效率，Unity 采用了 Render Object Compositiing 的技术。    </p>
+<p><img src="http://img.frankorz.com/5ca0b42e394a0.png" alt></p>
+<p>如果一个子树没有发生改变，Unity 就会将其渲染到一个离屏的 Render Texture 上缓存下来，需要的时候再将其贴到屏幕上。  </p>
+<p>相比之下，以前的做法是，Canvas 只要有 UI element 改动了，整个 Canvas 都需要重新绘制。即使也有一种优化做法是准备两个 Canvas 分别绘制动态 UI element 和 静态 UI element，但这样也存在很多手动管理的地方。  </p>
+<p>另外一方面，你可能也意识到了，我们不需要再管什么用同一个材质等等来优化图的合批，UIWidgets 会自动来管理这些事情。这方面也跟 <a href="http://fairygui.com" target="_blank" rel="noopener">FairyGUI</a> 非常像，开发者能专注在生产效率上，让插件来管理麻烦的事情。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>能开发游戏以外的 APP</li>
+<li>游戏中的 UI</li>
+<li>新的用户体验</li>
+<li>不用管渲染过程，提升效率</li>
+<li>因为是 Unity 的插件，可以轻松加各种粒子效果和其他骚操作。</li>
+<li>一套代码能跑在游戏中、APP 中、网页中和 Unity 的 Editor 窗口中。（开发者还用其做了一个 <a href="https://github.com/UnityTech/DocCN" target="_blank" rel="noopener">Unity 中文文档的网站</a>，一套代码能用在网页上和 APP 端）</li>
+<li>在静态页面进行降帧的优化，有动画效果再把帧率提上来。</li>
+<li>和 Flutter 的 API 几乎一样，可以参考 Flutter 教程来用 UIWidgets 搭应用。</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>无论是 Flutter 还是 UIWidgets 都还很年轻，有很多组件 UIWidgets 还没移植过来（GridView、Circle Avatar 等等）</li>
+<li>官方示例、文档还没完善</li>
+<li>开发时是开荒模式，所以可能忍不住直接转用 Flutter 去了…</li>
+</ul>
+<h2 id="我的示例"><a href="#我的示例" class="headerlink" title="我的示例"></a>我的示例</h2><p><img src="http://img.frankorz.com/5ca082d35a884.gif" alt></p>
+<p>这里借用了 <a href="https://github.com/Miraikomachi/MiraikomachiUnity" target="_blank" rel="noopener">ミライ小町</a> 的模型，所以代码窗口大小会比较大。（项目里面还有ミライ小町的跳舞动画 animation！）</p>
+<p>项目仓库：<a href="https://github.com/Latias94/UIWidget-Practice" target="_blank" rel="noopener">Latias94/UIWidget-Practice</a>  </p>
+<p>UIWidgets：<a href="https://github.com/UnityTech/UIWidgets/" target="_blank" rel="noopener">UnityTech/UIWidgets</a><a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3</a>)  </p>
+<p>官方讲解录播：<a href="https://www.bilibili.com/video/av47558897" target="_blank" rel="noopener">[官方直播] UIWidgets - 不止游戏！如何使用 Unity 开发跨平台应用</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://frankorz.com">猫冬</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://frankorz.com/2019/04/01/uiwidgets-practice/">http://frankorz.com/2019/04/01/uiwidgets-practice/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/游戏开发/">游戏开发</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/05/07/simple-talk-unity-dots/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Unity DOTS 走马观花</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/01/13/install-kodi-with-tweakbox/">
+        <span class="next-text nav-default">不越狱在 iOS 12.113.3 设备安装 Kodi</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:frankorz@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/Latias94" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/u/1825527674" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/zhuang-ming-zhen" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="host-by">
+    Hosted by <a class="hexo-link" href="https://coding.net/pages">Coding Pages</a>
+  </span>
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2020
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">猫冬</span>
+  </span>
+  
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span class="division">|</span>
+  <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+   <span class="division">|</span>
+  
+  <a href="http://beian.miit.gov.cn/">粤ICP备19098175号-1</a> 
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://frankorz.com/2019/04/01/uiwidgets-practice/';
+        this.page.identifier = '2019/04/01/uiwidgets-practice/';
+        this.page.title = '属于 Unity 的 Flutter——UIWidgets';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//frankorz.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+  
+
+  
+
+
+
+    
+  
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>
