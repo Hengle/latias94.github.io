@@ -306,20 +306,23 @@
         <p><strong>2020年7月26日更新：</strong><br>最近对变换重新学习整理了，文章在：<a href="http://frankorz.com/2020/07/26/transformation/">图形学常见的变换推导</a>。</p>
 <p>上一篇笔记<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/">3D 数学基础-向量运算基础和矩阵变换</a>记录了一些向量和矩阵运算的基础，和一些矩阵基本的变换。这篇笔记主要介绍了平移变换、齐次坐标、平移和旋转变换的组合、法线变换和改变坐标系。</p>
 <a id="more"></a>
+
 <h2 id="平移（Translation）"><a href="#平移（Translation）" class="headerlink" title="平移（Translation）"></a>平移（Translation）</h2><p>前一篇文章总结了旋转、缩放等变换，这里介绍一下平移变换。</p>
 <p>假如我们需要把 X 坐标从 x 变换到 x + 5，我们需要构造什么样的变换矩阵来实现平移呢？</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}x' \\ y' \\ z' \end{bmatrix}=\begin{bmatrix} & & \\ & ? & \\ & & \end{bmatrix}\begin{bmatrix}x \\ y \\ z \end{bmatrix}=\begin{bmatrix}x+5 \\ y \\ z \end{bmatrix}</script><p>要注意的是，变换矩阵不能包含 x、y、z 等坐标变量。例如要得到 x + 5，那么矩阵的第一个行向量不能是 <script type="math/tex">(1, 0, 5/z)</script>，因为变换的一个重要性质是<strong>变换矩阵保持不变</strong>。</p>
+<p>$$<br>\begin{bmatrix}x’ \ y’ \ z’ \end{bmatrix}=\begin{bmatrix} &amp; &amp; \ &amp; ? &amp; \ &amp; &amp; \end{bmatrix}\begin{bmatrix}x \ y \ z \end{bmatrix}=\begin{bmatrix}x+5 \ y \ z \end{bmatrix}<br>$$</p>
+<p>要注意的是，变换矩阵不能包含 x、y、z 等坐标变量。例如要得到 x + 5，那么矩阵的第一个行向量不能是 $$(1, 0, 5/z)$$，因为变换的一个重要性质是<strong>变换矩阵保持不变</strong>。</p>
 <p>我们可以给矩阵多加一个维度 w，令其等于 1，这样就不需要用到 x、y、z 这些坐标变量了。</p>
-<script type="math/tex; mode=display">\begin{bmatrix}x' \\ y' \\ z' \\ w' \end{bmatrix}=\begin{bmatrix} 1 & 0 & 0 & 5\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & 1 \end{bmatrix}\begin{bmatrix}x \\ y \\ z \\ 1 \end{bmatrix}=\begin{bmatrix}x+5 \\ y \\ z \\ 1 \end{bmatrix}</script><p>这里引用到了<a href="https://www.wikiwand.com/zh/%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87" target="_blank" rel="noopener">齐次坐标</a>的概念。</p>
+<p>$$\begin{bmatrix}x’ \ y’ \ z’ \ w’ \end{bmatrix}=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 5\ 0 &amp; 1 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\begin{bmatrix}x \ y \ z \ 1 \end{bmatrix}=\begin{bmatrix}x+5 \ y \ z \ 1 \end{bmatrix}$$</p>
+<p>这里引用到了<a href="https://www.wikiwand.com/zh/%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87" target="_blank" rel="noopener">齐次坐标</a>的概念。</p>
 <h2 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h2><blockquote>
 <p>齐次坐标表示是计算机图形学的重要手段之一，它既能够用来明确区分向量和点，同时也更易用于进行仿射几何变换。<br>—— F.S. Hill, JR 《计算机图形学(OpenGL 版)》作者</p>
 </blockquote>
-<p>想要了解三维坐标是怎么样扩展到四维坐标，可以先了解下二维空间中的齐次坐标 <script type="math/tex">(x, y, w)</script>。</p>
-<p>下图的三维坐标中在 <script type="math/tex">w=1</script> 处有一个二维平面，则该平面上的二维平面坐标可以表示为 <script type="math/tex">(x, y, 1)</script>，图中的 <script type="math/tex">(1.0, 0.8, 1.0)</script> 就是一个在该二维平面上的点。对于不在二维平面上的点，我们则将其投影到二维平面上，所以齐次坐标 <script type="math/tex">(x, y, w)</script> 映射到实际二维平面上的点为 <script type="math/tex">(x/w, y/w)</script>，例如另外一个点 <script type="math/tex">(2.5, 2.0, 2.5)</script> 在 <script type="math/tex">w=1</script> 二维平面投影得到的点为 <script type="math/tex">(1.0, 0.8)</script>。</p>
-<p><img src="http://img.frankorz.com/59c657c43c5dd.png" alt></p>
-<p>同理，三维空间的点可以认为是在四维空间中 <script type="math/tex">w=1</script> 的“平面”上，所以齐次坐标 <script type="math/tex">(x, y, z, w)</script> 映射到三维空间上的点为 <script type="math/tex">(x/w, y/w, z/w)</script>，这也就是点的非齐次坐标。</p>
-<script type="math/tex; mode=display">\begin{bmatrix}x \\ y \\ z \\ w \end{bmatrix}=\begin{bmatrix}x/w \\ y/w \\ z/w \\ 1 \end{bmatrix}</script><p>四维齐次坐标的任何常量缩放会得到相同的结果，也就是说，它包含了点的非齐次坐标所有可能的缩放（还记得上面图中的两个点吗？），w 可以等于任何数值：</p>
+<p>想要了解三维坐标是怎么样扩展到四维坐标，可以先了解下二维空间中的齐次坐标 $$(x, y, w)$$。</p>
+<p>下图的三维坐标中在 $$w=1$$ 处有一个二维平面，则该平面上的二维平面坐标可以表示为 $$(x, y, 1)$$，图中的 $$(1.0, 0.8, 1.0)$$ 就是一个在该二维平面上的点。对于不在二维平面上的点，我们则将其投影到二维平面上，所以齐次坐标 $$(x, y, w)$$ 映射到实际二维平面上的点为 $$(x/w, y/w)$$，例如另外一个点 $$(2.5, 2.0, 2.5)$$ 在 $$w=1$$ 二维平面投影得到的点为 $$(1.0, 0.8)$$。</p>
+<p><img src="http://img.frankorz.com/59c657c43c5dd.png"></p>
+<p>同理，三维空间的点可以认为是在四维空间中 $$w=1$$ 的“平面”上，所以齐次坐标 $$(x, y, z, w)$$ 映射到三维空间上的点为 $$(x/w, y/w, z/w)$$，这也就是点的非齐次坐标。</p>
+<p>$$\begin{bmatrix}x \ y \ z \ w \end{bmatrix}=\begin{bmatrix}x/w \ y/w \ z/w \ 1 \end{bmatrix}$$</p>
+<p>四维齐次坐标的任何常量缩放会得到相同的结果，也就是说，它包含了点的非齐次坐标所有可能的缩放（还记得上面图中的两个点吗？），w 可以等于任何数值：</p>
 <ul>
 <li>如果 w &gt; 0，这表示一个真实物理世界的点，我们可以用 x，y，z 三个坐标除以 w 得到这个真实的点。</li>
 <li>如果 w = 0，这表示一个无穷远处的点。在实际应用中，通常表示一个向量。</li>
@@ -332,38 +335,49 @@
 <li>四阶矩阵和齐次坐标是计算机图形软件和硬件中普遍使用的标准。</li>
 </ul>
 <p>下面表示的是一个点向量加上一个平移变量：</p>
-<script type="math/tex; mode=display">P{}'=TP=\begin{bmatrix} 1 & 0 & 0 & T_{x}\\ 0 & 1 & 0 & T_{y}\\ 0 & 0 & 1 & T_{z}\\ 0 & 0 & 0 & 1 \end{bmatrix}\begin{bmatrix}x \\ y \\ z \\ 1 \end{bmatrix}=\begin{bmatrix}x+T_{x} \\ y+T_{y} \\ z+T_{z} \\ 1 \end{bmatrix}=P+T</script><p>有时候平移矩阵 T 内的左上角部分会直接用单位矩阵来表示，其中 <script type="math/tex">I_{3}</script> 表示 3 * 3 的单位矩阵。</p>
-<script type="math/tex; mode=display">T=\begin{bmatrix} 1 & 0 & 0 & T_{x}\\ 0 & 1 & 0 & T_{y}\\ 0 & 0 & 1 & T_{z}\\ 0 & 0 & 0 & 1 \end{bmatrix}=\begin{bmatrix} I_{3} & T\\ 0 & 1 \end{bmatrix}</script><h2 id="组合平移和旋转变换"><a href="#组合平移和旋转变换" class="headerlink" title="组合平移和旋转变换"></a>组合平移和旋转变换</h2><p>当要对一个点进行两种变换的时候，就会涉及到变换顺序的问题，是先平移再旋转，还是先旋转再平移？</p>
-<h3 id="先旋转再平移"><a href="#先旋转再平移" class="headerlink" title="先旋转再平移"></a>先旋转再平移</h3><script type="math/tex; mode=display">P{}'=\left ( TR \right )P=MP=RP+T</script><p>其中 T 为平移矩阵，R 为旋转矩阵，矩阵 P 通过平移再旋转后得到矩阵 P’。注意，在上面的公式中做的是标准的向量计算，在计算时才用齐次坐标计算。</p>
+<p>$$P{}’=TP=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; T_{x}\ 0 &amp; 1 &amp; 0 &amp; T_{y}\ 0 &amp; 0 &amp; 1 &amp; T_{z}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\begin{bmatrix}x \ y \ z \ 1 \end{bmatrix}=\begin{bmatrix}x+T_{x} \ y+T_{y} \ z+T_{z} \ 1 \end{bmatrix}=P+T$$</p>
+<p>有时候平移矩阵 T 内的左上角部分会直接用单位矩阵来表示，其中 $$I_{3}$$ 表示 3 * 3 的单位矩阵。</p>
+<p>$$T=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; T_{x}\ 0 &amp; 1 &amp; 0 &amp; T_{y}\ 0 &amp; 0 &amp; 1 &amp; T_{z}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} I_{3} &amp; T\ 0 &amp; 1 \end{bmatrix}$$</p>
+<h2 id="组合平移和旋转变换"><a href="#组合平移和旋转变换" class="headerlink" title="组合平移和旋转变换"></a>组合平移和旋转变换</h2><p>当要对一个点进行两种变换的时候，就会涉及到变换顺序的问题，是先平移再旋转，还是先旋转再平移？</p>
+<h3 id="先旋转再平移"><a href="#先旋转再平移" class="headerlink" title="先旋转再平移"></a>先旋转再平移</h3><p>$$P{}’=\left ( TR \right )P=MP=RP+T$$</p>
+<p>其中 T 为平移矩阵，R 为旋转矩阵，矩阵 P 通过平移再旋转后得到矩阵 P’。注意，在上面的公式中做的是标准的向量计算，在计算时才用齐次坐标计算。</p>
 <p>由于我们使用的是列矩阵，矩阵的阅读顺序应该从右到左。也就是说对于 TR 这个旋转矩阵而言，（TR）P 这个操作，就是对矩阵 P 先 R 旋转，再进行 T 平移。</p>
-<script type="math/tex; mode=display">M=\begin{bmatrix} 1 & 0 & 0 & T_{x}\\ 0 & 1 & 0 & T_{y}\\ 0 & 0 & 1 & T_{z}\\ 0 & 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} R_{11} & R_{12} & R_{13} & 0\\ R_{21} & R_{22} & R_{23} & 0\\ R_{31} & R_{32} & R_{33} & 0\\ 0 & 0 & 0 & 1 \end{bmatrix}=\begin{bmatrix} R_{11} & R_{12} & R_{13} & T_{x}\\ R_{21} & R_{22} & R_{23} & T_{y}\\ R_{31} & R_{32} & R_{33} & T_{z}\\ 0 & 0 & 0 & 1 \end{bmatrix}=\begin{bmatrix} R & T \\ 0 & 1 \end{bmatrix}</script><script type="math/tex; mode=display">MP=\begin{bmatrix} R & T \\ 0 & 1 \end{bmatrix}\begin{bmatrix} P & 0 \\ 0 & 1 \end{bmatrix}=\begin{bmatrix} RP & T \\ 0 & 1 \end{bmatrix}=RP+T</script><h3 id="先平移再旋转"><a href="#先平移再旋转" class="headerlink" title="先平移再旋转"></a>先平移再旋转</h3><script type="math/tex; mode=display">P{}'=(RT)P=MP=R(P+T)=RP+RT</script><script type="math/tex; mode=display">M=\begin{bmatrix} R_{11} & R_{12} & R_{13} & 0\\ R_{21} & R_{22} & R_{23} & 0\\ R_{31} & R_{32} & R_{33} & 0\\ 0 & 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 & T_{x}\\ 0 & 1 & 0 & T_{x}\\ 0 & 0 & 1 & T_{x}\\ 0 & 0 & 0 & 1 \end{bmatrix}=\begin{bmatrix} R_{3\times 3} & R_{3\times 3}T_{3\times 1}\\ 0_{1\times 3} & 1 \end{bmatrix}</script><script type="math/tex; mode=display">MP=\begin{bmatrix} R_{3\times 3} & R_{3\times 3}T_{3\times 1}\\ 0_{1\times 3} & 1 \end{bmatrix}\begin{bmatrix} P & 0\\ 0 & 1 \end{bmatrix}=\begin{bmatrix} RP & RT\\ 0 & 1 \end{bmatrix}=RP+RT</script><p>对比先平移再旋转的结果，可以看到不同的地方是 T 变成了 RT，也就是说旋转也施加在了平移的方向上。在下图中可看到小人在 Y 轴方向发生了平移，所以<strong>先旋转再平移</strong>可能会更容易得到理想的结果，但两种变换组合都是可行的。（在 gluLookAt 的推导中需要先做平移，gluLookAt 是 OpenGL 中观察变换的一个关键函数。）</p>
-<p><img src="http://img.frankorz.com/59c771e4d39f0.png" alt></p>
+<p>$$M=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; T_{x}\ 0 &amp; 1 &amp; 0 &amp; T_{y}\ 0 &amp; 0 &amp; 1 &amp; T_{z}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\begin{bmatrix} R_{11} &amp; R_{12} &amp; R_{13} &amp; 0\ R_{21} &amp; R_{22} &amp; R_{23} &amp; 0\ R_{31} &amp; R_{32} &amp; R_{33} &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} R_{11} &amp; R_{12} &amp; R_{13} &amp; T_{x}\ R_{21} &amp; R_{22} &amp; R_{23} &amp; T_{y}\ R_{31} &amp; R_{32} &amp; R_{33} &amp; T_{z}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} R &amp; T \ 0 &amp; 1 \end{bmatrix}$$</p>
+<p>$$MP=\begin{bmatrix} R &amp; T \ 0 &amp; 1 \end{bmatrix}\begin{bmatrix} P &amp; 0 \ 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} RP &amp; T \ 0 &amp; 1 \end{bmatrix}=RP+T$$</p>
+<h3 id="先平移再旋转"><a href="#先平移再旋转" class="headerlink" title="先平移再旋转"></a>先平移再旋转</h3><p>$$P{}’=(RT)P=MP=R(P+T)=RP+RT$$</p>
+<p>$$M=\begin{bmatrix} R_{11} &amp; R_{12} &amp; R_{13} &amp; 0\ R_{21} &amp; R_{22} &amp; R_{23} &amp; 0\ R_{31} &amp; R_{32} &amp; R_{33} &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; T_{x}\ 0 &amp; 1 &amp; 0 &amp; T_{x}\ 0 &amp; 0 &amp; 1 &amp; T_{x}\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} R_{3\times 3} &amp; R_{3\times 3}T_{3\times 1}\ 0_{1\times 3} &amp; 1 \end{bmatrix}$$</p>
+<p>$$MP=\begin{bmatrix} R_{3\times 3} &amp; R_{3\times 3}T_{3\times 1}\ 0_{1\times 3} &amp; 1 \end{bmatrix}\begin{bmatrix} P &amp; 0\ 0 &amp; 1 \end{bmatrix}=\begin{bmatrix} RP &amp; RT\ 0 &amp; 1 \end{bmatrix}=RP+RT$$</p>
+<p>对比先平移再旋转的结果，可以看到不同的地方是 T 变成了 RT，也就是说旋转也施加在了平移的方向上。在下图中可看到小人在 Y 轴方向发生了平移，所以<strong>先旋转再平移</strong>可能会更容易得到理想的结果，但两种变换组合都是可行的。（在 gluLookAt 的推导中需要先做平移，gluLookAt 是 OpenGL 中观察变换的一个关键函数。）</p>
+<p><img src="http://img.frankorz.com/59c771e4d39f0.png"></p>
 <h2 id="法线变换"><a href="#法线变换" class="headerlink" title="法线变换"></a>法线变换</h2><p>在图形学中曲面法线的方向也很重要。</p>
 <h3 id="法线（Normal）"><a href="#法线（Normal）" class="headerlink" title="法线（Normal）"></a>法线（Normal）</h3><blockquote>
 <p>法线是始终垂直于某平面的虚线。在数学几何中法线指平面上垂直于曲线在某点的切线的一条线。<br>——百度百科</p>
 </blockquote>
-<p><img src="http://img.frankorz.com/59c6f8e40b986.png" alt></p>
+<p><img src="http://img.frankorz.com/59c6f8e40b986.png"></p>
 <p>切线的位置实际上就是曲面上的几何位置，因此它们的变换矩阵和曲面的变换矩阵保持一致。</p>
-<script type="math/tex; mode=display">t\rightarrow Mt</script><p>而法线变换是另外一个矩阵，我们称之为 Q。</p>
-<script type="math/tex; mode=display">n\rightarrow Qn~~Q=?</script><p>法线必须垂直于这些切线，因此法线和切线的点积等于 0。</p>
-<script type="math/tex; mode=display">n^{T}t=0</script><p>变换后法线和切点依然互相垂直，可得：</p>
-<script type="math/tex; mode=display">
-(Qn)^{T}=(n^{T}Q^{T})(Mt)=0</script><p>在该等式中，只有当 <script type="math/tex">Q^{T}M=I</script> 时，矩阵才容易求解。</p>
-<script type="math/tex; mode=display">
-n^{T} Q^{T} M t=0 \Rightarrow Q^{T} M=I</script><p>最后可得法线变换公式，其中 <script type="math/tex">M^{-1}</script> 只对左上角的 3 * 3 矩阵求逆和转置：</p>
-<script type="math/tex; mode=display">Q=(M^{-1})^{T}</script><p>要进行法线变换，这个公式要施加在曲面上所有的法线上。</p>
+<p>$$t\rightarrow Mt$$</p>
+<p>而法线变换是另外一个矩阵，我们称之为 Q。</p>
+<p>$$n\rightarrow Qn~~Q=?$$</p>
+<p>法线必须垂直于这些切线，因此法线和切线的点积等于 0。</p>
+<p>$$n^{T}t=0$$</p>
+<p>变换后法线和切点依然互相垂直，可得：</p>
+<p>$$<br>(Qn)^{T}=(n^{T}Q^{T})(Mt)=0<br>$$<br>在该等式中，只有当 $$Q^{T}M=I$$ 时，矩阵才容易求解。</p>
+<p>$$<br>n^{T} Q^{T} M t=0 \Rightarrow Q^{T} M=I<br>$$<br>最后可得法线变换公式，其中 $$M^{-1}$$ 只对左上角的 3 * 3 矩阵求逆和转置：</p>
+<p>$$Q=(M^{-1})^{T}$$</p>
+<p>要进行法线变换，这个公式要施加在曲面上所有的法线上。</p>
 <p>另外要注意的是法线是一个向量，不会随着平移而改变，因此平移变换对法线没影响。</p>
-<h2 id="改变坐标系"><a href="#改变坐标系" class="headerlink" title="改变坐标系"></a>改变坐标系</h2><p><img src="http://img.frankorz.com/59c70f36b057b.jpg" alt></p>
+<h2 id="改变坐标系"><a href="#改变坐标系" class="headerlink" title="改变坐标系"></a>改变坐标系</h2><p><img src="http://img.frankorz.com/59c70f36b057b.jpg"></p>
 <p>在图中，点 (2, 1) 要平移到 (1, 1) 处，可以直接把点向左平移，也可以看成是坐标系的改变，将坐标系向右平移。</p>
-<p>引出坐标系的概念是因为，在很多情形下，我们需要一个特定的物理位置在不同的坐标系间变换，例如上一篇文章<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#正交坐标系">正交坐标系</a>中所举的例子。下图中，有世界坐标系、相机坐标系和点 P。</p>
-<p><img src="http://img.frankorz.com/59c72df0ddea8.jpg" alt></p>
+<p>引出坐标系的概念是因为，在很多情形下，我们需要一个特定的物理位置在不同的坐标系间变换，例如上一篇文章<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#%E6%AD%A3%E4%BA%A4%E5%9D%90%E6%A0%87%E7%B3%BB">正交坐标系</a>中所举的例子。下图中，有世界坐标系、相机坐标系和点 P。</p>
+<p><img src="http://img.frankorz.com/59c72df0ddea8.jpg"></p>
 <p>点 P 在两个坐标系中的坐标是不同的，而在图形学中，我们经常要做这样的变换。</p>
-<p><img src="http://img.frankorz.com/59c72e3657a2a.jpg" alt></p>
+<p><img src="http://img.frankorz.com/59c72e3657a2a.jpg"></p>
 <p>如果我们在世界坐标系中有一个点，要计算出其在相机坐标系中的位置，则要同时考虑相机旋转的坐标系、相机的位置和观察的位置（视点）。</p>
-<p>在<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#二维空间下的旋转">二维空间下的旋转</a>中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
-<p><img src="http://img.frankorz.com/59c73178738e1.jpg" alt></p>
+<p>在<a href="http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/#%E4%BA%8C%E7%BB%B4%E7%A9%BA%E9%97%B4%E4%B8%8B%E7%9A%84%E6%97%8B%E8%BD%AC">二维空间下的旋转</a>中能看到二维旋转矩阵的推导过程，在此基础上，可以看作坐标系向右旋转了θ度，这样点 P 就在新坐标系中到达目标位置 P’ 了。</p>
+<p><img src="http://img.frankorz.com/59c73178738e1.jpg"></p>
 <p>这样我们就能通过旋转矩阵来得到新的 uv 坐标系了！</p>
-<script type="math/tex; mode=display">\begin{bmatrix} u\\v \end{bmatrix}=\begin{bmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix}\begin{bmatrix} x\\y \end{bmatrix}</script><hr>
+<p>$$\begin{bmatrix} u\v \end{bmatrix}=\begin{bmatrix} cos\theta &amp; -sin\theta \ sin\theta &amp; cos\theta \end{bmatrix}\begin{bmatrix} x\y \end{bmatrix}$$</p>
+<hr>
 <p>之前讨论的都是三维的变换，下篇笔记会介绍图形学中的观察（Viewing）。3D 数学基础知识有点枯燥，但这是入门图形魔法的必经之路。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://book.douban.com/subject/1400419/" target="_blank" rel="noopener">3D 数学基础：图形与游戏开发</a></li>
@@ -599,7 +613,24 @@ n^{T} Q^{T} M t=0 \Rightarrow Q^{T} M=I</script><p>最后可得法线变换公�
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
 </html>

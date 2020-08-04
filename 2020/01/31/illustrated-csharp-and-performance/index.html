@@ -306,7 +306,9 @@
         <p>这本书仍然是入门 C# 最好的一本书。</p>
 <p>这本书新版出来的时候我十分关注，于是英子姐送了一本给我，本文也是答应英子姐所写的一篇文章。她一开始还问我“你现在还需要看这本入门书吗？”，我认为是的。工作了遇到了不少问题，大都跟自己基础不牢有关系。</p>
 <p>这本书以图形为载体，生动地介绍了 C# 语言本身。其中图形对我们了解 C# 语法在内存中的本质十分有帮助，异步、异常等章节中的处理流程图也很清晰明了，这也是我看重的一点。</p>
-<p>本文会从本书出发，简单讲讲代码优化的一些点。<br><a id="more"></a></p>
+<p>本文会从本书出发，简单讲讲代码优化的一些点。</p>
+<a id="more"></a>
+
 <h2 id="在内存中的形态"><a href="#在内存中的形态" class="headerlink" title="在内存中的形态"></a>在内存中的形态</h2><p>为什么要了解 C# 在内存中的形态呢？</p>
 <p>书中第四章介绍内存区域的栈中，有一句话说的很好：</p>
 <blockquote>
@@ -363,6 +365,7 @@
 </ul>
 <h2 id="装箱"><a href="#装箱" class="headerlink" title="装箱"></a>装箱</h2><p>第 17 章介绍了转换，其中提到了装箱拆箱。那么装箱的代价有多大呢？我们可以做个测试：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> Iterations = <span class="number">100</span>_000;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他地方初始化了 Iterations 大小的随机数组</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] numberArr = <span class="literal">null</span>; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">bool</span> <span class="title">MeasureTestA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 设定大小以避免自动扩容带来的性能消耗</span></span><br><span class="line">    Stack stack = <span class="keyword">new</span> Stack(Iterations); </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Iterations; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        stack.Push(numberArr[i]); <span class="comment">// int -&gt; object 装箱</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">bool</span> <span class="title">MeasureTestB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Stack&lt;<span class="keyword">int</span>&gt; genericStack = <span class="keyword">new</span> Stack&lt;<span class="keyword">int</span>&gt;(Iterations);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Iterations; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        genericStack.Push(numberArr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="http://img.frankorz.com/profiler.png" alt="profiler"></p>
 <p>查看 Profiler 可以看到，调用十次 TestA 产生了 26.7MB GC，用了 267.22 毫秒；调用十次 TestB 只产生了 3.8MB GC，用了 20.92 毫秒。因此大量的装箱拆箱会导致不必要的性能消耗，而有些消耗则是完全可以避免的。</p>
 <p>我的 Rider 插件 <a href="https://plugins.jetbrains.com/plugin/9223-heap-allocations-viewer" target="_blank" rel="noopener">Heap Allocations Viewer</a> 也会提示我 TestA 中存在装箱的情况。</p>
@@ -611,7 +614,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
 </html>

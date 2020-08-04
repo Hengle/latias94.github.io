@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="读后感, Python, 笔记, 萤火之森">
+  <meta name="keywords" content="笔记, Python, 读后感, 萤火之森">
 
 
 
@@ -302,6 +302,7 @@
 <p>要不这样吧，如果编程语言里有个地方你弄不明白，而正好又有个人用了这个功能，那就开枪把他打死。这比学习新特性要容易些，然后过不了多久，那些活下来的程序员就会开始用 0.9.6 版的 Python，而且他们只需要使用这个版本中易于理解的那一小部分就好了（眨眼） 。<br>—— Tim Peters<br>传奇的核心开发者， “Python 之禅”作者</p>
 </blockquote>
 <a id="more"></a>
+
 <h3 id="这本书的目的是什么？"><a href="#这本书的目的是什么？" class="headerlink" title="这本书的目的是什么？"></a>这本书的目的是什么？</h3><p>第十一章的杂谈里给出了答案：</p>
 <blockquote>
 <p>这正是本书的主要目的：着重讲解这门语言的基本惯用法，让你的代码简洁、高效且可读，把你打造成熟练的 Python 程序员。</p>
@@ -384,8 +385,8 @@
 <p>不可变集合不变的是所含对象的标识。</p>
 </blockquote>
 <p>第八章中，作者从「元组是不可变的，但是其中的值可以改变」引申到浅复制和深复制的区别。</p>
-<p><img src="http://img.frankorz.com/5956006435780.jpg" alt></p>
-<p>浅复制带来的影响可以参考 <a href="http://www.pythontutor.com/visualize.html#code=l1%20%3D%20%5B3,%20%5B66,%2055,%2044%5D,%20%287,%208,%209%29%5D%0Al2%20%3D%20list%28l1%29%20%0Al1.append%28100%29%0Al1%5B1%5D.remove%2855%29%0Aprint%28&#39;l1%3A&#39;,%20l1%29%0Aprint%28&#39;l2%3A&#39;,%20l2%29%0Al2%5B1%5D%20%2B%3D%20%5B33,%2022%5D%0Al2%5B2%5D%20%2B%3D%20%2810,%2011%29%20%0Aprint%28&#39;l1%3A&#39;,%20l1%29%0Aprint%28&#39;l2%3A&#39;,%20l2%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false" target="_blank" rel="noopener">example</a>（点 foward 显示下一步）</p>
+<p><img src="http://img.frankorz.com/5956006435780.jpg"></p>
+<p>浅复制带来的影响可以参考 <a href="http://www.pythontutor.com/visualize.html#code=l1%20%3D%20%5B3,%20%5B66,%2055,%2044%5D,%20%287,%208,%209%29%5D%0Al2%20%3D%20list%28l1%29%20%0Al1.append%28100%29%0Al1%5B1%5D.remove%2855%29%0Aprint%28'l1%3A',%20l1%29%0Aprint%28'l2%3A',%20l2%29%0Al2%5B1%5D%20%2B%3D%20%5B33,%2022%5D%0Al2%5B2%5D%20%2B%3D%20%2810,%2011%29%20%0Aprint%28'l1%3A',%20l1%29%0Aprint%28'l2%3A',%20l2%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target="_blank" rel="noopener">example</a>（点 foward 显示下一步）</p>
 <p>作者还提到了两个容易忽略的函数参数引用问题：</p>
 <ol>
 <li>不要使用可变类型作为参数的默认值</li>
@@ -405,7 +406,7 @@
 </ol>
 <p>类属性用于为实例属性提供默认值。Django 的类视图也大量用到了这个特性。</p>
 <p>个人十分喜欢名称改写（属性的私有化）中的一张示意图：<br>「避免意外访问，但不能防止故意做错事。」，以此来提醒名称改写所实现的私有化自身的缺陷。</p>
-<p><img src="http://img.frankorz.com/5956006706191.jpg" alt></p>
+<p><img src="http://img.frankorz.com/5956006706191.jpg"></p>
 <p>笔记传送门：<a href="https://my.mindnode.com/sJg5G9wfSRP4Le67FDqErjYGGqxhEPNYpMCnpj1Q" target="_blank" rel="noopener">符合 Python 风格的对象</a></p>
 <h3 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h3><blockquote>
 <p>不要检查它是不是鸭子、它的叫声像不像鸭子、它的走路姿势像不像鸭子，等等。具体检查什么取决于你想使用语言的哪些行为。 （comp.lang.python，2000 年 7 月 26 日）<br>——Alex Martelli</p>
@@ -447,7 +448,7 @@
 <blockquote>
 <p>For most purposes, in the simplest cases, you can think of the search for attributes inherited from a parent class as <strong>depth-first, left-to-right, not searching twice in the same class</strong> where there is an overlap in the hierarchy. </p>
 </blockquote>
-<p><img src="http://img.frankorz.com/595600652d904.jpg" alt></p>
+<p><img src="http://img.frankorz.com/595600652d904.jpg"></p>
 <p>笔记传送门：<a href="https://my.mindnode.com/qn4fVVx826kDNss71p4f3d6P2rxHsFwo5h7pQb1q" target="_blank" rel="noopener">继承的优缺点</a></p>
 <h3 id="第十三章"><a href="#第十三章" class="headerlink" title="第十三章"></a>第十三章</h3><p>第十三章介绍了重载运算符的时候要考虑多重情况。</p>
 <blockquote>
@@ -483,9 +484,9 @@
 <p>除了调用 <code>.send(...)</code> 方法发送数据，本章还介绍使用 <code>yield from</code> 结构驱动的生成器函数。</p>
 <p>扩展阅读：</p>
 <ul>
-<li><p><a href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/" target="_blank" rel="noopener">SICP in Python</a> 有一段关于并行计算的非常精彩的解释：<a href="https://wizardforcel.gitbooks.io/sicp-py/content/ch4.html#43-并行计算" target="_blank" rel="noopener">4.3 并行计算</a></p>
+<li><p><a href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/" target="_blank" rel="noopener">SICP in Python</a> 有一段关于并行计算的非常精彩的解释：<a href="https://wizardforcel.gitbooks.io/sicp-py/content/ch4.html#43-%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97" target="_blank" rel="noopener">4.3 并行计算</a></p>
 </li>
-<li><p><a href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/" target="_blank" rel="noopener">SICP in Python</a> 中协程的一节里着重讲了将复杂程序解构为小型、模块化组件的技巧：<a href="https://wizardforcel.gitbooks.io/sicp-py/content/ch5.html#53-协程" target="_blank" rel="noopener">5.3 协程</a></p>
+<li><p><a href="http://www-inst.eecs.berkeley.edu/~cs61a/sp12/book/" target="_blank" rel="noopener">SICP in Python</a> 中协程的一节里着重讲了将复杂程序解构为小型、模块化组件的技巧：<a href="https://wizardforcel.gitbooks.io/sicp-py/content/ch5.html#53-%E5%8D%8F%E7%A8%8B" target="_blank" rel="noopener">5.3 协程</a></p>
 </li>
 </ul>
 <p>笔记传送门：<a href="https://my.mindnode.com/4qpfqK3UY5ZdNVyEje4sXnFJ9PoXTFpNJVsn2pZx" target="_blank" rel="noopener">协程</a></p>
@@ -506,6 +507,7 @@
 <p>笔记待补</p>
 <h3 id="第十九章"><a href="#第十九章" class="headerlink" title="第十九章"></a>第十九章</h3><p>第十九章主要介绍了动态属性编程。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Foo</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = Foo()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo.a = <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo.b = property(<span class="keyword">lambda</span> self: self.a + <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo.b</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
 <p>这就叫做动态属性（dynamic attribute），不同于属于静态语言的 Java 需要依靠 setter 和 getter 方法，Python 能十分方便地设置属性和读取属性。</p>
 <p>作者拿 FrozenJSON 类做例子：把嵌套的字典和列表转换成嵌套的 FrozenJSON 实例和实例列表。FrozenJSON 类的代码展示了如何使用特殊的 <code>__getattr__</code> 方法（处理属性的函数）在读取属性时即时转换数据结构。</p>
 <p>作者还介绍了很多处理属性的属性和函数以及利用特性(@properties)来修改设置属性和读取属性的方式。</p>
@@ -558,11 +560,11 @@
         
           <div class="post-tags">
             
-              <a href="/tags/读后感/">读后感</a>
+              <a href="/tags/笔记/">笔记</a>
             
               <a href="/tags/Python/">Python</a>
             
-              <a href="/tags/笔记/">笔记</a>
+              <a href="/tags/读后感/">读后感</a>
             
           </div>
         
@@ -755,7 +757,7 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
 </html>
