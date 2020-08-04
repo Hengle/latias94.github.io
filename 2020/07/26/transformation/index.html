@@ -367,9 +367,11 @@
 <p>矩阵是从右到左运算的：</p>
 <p>$$<br>T_{(1,0)} \cdot R_{45}\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]=\left[\begin{array}{ccc}1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]\left[\begin{array}{ccc}\cos 45^{\circ} &amp; -\sin 45^{\circ} &amp; 0 \\ \sin 45^{\circ} &amp; \cos 45^{\circ} &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]\left[\begin{array}{l}x \\ y \\ 1\end{array}\right]<br>$$</p>
 <p>矩阵没有交换律，但有结合律。</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544330598.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544330598.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544330598.svg"></div>
+
 <h1 id="三维变换"><a href="#三维变换" class="headerlink" title="三维变换"></a>三维变换</h1><p>齐次坐标系下的三维变换可以写成下面的形式</p>
-<p>$$<br>\left(\begin{array}{l}x^{\prime} \\ y^{\prime} \\ z^{\prime} \\ 1\end{array}\right)=\left(\begin{array}{llll}a &amp; b &amp; c &amp; t_{x} \\ d &amp; e &amp; f &amp; t_{y} \\ g &amp; h &amp; i &amp; t_{z} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right) \cdot\left(\begin{array}{l}x \\ y \\ z \\ 1\end{array}\right)<br>$$</p>
+<p>$$<br>\left(\begin{array}{l}x^{\prime} \\ y^{\prime} \\ z^{\prime} \\ 1\end{array}\right)=\left(\begin{array}{llll}a &amp; b &amp; c &amp; t_{x} \\ d &amp; e &amp; f &amp; t_{y} \\ g &amp; h &amp; i &amp; t_{z} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right) \cdot\left(\begin{array}{l}x \\ y \\ z \\ 1\end{array}\right)<br>$$ </p>
 <h2 id="Scale-1"><a href="#Scale-1" class="headerlink" title="Scale"></a>Scale</h2><p>$$<br>\mathbf{S}\left(s_{x}, s_{y}, s_{z}\right)=\left(\begin{array}{cccc}s_{x} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; s_{y} &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; s_{z} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
 <h2 id="Translation-2"><a href="#Translation-2" class="headerlink" title="Translation"></a>Translation</h2><p>$$<br>\mathbf{T}\left(t_{x}, t_{y}, t_{z}\right)=\left(\begin{array}{cccc}1 &amp; 0 &amp; 0 &amp; t_{x} \\ 0 &amp; 1 &amp; 0 &amp; t_{y} \\ 0 &amp; 0 &amp; 1 &amp; t_{z} \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right)<br>$$</p>
 <h2 id="Rotation-1"><a href="#Rotation-1" class="headerlink" title="Rotation"></a>Rotation</h2><h3 id="绕轴旋转"><a href="#绕轴旋转" class="headerlink" title="绕轴旋转"></a>绕轴旋转</h3><p>Rotation around x-, y-, or z-axis</p>
@@ -418,12 +420,17 @@
 <p>这里 z to -g 是因为我们定义相机的坐标空间为右手坐标系。</p>
 <p>$$R_{v i e w}^{-1}=\left[\begin{array}{cccc}x_{\hat{g} \times \hat{t}} &amp; x_{t} &amp; x_{-g} &amp; 0 \\ y_{\hat{g} \times \hat{t}} &amp; y_{t} &amp; y_{-g} &amp; 0 \\ z_{\hat{g} \times \hat{t}} &amp; z_{t} &amp; z_{-g} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]$$</p>
 <p>要验证也很简单，用该旋转矩阵变换 x 轴就能得到 g X t 的方向。</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544303744.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544303744.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544303744.svg"></div>
+
 <p>那么我们的旋转矩阵就能通过对上面的矩阵求逆得出：</p>
 <p>因为旋转矩阵是正交矩阵，因此要求逆矩阵，对其转置即可。</p>
 <p>$$<br>R_{v i e w}=\left[\begin{array}{cccc}x_{\hat{g} \times \hat{t}} &amp; y_{\hat{g} \times \hat{t}} &amp; z_{\hat{g} \times \hat{t}} &amp; 0 \\ x_{t} &amp; y_{t} &amp; z_{t} &amp; 0 \\ x_{-g} &amp; y_{-g} &amp; z_{-g} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]<br>$$</p>
 <p>这样我们世界空间到观察空间的变换矩阵就能得出来了：M_view=R_view·T_view</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544270087.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544270087.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544270087.svg"></div>
+
+
 <p>其中 V_g×t 为 g×t 的向量，V_e 为相机原点。</p>
 <p>相机需要进行这种变换，变换到约定俗成的位置（原点）上去，那么其他所有物体也需要做这样的变换，这样相对运动不变。这个就是<strong>视图变换</strong>。</p>
 <p>模型变换和视图变换经常一起被称为<strong>模型视图变换（ModelView Transformation）</strong>。</p>
@@ -459,7 +466,10 @@
 </ul>
 <p>Translate (<strong>center</strong> to origin) first, then scale (length/width/height to <strong>2</strong>) 因为 -1 到 1 的长度就是 2。</p>
 <p>因此我们可以用一个平移矩阵和缩放矩阵来求出正交投影矩阵，先平移，再缩放：</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544157453.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544157453.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544157453.svg"></div>
+
+
 <p>如果把长方体范围缩成立方体，物体不会被拉伸吗？<br>会，这就涉及到另外一个变换。在所有变换做完之后，还要做一个视口变换，还要做一次拉伸。</p>
 <h2 id="Perspective-Projection-透视投影"><a href="#Perspective-Projection-透视投影" class="headerlink" title="Perspective Projection 透视投影"></a>Perspective Projection 透视投影</h2><ul>
 <li>Most common in Computer Graphics, art, visual system</li>
@@ -506,7 +516,10 @@
 <p>$$<br>x^{\prime}=\frac{n}{z} x<br>$$</p>
 <p>在齐次坐标系中，对于变换后的 (x’, y’, z’)  我们只剩下 z’ 未知。 </p>
 <p>这里给矩阵乘了 z，其表示的点还是空间中同样的点。</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544132635.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544132635.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544132635.svg"></div>
+
+
 <p>也就是说 (x,y,z,1) 经过 Mpersp→ortho 矩阵“挤压”后，会被映射到 (nx,ny,??,z)：</p>
 <p>$$<br>M_{p e r s p \rightarrow o r t h o}^{(4 \times 4)}\left(\begin{array}{c}x \\ y \\ z \\ 1\end{array}\right)=\left(\begin{array}{c}n x \\ n y \\ \text { unknown } \\ z\end{array}\right)<br>$$</p>
 <p>根据上式，我们可以得出部分的 Mpersp→ortho 矩阵：</p>
@@ -525,15 +538,21 @@
 </ul>
 <h3 id="求出任何一个点挤压后的-z’-值"><a href="#求出任何一个点挤压后的-z’-值" class="headerlink" title="求出任何一个点挤压后的 z’ 值"></a>求出任何一个点挤压后的 z’ 值</h3><p>由“近平面的点不变，对于任何 (x,y,n,1) 运算完了一定还是 (x,y,n,1)”可得：</p>
 <p>这里给矩阵乘了 n，其表示的点还是空间中同样的点。</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544077215.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544077215.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544077215.svg"></div>
+
 <p>因此 Mpersp→ortho 第三行一定是 (0,0,A,B) 的形式，因为：</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544091556.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544091556.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544091556.svg"></div>
+
 <p>由上式可得：</p>
 <p>$$<br>A n+B=n^{2}<br>$$</p>
 <p>前面我们已经知道第三行前两个数是 0。</p>
 <p>我们前面已经规定了远平面的中心经过 Mpersp→ortho 变换后也不会发生变化。</p>
 <p>另外一个等式可以用远平面可以用其特殊的中心点得出，给中心点再乘个 f 可得：</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544046146.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544046146.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544046146.svg"></div>
+
 <p>平截头体（Frustum）被压缩成长方体以后，内部的点的 z 值是更偏向于近平面还是更偏向于远平面？</p>
 <p>可以参考 ScratchAPixel 的 <a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/building-basic-perspective-projection-matrix" target="_blank" rel="noopener">The Perspective and Orthographic Projection Matrix</a></p>
 <p><img src="http://img.frankorz.com/z-fighting.png" alt="2025.png"></p>
@@ -546,7 +565,9 @@
 <p><img src="http://img.frankorz.com/fovY.png" alt="2026.png"></p>
 <p>How to convert from fovY and aspect to l, r, b, t?</p>
 <p><img src="http://img.frankorz.com/fovY-2.png" alt="2027.png"></p>
-<p><img src="http://img.frankorz.com/MommyTalk1596544012560.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596544012560.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596544012560.svg"></div>
+
 <h2 id="完成推导正交投影矩阵"><a href="#完成推导正交投影矩阵" class="headerlink" title="完成推导正交投影矩阵"></a>完成推导正交投影矩阵</h2><p><img src="http://img.frankorz.com/unity-camera-property.png" alt="2028.png"></p>
 <p>正交投影没有 fovY，在 Unity 中，正交投影的参数由 Camera 组件中的参数 Size, Near, Far（Viewport Rect 暂时忽略）和 Game 视图的横纵比（aspect ratio）共同决定。</p>
 <p>这里的 Near 是近裁面的距离，也就是 -n，Far 同理，等于 -f。</p>
@@ -558,11 +579,17 @@
 <p><img src="http://img.frankorz.com/MommyTalk1596543978233.svg"></p>
 <p>注意：这里的 n 和 f 是 -z 轴上的，代表近裁面和远裁面的 z 值，值为负数。</p>
 <h2 id="完成推导透视投影矩阵"><a href="#完成推导透视投影矩阵" class="headerlink" title="完成推导透视投影矩阵"></a>完成推导透视投影矩阵</h2><p>前面已经得出：</p>
-<p><img src="http://img.frankorz.com/1596543733403.svg"></p>
-<p><img src="http://img.frankorz.com/MommyTalk1596543871566.svg"></p>
+<!-- ![](http://img.frankorz.com/1596543733403.svg) -->
+<div align="center"><img src="http://img.frankorz.com/1596543733403.svg"></div>
+
+<!-- ![](http://img.frankorz.com/MommyTalk1596543871566.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596543871566.svg"></div>
+
 <p>注意：这里的 n 和 f 是 -z 轴上的，代表近裁面和远裁面的 z 值，值为负数。</p>
 <p>通常我们透视投影的参数除了近裁面远裁面的距离外，还会有 fov 和 Aspect，且 r+l=0，因此整理公式可得：</p>
-<p><img src="http://img.frankorz.com/MommyTalk1596543953726.svg"></p>
+<!-- ![](http://img.frankorz.com/MommyTalk1596543953726.svg) -->
+<div align="center"><img src="http://img.frankorz.com/MommyTalk1596543953726.svg"></div>
+
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在长文的最后，我强烈推荐大家也手推一下各种变换，n, f 取 -z 轴上的 z 值或绝对值（也就是距离）得出来的变换矩阵也不一样，都推导一遍可以理解更深刻。</p>
 <p>此外，我们也可以开始实现一个简单的 CPU 软光栅渲染器，我近期也在准备写一个软光栅，把必要的过程都推导一遍，到时候再写博文分享一下。</p>
 
@@ -789,7 +816,9 @@
   
 
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -806,7 +835,5 @@
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
