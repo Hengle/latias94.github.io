@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://frankorz.com/2020/07/26/transformation/</loc>
+    <lastmod>2020-08-04</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</loc>
+    <lastmod>2020-07-26</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2017/09/24/matrix-transformation-2/</loc>
+    <lastmod>2020-07-26</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2020/05/23/2020-05-tech-reading/</loc>
+    <lastmod>2020-05-24</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2020/04/13/2020-04-tech-reading/</loc>
+    <lastmod>2020-04-16</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/</loc>
+    <lastmod>2020-02-11</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2020/01/31/illustrated-csharp-and-performance/</loc>
+    <lastmod>2020-02-02</lastmod>
+  </url>  <url>
+    <loc>http://frankorz.com/2019/12/04/2019-year-end-summary/</loc>
+    <lastmod>2019-12-04</lastmod>
+  </url>  <url>
     <loc>http://frankorz.com/2016/10/24/manage-books-on-macOS/</loc>
     <lastmod>2019-08-17</lastmod>
   </url>  <url>
@@ -61,16 +85,7 @@
     <loc>http://frankorz.com/2019/05/07/simple-talk-unity-dots/</loc>
     <lastmod>2019-08-17</lastmod>
   </url>  <url>
-    <loc>http://frankorz.com/2019/01/13/install-kodi-with-tweakbox/</loc>
-    <lastmod>2019-08-17</lastmod>
-  </url>  <url>
     <loc>http://frankorz.com/2019/07/14/clarify-ecs-basic-concept/</loc>
-    <lastmod>2019-08-17</lastmod>
-  </url>  <url>
-    <loc>http://frankorz.com/2017/09/22/basic-of-vector-and-matrix-transformation/</loc>
-    <lastmod>2019-08-17</lastmod>
-  </url>  <url>
-    <loc>http://frankorz.com/2017/09/24/matrix-transformation-2/</loc>
     <lastmod>2019-08-17</lastmod>
   </url>  <url>
     <loc>http://frankorz.com/2018/06/22/finite-state-machine-in-unity/</loc>

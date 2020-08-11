@@ -306,6 +306,7 @@
         <p><img src="http://img.frankorz.com/5cd168d7974ba.png" alt="The Big Picture"></p>
 <p>简单介绍 Data-Oriented Technology Stack (DOTS, 数据导向型技术栈) ，其包含了 C# Job System、the Entity Component System (ECS) 和 Burst。</p>
 <a id="more"></a>
+
 <h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>DOTS 要实现的特点有：</p>
 <ul>
 <li><strong>性能的准确性。</strong>我们希望的效果是：如果循环因为某些原因无法向量化，它应该会出现编译器错误，而不是使代码运行速度慢 8 倍，并得到正确结果，完全不报错。</li>
@@ -321,13 +322,13 @@
 </ul>
 <h1 id="Burst"><a href="#Burst" class="headerlink" title="Burst"></a>Burst</h1><p>Unity 构建了名为 Burst 的代码生成器和编译器。</p>
 <p>当使用 C# 时，我们对整个流程有完整的控制，包括从源代码编译到机器代码生成，如果有我们不想要的部分，我们会找到并修复它。我们会逐渐把 C++ 语言的性能敏感代码移植为 HPC# （高性能 C#，下文会提到）代码，这样会更容易得到想要的性能，更难出现 Bug，更容易进行处理。</p>
-<p><img src="http://img.frankorz.com/5cd1692330824.png" alt></p>
+<p><img src="http://img.frankorz.com/5cd1692330824.png"></p>
 <p>如果 Asset Store 资源插件的开发者在资源中使用 HPC# 代码，资源插件在运行时代码会运行得更快。除此之外，高级用户也会通过使用 HPC# 编写出自定义高性能代码而受益。</p>
 <p><a href="https://www.youtube.com/watch?v=QkM6zEGFhDY" target="_blank" rel="noopener">ECS Track: Deep Dive into the Burst Compiler - Unite LA</a></p>
 <p>Burst 对于 HPC# 更详细的支持可以在下面找到：</p>
 <p><a href="https://docs.unity3d.com/Packages/com.unity.burst@0.2/manual/index.html#cnet-language-support" target="_blank" rel="noopener">Burst User Guide</a></p>
 <h2 id="深入栈"><a href="#深入栈" class="headerlink" title="深入栈"></a>深入栈</h2><p>向量化（Vectorization）无法进行的常见情况是，编译器无法确保二个指针不指向相同的内存，即混淆情况（Alias）。Alias 的问题在 Unity GDC 中也有一个演讲提到过：<a href="https://www.youtube.com/watch?v=NF6kcNS6U80" target="_blank" rel="noopener">Unity at GDC - C# to Machine Code</a>。</p>
-<p><a href="https://docs.unity3d.com/Packages/com.unity.collections@0.0/manual/index.html" target="_blank" rel="noopener">Collections 类</a>就是为了解决这个问题而诞生的，里面包含 NativeList<t>、NativeHashMap<tkey, tvalue>、NativeMultiHashMap<tkey, tvalue> 和 NativeQueue<t> 四种额外的数据结构。</t></tkey,></tkey,></t></p>
+<p><a href="https://docs.unity3d.com/Packages/com.unity.collections@0.0/manual/index.html" target="_blank" rel="noopener">Collections 类</a>就是为了解决这个问题而诞生的，里面包含 NativeList<t>、NativeHashMap&lt;TKey, TValue&gt;、NativeMultiHashMap&lt;TKey, TValue&gt; 和 NativeQueue<t> 四种额外的数据结构。</t></t></p>
 <p>两个 NativeArray 之间从不会发生混淆这种情况，这也是为什么我们将会经常使用这些数据结构。我们可以在 Burst 中运用这个知识，使它不会由于害怕两个数组指针指向相同内存而放弃优化。</p>
 <p>Unity 还编写了 <a href="https://github.com/Unity-Technologies/Unity.Mathematics" target="_blank" rel="noopener">Unity.Mathemetics</a> 数学库，提供了很多像 Shader 代码的数据结构。Burst 也能和这数学库很好的工作，未来 Burst 将能够为 <code>math.sin()</code> 等计算作出牺牲精度的优化。</p>
 <p>对于 Burst 而言，<code>math.sin()</code> 不仅是要编译的 C# 方法，Burst 还能理解出 <code>sin()</code> 的三角函数属性，同时知道 x 值较小时会出现 <code>sin(x)</code> 等于 x 的情况，并了解它能替换为泰勒级数展开，以便牺牲特定精度。</p>
@@ -338,11 +339,11 @@
 <li>数据和其处理过程耦合在一起</li>
 <li>高度依赖引用类型</li>
 </ul>
-<p><img src="http://img.frankorz.com/5cd16b478f8af.png" alt></p>
-<h2 id="问题一：数据分布在内存的各个角落"><a href="#问题一：数据分布在内存的各个角落" class="headerlink" title="问题一：数据分布在内存的各个角落"></a>问题一：数据分布在内存的各个角落</h2><p><img src="http://img.frankorz.com/5cd557e05fa56.jpg" alt></p>
+<p><img src="http://img.frankorz.com/5cd16b478f8af.png"></p>
+<h2 id="问题一：数据分布在内存的各个角落"><a href="#问题一：数据分布在内存的各个角落" class="headerlink" title="问题一：数据分布在内存的各个角落"></a>问题一：数据分布在内存的各个角落</h2><p><img src="http://img.frankorz.com/5cd557e05fa56.jpg"></p>
 <p>离散的数据导致搜索效率十分低下，还有 Cache Miss 的问题，这个问题可以参考下面的链接：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/41652478" target="_blank" rel="noopener">ECS 的泛泛之谈</a></p>
-<h2 id="问题二：很多不必要的数据也被提供了"><a href="#问题二：很多不必要的数据也被提供了" class="headerlink" title="问题二：很多不必要的数据也被提供了"></a>问题二：很多不必要的数据也被提供了</h2><p><img src="http://img.frankorz.com/5cd56a9b06095.png" alt></p>
+<h2 id="问题二：很多不必要的数据也被提供了"><a href="#问题二：很多不必要的数据也被提供了" class="headerlink" title="问题二：很多不必要的数据也被提供了"></a>问题二：很多不必要的数据也被提供了</h2><p><img src="http://img.frankorz.com/5cd56a9b06095.png"></p>
 <p>例如当我们要调用 Transform 时，可能实际上我们只需要 position 和 rotation 两个属性来移动 gameObject，但是其他不需要的数据也被提供给了 gameObject。</p>
 <h2 id="问题三：低效的单线程数据处理"><a href="#问题三：低效的单线程数据处理" class="headerlink" title="问题三：低效的单线程数据处理"></a>问题三：低效的单线程数据处理</h2><p>传统模式只使用单线程来按顺序一个一个地处理数据和操作，这样十分低效。</p>
 <h1 id="高性能-C＃（HPC-）"><a href="#高性能-C＃（HPC-）" class="headerlink" title="高性能 C＃（HPC#）"></a>高性能 C＃（HPC#）</h1><p>当我们使用 C# 语言时，仍然无法控制数据在内存中如何进行分布，但这是我们提升性能的关键点。</p>
@@ -357,7 +358,7 @@
 <li>对 <code>throw new XXXException(...)</code> 给予基础支持</li>
 </ul>
 <h1 id="Job-System"><a href="#Job-System" class="headerlink" title="Job System"></a>Job System</h1><p>Job System 是针对上述传统模式问题的一种解决方式。例如下图可以把发射子弹看成一个 Job，从而用多线程来并行地处理发射操作。</p>
-<p><img src="http://img.frankorz.com/5cd549475461e.jpg" alt></p>
+<p><img src="http://img.frankorz.com/5cd549475461e.jpg"></p>
 <p>目前主流的 CPU 有 4-6 个物理核心，8-12 个逻辑核心，多线程处理将能够更好地发挥 CPU 的性能。</p>
 <p>传统的多线程问题也有很多：</p>
 <ul>
@@ -381,25 +382,25 @@
 <p>下图的原型就是由 Position 组件、Velocity 组件、Rigidbody 组件和 Renderer 组件组成的。</p>
 <p>如果一个实体只有三个组件（不同于前面提到的原型），那么那三个组件就组成了一个新的原型。</p>
 <p>下面的图来自 Unite LA 的一次演讲的讲义， 很遗憾那次演讲没有录制下来。讲义可以在<a href="https://docs.google.com/presentation/d/1vxE61D_N79cvgUI3eIocF2n4rn04wjgRRq00ugyoB1M/edit?usp=sharing" target="_blank" rel="noopener">这里</a>找到。</p>
-<p><img src="http://img.frankorz.com/5cd16aea80286.png" alt></p>
+<p><img src="http://img.frankorz.com/5cd16aea80286.png"></p>
 <p>ECS 以 16k 大小的块（Chunk）来分配内存，每个块仅包含单个原型中所有<strong>实体</strong>的<strong>组件</strong>数据。</p>
-<p><img src="assets/undefined" alt></p>
+<p><img src="assets/undefined"></p>
 <p>一个<a href="https://forum.unity.com/threads/memory-layout-for-ecs-components.590731/" target="_blank" rel="noopener">帖子</a>中有人提供了更加形象的内存布局图，例如上半部分的原型由 Position 组件和 Rock 组件组成，其中整个原型占了一个块（Chunk），两个组件的数据分别存在两个数组中，里面还带着组件数据对应的实体的信息。</p>
-<p><img src="http://img.frankorz.com/5cd583e06c6ef.jpg" alt></p>
+<p><img src="http://img.frankorz.com/5cd583e06c6ef.jpg"></p>
 <p>每个原型都有一个 Chunks 块列表，用来保存原型的实体。我们会循环所有块，并在每个块中，对紧凑的内存进行线性循环处理，以读取或写入组件数据。该线性循环会对每个实体运行相同的代码，同时为 Burst 创造向量化（Vectorization，可以参考 <a href="https://stackoverflow.com/questions/1422149/what-is-vectorization" target="_blank" rel="noopener">StackOverflow 的问题</a>）处理的机会。</p>
 <p>每个块会被安排好内存中的位置，以便于快速从内存得到想要的数据，详情可以参考下面的文章。</p>
 <p><a href="https://blog.csdn.net/yudianxia/article/details/80498015" target="_blank" rel="noopener">Unity2018 ECS 框架 Entities 源码解析（二）组件与 Chunk 的内存布局 - 大鹏的专栏</a></p>
 <h3 id="实体（Entity）"><a href="#实体（Entity）" class="headerlink" title="实体（Entity）"></a>实体（Entity）</h3><p>实体是什么？实体只是一个 32 位的整数 key （和一些额外的数据例如 index 和 version 实体版本，不过在这里不重要），所以除了实体的组件数据外，不必为实体保存或分配太多内存。实体可以实现游戏对象的所有功能，甚至更多功能，因为实体非常轻量。</p>
 <p>实体的性能消耗很低，所以我们可以把实体用在不适合游戏对象的情况，例如：为粒子系统内的每个单独粒子使用一个实体。</p>
 <p>实体本身不是对象，也不是一个容器，它的作用是把其组件的数据关联到一起。</p>
-<p><img src="http://img.frankorz.com/5cd16b1878af0.png" alt></p>
-<h3 id="系统（System）"><a href="#系统（System）" class="headerlink" title="系统（System）"></a>系统（System）</h3><p><img src="http://img.frankorz.com/5cd16b28a3b79.png" alt></p>
+<p><img src="http://img.frankorz.com/5cd16b1878af0.png"></p>
+<h3 id="系统（System）"><a href="#系统（System）" class="headerlink" title="系统（System）"></a>系统（System）</h3><p><img src="http://img.frankorz.com/5cd16b28a3b79.png"></p>
 <p>我们不必使用用户的 Update 方法搜索组件，然后在运行时对每个实例进行操作，使用 ECS 时我们只需静态地声明：我想对同时附带 Velocity 组件和 Rigidbody 组件的所有实体进行操作。为了找到所有实体，我们只需找到所有符合<strong>特定“组件搜索查询”的原型</strong>即可，而这个过程就是由系统（System）来完成的。</p>
 <p>很多情况下，这个过程会分成多个 Job ，使处理 ECS 组件的代码达到几乎 100% 的核心利用率。ECS 会完成所有工作，我们只需要提供对每个实体运行的代码即可。我们也可以手动处理块迭代过程（<a href="https://github.com/Unity-Technologies/EntityComponentSystemSamples/blob/master/Samples/Assets/HelloECS/HelloCube_03_IJobChunk/README.md" target="_blank" rel="noopener">IJobChunk</a>）。</p>
 <p>当我们从实体添加或移除组件时，ECS 会切换原型。我们会把它从当前块移动到新原型的块，然后交换之前块的最后实体来“填补空缺”。</p>
 <p>在 ECS 中，我们还要静态声明要对组件数据进行什么处理，是 ReadOnly 只读还是 ReadWrite 读写（Job System 一小节提到过的两种缓冲区）。通过确定仅对 Position 组件进行读取，ECS 可以更高效地调度 Job ，其它需要读取 Position 组件的 Job 不必进行等待。</p>
 <p>大体上，实体提供纯粹的数据给系统，系统根据自己所需要的组件来获得相应的满足条件的实体，最后系统再通过多线程来基于 Job System 来处理数据。</p>
-<p><img src="http://img.frankorz.com/5cd547a7c0260.jpg" alt></p>
+<p><img src="http://img.frankorz.com/5cd547a7c0260.jpg"></p>
 <p>这种数据布局也解决了 Unity 长期以来的困扰，即：加载时间和序列化的性能。现在从大型场景加载或流式处理 ECS 数据的时间，不会比从硬盘加载和使用原始字节多多少。</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>总的来说，ECS 有以下好处：</p>
 <ul>
@@ -421,7 +422,7 @@
 <li>这篇文章总结得很好，但很多视频链接都错了，我提供给了一个改好的版本：<a href="https://www.notion.so/frankorz/DOTS-3562fce36b2a44909e5910609ddfd6a7" target="_blank" rel="noopener">DOD 相关文章</a></li>
 </ul>
 </li>
-<li><a href="https://zhuanlan.zhihu.com/p/36649462" target="_blank" rel="noopener">Unity ECS 编程官方文档选译—Getting Started</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36649462" target="_blank" rel="noopener">Unity ECS 编程官方文档选译–Getting Started</a></li>
 <li><a href="https://mp.weixin.qq.com/s/GsrX6o-sHLrqVgffp1svqg" target="_blank" rel="noopener">面向数据技术栈 DOTS 之 ECS 实体组件系统</a></li>
 <li><a href="https://blogs.unity3d.com/2019/03/08/on-dots-entity-component-system/" target="_blank" rel="noopener">On DOTS: Entity Component System - Unity Blog</a></li>
 <li><a href="https://blogs.unity3d.com/2019/02/26/on-dots-c-c/" target="_blank" rel="noopener">On DOTS: C++ &amp; C# - Unity Blog</a></li>
@@ -586,7 +587,7 @@
      
       2015 - 
     
-    2019
+    2020
 
     <span class="heart">
       <i class="iconfont icon-heart"></i>

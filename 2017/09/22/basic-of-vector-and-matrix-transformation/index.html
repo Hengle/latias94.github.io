@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="3D数学, 游戏开发, 萤火之森">
+  <meta name="keywords" content="游戏开发, 3D数学, 萤火之森">
 
 
 
@@ -303,8 +303,10 @@
 
     <div class="post-content">
       
-        <p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
+        <p><strong>2020年7月26日更新：</strong><br>最近对变换重新学习整理了，文章在：<a href="http://frankorz.com/2020/07/26/transformation/">图形学常见的变换推导</a>。</p>
+<p>最近在跟公开课 edx 的 <a href="https://www.edx.org/course/computer-graphics-uc-san-diegox-cse167x-3" target="_blank" rel="noopener">Computer Graphics</a>（想一起学的告诉我！），这篇笔记主要介绍了图形学中会用到的比较基础的3D数学，重拾大学线性代数知识。</p>
 <a id="more"></a>
+
 <h2 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h2><h3 id="点积（Dot-Product）"><a href="#点积（Dot-Product）" class="headerlink" title="点积（Dot Product）"></a>点积（Dot Product）</h3><p>将向量相乘得到一个标量<br>可以通过两个向量除以它们的模得到两个向量之间的夹角</p>
 <p>用途：</p>
 <ul>
@@ -312,46 +314,43 @@
 <li>找到一个向量在另一向量上的投影也非常重要（比如我们想知道一个点在新的坐标系下的坐标）。</li>
 <li>点积在笛卡尔坐标系下很有用</li>
 </ul>
-<script type="math/tex; mode=display">
-\vec{a} \cdot \vec{b}=\|a\|\|b\| \cos \theta</script><p><img src="http://img.frankorz.com/59c275ef5ad97.png" alt></p>
+<p>$$<br>\vec{a} \cdot \vec{b}=|a||b| \cos \theta<br>$$</p>
+<p><img src="http://img.frankorz.com/59c275ef5ad97.png"></p>
 <h3 id="叉积（Cross-Product）"><a href="#叉积（Cross-Product）" class="headerlink" title="叉积（Cross Product）"></a>叉积（Cross Product）</h3><p>将向量相乘得到一个正交向量（垂直于向量a和向量b）</p>
-<script type="math/tex; mode=display">
-\begin{array}{l}{a \times b=-b \times a} \\ {\|a \times b\|=\|a\|\|b\| \sin \theta}\end{array}</script><p><img src="http://img.frankorz.com/59c2f0c604b26.png" alt></p>
+<p>$$<br>\begin{array}{l}{a \times b=-b \times a} \ {|a \times b|=|a||b| \sin \theta}\end{array}<br>$$</p>
+<p><img src="http://img.frankorz.com/59c2f0c604b26.png"></p>
 <p>叉积所得到的向量的方向可以通过右手坐标系来得到：</p>
-<p><img src="http://img.frankorz.com/59c2f0ae5357d.png" alt></p>
+<p><img src="http://img.frankorz.com/59c2f0ae5357d.png"></p>
 <p>用右手食指代表叉积中前一个向量，用中指代表叉积中后一个向量，则大拇指的方向就是叉积得到的向量方向。这简单的方法能提醒你：将进行叉积的两个向量顺序调换的话，得到的向量方向会相反。</p>
-<p><img src="http://img.frankorz.com/59c2f15017b3b.png" alt><br><img src="http://img.frankorz.com/59c2f2e8931f9.png" alt></p>
+<p><img src="http://img.frankorz.com/59c2f15017b3b.png"><br><img src="http://img.frankorz.com/59c2f2e8931f9.png"></p>
 <p>叉积可以用向量 a 的对偶矩阵来完成，所以可以将它表示成A星(A*)乘以b，其中A*是向量a的对偶矩阵（<a href="https://zh.wikipedia.org/zh-hans/%E5%85%B1%E8%BD%AD%E8%BD%AC%E7%BD%AE" target="_blank" rel="noopener">共轭转置</a>）。</p>
 <h3 id="正交坐标系"><a href="#正交坐标系" class="headerlink" title="正交坐标系"></a>正交坐标系</h3><p>正交基和坐标系对于表示点的位置非常重要，因为在图形学中，我们通常需要很多不同的坐标系，来表示点在不同参照物下的位置。例如：要表示自己身前一台电脑的位置，可以在自己的位置建立一个坐标系来表示电脑的位置；要表示北极的位置时，用地球的坐标系表示北极的位置会更容易。</p>
-<p><img src="http://img.frankorz.com/59c2f8a2d4ed7.png" alt><br><img src="http://img.frankorz.com/59c2f9bd606b9.png" alt></p>
+<p><img src="http://img.frankorz.com/59c2f8a2d4ed7.png"><br><img src="http://img.frankorz.com/59c2f9bd606b9.png"></p>
 <h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>图形学中矩阵很重要，因为大多数变换都涉及一个矩阵乘以一个向量，矩阵可以用来变换点。下面简单的列一下矩阵的性质，更多的性质可以参考下维基页面<a href="https://www.wikiwand.com/zh-hans/%E7%9F%A9%E9%98%B5" target="_blank" rel="noopener">矩阵</a>。</p>
-<h4 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h4><p><img src="http://img.frankorz.com/59c45933d1131.png" alt></p>
+<h4 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h4><p><img src="http://img.frankorz.com/59c45933d1131.png"></p>
 <p>矩阵相乘时，乘积处(i,j)处的元素是：第一个矩阵的 i 行和第二个矩阵 j 列的点积，这也是为什么要求第一个矩阵的列数等于第二个矩阵的行数。</p>
-<h4 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h4><script type="math/tex; mode=display">
-\left[\begin{array}{ccc}{1} & {2} & {3} \\ {4} & {5} & {6} \\ {7} & {8} & {9} \\ {10} & {11} & {12}\end{array}\right]^{T}=\left[\begin{array}{cccc}{1} & {4} & {7} & {10} \\ {2} & {5} & {8} & {11} \\ {3} & {6} & {9} & {12}\end{array}\right]</script><script type="math/tex; mode=display">
-\left[\begin{array}{lll}{a} & {b} & {c} \\ {d} & {e} & {f} \\ {g} & {h} & {i}\end{array}\right]^{T}=\left[\begin{array}{lll}{a} & {d} & {g} \\ {b} & {e} & {h} \\ {c} & {f} & {i}\end{array}\right]</script><script type="math/tex; mode=display">
-\left[\begin{array}{lll}{x} & {y} & {z}\end{array}\right]^{T}=\left[\begin{array}{l}{x} \\ {y} \\ {z}\end{array}\right] \quad\left[\begin{array}{l}{x} \\ {y} \\ {z}\end{array}\right]^{T}=\left[\begin{array}{lll}{x} & {y} & {z}\end{array}\right]</script><script type="math/tex; mode=display">
-(\mathbf{A B})^{T}=\mathbf{B}^{\mathrm{T}} \mathbf{A}^{\mathrm{T}}</script><h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><script type="math/tex; mode=display">
-\left(\mathbf{M}^{\mathrm{T}}\right)^{-1}=\left(\mathbf{M}^{-1}\right)^{\mathrm{T}}</script><script type="math/tex; mode=display">
-\left(\mathbf{M}_{1} \mathbf{M}_{2} \cdots \mathbf{M}_{n-1} \mathbf{M}_{n}\right)^{-1}=\mathbf{M}_{n}^{-1} \mathbf{M}_{n-1}^{-1} \cdots \mathbf{M}_{2}^{-1} \mathbf{M}_{1}^{-1}</script><script type="math/tex; mode=display">
-\left|\mathbf{M}^{-1}\right|=1 /|\mathbf{M}|</script><p>矩阵与矩阵的逆相乘得到单位矩阵：</p>
-<script type="math/tex; mode=display">
-\mathbf{M}\left(\mathbf{M}^{-1}\right)=\mathbf{M}^{-1} \mathbf{M}=\mathbf{I}</script><h2 id="矩阵变换"><a href="#矩阵变换" class="headerlink" title="矩阵变换"></a>矩阵变换</h2><h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>二维空间下和三维空间下的缩放很简单，直接乘上相应的缩放倍数即可。</p>
-<p><img src="http://img.frankorz.com/59c453fdb5b93.png" alt><br><img src="http://img.frankorz.com/59c34830cf218.png" alt></p>
-<h3 id="切变"><a href="#切变" class="headerlink" title="切变"></a>切变</h3><p><img src="http://img.frankorz.com/59c45377c6df7.png" alt></p>
+<h4 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h4><p>$$<br>\left[\begin{array}{ccc}{1} &amp; {2} &amp; {3} \ {4} &amp; {5} &amp; {6} \ {7} &amp; {8} &amp; {9} \ {10} &amp; {11} &amp; {12}\end{array}\right]^{T}=\left[\begin{array}{cccc}{1} &amp; {4} &amp; {7} &amp; {10} \ {2} &amp; {5} &amp; {8} &amp; {11} \ {3} &amp; {6} &amp; {9} &amp; {12}\end{array}\right]<br>$$<br>$$<br>\left[\begin{array}{lll}{a} &amp; {b} &amp; {c} \ {d} &amp; {e} &amp; {f} \ {g} &amp; {h} &amp; {i}\end{array}\right]^{T}=\left[\begin{array}{lll}{a} &amp; {d} &amp; {g} \ {b} &amp; {e} &amp; {h} \ {c} &amp; {f} &amp; {i}\end{array}\right]<br>$$<br>$$<br>\left[\begin{array}{lll}{x} &amp; {y} &amp; {z}\end{array}\right]^{T}=\left[\begin{array}{l}{x} \ {y} \ {z}\end{array}\right] \quad\left[\begin{array}{l}{x} \ {y} \ {z}\end{array}\right]^{T}=\left[\begin{array}{lll}{x} &amp; {y} &amp; {z}\end{array}\right]<br>$$</p>
+<p>$$<br>(\mathbf{A B})^{T}=\mathbf{B}^{\mathrm{T}} \mathbf{A}^{\mathrm{T}}<br>$$</p>
+<h4 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h4><p>$$<br>\left(\mathbf{M}^{\mathrm{T}}\right)^{-1}=\left(\mathbf{M}^{-1}\right)^{\mathrm{T}}<br>$$</p>
+<p>$$<br>\left(\mathbf{M}<em>{1} \mathbf{M}</em>{2} \cdots \mathbf{M}<em>{n-1} \mathbf{M}</em>{n}\right)^{-1}=\mathbf{M}<em>{n}^{-1} \mathbf{M}</em>{n-1}^{-1} \cdots \mathbf{M}<em>{2}^{-1} \mathbf{M}</em>{1}^{-1}<br>$$</p>
+<p>$$<br>\left|\mathbf{M}^{-1}\right|=1 /|\mathbf{M}|<br>$$</p>
+<p>矩阵与矩阵的逆相乘得到单位矩阵：<br>$$<br>\mathbf{M}\left(\mathbf{M}^{-1}\right)=\mathbf{M}^{-1} \mathbf{M}=\mathbf{I}<br>$$</p>
+<h2 id="矩阵变换"><a href="#矩阵变换" class="headerlink" title="矩阵变换"></a>矩阵变换</h2><h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p>二维空间下和三维空间下的缩放很简单，直接乘上相应的缩放倍数即可。</p>
+<p><img src="http://img.frankorz.com/59c453fdb5b93.png"><br><img src="http://img.frankorz.com/59c34830cf218.png"></p>
+<h3 id="切变"><a href="#切变" class="headerlink" title="切变"></a>切变</h3><p><img src="http://img.frankorz.com/59c45377c6df7.png"></p>
 <h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><h4 id="二维空间下的旋转"><a href="#二维空间下的旋转" class="headerlink" title="二维空间下的旋转"></a>二维空间下的旋转</h4><p>二维空间下，物体的旋转可以靠矩阵在X方向的变换于矩阵在Y方向的变换叠加得到，但不适用于三维空间。</p>
 <p>下面是推导过程：</p>
-<p><img src="http://img.frankorz.com/59c3a241c6dd6.png" alt></p>
-<p><img src="http://img.frankorz.com/59c35fd14cf71.png" alt></p>
+<p><img src="http://img.frankorz.com/59c3a241c6dd6.png"></p>
+<p><img src="http://img.frankorz.com/59c35fd14cf71.png"></p>
 <p>这三种矩阵变换<strong>不符合交换律</strong>，也就是说变换的顺序改变会得到不同的结果，要恢复变换的话也要从最后一次变换开始恢复。（Unity 的默认变换顺序是先缩放，再旋转，最后平移）</p>
-<p><img src="http://img.frankorz.com/59c39af8088e2.png" alt></p>
+<p><img src="http://img.frankorz.com/59c39af8088e2.png"></p>
 <h4 id="三维空间下的旋转"><a href="#三维空间下的旋转" class="headerlink" title="三维空间下的旋转"></a>三维空间下的旋转</h4><p>下图分别给出了绕 Z 轴旋转、X 轴旋转和 Y 轴旋转的变换矩阵：</p>
-<p><img src="http://img.frankorz.com/59c3b45f62ef9.png" alt></p>
+<p><img src="http://img.frankorz.com/59c3b45f62ef9.png"></p>
 <p>二维旋转可以看作是绕着 Z 轴的特殊旋转，因为 Z 轴保持不变。因此 Rz（绕着 Z 轴的旋转）可以直接在二维空间旋转矩阵外的 Z 轴处填充 1 和 0 来使用，同理可得绕X轴的旋转矩阵和 Y 轴的旋转矩阵。</p>
-<h5 id="绕任意轴旋转"><a href="#绕任意轴旋转" class="headerlink" title="绕任意轴旋转"></a>绕任意轴旋转</h5><p><img src="http://img.frankorz.com/59c3b89114b72.png" alt></p>
+<h5 id="绕任意轴旋转"><a href="#绕任意轴旋转" class="headerlink" title="绕任意轴旋转"></a>绕任意轴旋转</h5><p><img src="http://img.frankorz.com/59c3b89114b72.png"></p>
 <p>在这其中，三个正交向量（相互垂直）可以构成一个旋转矩阵，这样就可以将点映射到新的坐标系下。这个概念非常重要，因为在图形学中常常需要这样的变换，如把每个3D模型的顶点的法线从模型空间转到剪裁空间（不同的坐标系）再统一进行计算。</p>
 <p>这个旋转矩阵的逆只需要将 XYZ 轴换成 u，v，w 即可。</p>
-<p><img src="http://img.frankorz.com/59c4467c7cf99.png" alt></p>
+<p><img src="http://img.frankorz.com/59c4467c7cf99.png"></p>
 <p>详见<a href="https://baike.baidu.com/item/%E7%BD%97%E5%BE%B7%E9%87%8C%E6%A0%BC%E6%97%8B%E8%BD%AC%E5%85%AC%E5%BC%8F" target="_blank" rel="noopener">罗德里格旋转公式</a></p>
 <hr>
 <p>下一篇笔记会写更多关于三维空间下的矩阵变换。</p>
@@ -394,9 +393,9 @@
         
           <div class="post-tags">
             
-              <a href="/tags/3D数学/">3D数学</a>
-            
               <a href="/tags/游戏开发/">游戏开发</a>
+            
+              <a href="/tags/3D数学/">3D数学</a>
             
           </div>
         
@@ -513,7 +512,7 @@
      
       2015 - 
     
-    2019
+    2020
 
     <span class="heart">
       <i class="iconfont icon-heart"></i>
@@ -591,5 +590,22 @@
 
     <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
 
-  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
 </html>
